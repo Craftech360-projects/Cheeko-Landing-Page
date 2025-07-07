@@ -9,15 +9,16 @@ interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
-  ({ className, size = 'lg', children, ...props }, ref) => {
-    const baseStyles = 'mx-auto px-4 sm:px-6'
+  ({ className, size = 'full', children, ...props }, ref) => {
+    const baseStyles = 'mx-auto px-2 sm:px-6 md:px-[2px] lg:px-[80px] xl:px-[60px] 2xl:px-[160px]'
+// const baseStyles = 'mx-auto px-4 sm:px-6 md:px-[60px] lg:px-[80px] xl:px-16 2xl:px-40'
     
     const sizes = {
       sm: 'max-w-2xl',
       md: 'max-w-4xl',
-      lg: 'max-w-6xl',
-      xl: 'max-w-7xl',
-      full: 'max-w-full'
+      lg: 'max-w-7xl',
+      xl: 'max-w-screen-xl',
+      full: 'max-w-full-2xl'
     }
 
     return (

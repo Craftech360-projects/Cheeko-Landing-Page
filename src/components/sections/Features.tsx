@@ -74,7 +74,7 @@ const features: Feature[] = [
 
 const Features: React.FC = () => {
   return (
-    <section id="features" className="py-20 lg:py-32 bg-muted/30 relative overflow-hidden">
+    <section id="features" className="lg:py-0 bg-muted/30 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{

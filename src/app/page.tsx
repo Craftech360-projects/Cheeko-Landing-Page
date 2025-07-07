@@ -10,7 +10,7 @@ import { StructuredData } from '@/components/StructuredData'
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="max-w-full mx-auto">
       <StructuredData />
       <Header />
       

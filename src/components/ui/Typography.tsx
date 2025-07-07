@@ -14,47 +14,47 @@ const Typography = React.forwardRef<HTMLElement, TypographyProps>(
     const variants = {
       h1: {
         tag: 'h1',
-        className: 'scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl'
+        className: 'scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl font-sora'
       },
       h2: {
         tag: 'h2',
-        className: 'scroll-m-20 text-3xl font-semibold tracking-tight lg:text-4xl'
+        className: 'scroll-m-20 text-3xl font-semibold tracking-tight lg:text-4xl font-sora'
       },
       h3: {
         tag: 'h3',
-        className: 'scroll-m-20 text-2xl font-semibold tracking-tight lg:text-3xl'
+        className: 'scroll-m-20 text-2xl font-semibold tracking-tight lg:text-3xl font-sora'
       },
       h4: {
         tag: 'h4',
-        className: 'scroll-m-20 text-xl font-semibold tracking-tight lg:text-2xl'
+        className: 'scroll-m-20 text-xl font-semibold tracking-tight lg:text-2xl font-sora'
       },
       h5: {
         tag: 'h5',
-        className: 'scroll-m-20 text-lg font-semibold tracking-tight'
+        className: 'scroll-m-20 text-lg font-semibold tracking-tight font-sora'
       },
       h6: {
         tag: 'h6',
-        className: 'scroll-m-20 text-base font-semibold tracking-tight'
+        className: 'scroll-m-20 text-base font-semibold tracking-tight font-sora'
       },
       p: {
         tag: 'p',
-        className: 'leading-7 [&:not(:first-child)]:mt-6'
+        className: 'leading-7 [&:not(:first-child)]:mt-6 font-switzer'
       },
       lead: {
         tag: 'p',
-        className: 'text-xl text-muted-foreground'
+        className: 'text-xl text-muted-foreground font-switzer'
       },
       large: {
         tag: 'div',
-        className: 'text-lg font-semibold'
+        className: 'text-lg font-semibold font-switzer'
       },
       small: {
         tag: 'small',
-        className: 'text-sm font-medium leading-none'
+        className: 'text-sm font-medium leading-none font-switzer'
       },
       muted: {
         tag: 'p',
-        className: 'text-sm text-muted-foreground'
+        className: 'text-sm text-muted-foreground font-switzer'
       }
     }
 

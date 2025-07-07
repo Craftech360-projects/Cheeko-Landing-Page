@@ -209,7 +209,7 @@ const StepCard: React.FC<StepCardProps> = ({
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.6, delay: index * 0.2 }}
       onClick={onClick}
-      whileHover={onClick ? { scale: 1.02 } : undefined}
+      {...(onClick && { whileHover: { scale: 1.02 } })}
     >
       {/* Step Number & Icon */}
       <div className={`${isDesktop ? 'mx-auto mb-6' : 'flex-shrink-0'} relative`}>

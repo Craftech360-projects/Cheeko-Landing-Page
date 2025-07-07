@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 
@@ -11,6 +12,30 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const switzer = localFont({
+  src: [
+    {
+      path: "./fonts/Switzer-Variable.ttf",
+      weight: "300 900",
+      style: "normal",
+    },
+  ],
+  variable: "--font-switzer",
+  display: "swap",
+});
+
+const sora = localFont({
+  src: [
+    {
+      path: "./fonts/Sora-Variable.ttf",
+      weight: "300 800",
+      style: "normal",
+    },
+  ],
+  variable: "--font-sora",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -81,7 +106,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${switzer.variable} ${sora.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ErrorBoundary>
           {children}
