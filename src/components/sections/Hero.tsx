@@ -3,7 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Play, Star, Sparkles } from "lucide-react";
+import { Play, Sparkles } from "lucide-react";
 import { Button, Container, Typography } from "@/components/ui";
 import { FadeIn, SlideIn } from "@/components/animations";
 
@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
   return (
     <section className="min-h-screen overflow-hidden mt-5">
       <Container>
-        <div className="relative z-10 grid lg:grid-cols-2 gap-6 lg:gap-12 items-center min-h-[70vh] bg-orange-500 rounded-2xl mt-16 lg:mt-24 overflow-hidden">
+        <div className="relative z-10 grid lg:grid-cols-2 gap-6 lg:gap-12 items-center min-h-[83vh] bg-orange-600 rounded-2xl mt-16 lg:mt-24 overflow-hidden">
           {/* Floating UI Elements */}
           <motion.div
             className="absolute -top-8 -left-6 z-0"
@@ -87,55 +87,45 @@ const Hero: React.FC = () => {
           </motion.div>
 
           {/* Left Content */}
-          <div className="relative z-20 space-y-6 lg:space-y-8 order-2 lg:order-1 lg:px-8 py-6 lg:py-8 px-4">
+          <div className="relative z-20 order-2 lg:order-1 lg:px-8 py-6 lg:py-8 px-4">
             <FadeIn direction="up" delay={0.4}>
-              <Typography
-                variant="h1"
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold bg-clip-text text-neutral-00 leading-tight"
-              >
-                Meet Cheeko AI
-                <br />
-                <span className="text-foreground text-neutral-00 lg:text-6xl">
-                  Your Voice Activated Friend
-                </span>
-              </Typography>
-            </FadeIn>
+              <div className="space-y-6">
+                {/* MEET CHEEKO with reduced line height */}
+                <div>
+                  <Typography
+                    variant="h1"
+                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold bg-clip-text text-neutral-00 leading-none tracking-wide"
+                  >
+                    MEET
+                    <br />
+                    CHEEKO
+                  </Typography>
+                </div>
 
-            <FadeIn direction="up" delay={0.6}>
-              <Typography
-                variant="lead"
-                className="text-lg sm:text-xl text-muted-foreground max-w-2xl text-neutral-00"
-              >
-                A voice-first, emotionally intelligent toy that delivers
-                screen-free learning, curiosity-driven conversations, and
-                magical companionship for children aged 3-12.
-              </Typography>
-            </FadeIn>
+                {/* Your Child's AI Learning Buddy - split into two lines */}
+                <div>
+                  <Typography
+                    variant="h1"
+                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-neutral-00 leading-none tracking-normal"
+                  >
+                    Your Child's
+                    <br />
+                    AI Learning Buddy
+                  </Typography>
+                </div>
 
-            <FadeIn direction="up" delay={0.8}>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="group rounded-lg bg-transparent border-2 text-neutral-00"
-                  onClick={() => {
-                    const element = document.getElementById("get-started");
-                    element?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                >
-                  <Sparkles className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                  Start Free Trial
-                </Button>
-
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="group rounded-lg text-orange-500"
-                  onClick={() => setIsVideoPlaying(true)}
-                >
-                  <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                  Watch Demo
-                </Button>
+                {/* Description text */}
+                <div>
+                  <FadeIn direction="up" delay={0.6}>
+                    <Typography
+                      variant="lead"
+                      className="text-lg sm:text-xl text-muted-foreground max-w-2xl text-neutral-00"
+                    >
+                      From bedtime stories to curious mornings, Cheeko is your
+                      child's joyful AI companion, anytime.
+                    </Typography>
+                  </FadeIn>
+                </div>
               </div>
             </FadeIn>
           </div>
@@ -154,7 +144,7 @@ const Hero: React.FC = () => {
                     damping: 20,
                   }}
                 >
-                  <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px]">
+                  <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[600px]">
                     {/* Hero Image */}
                     <Image
                       src="/images/hero_image.png"
@@ -170,7 +160,7 @@ const Hero: React.FC = () => {
                 </motion.div>
 
                 {/* Background Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-neutral-00 to-neutral-00 opacity-20 blur-3xl -z-10 scale-110"></div>
+                {/* <div className="absolute inset-0 bg-gradient-to-r from-neutral-00 to-neutral-00 opacity-20 blur-3xl -z-10 scale-110"></div> */}
               </div>
             </SlideIn>
           </div>

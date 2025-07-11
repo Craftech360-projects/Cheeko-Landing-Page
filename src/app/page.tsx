@@ -1,6 +1,7 @@
 import { Header } from '@/components/sections/Header'
 import { Hero } from '@/components/sections/Hero'
-import { Features } from '@/components/sections/Features'
+import MeetCheeko from '@/components/sections/MeetCheeko'
+import { Features } from '@/components/sections/KeyFeatures'
 import { HowItWorks } from '@/components/sections/HowItWorks'
 import { Safety } from '@/components/sections/Safety'
 import { Testimonials } from '@/components/sections/Testimonials'
@@ -17,6 +18,9 @@ export default function Home() {
       <main>
         {/* Hero Section */}
         <Hero />
+
+        {/* Meet Cheeko Section */}
+        <MeetCheeko />
 
         {/* Key Features Section */}
         <Features />

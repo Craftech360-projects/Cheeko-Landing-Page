@@ -127,14 +127,14 @@ const Header: React.FC = () => {
           >
             <Button
               variant="primary"
-              className='text-neutral-00 bg-orange-500 rounded-md'
+              className='text-neutral-00 bg-orange-500 rounded-md font-semibold'
               size="md"
               onClick={(e) => {
                 e.preventDefault()
                 scrollToSection('#get-started')
               }}
             >
-              Pre Order Now
+              Pre Order Now At 499
             </Button>
           </motion.div>
 
