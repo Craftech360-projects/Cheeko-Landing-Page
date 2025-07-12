@@ -1,423 +1,272 @@
-'use client'
+"use client";
 
-import * as React from 'react'
-import { motion } from 'framer-motion'
-import { 
-  Shield, 
-  Lock, 
-  Eye, 
-  UserCheck, 
-  Award, 
-  FileCheck, 
-  Clock,
-  Smartphone,
-  Globe,
-  Heart,
-  CheckCircle,
-  Star
-} from 'lucide-react'
-import { Container, Typography, Button } from '@/components/ui'
-import { FadeIn, StaggerContainer, AnimatedCard } from '@/components/animations'
+import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 interface SafetyFeature {
-  icon: React.ComponentType<any>
-  title: string
-  description: string
-  details: string[]
-  color: string
-  gradient: string
-}
-
-interface Certification {
-  name: string
-  description: string
-  logo: React.ComponentType<any>
-  verified: boolean
+  icon: string;
+  title: string;
+  description: string;
 }
 
 const safetyFeatures: SafetyFeature[] = [
   {
-    icon: Shield,
-    title: 'COPPA Compliant',
-    description: 'Fully compliant with Children\'s Online Privacy Protection Act regulations.',
-    details: ['No personal data collection', 'Parental consent required', 'Secure data handling'],
-    color: 'text-accent-green',
-    gradient: 'from-green-500 to-green-600'
+    icon: "/icons/safety-privacy-1.svg",
+    title: "Data Protection",
+    description:
+      "All conversations are encrypted and we never share your child's data with third parties. Your information stays private.",
   },
   {
-    icon: Lock,
-    title: 'Data Encryption',
-    description: 'End-to-end encryption protects all communications and stored data.',
-    details: ['256-bit AES encryption', 'Secure transmission', 'Local data storage'],
-    color: 'text-primary-600',
-    gradient: 'from-primary-500 to-primary-600'
+    icon: "/icons/safety-privacy-2.svg",
+    title: "Safe Words Only",
+    description:
+      "Cheeko filters out unsafe or inappropriate words to keep conversations age-appropriate and child-friendly.",
   },
   {
-    icon: UserCheck,
-    title: 'Parental Controls',
-    description: 'Comprehensive parental dashboard with full control and monitoring.',
-    details: ['Real-time monitoring', 'Usage limits', 'Content filtering'],
-    color: 'text-secondary-600',
-    gradient: 'from-secondary-500 to-secondary-600'
+    icon: "/icons/safety-privacy-3.svg",
+    title: "Data Stores In Cloud",
+    description:
+      "Built from the ground up with privacy as the core principle. We never sell data and only collect what's necessary for learning.",
   },
-  {
-    icon: Eye,
-    title: 'Privacy by Design',
-    description: 'Built from the ground up with privacy as the core principle.',
-    details: ['Minimal data collection', 'Anonymous analytics', 'User data ownership'],
-    color: 'text-accent-purple',
-    gradient: 'from-purple-500 to-purple-600'
-  }
-]
+];
 
-const certifications: Certification[] = [
-  { name: 'COPPA', description: 'Children\'s Online Privacy Protection', logo: Award, verified: true },
-  { name: 'GDPR', description: 'General Data Protection Regulation', logo: FileCheck, verified: true },
-  { name: 'SOC 2', description: 'Security & Availability', logo: Shield, verified: true },
-  { name: 'ISO 27001', description: 'Information Security Management', logo: CheckCircle, verified: true }
-]
+export function Safety() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-const trustMetrics = [
-  { icon: Heart, value: '98%', label: 'Parent Satisfaction', color: 'text-accent-pink' },
-  { icon: Star, value: '4.9/5', label: 'Safety Rating', color: 'text-secondary-600' },
-  { icon: Clock, value: '24/7', label: 'Support Available', color: 'text-primary-600' },
-  { icon: Globe, value: '50+', label: 'Countries Approved', color: 'text-accent-green' }
-]
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-fade-in");
+          }
+        });
+      },
+      { threshold: 0.05, rootMargin: "0px 0px -50px 0px" }
+    );
 
-const Safety: React.FC = () => {
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section id="safety" className="py-20 lg:py-32 bg-muted/30 relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        {/* Security Shield Animation */}
-        <motion.div
-          className="absolute top-20 right-20 w-32 h-32 opacity-10"
-          animate={{
-            rotate: [0, 360],
-            scale: [1, 1.1, 1]
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: 'linear'
-          }}
-        >
-          <Shield className="w-full h-full text-primary-500" />
-        </motion.div>
-
-        <motion.div
-          className="absolute bottom-20 left-20 w-24 h-24 opacity-10"
-          animate={{
-            rotate: [360, 0],
-            scale: [1, 0.9, 1]
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: 'linear'
-          }}
-        >
-          <Lock className="w-full h-full text-accent-green" />
-        </motion.div>
-
-        {/* Floating Security Icons */}
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-primary-300 rounded-full opacity-40"
-            style={{
-              left: `${10 + i * 15}%`,
-              top: `${20 + (i % 2) * 40}%`
-            }}
-            animate={{
-              y: [0, -20, 0],
-              opacity: [0.4, 0.8, 0.4]
-            }}
-            transition={{
-              duration: 3 + i,
-              repeat: Infinity,
-              delay: i * 0.5,
-              ease: 'easeInOut'
-            }}
-          />
-        ))}
-      </div>
-
-      <Container className="relative z-10">
+    <section
+      id="safety"
+      ref={sectionRef}
+      className="relative py-20 px-2 sm:px-6 md:px-[2px] lg:px-[80px] xl:px-[60px] 2xl:px-[160px] overflow-hidden opacity-0"
+    >
+      <div className="max-w-full-2xl mx-auto">
         {/* Header */}
-        <div className="text-center space-y-6 mb-16 lg:mb-24">
-          <FadeIn direction="up" delay={0.2}>
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent-green/10 text-accent-green border border-accent-green/20 rounded-full text-sm font-medium">
-              <Shield className="w-4 h-4" />
-              <span>Safety & Privacy</span>
-            </div>
-          </FadeIn>
-
-          <FadeIn direction="up" delay={0.4}>
-            <Typography 
-              variant="h2" 
-              className="text-3xl md:text-4xl lg:text-5xl font-bold"
-            >
-              Your Child's Safety is Our Top Priority
-            </Typography>
-          </FadeIn>
-
-          <FadeIn direction="up" delay={0.6}>
-            <Typography 
-              variant="lead" 
-              className="text-lg text-muted-foreground max-w-3xl mx-auto"
-            >
-              CheekoAI is designed with industry-leading security measures and privacy protections. 
-              We believe parents should have complete peace of mind when their children are learning and playing.
-            </Typography>
-          </FadeIn>
-        </div>
-
-        {/* Trust Metrics */}
-        <FadeIn direction="up" delay={0.8}>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16 lg:mb-24">
-            {trustMetrics.map((metric, index) => (
-              <motion.div
-                key={metric.label}
-                className="text-center p-6 bg-white/50 backdrop-blur-sm rounded-2xl border border-border/50"
-                whileHover={{ scale: 1.05, y: -4 }}
-                transition={{ type: 'spring' as const, stiffness: 300, damping: 20 }}
-              >
-                <motion.div
-                  className="mx-auto mb-4 w-12 h-12 rounded-xl bg-gradient-to-br from-primary-100 to-primary-50 flex items-center justify-center"
-                  animate={{
-                    rotate: [0, 5, -5, 0]
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    delay: index * 0.5
-                  }}
-                >
-                  <metric.icon className={`w-6 h-6 ${metric.color}`} />
-                </motion.div>
-                <div className="text-2xl font-bold text-foreground">{metric.value}</div>
-                <div className="text-sm text-muted-foreground mt-1">{metric.label}</div>
-              </motion.div>
-            ))}
+        <div className="text-center mb-12 relative">
+          <div className="relative inline-block">
+            <Image
+              src="/icons/Header-Icon-Left.svg"
+              alt=""
+              width={69}
+              height={72}
+              className="absolute -left-15 -top-12"
+            />
+            <h2 className="text-5xl md:text-6xl font-bold font-sora">
+              <span className="text-black">Safety &</span>{" "}
+              <span className="text-orange-500">Privacy</span>
+            </h2>
+            <Image
+              src="/icons/Header-Icon-Right.svg"
+              alt=""
+              width={69}
+              height={72}
+              className="absolute -right-15 -top-12"
+            />
           </div>
-        </FadeIn>
 
-        {/* Safety Features Grid */}
-        <div className="mb-16 lg:mb-24">
-          <FadeIn direction="up" delay={1.0}>
-            <Typography 
-              variant="h3" 
-              className="text-2xl md:text-3xl font-bold text-center mb-12"
-            >
-              Comprehensive Security Features
-            </Typography>
-          </FadeIn>
-
-          <StaggerContainer
-            delay={1.2}
-            staggerDelay={0.15}
-            className="grid md:grid-cols-2 gap-8"
-          >
-            {safetyFeatures.map((feature, index) => (
-              <SafetyFeatureCard key={feature.title} feature={feature} index={index} />
-            ))}
-          </StaggerContainer>
+          <p className="text-center text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto font-switzer leading-relaxed mt-4">
+            Your child's safety is our top priority. CheekoAI is designed with
+            industry-leading security measures and privacy protections.
+          </p>
         </div>
 
-        {/* Certifications */}
-        <div className="mb-16 lg:mb-24">
-          <FadeIn direction="up" delay={1.6}>
-            <Typography 
-              variant="h3" 
-              className="text-2xl md:text-3xl font-bold text-center mb-12"
-            >
-              Industry Certifications & Compliance
-            </Typography>
-          </FadeIn>
+        {/* Safety Features Container with Decorative Elements */}
+        <div className="relative">
+          {/* Top right decorative element */}
+          <Image
+            src="/icons/features-star-red.svg"
+            alt=""
+            width={96}
+            height={94}
+            className="absolute -right-8 -top-14 z-0 decorative-topright"
+          />
 
-          <FadeIn direction="up" delay={1.8}>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-              {certifications.map((cert, index) => (
-                <motion.div
-                  key={cert.name}
-                  className="bg-white/80 backdrop-blur-sm rounded-xl p-6 text-center border border-border/50 relative overflow-hidden"
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  transition={{ type: 'spring' as const, stiffness: 300, damping: 20 }}
+          {/* White Container with Three Sections */}
+          <div
+            ref={containerRef}
+            className="bg-white rounded-3xl shadow-lg p-8 lg:p-12 relative z-10 opacity-0 container-animate"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-3 relative">
+              {safetyFeatures.map((feature, index) => (
+                <div
+                  key={index}
+                  className="relative px-8 lg:px-12 py-8 lg:py-0"
                 >
-                  {/* Verified Badge */}
-                  {cert.verified && (
-                    <motion.div
-                      className="absolute top-3 right-3"
-                      animate={{
-                        scale: [1, 1.1, 1],
-                        opacity: [0.7, 1, 0.7]
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.3
-                      }}
-                    >
-                      <CheckCircle className="w-5 h-5 text-accent-green" />
-                    </motion.div>
+                  {/* Vertical Divider Line */}
+                  {index < safetyFeatures.length - 1 && (
+                    <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-px">
+                      <div className="h-full w-full relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-400 to-transparent"></div>
+                      </div>
+                    </div>
                   )}
 
-                  <div className="mb-4">
-                    <cert.logo className="w-12 h-12 mx-auto text-primary-600" />
+                  {/* Horizontal Divider for Mobile */}
+                  {index < safetyFeatures.length - 1 && (
+                    <div className="lg:hidden absolute left-8 right-8 bottom-0 h-px">
+                      <div className="w-full h-full relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-orange-400 to-transparent"></div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Feature Content */}
+                  <div className="flex flex-col items-start space-y-4">
+                    {/* Icon */}
+                    <div className="w-20 h-20 bg-orange-50 rounded-2xl flex items-center justify-center feature-icon">
+                      <Image
+                        src={feature.icon}
+                        alt={feature.title}
+                        width={48}
+                        height={48}
+                      />
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-2xl font-bold font-sora text-gray-900">
+                      {feature.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-gray-600 font-switzer text-base leading-relaxed">
+                      {feature.description}
+                    </p>
                   </div>
-                  <div className="font-semibold text-foreground mb-1">{cert.name}</div>
-                  <div className="text-xs text-muted-foreground">{cert.description}</div>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </FadeIn>
-        </div>
-
-        {/* Security Promise */}
-        <FadeIn direction="up" delay={2.0}>
-          <div className="text-center bg-gradient-to-r from-primary-50 to-secondary-50 rounded-2xl p-8 md:p-12 border border-primary-100">
-            <div className="max-w-2xl mx-auto space-y-6">
-              <motion.div
-                className="w-16 h-16 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-2xl mx-auto flex items-center justify-center"
-                animate={{
-                  boxShadow: [
-                    '0 0 0 0 rgba(14, 165, 233, 0.4)',
-                    '0 0 0 20px rgba(14, 165, 233, 0)',
-                    '0 0 0 0 rgba(14, 165, 233, 0)'
-                  ]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatDelay: 1
-                }}
-              >
-                <Heart className="w-8 h-8 text-white" />
-              </motion.div>
-
-              <Typography variant="h3" className="text-xl md:text-2xl font-bold">
-                Our Security Promise
-              </Typography>
-
-              <Typography className="text-muted-foreground">
-                We pledge to maintain the highest standards of security and privacy protection. 
-                Your child's data will never be sold, shared, or used for advertising. 
-                CheekoAI is designed to be a safe, nurturing environment for learning and growth.
-              </Typography>
-
-              <Button 
-                variant="outline"
-                className="mt-4"
-                onClick={() => {
-                  // Link to privacy policy or security documentation
-                  window.open('#privacy-policy', '_blank')
-                }}
-              >
-                <FileCheck className="w-4 h-4 mr-2" />
-                Read Our Privacy Policy
-              </Button>
-            </div>
           </div>
-        </FadeIn>
-      </Container>
-    </section>
-  )
-}
 
-interface SafetyFeatureCardProps {
-  feature: SafetyFeature
-  index: number
-}
-
-const SafetyFeatureCard: React.FC<SafetyFeatureCardProps> = ({ feature, index }) => {
-  const IconComponent = feature.icon
-
-  return (
-    <AnimatedCard
-      delay={index * 0.1}
-      hoverEffect="lift"
-      entranceAnimation="fade"
-      direction="up"
-      className="h-full"
-    >
-      <div className="p-8 h-full">
-        {/* Icon with animated background */}
-        <div className="relative mb-6">
-          <motion.div
-            className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center relative overflow-hidden`}
-            whileHover={{
-              scale: 1.05,
-              boxShadow: '0 10px 30px rgba(0,0,0,0.15)'
-            }}
-          >
-            {/* Animated security pulse */}
-            <motion.div
-              className="absolute inset-0 bg-white rounded-2xl"
-              animate={{
-                opacity: [0, 0.2, 0],
-                scale: [1, 1.1, 1]
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                delay: index * 0.3
-              }}
-            />
-
-            <IconComponent className="w-8 h-8 text-white relative z-10" strokeWidth={1.5} />
-          </motion.div>
-
-          {/* Security shield overlay */}
-          <motion.div
-            className="absolute -top-1 -right-1 w-6 h-6 bg-accent-green rounded-full flex items-center justify-center"
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.8, 1, 0.8]
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              delay: index * 0.2
-            }}
-          >
-            <CheckCircle className="w-4 h-4 text-white" strokeWidth={2} />
-          </motion.div>
-        </div>
-
-        {/* Content */}
-        <div className="space-y-4">
-          <Typography variant="h4" className="text-xl font-semibold">
-            {feature.title}
-          </Typography>
-          
-          <Typography className="text-muted-foreground leading-relaxed">
-            {feature.description}
-          </Typography>
-
-          {/* Feature details */}
-          <div className="space-y-2">
-            {feature.details.map((detail, detailIndex) => (
-              <motion.div
-                key={detail}
-                className="flex items-center gap-3 text-sm text-muted-foreground"
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ 
-                  duration: 0.3, 
-                  delay: detailIndex * 0.1 
-                }}
-              >
-                <div className="w-1.5 h-1.5 rounded-full bg-accent-green flex-shrink-0" />
-                <span>{detail}</span>
-              </motion.div>
-            ))}
-          </div>
+          {/* Bottom left decorative element */}
+          <Image
+            src="/icons/safety-bottomleft.svg"
+            alt=""
+            width={122}
+            height={123}
+            className="absolute -left-10 -bottom-10 z-0 decorative-bottomleft"
+          />
         </div>
       </div>
-    </AnimatedCard>
-  )
-}
 
-export { Safety }
+      <style jsx>{`
+        .container-animate {
+          transform: translateY(50px) scale(0.95);
+          transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        :global(.animate-fade-in) .container-animate {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+
+        .feature-icon {
+          transform: translateY(20px);
+          opacity: 0;
+          transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        :global(.animate-fade-in) .feature-icon {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        :global(.animate-fade-in) .feature-icon:nth-child(1) {
+          transition-delay: 0.2s;
+        }
+
+        /* Decorative elements animations */
+        :global(.decorative-topright) {
+          animation: float-rotate 12s ease-in-out infinite;
+          transform-origin: center;
+        }
+
+        :global(.decorative-bottomleft) {
+          animation: pulse-scale 8s ease-in-out infinite;
+        }
+
+        @keyframes float-rotate {
+          0%,
+          100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-20px) rotate(180deg);
+          }
+        }
+
+        @keyframes pulse-scale {
+          0%,
+          100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+          50% {
+            transform: scale(1.2);
+            opacity: 0.8;
+          }
+        }
+
+        :global(.animate-fade-in) {
+          opacity: 1 !important;
+          transition: opacity 1.5s ease-out;
+        }
+
+        :global(.opacity-0) {
+          opacity: 0;
+          transition: opacity 1.5s ease-out;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .container-animate {
+            transform: none;
+            transition: none;
+          }
+          .feature-icon {
+            transform: none;
+            transition: none;
+            opacity: 1;
+          }
+          :global(.decorative-topright),
+          :global(.decorative-bottomleft) {
+            animation: none;
+          }
+          :global(.animate-fade-in),
+          :global(.opacity-0) {
+            transition: none;
+            opacity: 1 !important;
+          }
+        }
+      `}</style>
+    </section>
+  );
+}

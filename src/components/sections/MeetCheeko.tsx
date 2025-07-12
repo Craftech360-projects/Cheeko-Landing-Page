@@ -63,8 +63,8 @@ export default function MeetCheeko() {
   }, []);
 
   return (
-    <section className="relative py-20 px-4 md:px-6 lg:px-8 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative py-20 px-2 sm:px-6 md:px-[2px] lg:px-[80px] xl:px-[60px] 2xl:px-[160px] overflow-hidden">
+      <div className="max-w-full-2xl mx-auto">
         <div className="text-center mb-4 relative">
           <div className="relative inline-block">
             <Image
@@ -117,7 +117,7 @@ export default function MeetCheeko() {
                   transitionDelay: `${index * 350}ms`,
                 }}
               >
-                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out h-[496px] w-full max-w-[288px] mx-auto flex flex-col card-inner group overflow-hidden relative">
+                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out h-[496px] w-full max-w-[328px] mx-auto flex flex-col card-inner group overflow-hidden relative">
                   <h3 className="text-xl font-bold font-sora text-gray-900 group-hover:text-white transition-colors duration-500 mb-1 px-6 pt-6">
                     {card.title}
                   </h3>

@@ -3,40 +3,40 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 
-interface Feature {
+interface DashboardFeature {
   icon: string;
   title: string;
   description: string;
 }
 
-const features: Feature[] = [
+const dashboardFeatures: DashboardFeature[] = [
   {
-    icon: "/icons/smart-learning.svg",
-    title: "Smart Learning",
+    icon: "/icons/dashboard-real-time.svg",
+    title: "Real-Time Monitoring",
     description:
-      "Cheeko adapts to your child's age, voice, behavior, and personal learning style daily.",
+      "Track your child's learning progress and conversation topics in real-time through our intuitive dashboard.",
   },
   {
-    icon: "/icons/parental-setup.svg",
-    title: "Parental Setup",
+    icon: "/icons/dashboard-usage-limits.svg",
+    title: "Usage Limits",
     description:
-      "Easily manage Cheeko's role, sensitive topics, and daily style of interaction.",
+      "Set daily time limits, schedule quiet hours, and manage when Cheeko is available for interaction.",
   },
   {
-    icon: "/icons/creative-content.svg",
-    title: "Creative Content",
+    icon: "/icons/dashboard-content-control.svg",
+    title: "Content Control",
     description:
-      "Filled with poems, stories, and facts that make learning feel playful and natural.",
+      "Customize conversation topics, filter sensitive subjects, and guide Cheeko's educational focus areas.",
   },
   {
-    icon: "/icons/multilingual-support.svg",
-    title: "Multilingual Support",
+    icon: "/icons/dashboard-insights.svg",
+    title: "Learning Insights",
     description:
-      "Cheeko understands multiple languages and responds in English to support diverse learners.",
+      "Receive detailed reports on your child's interests, progress, and areas where they excel or need support.",
   },
 ];
 
-export function Features() {
+export function ParentalDashboard() {
   const sectionRef = useRef<HTMLElement>(null);
   const featuresRef = useRef<(HTMLDivElement | null)[]>([]);
   const imageRef = useRef<HTMLDivElement>(null);
@@ -80,6 +80,7 @@ export function Features() {
 
   return (
     <section
+      id="parental-dashboard"
       ref={sectionRef}
       className="relative py-20 px-2 sm:px-6 md:px-[2px] lg:px-[80px] xl:px-[60px] 2xl:px-[160px] overflow-hidden opacity-0"
     >
@@ -95,8 +96,8 @@ export function Features() {
               className="absolute -left-15 -top-12"
             />
             <h2 className="text-5xl md:text-6xl font-bold font-sora">
-              <span className="text-black">Key</span>{" "}
-              <span className="text-orange-500">Features</span>
+              <span className="text-black">Parental</span>{" "}
+              <span className="text-orange-500">Dashboard</span>
             </h2>
             <Image
               src="/icons/Header-Icon-Right.svg"
@@ -108,42 +109,27 @@ export function Features() {
           </div>
 
           <p className="text-center text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto font-switzer leading-relaxed mt-4">
-            An emotionally intelligent AI companion that learns with your child,
-            fostering creativity, curiosity, and confidence through natural
-            conversation.
+            Stay connected with your child's learning journey. Monitor progress,
+            set boundaries, and customize Cheeko's interactions with ease.
           </p>
         </div>
 
         {/* Features Container with Decorative Elements */}
         <div className="relative">
-          {/* Top left decorative element */}
+          {/* Top right decorative element */}
           <Image
-            src="/icons/features-star-teal.svg"
+            src="/icons/dashboard-star-purple.svg"
             alt=""
             width={96}
             height={94}
-            className="absolute -left-8 -top-14 z-0 decorative-topleft"
+            className="absolute -right-8 -top-14 z-0 decorative-topright"
           />
 
-          {/* Features Grid with Image - 3 columns layout */}
+          {/* Features Grid with Image - 3 columns layout (reversed) */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center relative z-10">
-            {/* First column - Child image */}
-            <div
-              ref={imageRef}
-              className="opacity-0 lg:h-[410px] flex items-center justify-center"
-            >
-              <Image
-                src="/images/key-features-child.png"
-                alt="Child playing with Cheeko"
-                width={392}
-                height={410}
-                className="w-full h-auto max-w-[392px]"
-              />
-            </div>
-
-            {/* Second column - First 2 features */}
-            <div className="grid grid-rows-2 gap-6 lg:h-[410px]">
-              {features.slice(0, 2).map((feature, index) => (
+            {/* First column - First 2 features */}
+            <div className="grid grid-rows-2 gap-6 lg:h-[410px] order-2 lg:order-1">
+              {dashboardFeatures.slice(0, 2).map((feature, index) => (
                 <div
                   key={index}
                   ref={(el) => {
@@ -154,10 +140,10 @@ export function Features() {
                     transitionDelay: `${index * 350}ms`,
                   }}
                 >
-                  <div className="bg-white rounded-2xl shadow-lg p-6 h-full flex flex-col justify-center hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out group">
+                  <div className="bg-white rounded-2xl shadow-lg p-6 h-full flex flex-col justify-center hover:shadow-2xl hover:bg-purple-500 transition-all duration-1000 ease-out group">
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0">
-                        <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
+                        <div className="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
                           <Image
                             src={feature.icon}
                             alt={feature.title}
@@ -180,9 +166,9 @@ export function Features() {
               ))}
             </div>
 
-            {/* Third column - Last 2 features */}
-            <div className="grid grid-rows-2 gap-6 lg:h-[410px]">
-              {features.slice(2).map((feature, index) => (
+            {/* Second column - Last 2 features */}
+            <div className="grid grid-rows-2 gap-6 lg:h-[410px] order-3 lg:order-2">
+              {dashboardFeatures.slice(2).map((feature, index) => (
                 <div
                   key={index + 2}
                   ref={(el) => {
@@ -193,10 +179,10 @@ export function Features() {
                     transitionDelay: `${(index + 2) * 350}ms`,
                   }}
                 >
-                  <div className="bg-white rounded-2xl shadow-lg p-6 h-full flex flex-col justify-center hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out group">
+                  <div className="bg-white rounded-2xl shadow-lg p-6 h-full flex flex-col justify-center hover:shadow-2xl hover:bg-purple-500 transition-all duration-1000 ease-out group">
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0">
-                        <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
+                        <div className="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
                           <Image
                             src={feature.icon}
                             alt={feature.title}
@@ -218,15 +204,29 @@ export function Features() {
                 </div>
               ))}
             </div>
+
+            {/* Third column - Dashboard image */}
+            <div
+              ref={imageRef}
+              className="opacity-0 lg:h-[410px] flex items-center justify-center order-1 lg:order-3"
+            >
+              <Image
+                src="/images/parental-dashboard-parent.png"
+                alt="Parent using dashboard"
+                width={392}
+                height={410}
+                className="w-full h-auto max-w-[392px]"
+              />
+            </div>
           </div>
 
-          {/* Bottom right decorative element */}
+          {/* Bottom left decorative element */}
           <Image
-            src="/icons/features-star-red.svg"
+            src="/icons/dashboard-star-blue.svg"
             alt=""
             width={122}
             height={123}
-            className="absolute -right-10 -bottom-10 z-0 decorative-bottomright"
+            className="absolute -left-10 -bottom-10 z-0 decorative-bottomleft"
           />
         </div>
       </div>
@@ -243,34 +243,39 @@ export function Features() {
           transform: translateY(0) scale(1);
         }
 
-        /* Decorative elements animations - matching MeetCheeko */
-        :global(.decorative-topleft) {
-          animation: spin-slow 10s linear infinite;
-          transform-origin: center;
+        /* Decorative elements animations */
+        :global(.decorative-topright) {
+          animation: bounce-float 8s ease-in-out infinite;
         }
 
-        :global(.decorative-bottomright) {
-          animation: pulse-glow 4s ease-in-out infinite;
+        :global(.decorative-bottomleft) {
+          animation: rotate-scale 10s linear infinite;
         }
 
-        @keyframes spin-slow {
-          from {
-            transform: rotate(0deg);
+        @keyframes bounce-float {
+          0%, 100% {
+            transform: translateY(0px) scale(1);
           }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-
-        @keyframes pulse-glow {
-          0%,
-          100% {
-            transform: scale(1);
-            opacity: 1;
+          25% {
+            transform: translateY(-15px) scale(1.05);
           }
           50% {
-            transform: scale(1.15);
-            opacity: 1;
+            transform: translateY(0px) scale(1);
+          }
+          75% {
+            transform: translateY(15px) scale(0.95);
+          }
+        }
+
+        @keyframes rotate-scale {
+          0% {
+            transform: rotate(0deg) scale(1);
+          }
+          50% {
+            transform: rotate(180deg) scale(1.15);
+          }
+          100% {
+            transform: rotate(360deg) scale(1);
           }
         }
 
@@ -295,8 +300,8 @@ export function Features() {
             transform: none;
             transition: none;
           }
-          :global(.decorative-topleft),
-          :global(.decorative-bottomright) {
+          :global(.decorative-topright),
+          :global(.decorative-bottomleft) {
             animation: none;
           }
           :global(.animate-fade-in),
