@@ -224,3 +224,8 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--neutral-500);
 }
+
+/* Animation Classes */
+.animate-fade-in {
+  opacity: 1 !important;
+}

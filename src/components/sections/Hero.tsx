@@ -87,14 +87,14 @@ const Hero: React.FC = () => {
           </motion.div>
 
           {/* Left Content */}
-          <div className="relative z-20 order-2 lg:order-1 lg:px-8 py-6 lg:py-8 px-4">
+          <div className="relative z-20 order-2 lg:order-1 lg:px-22 py-6 lg:py-8 px-4">
             <FadeIn direction="up" delay={0.4}>
               <div className="space-y-6">
                 {/* MEET CHEEKO with reduced line height */}
                 <div>
                   <Typography
                     variant="h1"
-                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold bg-clip-text text-neutral-00 leading-none tracking-wide"
+                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-neutral-00 leading-none tracking-wide"
                   >
                     MEET
                     <br />
@@ -106,11 +106,11 @@ const Hero: React.FC = () => {
                 <div>
                   <Typography
                     variant="h1"
-                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-neutral-00 leading-none tracking-normal"
+                    className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-neutral-00 leading-none tracking-normal"
                   >
-                    Your Child's
+                    Your Child's AI
                     <br />
-                    AI Learning Buddy
+                    Learning Buddy
                   </Typography>
                 </div>
 
@@ -119,7 +119,7 @@ const Hero: React.FC = () => {
                   <FadeIn direction="up" delay={0.6}>
                     <Typography
                       variant="lead"
-                      className="text-lg sm:text-xl text-muted-foreground max-w-2xl text-neutral-00"
+                      className="text-lg sm:text-xl text-muted-foreground max-w-2xl text-neutral-00 font-medium"
                     >
                       From bedtime stories to curious mornings, Cheeko is your
                       child's joyful AI companion, anytime.
@@ -137,12 +137,6 @@ const Hero: React.FC = () => {
                 {/* Main Product Image */}
                 <motion.div
                   className="relative z-10"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{
-                    type: "spring" as const,
-                    stiffness: 300,
-                    damping: 20,
-                  }}
                 >
                   <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[600px]">
                     {/* Hero Image */}

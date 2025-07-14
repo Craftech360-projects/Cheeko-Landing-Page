@@ -6,6 +6,7 @@ import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Safety } from "@/components/sections/Safety";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FAQ } from "@/components/sections/FAQ";
+import { Newsletter } from "@/components/sections/Newsletter";
 import { Footer } from "@/components/sections/Footer";
 import { StructuredData } from "@/components/StructuredData";
 import { AccessOptions } from "@/components/sections/AccessOptions";
@@ -44,6 +45,9 @@ export default function Home() {
 
         {/* FAQ Section */}
         <FAQ />
+
+        {/* Newsletter Section */}
+        <Newsletter />
       </main>
 
       {/* Footer */}

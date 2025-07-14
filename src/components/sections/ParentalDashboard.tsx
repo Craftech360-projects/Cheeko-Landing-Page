@@ -11,28 +11,28 @@ interface DashboardFeature {
 
 const dashboardFeatures: DashboardFeature[] = [
   {
-    icon: "/icons/dashboard-real-time.svg",
-    title: "Real-Time Monitoring",
+    icon: "/icons/parental-dashboard1.svg",
+    title: "Progress Tracking System",
     description:
-      "Track your child's learning progress and conversation topics in real-time through our intuitive dashboard.",
+      "Track your child’s learning progress with daily, weekly, and monthly insights across subjects and skills.",
   },
   {
-    icon: "/icons/dashboard-usage-limits.svg",
-    title: "Usage Limits",
+    icon: "/icons/parental-dashboard2.svg",
+    title: "Content Preferences",
     description:
-      "Set daily time limits, schedule quiet hours, and manage when Cheeko is available for interaction.",
+      "Choose what Cheeko talks about by selecting age-appropriate topics that match your child’s interests and learning goals.",
   },
   {
-    icon: "/icons/dashboard-content-control.svg",
-    title: "Content Control",
+    icon: "/icons/parental-dashboard3.svg",
+    title: "Mood & Topic Insights",
     description:
-      "Customize conversation topics, filter sensitive subjects, and guide Cheeko's educational focus areas.",
+      "Monitor your child’s mood patterns and topic preferences to gain insights into their emotional well-being and learning interests.",
   },
   {
-    icon: "/icons/dashboard-insights.svg",
-    title: "Learning Insights",
+    icon: "/icons/parental-dashboard4.svg",
+    title: "Milestone Alerts",
     description:
-      "Receive detailed reports on your child's interests, progress, and areas where they excel or need support.",
+      "Get notified when your child achieves key learning goals, completes challenges, or unlocks new skills with Cheeko.",
   },
 ];
 
@@ -109,8 +109,7 @@ export function ParentalDashboard() {
           </div>
 
           <p className="text-center text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto font-switzer leading-relaxed mt-4">
-            Stay connected with your child's learning journey. Monitor progress,
-            set boundaries, and customize Cheeko's interactions with ease.
+            Hear from families who have welcomed Cheeko into their homes.
           </p>
         </div>
 
@@ -118,7 +117,7 @@ export function ParentalDashboard() {
         <div className="relative">
           {/* Top right decorative element */}
           <Image
-            src="/icons/dashboard-star-purple.svg"
+            src="/icons/features-star-red.svg"
             alt=""
             width={96}
             height={94}
@@ -222,7 +221,7 @@ export function ParentalDashboard() {
 
           {/* Bottom left decorative element */}
           <Image
-            src="/icons/dashboard-star-blue.svg"
+            src="/icons/features-star-teal.svg"
             alt=""
             width={122}
             height={123}
@@ -253,7 +252,8 @@ export function ParentalDashboard() {
         }
 
         @keyframes bounce-float {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateY(0px) scale(1);
           }
           25% {
