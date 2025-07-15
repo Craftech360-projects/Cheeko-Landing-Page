@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { Container } from "@/components/ui";
 
 export function Newsletter() {
   const [email, setEmail] = useState("");
@@ -42,17 +43,12 @@ export function Newsletter() {
 
   return (
     <section
+      id="newsletter"
       ref={sectionRef}
-      className="relative py-20 px-2 sm:px-6 md:px-[2px] lg:px-[80px] xl:px-[60px] 2xl:px-[160px] opacity-0 transition-opacity duration-700"
+      className="relative py-12 sm:py-16 md:py-20 lg:py-24 opacity-0 transition-opacity duration-700"
     >
-      <div className="max-w-full-2xl mx-auto">
-        <div
-          className="relative bg-gradient-to-r from-orange-500 to-orange-500 rounded-3xl overflow-hidden"
-          style={{
-            width: "100%",
-            height: "340px",
-          }}
-        >
+      <Container>
+        <div className="relative bg-gradient-to-r from-orange-500 to-orange-500 rounded-3xl overflow-hidden">
           {/* Rhombus Pattern */}
           <div className="absolute inset-0">
             <svg width="100%" height="100%" className="absolute inset-0">
@@ -184,27 +180,27 @@ export function Newsletter() {
             <div className="absolute top-2/3 right-1/3 w-4 h-4 bg-white/20 transform rotate-45"></div>
           </div>
 
-          <div className="relative z-10 h-full flex items-center">
-            <div className="grid lg:grid-cols-2 gap-8 w-full px-8 lg:px-12">
+          <div className="relative z-10 py-6 sm:py-8 lg:py-12">
+            <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 w-full px-4 sm:px-6 lg:px-12">
               {/* Left Content */}
-              <div className="flex flex-col justify-center space-y-6">
-                <h2 className="text-4xl md:text-5xl font-sora font-bold text-white">
+              <div className="flex flex-col justify-center space-y-4 sm:space-y-6">
+                <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-sora font-bold text-white leading-tight">
                   Join the Cheeko Club
                 </h2>
-                <p className="text-lg font-switzer text-white/90 max-w-md">
+                <p className="text-sm sm:text-lg md:text-xl lg:text-2xl font-switzer text-white/90 max-w-full lg:max-w-md leading-relaxed">
                   Get exclusive updates, early access to new features, and
                   special offers delivered straight to your inbox.
                 </p>
 
                 {/* Email Subscription Form */}
                 <form onSubmit={handleSubmit} className="mt-6">
-                  <div className="flex bg-white font-medium rounded-md p-2 shadow-lg max-w-md">
+                  <div className="flex flex-col sm:flex-row bg-white font-medium rounded-md p-2 shadow-lg w-full max-w-md">
                     <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter Email Address"
-                      className="flex-1 px-4 py-3 bg-transparent text-black placeholder-black focus:outline-none focus:ring-0 focus:border-none border-none font-switzer"
+                      className="flex-1 px-3 py-2 sm:px-4 sm:py-3 bg-transparent text-black placeholder-black focus:outline-none focus:ring-0 focus:border-none border-none font-switzer text-sm sm:text-base"
                       style={{
                         border: "none",
                         outline: "none",
@@ -214,7 +210,7 @@ export function Newsletter() {
                     />
                     <button
                       type="submit"
-                      className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-md transition-colors duration-200 whitespace-nowrap"
+                      className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 sm:px-6 sm:py-3 rounded-md transition-colors duration-200 whitespace-nowrap text-sm sm:text-base mt-2 sm:mt-0"
                       disabled={isSubscribed}
                     >
                       {isSubscribed ? "Subscribed!" : "Subscribe"}
@@ -224,7 +220,7 @@ export function Newsletter() {
               </div>
 
               {/* Right Image */}
-              <div className="flex items-center justify-center lg:justify-end">
+              <div className="hidden lg:flex items-center justify-center lg:justify-end">
                 <Image
                   src="/images/newsletter-image.png"
                   alt="Join Cheeko Club"
@@ -239,7 +235,7 @@ export function Newsletter() {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

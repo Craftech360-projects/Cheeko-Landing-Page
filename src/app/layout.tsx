@@ -68,13 +68,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://cheekoai.com",
+    url: "https://cheekoai.in",
     siteName: "CheekoAI",
     title: "CheekoAI - AI Learning Companion for Children",
     description: "Empower your child's learning journey with CheekoAI's intelligent, safe, and engaging educational AI companion. Adaptive learning for ages 3-12.",
     images: [
       {
-        url: "https://cheekoai.com/og-image.jpg",
+        url: "https://cheekoai.in/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "CheekoAI - AI Learning Companion for Children",
@@ -87,12 +87,12 @@ export const metadata: Metadata = {
     creator: "@cheekoai",
     title: "CheekoAI - AI Learning Companion for Children",
     description: "Empower your child's learning journey with CheekoAI's intelligent, safe, and engaging educational AI companion.",
-    images: ["https://cheekoai.com/twitter-image.jpg"],
+    images: ["https://cheekoai.in/twitter-image.jpg"],
   },
   verification: {
     google: "your-google-verification-code",
     other: {
-      me: ["mailto:contact@cheekoai.com"],
+      me: ["mailto:contact@cheekoai.in"],
     },
   },
   category: "education",
@@ -105,6 +105,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="theme-color" content="#f36e24" />
+      </head>
       <body
         className={`${switzer.variable} ${sora.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >

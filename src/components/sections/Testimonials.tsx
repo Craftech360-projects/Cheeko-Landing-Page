@@ -1,43 +1,47 @@
-'use client'
+"use client";
 
-import { useEffect, useRef } from 'react'
-import Image from 'next/image'
+import { useEffect, useRef } from "react";
+import Image from "next/image";
+import { Container } from "@/components/ui";
 
 interface Testimonial {
-  id: number
-  name: string
-  role: string
-  avatar: string
-  rating: number
-  review: string
+  id: number;
+  name: string;
+  role: string;
+  avatar: string;
+  rating: number;
+  review: string;
 }
 
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: 'Sarah Johnson',
-    role: 'Mother of 2',
-    avatar: '/images/user1.png',
+    name: "Ananya Mehra",
+    role: "Mother of Ananya, 7",
+    avatar: "/images/user1.png",
     rating: 5,
-    review: 'CheekoAI has transformed how Emma learns. She went from struggling with basic concepts to confidently solving problems on her own.'
+    review:
+      "Honestly didn’t think my daughter would love it this much but she’s obsessed!! No screens, just talking and laughing all day. Love it!!",
   },
   {
     id: 2,
-    name: 'Michael Chen',
-    role: 'Tech Executive',
-    avatar: '/images/user2.png',
+    name: "Rahul Iyer",
+    role: "Father of Aarav, 8",
+    avatar: "/images/user2.png",
     rating: 5,
-    review: "As a tech professional, I was skeptical about AI toys. But CheekoAI impressed me with its sophisticated yet child-friendly approach."
+    review:
+      "I was so tired of saying ‘put down the phone’... Cheeko solved it without me even trying lol. She talks to her toy now to do her homework 😂",
   },
   {
     id: 3,
-    name: 'Dr. Amanda Rodriguez',
-    role: 'Pediatric Psychologist',
-    avatar: '/images/user3.png',
+    name: "Meenakshi Sharma",
+    role: "Mother of Vihaan & Vanya, 9",
+    avatar: "/images/user3.png",
     rating: 5,
-    review: 'I recommend CheekoAI to my patients\' families. It excellently balances screen time with meaningful learning.'
-  }
-]
+    review:
+      "I wanted something safe and fun for my lil one. Cheeko is amazing, plus I control what she hears. no ads, no random junk.",
+  },
+];
 
 export function Testimonials() {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -47,7 +51,7 @@ export function Testimonials() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in');
+            entry.target.classList.add("animate-fade-in");
           }
         });
       },
@@ -63,35 +67,38 @@ export function Testimonials() {
         if (card) observer.unobserve(card);
       });
     };
-  }, [])
+  }, []);
 
   return (
-    <section className="relative py-20 px-2 sm:px-6 md:px-[2px] lg:px-[80px] xl:px-[60px] 2xl:px-[160px] overflow-hidden">
-      <div className="max-w-full-2xl mx-auto">
+    <section
+      id="testimonials"
+      className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden"
+    >
+      <Container>
         {/* Header Section */}
         <div className="text-center mb-16">
           <div className="relative inline-block mb-4">
             <Image
               src="/icons/Header-Icon-Left.svg"
               alt=""
-              width={69}
-              height={72}
-              className="absolute -left-20 -top-12"
+              width={40}
+              height={42}
+              className="absolute -left-12 sm:-left-14 md:-left-16 lg:-left-20 -top-8 sm:-top-10 md:-top-11 lg:-top-12 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
             />
-            <h2 className="text-5xl md:text-6xl font-bold font-sora">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sora">
               <span className="text-black">What parents are</span>{" "}
               <span className="text-orange-500">saying</span>
             </h2>
             <Image
               src="/icons/Header-Icon-Right.svg"
               alt=""
-              width={69}
-              height={72}
-              className="absolute -right-20 -top-12"
+              width={40}
+              height={42}
+              className="absolute -right-12 sm:-right-14 md:-right-16 lg:-right-20 -top-8 sm:-top-10 md:-top-11 lg:-top-12 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
             />
           </div>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Discover how Cheeko has transformed learning experiences for families around the world.
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto">
+            Hear from families who have welcomed Cheeko into their homes.
           </p>
         </div>
 
@@ -105,10 +112,10 @@ export function Testimonials() {
               }}
               className="opacity-0 transition-opacity duration-700"
               style={{
-                width: '100%',
-                maxWidth: '392px',
-                height: '206px',
-                margin: '0 auto'
+                width: "100%",
+                maxWidth: "392px",
+                height: "206px",
+                margin: "0 auto",
               }}
             >
               <div className="bg-white rounded-2xl p-6 h-full shadow-lg border border-gray-100 flex flex-col justify-between">
@@ -143,7 +150,7 @@ export function Testimonials() {
                       height={40}
                       className="w-full h-full object-cover"
                       onError={(e) => {
-                        e.currentTarget.src = '/images/default-avatar.jpg';
+                        e.currentTarget.src = "/images/default-avatar.jpg";
                       }}
                     />
                   </div>
@@ -158,7 +165,7 @@ export function Testimonials() {
             </div>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

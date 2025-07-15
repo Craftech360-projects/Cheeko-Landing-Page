@@ -1,41 +1,64 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
-import { Facebook, Twitter, Instagram, Youtube, Linkedin, ChevronUp } from 'lucide-react'
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  Youtube,
+  Linkedin,
+  ChevronUp,
+} from "lucide-react";
 
 const navigationLinks = [
-  { label: 'Meet Cheeko', href: '#meet-cheeko' },
-  { label: 'Key Features', href: '#key-features' },
-  { label: 'Easy Setup', href: '#easy-setup' },
-  { label: 'Parental Dashboard', href: '#parental-dashboard' }
-]
+  { label: "Meet Cheeko", href: "#meet-cheeko" },
+  { label: "Key Features", href: "#key-features" },
+  { label: "Easy Setup", href: "#easy-setup" },
+  { label: "Parental Dashboard", href: "#parental-dashboard" },
+];
 
 const socialLinks = [
-  { icon: Facebook, href: 'https://facebook.com/cheekoai', label: 'Facebook' },
-  { icon: Instagram, href: 'https://instagram.com/cheekoai', label: 'Instagram' },
-  { icon: Twitter, href: 'https://twitter.com/cheekoai', label: 'X' },
-  { icon: Linkedin, href: 'https://linkedin.com/company/cheekoai', label: 'LinkedIn' },
-  { icon: Youtube, href: 'https://youtube.com/cheekoai', label: 'YouTube' }
-]
+  {
+    icon: Facebook,
+    href: "https://www.facebook.com/profile.php?id=61574727151719",
+    label: "Facebook",
+  },
+  {
+    icon: Instagram,
+    href: "https://www.instagram.com/cheekoai/",
+    label: "Instagram",
+  },
+  { icon: Twitter, href: "https://x.com/Cheekoai", label: "X" },
+  {
+    icon: Linkedin,
+    href: "https://www.linkedin.com/in/cheeko-smart-toy-1b7a09358/",
+    label: "LinkedIn",
+  },
+  {
+    icon: Youtube,
+    href: "https://www.youtube.com/@Cheekoai",
+    label: "YouTube",
+  },
+];
 
 export function Footer() {
-  const [showScrollTop, setShowScrollTop] = useState(false)
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 400)
-    }
+      setShowScrollTop(window.scrollY > 400);
+    };
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
     <>
@@ -91,15 +114,24 @@ export function Footer() {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
             {/* Left side - Copyright and legal links */}
             <div className="flex flex-col sm:flex-row items-center gap-4 text-sm text-gray-600">
-              <span>© {currentYear} CheekoAI Inc. All rights reserved.</span>
+              <span>© {currentYear} Cheeko. All rights reserved.</span>
               <div className="flex items-center gap-4">
-                <a href="/privacy" className="hover:text-orange-500 transition-colors">
+                <a
+                  href="/privacy"
+                  className="hover:text-orange-500 transition-colors"
+                >
                   Privacy Policy
                 </a>
-                <a href="/terms" className="hover:text-orange-500 transition-colors">
+                <a
+                  href="/terms"
+                  className="hover:text-orange-500 transition-colors"
+                >
                   Terms of Service
                 </a>
-                <a href="/cookies" className="hover:text-orange-500 transition-colors">
+                <a
+                  href="/cookies"
+                  className="hover:text-orange-500 transition-colors"
+                >
                   Cookie Settings
                 </a>
               </div>
@@ -117,6 +149,5 @@ export function Footer() {
         </div>
       </footer>
     </>
-  )
+  );
 }
-

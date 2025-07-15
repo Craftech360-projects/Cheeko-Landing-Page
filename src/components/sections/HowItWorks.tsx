@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { Container } from "@/components/ui";
 
 interface Step {
   stepNumber: string;
@@ -13,22 +14,22 @@ interface Step {
 const steps: Step[] = [
   {
     stepNumber: "Step 1",
-    title: "Download & Setup",
+    title: "Easy Setup Your Way",
     description:
-      "Get the CheekoAI app and connect your device in just 2 minutes.",
+      "Download the app from Play Store/App Store or visit the webpage to setup. Register with basic info to get started.",
     image: "/images/how-it-works-step1.png",
   },
   {
     stepNumber: "Step 2",
-    title: "Power On & Connect",
-    description: "Turn on CheekoAI and watch as it greets your child by name.",
+    title: "Add Your Toy",
+    description: "Tap “Add Toy,” then hold the right button on Cheeko to hear the verification code and connect securely.",
     image: "/images/how-it-works-step2.png",
   },
   {
     stepNumber: "Step 3",
-    title: "Learn & Grow Together",
+    title: "Personalize Cheeko",
     description:
-      "Enjoy personalized learning adventures that grow with your child.",
+      "Enter your child’s name so Cheeko knows who it’s talking to. That’s it! Your child can jump right into conversation and exploration!",
     image: "/images/how-it-works-step3.png",
   },
 ];
@@ -71,33 +72,33 @@ export function HowItWorks() {
     <section
       id="how-it-works"
       ref={sectionRef}
-      className="relative py-20 px-2 sm:px-6 md:px-[2px] lg:px-[80px] xl:px-[60px] 2xl:px-[160px] overflow-hidden opacity-0"
+      className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden opacity-0"
     >
-      <div className="max-w-full-2xl mx-auto">
+      <Container>
         {/* Header */}
         <div className="text-center mb-12 relative">
           <div className="relative inline-block">
             <Image
               src="/icons/Header-Icon-Left.svg"
               alt=""
-              width={69}
-              height={72}
-              className="absolute -left-15 -top-12"
+              width={40}
+              height={42}
+              className="absolute -left-10 sm:-left-12 md:-left-14 lg:-left-15 -top-8 sm:-top-10 md:-top-11 lg:-top-12 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
             />
-            <h2 className="text-5xl md:text-6xl font-bold font-sora">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sora">
               <span className="text-black">How It</span>{" "}
               <span className="text-orange-500">Works</span>
             </h2>
             <Image
               src="/icons/Header-Icon-Right.svg"
               alt=""
-              width={69}
-              height={72}
-              className="absolute -right-15 -top-12"
+              width={40}
+              height={42}
+              className="absolute -right-10 sm:-right-12 md:-right-14 lg:-right-15 -top-8 sm:-top-10 md:-top-11 lg:-top-12 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
             />
           </div>
 
-          <p className="text-center text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto font-switzer leading-relaxed mt-4">
+          <p className="text-center text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto font-switzer leading-relaxed mt-4">
             Setting up Cheeko is as easy as 1-2-3!
           </p>
         </div>
@@ -110,7 +111,7 @@ export function HowItWorks() {
             alt=""
             width={96}
             height={94}
-            className="absolute -left-8 -top-14 z-0 decorative-topleft"
+            className="absolute -left-4 sm:-left-6 md:-left-8 -top-8 sm:-top-10 md:-top-12 lg:-top-14 z-0 decorative-topleft w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20"
           />
 
           {/* Steps Grid */}
@@ -121,29 +122,32 @@ export function HowItWorks() {
                 ref={(el) => {
                   cardsRef.current[index] = el;
                 }}
-                className="card-animate-initial"
+                className="card-animate-initial h-full"
                 style={{
                   transitionDelay: `${index * 350}ms`,
                 }}
               >
-                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group">
+                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group h-full flex flex-col">
                   {/* Image */}
                   <div className="p-6 pb-0">
                     <div className="relative h-[248px] overflow-hidden rounded-xl">
                       <Image
                         src={step.image}
                         alt={step.title}
-                        width={360}
-                        height={248}
+                        width={720}
+                        height={496}
+                        quality={100}
+                        priority={index === 0}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </div>
                   </div>
 
                   {/* Content */}
-                  <div className="p-6 space-y-3">
+                  <div className="p-6 space-y-3 flex-grow flex flex-col">
                     {/* Step Chip */}
-                    <div className="inline-flex items-center px-4 py-2 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold">
+                    <div className="inline-flex items-center px-4 py-2 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold self-start">
                       {step.stepNumber}
                     </div>
 
@@ -153,7 +157,7 @@ export function HowItWorks() {
                     </h3>
 
                     {/* Description */}
-                    <p className="text-gray-600 font-switzer text-base leading-relaxed">
+                    <p className="text-gray-600 font-switzer text-base leading-relaxed flex-grow">
                       {step.description}
                     </p>
                   </div>
@@ -168,10 +172,10 @@ export function HowItWorks() {
             alt=""
             width={122}
             height={123}
-            className="absolute -right-10 -bottom-10 z-0 decorative-bottomright"
+            className="absolute -right-4 sm:-right-6 md:-right-8 lg:-right-10 -bottom-4 sm:-bottom-6 md:-bottom-8 lg:-bottom-10 z-0 decorative-bottomright w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20"
           />
         </div>
-      </div>
+      </Container>
 
       <style jsx>{`
         .card-animate-initial {

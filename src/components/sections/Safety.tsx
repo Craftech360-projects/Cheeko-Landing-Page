@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { Container } from "@/components/ui";
 
 interface SafetyFeature {
   icon: string;
@@ -68,35 +69,34 @@ export function Safety() {
     <section
       id="safety"
       ref={sectionRef}
-      className="relative py-20 px-2 sm:px-6 md:px-[2px] lg:px-[80px] xl:px-[60px] 2xl:px-[160px] overflow-hidden opacity-0"
+      className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden opacity-0"
     >
-      <div className="max-w-full-2xl mx-auto">
+      <Container>
         {/* Header */}
         <div className="text-center mb-12 relative">
           <div className="relative inline-block">
             <Image
               src="/icons/Header-Icon-Left.svg"
               alt=""
-              width={69}
-              height={72}
-              className="absolute -left-15 -top-12"
+              width={40}
+              height={42}
+              className="absolute -left-10 sm:-left-12 md:-left-14 lg:-left-15 -top-8 sm:-top-10 md:-top-11 lg:-top-12 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
             />
-            <h2 className="text-5xl md:text-6xl font-bold font-sora">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sora">
               <span className="text-black">Safety &</span>{" "}
               <span className="text-orange-500">Privacy</span>
             </h2>
             <Image
               src="/icons/Header-Icon-Right.svg"
               alt=""
-              width={69}
-              height={72}
-              className="absolute -right-15 -top-12"
+              width={40}
+              height={42}
+              className="absolute -right-10 sm:-right-12 md:-right-14 lg:-right-15 -top-8 sm:-top-10 md:-top-11 lg:-top-12 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
             />
           </div>
 
-          <p className="text-center text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto font-switzer leading-relaxed mt-4">
-            Your child's safety is our top priority. CheekoAI is designed with
-            industry-leading security measures and privacy protections.
+          <p className="text-center text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto font-switzer leading-relaxed mt-4">
+            Every interaction is private. Every moment is secure. Privacy is always on.
           </p>
         </div>
 
@@ -108,7 +108,7 @@ export function Safety() {
             alt=""
             width={96}
             height={94}
-            className="absolute -right-8 -top-14 z-0 decorative-topright"
+            className="absolute -right-4 sm:-right-6 md:-right-8 -top-8 sm:-top-10 md:-top-12 lg:-top-14 z-0 decorative-topright w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20"
           />
 
           {/* White Container with Three Sections */}
@@ -173,10 +173,10 @@ export function Safety() {
             alt=""
             width={122}
             height={123}
-            className="absolute -left-10 -bottom-10 z-0 decorative-bottomleft"
+            className="absolute -left-4 sm:-left-6 md:-left-8 lg:-left-10 -bottom-4 sm:-bottom-6 md:-bottom-8 lg:-bottom-10 z-0 decorative-bottomleft w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20"
           />
         </div>
-      </div>
+      </Container>
 
       <style jsx>{`
         .container-animate {

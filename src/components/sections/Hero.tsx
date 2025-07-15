@@ -3,7 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Play, Sparkles } from "lucide-react";
+import { Play } from "lucide-react";
 import { Button, Container, Typography } from "@/components/ui";
 import { FadeIn, SlideIn } from "@/components/animations";
 
@@ -11,12 +11,12 @@ const Hero: React.FC = () => {
   const [isVideoPlaying, setIsVideoPlaying] = React.useState(false);
 
   return (
-    <section className="min-h-screen overflow-hidden mt-5">
+    <section id="hero" className="min-h-screen overflow-hidden mt-5">
       <Container>
-        <div className="relative z-10 grid lg:grid-cols-2 gap-6 lg:gap-12 items-center min-h-[83vh] bg-orange-600 rounded-2xl mt-16 lg:mt-24 overflow-hidden">
+        <div className="relative z-10 grid lg:grid-cols-2 gap-0 sm:gap-2 lg:gap-12 items-stretch min-h-[80vh] bg-orange-600 rounded-2xl mt-16 lg:mt-24 overflow-hidden">
           {/* Floating UI Elements */}
           <motion.div
-            className="absolute -top-8 -left-6 z-0"
+            className="absolute -top-4 -left-3 lg:-top-8 lg:-left-6 z-0"
             animate={{ y: [0, -10, 0] }}
             transition={{
               duration: 3,
@@ -27,13 +27,14 @@ const Hero: React.FC = () => {
             <Image
               src="/icons/Ball.png"
               alt="Floating Icon 1"
-              width={150}
-              height={150}
+              width={100}
+              height={100}
+              className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 xl:w-40 xl:h-40"
             />
           </motion.div>
 
           <motion.div
-            className="absolute -bottom-2 -left-10 z-0"
+            className="absolute -bottom-1 -left-5 lg:-bottom-2 lg:-left-10 z-0"
             animate={{ x: [0, 10, 0] }}
             transition={{
               duration: 2.5,
@@ -45,13 +46,14 @@ const Hero: React.FC = () => {
             <Image
               src="/icons/Triangle.png"
               alt="Floating Icon 2"
-              width={160}
-              height={160}
+              width={100}
+              height={100}
+              className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 xl:w-40 xl:h-40"
             />
           </motion.div>
 
           <motion.div
-            className="absolute left-1/2 -top-8 z-0"
+            className="absolute left-1/2 -top-4 lg:-top-8 z-0"
             animate={{ y: [0, -5, 0] }}
             transition={{
               duration: 2,
@@ -63,38 +65,37 @@ const Hero: React.FC = () => {
             <Image
               src="/icons/Rounded.png"
               alt="Floating Icon 3"
-              width={200}
-              height={200}
+              width={100}
+              height={100}
+              className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 xl:w-40 xl:h-40"
             />
           </motion.div>
 
           <motion.div
-            className="absolute -right-35 -top-35 z-0"
-            animate={{ y: [0, 0, 0] }}
+            className="absolute -right-35 -bottom-8 lg:-right-40 lg:-top-30 z-0"
+            animate={{ rotate: 0 }}
             transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 0.5,
+              duration: 0,
             }}
           >
             <Image
               src="/icons/Ellipse.png"
               alt="Ellipse Ring"
-              width={450}
-              height={450}
+              width={400}
+              height={400}
+              className="w-72 h-72 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-[400px] lg:h-[400px] xl:w-[480px] xl:h-[480px]"
             />
           </motion.div>
 
           {/* Left Content */}
-          <div className="relative z-20 order-2 lg:order-1 lg:px-22 py-6 lg:py-8 px-4">
+          <div className="relative z-20 order-1 lg:order-1 lg:px-22 py-6 sm:py-8 lg:py-16 px-4 lg:flex lg:items-center">
             <FadeIn direction="up" delay={0.4}>
-              <div className="space-y-6">
+              <div className="space-y-2 sm:space-y-4 lg:space-y-6">
                 {/* MEET CHEEKO with reduced line height */}
                 <div>
                   <Typography
                     variant="h1"
-                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-neutral-00 leading-none tracking-wide"
+                    className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold bg-clip-text text-neutral-00 leading-none tracking-wide"
                   >
                     MEET
                     <br />
@@ -115,7 +116,7 @@ const Hero: React.FC = () => {
                 </div>
 
                 {/* Description text */}
-                <div>
+                <div className="mt-4 sm:mt-4 lg:mt-0">
                   <FadeIn direction="up" delay={0.6}>
                     <Typography
                       variant="lead"
@@ -131,20 +132,20 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Right Content - Product Showcase */}
-          <div className="relative order-1 lg:order-2 self-center lg:self-end">
+          <div className="relative order-2 lg:order-2 self-end">
             <SlideIn direction="right" delay={0.6}>
               <div className="relative">
                 {/* Main Product Image */}
                 <motion.div
                   className="relative z-10"
                 >
-                  <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[600px]">
+                  <div className="relative w-full h-[250px] sm:h-[400px] lg:h-[600px]">
                     {/* Hero Image */}
                     <Image
                       src="/images/hero_image.png"
                       alt="CheekoAI - Your Voice Activated Friend"
                       fill
-                      className="object-contain rounded-2xl"
+                      className="object-contain"
                       priority
                       style={{
                         objectPosition: "bottom right",

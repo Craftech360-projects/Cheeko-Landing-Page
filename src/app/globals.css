@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/* Mobile-first breakpoints */
+/* xs: 0px - 479px (Mobile small) */
+/* sm: 480px - 767px (Mobile large) */
+/* md: 768px - 1023px (Tablet) */
+/* lg: 1024px - 1279px (Desktop small) */
+/* xl: 1280px - 1535px (Desktop large) */
+/* 2xl: 1536px+ (Desktop extra large) */
+
 :root {
   /* Primary Colors - Vibrant but trustworthy */
   --orange-50: #fef7f0;
@@ -187,6 +195,15 @@ body {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Prevent horizontal scroll on mobile */
+  overflow-x: hidden;
+  /* Optimize for mobile touch */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* Accessibility improvements */
@@ -223,6 +240,79 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--neutral-500);
+}
+
+/* Mobile-first responsive utilities */
+.mobile-padding {
+  padding: 1rem;
+}
+
+@media (min-width: 640px) {
+  .mobile-padding {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-padding {
+    padding: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-padding {
+    padding: 4rem;
+  }
+}
+
+/* Responsive text sizing */
+.text-responsive-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.text-responsive-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.text-responsive-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+@media (min-width: 640px) {
+  .text-responsive-sm {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  
+  .text-responsive-base {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+  
+  .text-responsive-lg {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .text-responsive-sm {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+  
+  .text-responsive-base {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+  
+  .text-responsive-lg {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
 }
 
 /* Animation Classes */
