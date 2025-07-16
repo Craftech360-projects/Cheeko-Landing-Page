@@ -117,7 +117,7 @@ export function Footer() {
               <span>© {currentYear} Cheeko. All rights reserved.</span>
               <div className="flex items-center gap-4">
                 <a
-                  href="/privacy"
+                  href="#privacy-policy"
                   className="hover:text-orange-500 transition-colors"
                 >
                   Privacy Policy

@@ -11,50 +11,53 @@ import { Newsletter } from "@/components/sections/Newsletter";
 import { Footer } from "@/components/sections/Footer";
 import { StructuredData } from "@/components/StructuredData";
 import { ParentalDashboard } from "@/components/sections/ParentalDashboard";
+import { HashRouter } from "@/components/HashRouter";
 
 export default function Home() {
   return (
-    <div className="max-w-full mx-auto">
-      <StructuredData />
-      <Header />
+    <HashRouter>
+      <div className="max-w-full mx-auto">
+        <StructuredData />
+        <Header />
 
-      <main>
-        {/* Hero Section */}
-        <Hero />
+        <main>
+          {/* Hero Section */}
+          <Hero />
 
-        {/* Meet Cheeko Section */}
-        <MeetCheeko />
+          {/* Meet Cheeko Section */}
+          <MeetCheeko />
 
-        {/* Key Features Section */}
-        <Features />
+          {/* Key Features Section */}
+          <Features />
 
-        {/* Access Options */}
-        {/* <AccessOptions /> */}
+          {/* Access Options */}
+          {/* <AccessOptions /> */}
 
-        {/* How It Works Section */}
-        <HowItWorks />
+          {/* How It Works Section */}
+          <HowItWorks />
 
-        {/* Safety & Privacy Section */}
-        <Safety />
+          {/* Safety & Privacy Section */}
+          <Safety />
 
-        {/* Video Section */}
-        <VideoSection />
+          {/* Video Section */}
+          <VideoSection />
 
-        {/* Parental Dashboard */}
-        <ParentalDashboard />
+          {/* Parental Dashboard */}
+          <ParentalDashboard />
 
-        {/* Testimonials Section */}
-        <Testimonials />
+          {/* Testimonials Section */}
+          <Testimonials />
 
-        {/* FAQ Section */}
-        <FAQ />
+          {/* FAQ Section */}
+          <FAQ />
 
-        {/* Newsletter Section */}
-        <Newsletter />
-      </main>
+          {/* Newsletter Section */}
+          <Newsletter />
+        </main>
 
-      {/* Footer */}
-      <Footer />
-    </div>
+        {/* Footer */}
+        <Footer />
+      </div>
+    </HashRouter>
   );
 }
