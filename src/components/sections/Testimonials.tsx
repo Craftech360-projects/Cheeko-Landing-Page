@@ -76,16 +76,16 @@ export function Testimonials() {
     >
       <Container>
         {/* Header Section */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 px-4">
           <div className="relative inline-block mb-4">
             <Image
               src="/icons/Header-Icon-Left.svg"
               alt=""
               width={40}
               height={42}
-              className="absolute -left-12 sm:-left-14 md:-left-16 lg:-left-20 -top-8 sm:-top-10 md:-top-11 lg:-top-12 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
+              className="absolute -left-8 sm:-left-14 md:-left-16 lg:-left-20 -top-6 sm:-top-10 md:-top-11 lg:-top-12 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
             />
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sora">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sora px-4 sm:px-0">
               <span className="text-black">What parents are</span>{" "}
               <span className="text-orange-500">saying</span>
             </h2>
@@ -94,7 +94,7 @@ export function Testimonials() {
               alt=""
               width={40}
               height={42}
-              className="absolute -right-12 sm:-right-14 md:-right-16 lg:-right-20 -top-8 sm:-top-10 md:-top-11 lg:-top-12 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
+              className="absolute -right-8 sm:-right-14 md:-right-16 lg:-right-20 -top-6 sm:-top-10 md:-top-11 lg:-top-12 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
             />
           </div>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto">
@@ -114,11 +114,10 @@ export function Testimonials() {
               style={{
                 width: "100%",
                 maxWidth: "392px",
-                height: "206px",
                 margin: "0 auto",
               }}
             >
-              <div className="bg-white rounded-2xl p-6 h-full shadow-lg border border-gray-100 flex flex-col justify-between">
+              <div className="bg-white rounded-2xl p-6 min-h-[206px] shadow-lg border border-gray-100 flex flex-col justify-between">
                 {/* Stars */}
                 <div className="flex gap-1 mb-3">
                   {[...Array(5)].map((_, i) => (
@@ -136,7 +135,7 @@ export function Testimonials() {
                 </div>
 
                 {/* Review Text */}
-                <p className="text-gray-700 text-sm flex-grow mb-4 line-clamp-3">
+                <p className="text-gray-700 text-sm flex-grow mb-4">
                   {testimonial.review}
                 </p>
 

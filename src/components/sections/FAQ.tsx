@@ -16,7 +16,7 @@ const faqData: FAQItem[] = [
     id: 1,
     question: "What age is CheekoAI suitable for?",
     answer:
-      "CheekoAI is designed for children ages 3-12, with adaptive learning that adjusts to your child's developmental stage. Our AI automatically calibrates content difficulty, interaction complexity, and learning pace based on your child's age and demonstrated abilities.",
+      "CheekoAI is designed for children above the age of 5, with adaptive learning that adjusts to your child's developmental stage. Our AI automatically calibrates content difficulty, interaction complexity, and learning pace based on your child's age and demonstrated abilities.",
   },
   {
     id: 2,
@@ -112,35 +112,35 @@ export function FAQ() {
           {/* Right Column - FAQ List */}
           <div className="flex flex-col">
             <div className="space-y-4">
-                {faqData.map((item) => (
-                  <div
-                    key={item.id}
-                    className="bg-white rounded-lg shadow-md overflow-hidden"
+              {faqData.map((item) => (
+                <div
+                  key={item.id}
+                  className="bg-white rounded-lg shadow-md overflow-hidden"
+                >
+                  <button
+                    className="w-full p-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                    onClick={() => toggleItem(item.id)}
                   >
-                    <button
-                      className="w-full p-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
-                      onClick={() => toggleItem(item.id)}
-                    >
-                      <h4 className="font-sora font-semibold text-gray-900 pr-4">
-                        {item.question}
-                      </h4>
-                      <div className="w-8 h-8 rounded-full border-2 border-orange-500 flex items-center justify-center flex-shrink-0">
-                        {activeItem === item.id ? (
-                          <ChevronUp className="w-4 h-4 text-orange-500" />
-                        ) : (
-                          <ChevronDown className="w-4 h-4 text-orange-500" />
-                        )}
-                      </div>
-                    </button>
-                    {activeItem === item.id && (
-                      <div className="px-4 pb-4">
-                        <p className="font-switzer text-gray-700 leading-relaxed pt-3">
-                          {item.answer}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                ))}
+                    <h4 className="font-sora font-semibold text-gray-900 pr-4">
+                      {item.question}
+                    </h4>
+                    <div className="w-8 h-8 rounded-full border-2 border-orange-500 flex items-center justify-center flex-shrink-0">
+                      {activeItem === item.id ? (
+                        <ChevronUp className="w-4 h-4 text-orange-500" />
+                      ) : (
+                        <ChevronDown className="w-4 h-4 text-orange-500" />
+                      )}
+                    </div>
+                  </button>
+                  {activeItem === item.id && (
+                    <div className="px-4 pb-4">
+                      <p className="font-switzer text-gray-700 leading-relaxed pt-3">
+                        {item.answer}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>
