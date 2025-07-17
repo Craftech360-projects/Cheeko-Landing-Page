@@ -1,5 +1,5 @@
 import { Header } from "@/components/sections/Header";
-import { Hero } from "@/components/sections/Hero";
+// import { Hero } from "@/components/sections/Hero";
 import MeetCheeko from "@/components/sections/MeetCheeko";
 import { Features } from "@/components/sections/KeyFeatures";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -21,8 +21,11 @@ export default function Home() {
         <Header />
 
         <main>
+          {/* Video Section */}
+          <VideoSection />
+
           {/* Hero Section */}
-          <Hero />
+          {/* <Hero /> */}
 
           {/* Meet Cheeko Section */}
           <MeetCheeko />
@@ -38,9 +41,6 @@ export default function Home() {
 
           {/* Safety & Privacy Section */}
           <Safety />
-
-          {/* Video Section */}
-          <VideoSection />
 
           {/* Parental Dashboard */}
           <ParentalDashboard />

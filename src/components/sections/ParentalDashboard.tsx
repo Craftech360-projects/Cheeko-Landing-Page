@@ -143,15 +143,13 @@ export function ParentalDashboard() {
                   <div className="bg-white rounded-2xl shadow-lg p-6 h-full flex flex-col justify-center hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out group">
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0">
-                        <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
-                          <Image
-                            src={feature.icon}
-                            alt={feature.title}
-                            width={32}
-                            height={32}
-                            className="group-hover:brightness-0 group-hover:invert transition-all duration-300"
-                          />
-                        </div>
+                        <Image
+                          src={feature.icon}
+                          alt={feature.title}
+                          width={48}
+                          height={48}
+                          className="w-12 h-12 lg:w-12 lg:h-12 group-hover:brightness-0 group-hover:invert transition-all duration-300"
+                        />
                       </div>
                       <div className="flex-1">
                         <h3 className="text-xl font-bold font-sora text-gray-900 mb-2 group-hover:text-white transition-colors duration-500">
@@ -183,15 +181,13 @@ export function ParentalDashboard() {
                   <div className="bg-white rounded-2xl shadow-lg p-6 h-full flex flex-col justify-center hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out group">
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0">
-                        <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
-                          <Image
-                            src={feature.icon}
-                            alt={feature.title}
-                            width={32}
-                            height={32}
-                            className="group-hover:brightness-0 group-hover:invert transition-all duration-300"
-                          />
-                        </div>
+                        <Image
+                          src={feature.icon}
+                          alt={feature.title}
+                          width={48}
+                          height={48}
+                          className="w-12 h-12 lg:w-12 lg:h-12 group-hover:brightness-0 group-hover:invert transition-all duration-300"
+                        />
                       </div>
                       <div className="flex-1">
                         <h3 className="text-xl font-bold font-sora text-gray-900 mb-2 group-hover:text-white transition-colors duration-500">

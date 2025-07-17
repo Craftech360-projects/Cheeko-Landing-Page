@@ -41,13 +41,13 @@ export function VideoSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-visible opacity-0"
+      className="relative pt-20 pb-12 sm:py-16 md:py-20 lg:py-28 overflow-visible opacity-0"
     >
       <Container>
         <div className="relative">
           {/* Video Container */}
           <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-            <div className="relative h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[800px]">
+            <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px]">
               <video
                 ref={videoRef}
                 className="absolute inset-0 w-full h-full object-cover"
@@ -68,13 +68,17 @@ export function VideoSection() {
             <Button
               variant="primary"
               size="lg"
-              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold shadow-xl transform transition-all duration-300 hover:scale-105 px-8 py-4 text-lg"
+              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold shadow-xl transform transition-all duration-300 hover:scale-105 px-6 sm:px-8 py-4 text-base sm:text-lg whitespace-nowrap"
               onClick={(e) => {
                 e.preventDefault();
-                window.open('https://cheekoai.myshopify.com/products/cheeko-ai-toy', '_blank');
+                window.open(
+                  "https://cheekoai.myshopify.com/products/cheeko-ai-toy",
+                  "_blank"
+                );
               }}
             >
-              Pre Order Now At {currencySymbol}{price}
+              Pre Order Now At {currencySymbol}
+              {price}
             </Button>
           </div>
         </div>

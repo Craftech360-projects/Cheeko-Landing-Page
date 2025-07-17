@@ -143,14 +143,13 @@ export function Safety() {
                   {/* Feature Content */}
                   <div className="flex flex-col items-start space-y-4">
                     {/* Icon */}
-                    <div className="w-20 h-20 bg-orange-50 rounded-2xl flex items-center justify-center feature-icon">
-                      <Image
-                        src={feature.icon}
-                        alt={feature.title}
-                        width={48}
-                        height={48}
-                      />
-                    </div>
+                    <Image
+                      src={feature.icon}
+                      alt={feature.title}
+                      width={48}
+                      height={48}
+                      className="w-12 h-12 lg:w-12 lg:h-12 feature-icon"
+                    />
 
                     {/* Title */}
                     <h3 className="text-2xl font-bold font-sora text-gray-900">
