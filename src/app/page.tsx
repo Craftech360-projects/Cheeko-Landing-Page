@@ -5,6 +5,7 @@ import { Features } from "@/components/sections/KeyFeatures";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Safety } from "@/components/sections/Safety";
 import { VideoSection } from "@/components/sections/VideoSection";
+// import { PreOrderBanner } from "@/components/sections/PreOrderBanner";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FAQ } from "@/components/sections/FAQ";
 import { Newsletter } from "@/components/sections/Newsletter";
@@ -23,6 +24,9 @@ export default function Home() {
         <main>
           {/* Video Section */}
           <VideoSection />
+
+          {/* Pre Order Banner */}
+          {/* <PreOrderBanner /> */}
 
           {/* Hero Section */}
           {/* <Hero /> */}

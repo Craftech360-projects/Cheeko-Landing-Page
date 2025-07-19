@@ -21,7 +21,7 @@ const navigationItems: NavigationItem[] = [
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = React.useState(false);
-  const { price, currencySymbol } = useShopify();
+  const { price, currencySymbol, loading } = useShopify();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -143,7 +143,9 @@ const Header: React.FC = () => {
                 window.open('https://cheekoai.myshopify.com/products/cheeko-ai-toy', '_blank');
               }}
             >
-              <span className="hidden sm:inline">Pre Order Now At {currencySymbol}{price}</span>
+              <span className="hidden sm:inline">
+                Pre Order Now{!loading && price > 0 ? ` At ${currencySymbol}${price.toFixed(0)}` : ""}
+              </span>
               <span className="sm:hidden">Pre Order Now</span>
             </Button>
           </motion.div>

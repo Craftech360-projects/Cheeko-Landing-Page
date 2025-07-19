@@ -7,7 +7,7 @@ import { useShopify } from "@/hooks/useShopify";
 export function VideoSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const { price, currencySymbol } = useShopify();
+  const { price, currencySymbol, loading } = useShopify();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -77,8 +77,7 @@ export function VideoSection() {
                 );
               }}
             >
-              Pre Order Now At {currencySymbol}
-              {price}
+              Pre Order Now{!loading && price > 0 ? ` At ${currencySymbol}${price.toFixed(0)}` : ""}
             </Button>
           </div>
         </div>

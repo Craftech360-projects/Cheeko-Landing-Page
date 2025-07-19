@@ -1,0 +1,115 @@
+import { NextResponse } from 'next/server'
+
+export async function GET() {
+  // Note: To use Admin API, you need to create a private app in Shopify Admin
+  // and get the Admin API access token (not just API key/secret)
+  const domain = process.env.SHOPIFY_ADMIN_DOMAIN || process.env.NEXT_PUBLIC_SHOPIFY_DOMAIN
+  const accessToken = process.env.NEXT_PUBLIC_SHOPIFY_ADMIN_ACCESS_TOKEN || process.env.SHOPIFY_ADMIN_ACCESS_TOKEN
+  const productId = process.env.NEXT_PUBLIC_SHOPIFY_PRODUCT_ID
+  
+  if (!domain || !accessToken || !productId) {
+    console.log('Missing required environment variables for Admin API')
+    return NextResponse.json({ 
+      error: 'Admin API not configured. Please add SHOPIFY_ADMIN_ACCESS_TOKEN to your .env.local',
+      fallbackPrice: process.env.NEXT_PUBLIC_PRODUCT_PRICE || '499.00',
+      currencyCode: 'USD'
+    }, { status: 400 })
+  }
+
+  try {
+    const graphqlEndpoint = `https://${domain}/admin/api/2024-10/graphql.json`
+    
+    const requestBody = {
+      query: `
+        query getProduct($id: ID!) {
+          product(id: $id) {
+            title
+            status
+            priceRangeV2 {
+              minVariantPrice {
+                amount
+                currencyCode
+              }
+              maxVariantPrice {
+                amount
+                currencyCode
+              }
+            }
+            variants(first: 10) {
+              edges {
+                node {
+                  id
+                  title
+                  price
+                  availableForSale
+                }
+              }
+            }
+          }
+        }
+      `,
+      variables: {
+        id: `gid://shopify/Product/${productId}`
+      }
+    }
+    
+    const response = await fetch(graphqlEndpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Shopify-Access-Token': accessToken,
+      },
+      body: JSON.stringify(requestBody)
+    })
+
+    if (!response.ok) {
+      const errorText = await response.text()
+      console.error('Shopify Admin API Error:', response.status, errorText)
+      return NextResponse.json({ 
+        error: `Admin API Error: ${response.status}`,
+        fallbackPrice: process.env.NEXT_PUBLIC_PRODUCT_PRICE || '499.00',
+        currencyCode: 'USD'
+      }, { status: response.status })
+    }
+
+    const data = await response.json()
+    
+    if (data.errors) {
+      console.error('GraphQL Errors:', data.errors)
+      return NextResponse.json({ 
+        error: 'GraphQL errors',
+        errors: data.errors,
+        fallbackPrice: process.env.NEXT_PUBLIC_PRODUCT_PRICE || '499.00',
+        currencyCode: 'USD'
+      }, { status: 400 })
+    }
+    
+    if (data.data?.product) {
+      const product = data.data.product
+      const minPrice = product.priceRangeV2.minVariantPrice
+      
+      return NextResponse.json({
+        price: minPrice.amount,
+        currencyCode: minPrice.currencyCode,
+        title: product.title,
+        status: product.status,
+        variants: product.variants.edges.map(edge => edge.node),
+        available: product.status === 'ACTIVE'
+      })
+    }
+    
+    return NextResponse.json({ 
+      error: 'No product data found',
+      fallbackPrice: process.env.NEXT_PUBLIC_PRODUCT_PRICE || '499.00',
+      currencyCode: 'USD'
+    }, { status: 404 })
+    
+  } catch (error) {
+    console.error('Shopify Admin API error:', error)
+    return NextResponse.json({ 
+      error: 'Exception: ' + error.message,
+      fallbackPrice: process.env.NEXT_PUBLIC_PRODUCT_PRICE || '499.00',
+      currencyCode: 'USD'
+    }, { status: 500 })
+  }
+}

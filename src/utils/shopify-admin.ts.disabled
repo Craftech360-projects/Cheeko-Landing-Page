@@ -1,0 +1,49 @@
+// Shopify Admin API utilities
+export interface AdminProductData {
+  price: string
+  currencyCode: string
+  title: string
+  status: string
+  available: boolean
+  variants?: Array<{
+    id: string
+    title: string
+    price: string
+    availableForSale: boolean
+  }>
+}
+
+export const fetchAdminProductData = async (): Promise<AdminProductData | null> => {
+  try {
+    const response = await fetch('/api/shopify-admin')
+    
+    if (!response.ok) {
+      console.error('Admin API Error:', response.status)
+      return null
+    }
+
+    const data = await response.json()
+    
+    if (data.error) {
+      console.error('Admin API returned error:', data.error)
+      return null
+    }
+    
+    return data
+  } catch (error) {
+    console.error('Failed to fetch admin product data:', error)
+    return null
+  }
+}
+
+// Helper to get the cheapest variant price
+export const getCheapestVariantPrice = (variants: AdminProductData['variants']): number => {
+  if (!variants || variants.length === 0) return 0
+  
+  const prices = variants
+    .filter(v => v.availableForSale)
+    .map(v => parseFloat(v.price))
+    .filter(p => !isNaN(p))
+  
+  return prices.length > 0 ? Math.min(...prices) : 0
+}

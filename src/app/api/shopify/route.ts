@@ -12,10 +12,11 @@ export async function GET() {
   if (!domain || !token || !productId) {
     console.log('Missing required environment variables')
     return NextResponse.json({ 
-      price: process.env.NEXT_PUBLIC_PRODUCT_PRICE || '499.00',
+      price: '0', // No fallback price
       currencyCode: 'USD',
       title: 'Cheeko AI Toy',
-      available: true
+      available: true,
+      error: 'Missing required environment variables'
     })
   }
 
@@ -62,7 +63,7 @@ export async function GET() {
       console.error('Shopify API Error:', response.status, response.statusText)
       console.error('Error details:', errorText)
       return NextResponse.json({ 
-        price: process.env.NEXT_PUBLIC_PRODUCT_PRICE || '499.00',
+        price: '0', // No fallback price
         currencyCode: 'USD',
         title: 'Cheeko AI Toy',
         available: true,
@@ -76,7 +77,7 @@ export async function GET() {
     if (data.errors) {
       console.error('GraphQL Errors:', data.errors)
       return NextResponse.json({ 
-        price: process.env.NEXT_PUBLIC_PRODUCT_PRICE || '499.00',
+        price: '0', // No fallback price
         currencyCode: 'USD',
         title: 'Cheeko AI Toy',
         available: true,
@@ -97,7 +98,7 @@ export async function GET() {
     
     console.log('No product data found in response')
     return NextResponse.json({ 
-      price: process.env.NEXT_PUBLIC_PRODUCT_PRICE || '499.00',
+      price: '0', // No fallback price
       currencyCode: 'USD',
       title: 'Cheeko AI Toy',
       available: true,
@@ -106,7 +107,7 @@ export async function GET() {
   } catch (error) {
     console.error('Shopify API error:', error)
     return NextResponse.json({ 
-      price: process.env.NEXT_PUBLIC_PRODUCT_PRICE || '499.00',
+      price: '0', // No fallback price
       currencyCode: 'USD',
       title: 'Cheeko AI Toy',
       available: true,
