@@ -73,7 +73,7 @@ export function Footer() {
                 alt="CheekoAI Logo"
                 width={120}
                 height={40}
-                className="h-10 w-auto"
+                className="h-12 w-auto"
               />
             </div>
 
@@ -114,7 +114,7 @@ export function Footer() {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
             {/* Left side - Copyright and legal links */}
             <div className="flex flex-col sm:flex-row items-center gap-4 text-sm text-gray-600">
-              <span>© {currentYear} Cheeko. All rights reserved.</span>
+              <span>© {currentYear} CheekoAI. All rights reserved.</span>
               <div className="flex items-center gap-4">
                 <a
                   href="#privacy-policy"

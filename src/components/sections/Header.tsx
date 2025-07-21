@@ -80,7 +80,7 @@ const Header: React.FC = () => {
             <img
               src="/icons/logo.svg"
               alt="CheekoAI"
-              className="h-6 w-auto sm:h-7 md:h-8 lg:h-10"
+              className="h-8 w-auto sm:h-9 md:h-10 lg:h-12"
             />
           </motion.div>
 
@@ -140,11 +140,17 @@ const Header: React.FC = () => {
               size="sm"
               onClick={(e) => {
                 e.preventDefault();
-                window.open('https://cheekoai.myshopify.com/products/cheeko-ai-toy', '_blank');
+                window.open(
+                  "https://cheekoai.myshopify.com/products/cheeko-ai-toy",
+                  "_blank"
+                );
               }}
             >
               <span className="hidden sm:inline">
-                Pre Order Now{!loading && price > 0 ? ` At ${currencySymbol}${price.toFixed(0)}` : ""}
+                Pre Order Now
+                {!loading && price > 0
+                  ? ` At ${currencySymbol}${price.toFixed(0)}`
+                  : ""}
               </span>
               <span className="sm:hidden">Pre Order Now</span>
             </Button>
