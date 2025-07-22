@@ -1,4 +1,10 @@
+"use client";
+
+import * as React from "react";
 import { Header } from "@/components/sections/Header";
+import { PromoBanner } from "@/components/sections/PromoBanner";
+import { BottomBar } from "@/components/sections/BottomBar";
+import { useScrollBehavior } from "@/hooks/useScrollBehavior";
 // import { Hero } from "@/components/sections/Hero";
 import MeetCheeko from "@/components/sections/MeetCheeko";
 import { Features } from "@/components/sections/KeyFeatures";
@@ -15,11 +21,14 @@ import { ParentalDashboard } from "@/components/sections/ParentalDashboard";
 import { HashRouter } from "@/components/HashRouter";
 
 export default function Home() {
+  const { isHeaderVisible, isBottomBarVisible } = useScrollBehavior();
+
   return (
     <HashRouter>
-      <div className="max-w-full mx-auto">
+      <div className={`max-w-full mx-auto ${isBottomBarVisible ? 'pb-[100px]' : ''}`}>
         <StructuredData />
-        <Header />
+        <PromoBanner />
+        <Header isVisible={isHeaderVisible} />
 
         <main>
           {/* Video Section */}
@@ -61,6 +70,9 @@ export default function Home() {
 
         {/* Footer */}
         <Footer />
+        
+        {/* Bottom Bar */}
+        <BottomBar isVisible={isBottomBarVisible} />
       </div>
     </HashRouter>
   );

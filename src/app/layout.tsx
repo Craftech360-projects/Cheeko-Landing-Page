@@ -115,6 +115,7 @@ export default function RootLayout({
       </head>
       <body
         className={`${switzer.variable} ${sora.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
+        style={{ scrollBehavior: 'smooth' }}
       >
         <ErrorBoundary>
           {children}

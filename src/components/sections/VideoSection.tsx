@@ -77,7 +77,7 @@ export function VideoSection() {
                 );
               }}
             >
-              Pre Order Now{!loading && price > 0 ? ` At ${currencySymbol}${price.toFixed(0)}` : ""}
+              Buy Now{!loading && price > 0 ? ` At ${currencySymbol}${price.toFixed(0)}` : ""}
             </Button>
           </div>
         </div>

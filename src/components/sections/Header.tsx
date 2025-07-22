@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button, Container } from "@/components/ui";
 import { cn } from "@/utils/cn";
 import { useShopify } from "@/hooks/useShopify";
@@ -12,6 +12,10 @@ interface NavigationItem {
   isButton?: boolean;
 }
 
+interface HeaderProps {
+  isVisible?: boolean;
+}
+
 const navigationItems: NavigationItem[] = [
   { label: "Key Features", href: "#key-features" },
   { label: "Safety & Privacy", href: "#safety" },
@@ -19,7 +23,7 @@ const navigationItems: NavigationItem[] = [
   { label: "FAQ", href: "#faq" },
 ];
 
-const Header: React.FC = () => {
+const Header: React.FC<HeaderProps> = ({ isVisible = true }) => {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const { price, currencySymbol, loading } = useShopify();
 
@@ -35,7 +39,7 @@ const Header: React.FC = () => {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      const yOffset = -80; // Offset for fixed header
+      const yOffset = -80; // Offset for header height
       const y =
         element.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
@@ -55,16 +59,23 @@ const Header: React.FC = () => {
   };
 
   return (
-    <motion.header
+    <AnimatePresence>
+      {isVisible && (
+        <motion.header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "sticky top-0 z-40 transition-all duration-300",
         isScrolled
           ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-border"
           : "bg-white"
       )}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const }}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ y: -100, opacity: 0 }}
+      transition={{ 
+        duration: 0.5, 
+        ease: [0.25, 0.46, 0.45, 0.94],
+        opacity: { duration: 0.4 }
+      }}
     >
       <Container>
         <nav className="flex items-center h-16 lg:h-20">
@@ -147,17 +158,19 @@ const Header: React.FC = () => {
               }}
             >
               <span className="hidden sm:inline">
-                Pre Order Now
+                Buy Now
                 {!loading && price > 0
                   ? ` At ${currencySymbol}${price.toFixed(0)}`
                   : ""}
               </span>
-              <span className="sm:hidden">Pre Order Now</span>
+              <span className="sm:hidden">Buy Now</span>
             </Button>
           </motion.div>
         </nav>
       </Container>
-    </motion.header>
+        </motion.header>
+      )}
+    </AnimatePresence>
   );
 };
 
