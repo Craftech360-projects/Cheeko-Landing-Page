@@ -75,11 +75,11 @@ const PromoBanner: React.FC = () => {
           <div className="text-center">
             <div className="flex flex-col lg:flex-row items-center justify-center space-y-2 lg:space-y-0 lg:space-x-4">
               <div className="flex items-center space-x-2">
-                <span className="text-lg sm:text-xl">🎉</span>
+                {/* <span className="text-lg sm:text-xl">🎉</span> */}
                 <span className="font-bold text-lg sm:text-xl">
                   Super Sale Ends In:
                 </span>
-                <div className="font-mono font-bold text-lg sm:text-xl">
+                <div className="font-mono font-bold text-lg sm:text-2xl">
                   {formatTime(timeLeft.days)}:{formatTime(timeLeft.hours)}:
                   {formatTime(timeLeft.minutes)}:{formatTime(timeLeft.seconds)}
                 </div>
@@ -88,12 +88,12 @@ const PromoBanner: React.FC = () => {
               <div className="hidden xl:block text-white">|</div>
 
               <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-2">
-                <span className="font-bold text-lg sm:text-xl">
+                <span className="font-semibold text-lg sm:text-xl">
                   Get Cheeko For
                 </span>
                 <div className="inline-block">
-                  <span className="text-lg sm:text-xl font-bold">₹3999</span>
-                  <span className="line-through text-white/80 font-bold text-sm ml-1">
+                  <span className="text-lg sm:text-xl font-semibold">₹3999</span>
+                  <span className="line-through text-white font-semibold text-sm ml-1">
                     ₹7999
                   </span>
                 </div>
@@ -102,7 +102,7 @@ const PromoBanner: React.FC = () => {
                   href="https://cheekoai.myshopify.com/products/cheeko-ai-toy"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white underline hover:text-yellow-300 transition-colors duration-200 text-lg sm:text-xl font-bold"
+                  className="text-white underline hover:text-yellow-300 transition-colors duration-200 text-lg sm:text-xl font-semibold"
                 >
                   Shop Now
                 </a>

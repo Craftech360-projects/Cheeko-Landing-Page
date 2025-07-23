@@ -6,7 +6,8 @@ import { Container } from "@/components/ui";
 
 export function Newsletter() {
   const [email, setEmail] = useState("");
-  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -32,12 +33,51 @@ export function Newsletter() {
     };
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Auto-dismiss message after 5 seconds
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => {
+        setMessage(null);
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      setIsSubscribed(true);
-      // Here you would typically send the email to your backend
-      console.log("Subscribing email:", email);
+    
+    // Client-side email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      setMessage({ type: 'error', text: 'Please enter a valid email address' });
+      return;
+    }
+
+    setIsLoading(true);
+    setMessage(null);
+
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage({ type: 'success', text: data.message });
+        setEmail(''); // Clear the email input
+      } else {
+        setMessage({ type: 'error', text: data.error || 'Subscription failed. Please try again.' });
+      }
+    } catch {
+      setMessage({ type: 'error', text: 'Network error. Please check your connection and try again.' });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -192,6 +232,17 @@ export function Newsletter() {
                   special offers delivered straight to your inbox.
                 </p>
 
+                {/* Message Banner */}
+                {message && (
+                  <div className={`mt-4 p-3 rounded-md text-sm font-medium ${
+                    message.type === 'success' 
+                      ? 'bg-green-100 text-green-800 border border-green-200' 
+                      : 'bg-red-100 text-red-800 border border-red-200'
+                  }`}>
+                    {message.text}
+                  </div>
+                )}
+
                 {/* Email Subscription Form */}
                 <form onSubmit={handleSubmit} className="mt-6">
                   <div className="flex flex-col sm:flex-row bg-white font-medium rounded-md p-2 shadow-lg w-full max-w-md">
@@ -210,10 +261,10 @@ export function Newsletter() {
                     />
                     <button
                       type="submit"
-                      className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 sm:px-6 sm:py-3 rounded-md transition-colors duration-200 whitespace-nowrap text-sm sm:text-base mt-2 sm:mt-0"
-                      disabled={isSubscribed}
+                      className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 sm:px-6 sm:py-3 rounded-md transition-colors duration-200 whitespace-nowrap text-sm sm:text-base mt-2 sm:mt-0 disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled={isLoading}
                     >
-                      {isSubscribed ? "Subscribed!" : "Subscribe"}
+                      {isLoading ? "Subscribing..." : "Subscribe"}
                     </button>
                   </div>
                 </form>

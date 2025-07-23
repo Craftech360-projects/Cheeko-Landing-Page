@@ -17,9 +17,9 @@ interface HeaderProps {
 }
 
 const navigationItems: NavigationItem[] = [
+  { label: "Meet Cheeko", href: "#meet-cheeko" },
   { label: "Key Features", href: "#key-features" },
-  { label: "Safety & Privacy", href: "#safety" },
-  { label: "Testimonials", href: "#testimonials" },
+  { label: "Easy Setup", href: "#how-it-works" },
   { label: "FAQ", href: "#faq" },
 ];
 
@@ -81,7 +81,7 @@ const Header: React.FC<HeaderProps> = ({ isVisible = true }) => {
         <nav className="flex items-center h-16 lg:h-20">
           {/* Logo */}
           <motion.div
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.20 }}
             transition={{
               type: "spring" as const,
               stiffness: 400,

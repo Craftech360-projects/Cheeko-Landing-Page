@@ -14,7 +14,7 @@ import {
 const navigationLinks = [
   { label: "Meet Cheeko", href: "#meet-cheeko" },
   { label: "Key Features", href: "#key-features" },
-  { label: "Easy Setup", href: "#easy-setup" },
+  { label: "Easy Setup", href: "#how-it-works" },
   { label: "Parental Dashboard", href: "#parental-dashboard" },
 ];
 
@@ -32,7 +32,7 @@ const socialLinks = [
   { icon: Twitter, href: "https://x.com/Cheekoai", label: "X" },
   {
     icon: Linkedin,
-    href: "https://www.linkedin.com/in/cheeko-smart-toy-1b7a09358/",
+    href: "https://www.linkedin.com/company/cheekoai/?viewAsMember=true",
     label: "LinkedIn",
   },
   {
@@ -122,7 +122,7 @@ export function Footer() {
                 >
                   Privacy Policy
                 </a>
-                <a
+                {/* <a
                   href="/terms"
                   className="hover:text-orange-500 transition-colors"
                 >
@@ -133,7 +133,7 @@ export function Footer() {
                   className="hover:text-orange-500 transition-colors"
                 >
                   Cookie Settings
-                </a>
+                </a> */}
               </div>
             </div>
 
