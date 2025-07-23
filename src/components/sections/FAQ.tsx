@@ -16,7 +16,7 @@ const faqData: FAQItem[] = [
     id: 1,
     question: "What age is CheekoAI suitable for?",
     answer:
-      "CheekoAI is designed for children above the age of 5, with adaptive learning that adjusts to your child's developmental stage. Our AI automatically calibrates content difficulty, interaction complexity, and learning pace based on your child's age and demonstrated abilities.",
+      "CheekoAI is designed for children above the age of 4, with adaptive learning that adjusts to your child's developmental stage. Our AI automatically calibrates content difficulty, interaction complexity, and learning pace based on your child's age and demonstrated abilities.",
   },
   {
     id: 2,

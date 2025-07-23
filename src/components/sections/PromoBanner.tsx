@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
 
 interface TimeLeft {
   days: number;
@@ -72,13 +71,6 @@ const PromoBanner: React.FC = () => {
       >
         <div className="absolute inset-0 bg-orange-600" />
 
-        <button
-          onClick={() => setIsVisible(false)}
-          className="absolute top-2 right-2 z-10 p-1 rounded-full hover:bg-white/20 transition-colors"
-        >
-          <X size={16} />
-        </button>
-
         <div className="relative z-10 h-full flex flex-col items-center justify-center px-4">
           <div className="text-center">
             <div className="flex flex-col lg:flex-row items-center justify-center space-y-2 lg:space-y-0 lg:space-x-4">
@@ -100,9 +92,7 @@ const PromoBanner: React.FC = () => {
                   Get Cheeko For
                 </span>
                 <div className="inline-block">
-                  <span className="text-lg sm:text-xl font-bold">
-                    ₹3999
-                  </span>
+                  <span className="text-lg sm:text-xl font-bold">₹3999</span>
                   <span className="line-through text-white/80 font-bold text-sm ml-1">
                     ₹7999
                   </span>

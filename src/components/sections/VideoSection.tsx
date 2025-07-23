@@ -41,7 +41,7 @@ export function VideoSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative pt-20 pb-12 sm:py-16 md:py-20 lg:py-28 overflow-visible opacity-0"
+      className="relative pt-6 pb-12 sm:py-4 md:py-6 lg:py-8 overflow-visible opacity-0"
     >
       <Container>
         <div className="relative">
