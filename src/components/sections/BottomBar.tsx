@@ -4,12 +4,16 @@ import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingCart } from "lucide-react";
 import { Container } from "@/components/ui";
+import { useShopify } from "@/hooks/useShopify";
 
 interface BottomBarProps {
   isVisible: boolean;
 }
 
 const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
+  const { price, currencySymbol, loading } = useShopify();
+  const originalPrice = 7999;
+  const discountPercentage = price > 0 ? Math.round(((originalPrice - price) / originalPrice) * 100) : 50;
   return (
     <AnimatePresence>
       {isVisible && (
@@ -24,11 +28,11 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
           }}
           className="fixed bottom-0 left-0 right-0 z-40 bg-white shadow-lg border-t border-gray-200 h-[80px] sm:h-[100px]"
         >
-          <Container>
-            <div className="h-full flex items-center justify-between gap-2 sm:gap-4">
+          <Container className="h-full flex items-center">
+            <div className="w-full flex items-center justify-between gap-2 sm:gap-4">
               {/* Left side - Image and Price */}
               <div className="flex items-center space-x-2 sm:space-x-4">
-                <div className="relative w-16 h-16 sm:w-[100px] sm:h-[100px] flex-shrink-0">
+                <div className="relative w-8 h-8 sm:w-12 sm:h-12 md:w-18 md:h-18 flex-shrink-0">
                   <img
                     src="/images/bottom-bar-left.png"
                     alt="Cheeko AI Toy"
@@ -36,38 +40,48 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <div className="text-lg sm:text-[28px] font-bold text-gray-900 leading-tight">
-                    ₹3,999
-                  </div>
-                  <div className="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-base text-gray-700">
-                    <span className="line-through font-medium text-xs sm:text-base">
-                      ₹7,999
-                    </span>
-                    <span className="bg-green-100 text-green-800 px-1 sm:px-2 py-0.5 sm:py-1 rounded text-[10px] sm:text-sm font-semibold">
-                      50% Off
-                    </span>
-                  </div>
+                  {!loading && price > 0 && (
+                    <div className="text-lg sm:text-[28px] font-bold text-orange-500 leading-tight">
+                      {currencySymbol}{price.toFixed(0).toLocaleString()}
+                    </div>
+                  )}
+                  {!loading && price > 0 && (
+                    <div className="flex items-center gap-1 text-xs sm:text-base text-gray-700">
+                      <span className="line-through font-medium text-xs sm:text-base">
+                        {currencySymbol}{originalPrice.toLocaleString()}
+                      </span>
+                      <img
+                        src="/icons/discount-icon.svg"
+                        alt="Discount"
+                        className="w-4 h-4 sm:w-5 sm:h-5"
+                      />
+                      <span className="text-[#4CAF50] text-[10px] sm:text-sm font-semibold">
+                        {discountPercentage}% Off
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
 
               {/* Center - Text */}
-              <div className="hidden sm:flex flex-1 text-center px-2 sm:px-4">
+              <div className="hidden sm:flex flex-1 items-center text-center px-2 sm:px-4">
                 <p className="text-sm sm:text-lg font-semibold text-gray-900 leading-tight">
-                  Limited Offer! Buy Cheeko & Get Free Stickers – Ends Soon!
+                  {!loading && price > 0 
+                    ? `Limited Time Offer! Save ${discountPercentage}% on Cheeko – Hurry, Sale Ends Soon!`
+                    : "Limited Time Offer! Get Cheeko – Hurry, Sale Ends Soon!"}
                 </p>
               </div>
 
               {/* Mobile: Text + Cart Button */}
               <div className="flex sm:hidden items-center gap-2 flex-1">
                 <p className="text-xs font-semibold text-gray-900 leading-tight flex-1">
-                  Limited Offer! Free Stickers!
+                  {!loading && price > 0 
+                    ? `Save ${discountPercentage}% – Limited Time!`
+                    : "Limited Time Offer!"}
                 </p>
                 <button
                   onClick={() => {
-                    window.open(
-                      "https://cheekoai.myshopify.com/products/cheeko-ai-toy",
-                      "_blank"
-                    );
+                    window.location.href = "https://cheekoai.myshopify.com/products/cheeko-ai-toy";
                   }}
                   className="bg-orange-500 hover:bg-orange-600 text-white p-2 rounded-full transition-colors duration-200 shadow-lg flex-shrink-0"
                 >
@@ -76,13 +90,10 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
               </div>
 
               {/* Desktop: Cart Button */}
-              <div className="hidden sm:block flex-shrink-0">
+              <div className="hidden sm:flex items-center flex-shrink-0">
                 <button
                   onClick={() => {
-                    window.open(
-                      "https://cheekoai.myshopify.com/products/cheeko-ai-toy",
-                      "_blank"
-                    );
+                    window.location.href = "https://cheekoai.myshopify.com/products/cheeko-ai-toy";
                   }}
                   className="bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-full transition-colors duration-200 shadow-lg"
                 >

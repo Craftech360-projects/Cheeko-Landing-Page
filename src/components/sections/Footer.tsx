@@ -2,14 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import {
-  Facebook,
-  Twitter,
-  Instagram,
-  Youtube,
-  Linkedin,
-  ChevronUp,
-} from "lucide-react";
+import { ChevronUp } from "lucide-react";
 
 const navigationLinks = [
   { label: "Meet Cheeko", href: "#meet-cheeko" },
@@ -20,23 +13,27 @@ const navigationLinks = [
 
 const socialLinks = [
   {
-    icon: Facebook,
+    icon: "/icons/facebook.svg",
     href: "https://www.facebook.com/profile.php?id=61574727151719",
     label: "Facebook",
   },
   {
-    icon: Instagram,
+    icon: "/icons/instagram.svg",
     href: "https://www.instagram.com/cheekoai/",
     label: "Instagram",
   },
-  { icon: Twitter, href: "https://x.com/Cheekoai", label: "X" },
   {
-    icon: Linkedin,
+    icon: "/icons/x.svg",
+    href: "https://x.com/Cheekoai",
+    label: "X",
+  },
+  {
+    icon: "/icons/linkedin.svg",
     href: "https://www.linkedin.com/company/cheekoai/?viewAsMember=true",
     label: "LinkedIn",
   },
   {
-    icon: Youtube,
+    icon: "/icons/youtube.svg",
     href: "https://www.youtube.com/@Cheekoai",
     label: "YouTube",
   },
@@ -91,17 +88,23 @@ export function Footer() {
             </div>
 
             {/* Social Links */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-6">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-gray-100 hover:bg-orange-500 rounded-full flex items-center justify-center text-gray-600 hover:text-white transition-all duration-200"
+                  className="transition-all duration-200 hover:opacity-60"
                   aria-label={social.label}
                 >
-                  <social.icon className="w-5 h-5" />
+                  <Image
+                    src={social.icon}
+                    alt={social.label}
+                    width={24}
+                    height={24}
+                    className="w-6 h-6"
+                  />
                 </a>
               ))}
             </div>
@@ -116,12 +119,12 @@ export function Footer() {
             <div className="flex flex-col sm:flex-row items-center gap-4 text-sm text-gray-600">
               <span>© {currentYear} CheekoAI. All rights reserved.</span>
               <div className="flex items-center gap-4">
-                <a
+                {/* <a
                   href="#privacy-policy"
                   className="hover:text-orange-500 transition-colors"
                 >
                   Privacy Policy
-                </a>
+                </a> */}
                 {/* <a
                   href="/terms"
                   className="hover:text-orange-500 transition-colors"

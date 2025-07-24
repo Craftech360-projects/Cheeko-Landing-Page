@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useShopify } from "@/hooks/useShopify";
 
 interface TimeLeft {
   days: number;
@@ -11,6 +12,7 @@ interface TimeLeft {
 }
 
 const PromoBanner: React.FC = () => {
+  const { price, currencySymbol, loading } = useShopify();
   const [timeLeft, setTimeLeft] = React.useState<TimeLeft>({
     days: 5,
     hours: 0,
@@ -76,28 +78,34 @@ const PromoBanner: React.FC = () => {
             <div className="flex flex-col lg:flex-row items-center justify-center space-y-2 lg:space-y-0 lg:space-x-4">
               <div className="flex items-center space-x-2">
                 {/* <span className="text-lg sm:text-xl">🎉</span> */}
-                <span className="font-bold text-lg sm:text-xl">
+                <span className="font-semibold text-lg sm:text-xl">
                   Super Sale Ends In:
                 </span>
-                <div className="font-mono font-bold text-lg sm:text-2xl">
+                <div className="font-mono font-semibold text-lg sm:text-2xl">
                   {formatTime(timeLeft.days)}:{formatTime(timeLeft.hours)}:
                   {formatTime(timeLeft.minutes)}:{formatTime(timeLeft.seconds)}
                 </div>
               </div>
 
-              <div className="hidden xl:block text-white">|</div>
+              <div className="hidden lg:block text-white text-xl">|</div>
 
               <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-2">
                 <span className="font-semibold text-lg sm:text-xl">
                   Get Cheeko For
                 </span>
                 <div className="inline-block">
-                  <span className="text-lg sm:text-xl font-semibold">₹3999</span>
-                  <span className="line-through text-white font-semibold text-sm ml-1">
-                    ₹7999
-                  </span>
+                  {!loading && price > 0 ? (
+                    <>
+                      <span className="line-through text-white font-normal text-lg sm:text-xl mr-2">
+                        {currencySymbol}7999
+                      </span>
+                      <span className="text-lg sm:text-xl font-bold">{currencySymbol}{price.toFixed(0)}</span>
+                    </>
+                  ) : (
+                    <span className="text-lg sm:text-xl font-semibold">Great Price!</span>
+                  )}
                 </div>
-                <div className="hidden xl:block text-white">|</div>
+                {/* <div className="hidden xl:block text-white">|</div>
                 <a
                   href="https://cheekoai.myshopify.com/products/cheeko-ai-toy"
                   target="_blank"
@@ -105,7 +113,7 @@ const PromoBanner: React.FC = () => {
                   className="text-white underline hover:text-yellow-300 transition-colors duration-200 text-lg sm:text-xl font-semibold"
                 >
                   Shop Now
-                </a>
+                </a> */}
               </div>
             </div>
           </div>

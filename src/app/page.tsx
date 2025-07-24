@@ -19,16 +19,28 @@ import { Footer } from "@/components/sections/Footer";
 import { StructuredData } from "@/components/StructuredData";
 import { ParentalDashboard } from "@/components/sections/ParentalDashboard";
 import { HashRouter } from "@/components/HashRouter";
+import { SplashScreen } from "@/components/SplashScreen";
 
 export default function Home() {
   const { isHeaderVisible, isBottomBarVisible } = useScrollBehavior();
+  const [showSplash, setShowSplash] = React.useState(true);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <HashRouter>
-      <div className={`max-w-full mx-auto ${isBottomBarVisible ? 'pb-[100px]' : ''}`}>
-        <StructuredData />
-        <PromoBanner />
-        <Header isVisible={isHeaderVisible} />
+    <>
+      <SplashScreen isVisible={showSplash} />
+      <HashRouter>
+        <div className={`max-w-full mx-auto ${isBottomBarVisible ? 'pb-[100px]' : ''}`}>
+          <StructuredData />
+          {!showSplash && <PromoBanner />}
+          <Header isVisible={isHeaderVisible} />
 
         <main>
           {/* Video Section */}
@@ -75,5 +87,6 @@ export default function Home() {
         <BottomBar isVisible={isBottomBarVisible} />
       </div>
     </HashRouter>
+    </>
   );
 }

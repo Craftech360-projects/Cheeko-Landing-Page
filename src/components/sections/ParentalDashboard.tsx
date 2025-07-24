@@ -109,7 +109,7 @@ export function ParentalDashboard() {
             />
           </div>
 
-          <p className="text-center text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto font-switzer leading-relaxed mt-4">
+          <p className="text-center text-base sm:text-lg md:text-xl lg:text-xl text-gray-600 max-w-4xl mx-auto font-switzer leading-relaxed mt-4">
             Real-time insights. Meaningful milestones. All in one place.
           </p>
         </div>

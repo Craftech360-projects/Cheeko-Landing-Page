@@ -109,7 +109,7 @@ export function Features() {
             />
           </div>
 
-          <p className="text-center text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto font-switzer leading-relaxed mt-4">
+          <p className="text-center text-base sm:text-lg md:text-xl lg:text-xl text-gray-600 max-w-4xl mx-auto font-switzer leading-relaxed mt-4">
             An emotionally intelligent AI companion that learns with your child,
             fostering creativity, curiosity, and confidence through natural
             conversation.

@@ -2,35 +2,31 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { Container } from "@/components/ui";
+import { Container, Button } from "@/components/ui";
 
 interface Step {
   stepNumber: string;
   title: string;
   description: string;
-  image: string;
 }
 
 const steps: Step[] = [
   {
-    stepNumber: "Step 1",
-    title: "Easy Setup Your Way",
+    stepNumber: "1",
+    title: "Sign In",
     description:
-      "Download the app from Play Store/App Store or visit the webpage to setup. Register with basic info to get started.",
-    image: "/images/how-it-works-step1.png",
+      "Use your Google account to log in securely.",
   },
   {
-    stepNumber: "Step 2",
-    title: "Add Your Toy",
-    description: "Tap “Add Toy,” then hold the right button on Cheeko to hear the verification code and connect securely.",
-    image: "/images/how-it-works-step2.png",
+    stepNumber: "2",
+    title: "Add Toy",
+    description: "To add the toy follow the steps to get the verification code",
   },
   {
-    stepNumber: "Step 3",
-    title: "Personalize Cheeko",
+    stepNumber: "3",
+    title: "Verify Code",
     description:
-      "Enter your child’s name so Cheeko knows who it’s talking to. That’s it! Your child can jump right into conversation and exploration!",
-    image: "/images/how-it-works-step3.png",
+      "Enter the voice code your Cheeko says out loud.",
   },
 ];
 
@@ -98,82 +94,93 @@ export function HowItWorks() {
             />
           </div>
 
-          <p className="text-center text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto font-switzer leading-relaxed mt-4">
+          <p className="text-center text-base sm:text-lg md:text-xl lg:text-xl text-gray-600 max-w-4xl mx-auto font-switzer leading-relaxed mt-4">
             Setting up Cheeko is as easy as 1-2-3!
           </p>
         </div>
 
-        {/* Steps Container with Decorative Elements */}
-        <div className="relative">
-          {/* Top left decorative element */}
-          <Image
-            src="/icons/how-it-works-bottomright.svg"
-            alt=""
-            width={96}
-            height={94}
-            className="absolute -left-4 sm:-left-6 md:-left-8 -top-8 sm:-top-10 md:-top-12 lg:-top-14 z-0 decorative-topleft w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20"
-          />
+        {/* Two Column Layout */}
+        <div className="flex flex-col lg:flex-row gap-6 items-center justify-center max-w-7xl mx-auto">
+          {/* Left Column - Image */}
+          <div 
+            ref={(el) => {
+              cardsRef.current[0] = el;
+            }}
+            className="card-animate-initial flex-shrink-0"
+            style={{
+              transitionDelay: `0ms`,
+            }}
+          >
+            <div className="relative w-[600px] h-[416px] rounded-xl overflow-hidden">
+              <Image
+                src="/images/how-it-works-image.png"
+                alt="How It Works"
+                width={600}
+                height={416}
+                className="object-cover"
+                quality={100}
+                priority
+              />
+            </div>
+          </div>
 
-          {/* Steps Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+          {/* Right Column - Cards and Button */}
+          <div className="space-y-4 w-full flex-1">
+            {/* Cards */}
             {steps.map((step, index) => (
               <div
                 key={index}
                 ref={(el) => {
-                  cardsRef.current[index] = el;
+                  cardsRef.current[index + 1] = el;
                 }}
-                className="card-animate-initial h-full"
+                className="card-animate-initial"
                 style={{
-                  transitionDelay: `${index * 350}ms`,
+                  transitionDelay: `${(index + 1) * 200}ms`,
                 }}
               >
-                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group h-full flex flex-col">
-                  {/* Image */}
-                  <div className="p-6 pb-0">
-                    <div className="relative h-[248px] overflow-hidden rounded-xl">
-                      <Image
-                        src={step.image}
-                        alt={step.title}
-                        width={720}
-                        height={496}
-                        quality={100}
-                        priority={index === 0}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      />
-                    </div>
+                <div className="flex items-center gap-6 h-[104px] w-full bg-white rounded-lg p-6">
+                  {/* Number Square */}
+                  <div className="flex-shrink-0 w-16 h-16 bg-orange-500/5 rounded-lg flex items-center justify-center">
+                    <span className="text-2xl font-bold text-orange-500">
+                      {step.stepNumber}
+                    </span>
                   </div>
 
-                  {/* Content */}
-                  <div className="p-6 space-y-3 flex-grow flex flex-col">
-                    {/* Step Chip */}
-                    <div className="inline-flex items-center px-4 py-2 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold self-start">
-                      {step.stepNumber}
-                    </div>
-
-                    {/* Title */}
-                    <h3 className="text-2xl font-bold font-sora text-gray-900">
+                  {/* Text Content */}
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold font-sora text-gray-900 mb-1">
                       {step.title}
                     </h3>
-
-                    {/* Description */}
-                    <p className="text-gray-600 font-switzer text-base leading-relaxed flex-grow">
+                    <p className="text-gray-600 font-switzer text-base leading-relaxed">
                       {step.description}
                     </p>
                   </div>
                 </div>
               </div>
             ))}
-          </div>
 
-          {/* Bottom right decorative element */}
-          <Image
-            src="/icons/how-it-works-topleft.svg"
-            alt=""
-            width={122}
-            height={123}
-            className="absolute -right-4 sm:-right-6 md:-right-8 lg:-right-10 -bottom-4 sm:-bottom-6 md:-bottom-8 lg:-bottom-10 z-0 decorative-bottomright w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20"
-          />
+            {/* Button */}
+            <div 
+              ref={(el) => {
+                cardsRef.current[4] = el;
+              }}
+              className="card-animate-initial pt-2"
+              style={{
+                transitionDelay: `800ms`,
+              }}
+            >
+              <Button
+                variant="primary"
+                className="w-[172px] h-12 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.href = "https://tools.cheekoai.in/";
+                }}
+              >
+                Open in Browser
+              </Button>
+            </div>
+          </div>
         </div>
       </Container>
 

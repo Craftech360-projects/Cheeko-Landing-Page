@@ -68,16 +68,22 @@ export function VideoSection() {
             <Button
               variant="primary"
               size="lg"
-              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold shadow-xl transform transition-all duration-300 hover:scale-105 px-6 sm:px-8 py-4 text-base sm:text-lg whitespace-nowrap"
+              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold shadow-xl transform transition-all duration-300 hover:scale-105 px-10 sm:px-12 lg:px-20 xl:px-24 py-4 text-base sm:text-lg whitespace-nowrap min-w-[200px] sm:min-w-[250px] lg:min-w-[300px] xl:min-w-[350px]"
               onClick={(e) => {
                 e.preventDefault();
-                window.open(
-                  "https://cheekoai.myshopify.com/products/cheeko-ai-toy",
-                  "_blank"
-                );
+                window.location.href = "https://cheekoai.myshopify.com/products/cheeko-ai-toy";
               }}
             >
-              Buy Now{!loading && price > 0 ? ` At ${currencySymbol}${price.toFixed(0)}` : ""}
+              Buy Now
+              {!loading && price > 0 && (
+                <>
+                  {" "}At
+                  <span className="line-through text-white font-semibold text-base sm:text-lg mx-0">
+                  {currencySymbol}7999
+                  </span>
+                  <span className="font-bold text-base sm:text-lg">{currencySymbol}{price.toFixed(0)}</span>
+                </>
+              )}
             </Button>
           </div>
         </div>

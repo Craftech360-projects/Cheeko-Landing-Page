@@ -100,16 +100,7 @@ export function Newsletter() {
                   width="60"
                   height="60"
                 >
-                  {/* Large rhombus */}
-                  <path
-                    d="M30,10 L50,30 L30,50 L10,30 Z"
-                    fill="none"
-                    stroke="white"
-                    strokeWidth="1"
-                    opacity="0.2"
-                  />
-
-                  {/* Small rhombus inside */}
+                  {/* Small rhombus only */}
                   <path
                     d="M30,20 L40,30 L30,40 L20,30 Z"
                     fill="white"
@@ -150,16 +141,7 @@ export function Newsletter() {
                   width="80"
                   height="80"
                 >
-                  {/* Diamond outline */}
-                  <path
-                    d="M40,10 L70,40 L40,70 L10,40 Z"
-                    fill="none"
-                    stroke="white"
-                    strokeWidth="0.8"
-                    opacity="0.18"
-                  />
-
-                  {/* Inner diamond */}
+                  {/* Inner diamond only (removed large outline) */}
                   <path
                     d="M40,20 L60,40 L40,60 L20,40 Z"
                     fill="white"
@@ -223,11 +205,11 @@ export function Newsletter() {
           <div className="relative z-10 py-6 sm:py-8 lg:py-12">
             <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 w-full px-4 sm:px-6 lg:px-12">
               {/* Left Content */}
-              <div className="flex flex-col justify-center space-y-4 sm:space-y-6">
+              <div className="flex flex-col justify-center space-y-2 sm:space-y-2">
                 <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-sora font-bold text-white leading-tight">
                   Join the Cheeko Club
                 </h2>
-                <p className="text-sm sm:text-lg md:text-xl lg:text-2xl font-switzer text-white/90 max-w-full lg:max-w-md leading-relaxed">
+                <p className="text-sm sm:text-lg md:text-xl lg:text-xl font-switzer text-white/90 max-w-full lg:max-w-md leading-relaxed">
                   Get exclusive updates, early access to new features, and
                   special offers delivered straight to your inbox.
                 </p>
