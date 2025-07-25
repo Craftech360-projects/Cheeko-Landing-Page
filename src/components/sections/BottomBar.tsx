@@ -47,17 +47,18 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
                   )}
                   {!loading && price > 0 && (
                     <div className="flex items-center gap-1 text-xs sm:text-base text-gray-700">
-                      <span className="line-through font-medium text-xs sm:text-base">
-                        {currencySymbol}{originalPrice.toLocaleString()}
-                      </span>
                       <img
                         src="/icons/discount-icon.svg"
                         alt="Discount"
                         className="w-4 h-4 sm:w-5 sm:h-5"
                       />
-                      <span className="text-[#4CAF50] text-[10px] sm:text-sm font-semibold">
-                        {discountPercentage}% Off
+                      <span className="text-[#4CAF50] text-[10px] sm:text-sm font-semibold mr-1">
+                        {discountPercentage}% 
                       </span>
+                      <span className="line-through font-medium text-xs sm:text-base">
+                        {currencySymbol}{originalPrice.toLocaleString()}
+                      </span>
+                      
                     </div>
                   )}
                 </div>
@@ -67,8 +68,8 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
               <div className="hidden sm:flex flex-1 items-center text-center px-2 sm:px-4">
                 <p className="text-sm sm:text-lg font-semibold text-gray-900 leading-tight">
                   {!loading && price > 0 
-                    ? `Limited Time Offer! Save ${discountPercentage}% on Cheeko – Hurry, Sale Ends Soon!`
-                    : "Limited Time Offer! Get Cheeko – Hurry, Sale Ends Soon!"}
+                    ? `Early Bird Offer! Save ${discountPercentage}% on Cheeko – Sale Ends Soon!`
+                    : "Early Bird Offer! Get Cheeko Now – Sale Ends Soon!"}
                 </p>
               </div>
 
@@ -76,8 +77,8 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
               <div className="flex sm:hidden items-center gap-2 flex-1">
                 <p className="text-xs font-semibold text-gray-900 leading-tight flex-1">
                   {!loading && price > 0 
-                    ? `Save ${discountPercentage}% – Limited Time!`
-                    : "Limited Time Offer!"}
+                    ? `Save ${discountPercentage}% Now!`
+                    : "Early Bird Offer!"}
                 </p>
                 <button
                   onClick={() => {

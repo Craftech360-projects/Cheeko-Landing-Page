@@ -265,6 +265,50 @@ body {
   }
 }
 
+/* Consistent section padding */
+.section-padding {
+  padding-top: 3rem; /* 48px */
+  padding-bottom: 3rem; /* 48px */
+  padding-left: 1rem; /* 16px */
+  padding-right: 1rem; /* 16px */
+}
+
+@media (min-width: 640px) {
+  .section-padding {
+    padding-top: 4rem; /* 64px */
+    padding-bottom: 4rem; /* 64px */
+    padding-left: 1.5rem; /* 24px */
+    padding-right: 1.5rem; /* 24px */
+  }
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 5rem; /* 80px */
+    padding-bottom: 5rem; /* 80px */
+    padding-left: 2rem; /* 32px */
+    padding-right: 2rem; /* 32px */
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 7rem; /* 112px - increased from 96px */
+    padding-bottom: 7rem; /* 112px - increased from 96px */
+    padding-left: 3rem; /* 48px - increased from 32px */
+    padding-right: 3rem; /* 48px - increased from 32px */
+  }
+}
+
+@media (min-width: 1280px) {
+  .section-padding {
+    padding-top: 2rem; /* 128px */
+    padding-bottom: 8rem; /* 128px */
+    padding-left: 4rem; /* 64px */
+    padding-right: 4rem; /* 64px */
+  }
+}
+
 /* Responsive text sizing */
 .text-responsive-sm {
   font-size: 0.875rem;

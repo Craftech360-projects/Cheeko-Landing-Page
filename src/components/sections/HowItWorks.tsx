@@ -15,18 +15,18 @@ const steps: Step[] = [
     stepNumber: "1",
     title: "Sign In",
     description:
-      "Use your Google account to log in securely.",
+      "Click on “Sign in with Google” to sign-in to your account.",
   },
   {
     stepNumber: "2",
     title: "Add Toy",
-    description: "To add the toy follow the steps to get the verification code",
+    description: "Click on “Add Toy” and follow the instructions to get a voice code.",
   },
   {
     stepNumber: "3",
     title: "Verify Code",
     description:
-      "Enter the voice code your Cheeko says out loud.",
+      "Cheeko will say a code. Enter it to complete the setup.",
   },
 ];
 
@@ -68,7 +68,7 @@ export function HowItWorks() {
     <section
       id="how-it-works"
       ref={sectionRef}
-      className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden opacity-0"
+      className="relative section-padding overflow-hidden opacity-0"
     >
       <Container>
         {/* Header */}
@@ -111,13 +111,13 @@ export function HowItWorks() {
               transitionDelay: `0ms`,
             }}
           >
-            <div className="relative w-[600px] h-[416px] rounded-xl overflow-hidden">
+            <div className="relative w-full lg:w-[600px] rounded-xl overflow-hidden">
               <Image
                 src="/images/how-it-works-image.png"
                 alt="How It Works"
                 width={600}
                 height={416}
-                className="object-cover"
+                className="w-full h-auto object-cover"
                 quality={100}
                 priority
               />
@@ -138,7 +138,7 @@ export function HowItWorks() {
                   transitionDelay: `${(index + 1) * 200}ms`,
                 }}
               >
-                <div className="flex items-center gap-6 h-[104px] w-full bg-white rounded-lg p-6">
+                <div className="flex items-center gap-4 min-h-[104px] w-full bg-white rounded-lg p-3">
                   {/* Number Square */}
                   <div className="flex-shrink-0 w-16 h-16 bg-orange-500/5 rounded-lg flex items-center justify-center">
                     <span className="text-2xl font-bold text-orange-500">
@@ -148,10 +148,10 @@ export function HowItWorks() {
 
                   {/* Text Content */}
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold font-sora text-gray-900 mb-1">
+                    <h3 className="text-md sm:text-xl font-bold font-sora text-gray-900 mb-1">
                       {step.title}
                     </h3>
-                    <p className="text-gray-600 font-switzer text-base leading-relaxed">
+                    <p className="text-gray-600 font-switzer font-medium text-sm sm:text-base leading-tight">
                       {step.description}
                     </p>
                   </div>
@@ -164,7 +164,7 @@ export function HowItWorks() {
               ref={(el) => {
                 cardsRef.current[4] = el;
               }}
-              className="card-animate-initial pt-2"
+              className="card-animate-initial pt-0"
               style={{
                 transitionDelay: `800ms`,
               }}

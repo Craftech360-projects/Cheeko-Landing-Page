@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button, Container } from "@/components/ui";
 import { cn } from "@/utils/cn";
 import { useShopify } from "@/hooks/useShopify";
+import { trackEvent } from "@/components/GoogleAnalytics";
 
 interface NavigationItem {
   label: string;
@@ -152,6 +153,7 @@ const Header: React.FC<HeaderProps> = ({ isVisible = true }) => {
                     size="sm"
                     onClick={(e) => {
                       e.preventDefault();
+                      trackEvent('click', 'navigation', 'sign_in_header');
                       window.open("https://tools.cheekoai.in/", "_blank");
                     }}
                   >
@@ -159,8 +161,9 @@ const Header: React.FC<HeaderProps> = ({ isVisible = true }) => {
                   </Button>
                 </motion.div>
 
-                {/* Buy Now Button */}
+                {/* Buy Now Button - Hidden on mobile */}
                 <motion.div
+                  className="hidden sm:block"
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
@@ -175,16 +178,14 @@ const Header: React.FC<HeaderProps> = ({ isVisible = true }) => {
                     size="sm"
                     onClick={(e) => {
                       e.preventDefault();
+                      trackEvent('click', 'conversion', 'buy_now_header', price);
                       window.location.href = "https://cheekoai.myshopify.com/products/cheeko-ai-toy";
                     }}
                   >
-                    <span className="hidden sm:inline">
-                      Buy Now
-                      {!loading && price > 0
-                        ? ` At ${currencySymbol}${price.toFixed(0)}`
-                        : ""}
-                    </span>
-                    <span className="sm:hidden">Buy Now</span>
+                    Buy Now
+                    {!loading && price > 0
+                      ? ` At ${currencySymbol}${price.toFixed(0)}`
+                      : ""}
                   </Button>
                 </motion.div>
               </div>

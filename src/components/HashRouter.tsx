@@ -38,14 +38,14 @@ export function HashRouter({ children }: HashRouterProps) {
       <>
         <div className="min-h-screen">
           <PrivacyPolicy />
-          <div className="text-center py-8">
+          {/* <div className="text-center py-8">
             <a
               href="#"
               className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors duration-200 font-medium"
             >
               ← Back to Home
             </a>
-          </div>
+          </div> */}
         </div>
       </>
     );

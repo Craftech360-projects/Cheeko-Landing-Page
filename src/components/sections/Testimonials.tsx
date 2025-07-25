@@ -72,7 +72,7 @@ export function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden"
+      className="relative section-padding overflow-hidden"
     >
       <Container>
         {/* Header Section */}

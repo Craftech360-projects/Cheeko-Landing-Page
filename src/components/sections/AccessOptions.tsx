@@ -30,7 +30,7 @@ export function AccessOptions() {
   }, []);
 
   return (
-    <section id="access-options" className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden">
+    <section id="access-options" className="relative section-padding overflow-hidden">
       <Container>
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Download Mobile App */}

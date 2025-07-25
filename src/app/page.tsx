@@ -20,6 +20,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { ParentalDashboard } from "@/components/sections/ParentalDashboard";
 import { HashRouter } from "@/components/HashRouter";
 import { SplashScreen } from "@/components/SplashScreen";
+import { Popup } from "@/components/sections/Popup";
 
 export default function Home() {
   const { isHeaderVisible, isBottomBarVisible } = useScrollBehavior();
@@ -85,6 +86,9 @@ export default function Home() {
         
         {/* Bottom Bar */}
         <BottomBar isVisible={isBottomBarVisible} />
+        
+        {/* Popup */}
+        <Popup />
       </div>
     </HashRouter>
     </>

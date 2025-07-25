@@ -69,19 +69,19 @@ const PromoBanner: React.FC = () => {
         animate={{ height: "80px", opacity: 1 }}
         exit={{ height: 0, opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="bg-orange-600 text-white relative overflow-hidden fixed top-0 left-0 right-0 z-50 h-[100px]"
+        className="bg-orange-600 text-white relative overflow-hidden fixed top-0 left-0 right-0 z-50 h-auto min-h-[70px] py-2 md:py-0 md:h-[80px]"
       >
         <div className="absolute inset-0 bg-orange-600" />
 
         <div className="relative z-10 h-full flex flex-col items-center justify-center px-4">
           <div className="text-center">
-            <div className="flex flex-col lg:flex-row items-center justify-center space-y-2 lg:space-y-0 lg:space-x-4">
+            <div className="flex flex-col lg:flex-row items-center justify-center space-y-0 lg:space-y-0 lg:space-x-4">
               <div className="flex items-center space-x-2">
                 {/* <span className="text-lg sm:text-xl">🎉</span> */}
-                <span className="font-semibold text-lg sm:text-xl">
+                <span className="font-semibold text-base sm:text-2xl">
                   Super Sale Ends In:
                 </span>
-                <div className="font-mono font-semibold text-lg sm:text-2xl">
+                <div className="font-mono font-semibold text-base sm:text-2xl">
                   {formatTime(timeLeft.days)}:{formatTime(timeLeft.hours)}:
                   {formatTime(timeLeft.minutes)}:{formatTime(timeLeft.seconds)}
                 </div>
@@ -89,20 +89,20 @@ const PromoBanner: React.FC = () => {
 
               <div className="hidden lg:block text-white text-xl">|</div>
 
-              <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-2">
-                <span className="font-semibold text-lg sm:text-xl">
+              <div className="flex items-center space-x-2">
+                <span className="font-semibold text-base sm:text-2xl">
                   Get Cheeko For
                 </span>
                 <div className="inline-block">
                   {!loading && price > 0 ? (
                     <>
-                      <span className="line-through text-white font-normal text-lg sm:text-xl mr-2">
+                      <span className="line-through text-white font-normal text-base sm:text-lg mr-2">
                         {currencySymbol}7999
                       </span>
-                      <span className="text-lg sm:text-xl font-bold">{currencySymbol}{price.toFixed(0)}</span>
+                      <span className="text-base sm:text-2xl font-bold">{currencySymbol}{price.toFixed(0)}</span>
                     </>
                   ) : (
-                    <span className="text-lg sm:text-xl font-semibold">Great Price!</span>
+                    <span className="text-base sm:text-xl font-semibold">Great Price!</span>
                   )}
                 </div>
                 {/* <div className="hidden xl:block text-white">|</div>

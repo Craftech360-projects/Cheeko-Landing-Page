@@ -41,7 +41,7 @@ export function VideoSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative pt-6 pb-12 sm:py-4 md:py-6 lg:py-8 overflow-visible opacity-0"
+      className="relative section-padding overflow-visible opacity-0"
     >
       <Container>
         <div className="relative">
@@ -68,20 +68,25 @@ export function VideoSection() {
             <Button
               variant="primary"
               size="lg"
-              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold shadow-xl transform transition-all duration-300 hover:scale-105 px-10 sm:px-12 lg:px-20 xl:px-24 py-4 text-base sm:text-lg whitespace-nowrap min-w-[200px] sm:min-w-[250px] lg:min-w-[300px] xl:min-w-[350px]"
+              className="bg-orange-500 hover:bg-orange-600 text-white font-bold shadow-xl transform transition-all duration-300 hover:scale-105 px-10 sm:px-12 lg:px-20 xl:px-24 py-4 text-base sm:text-lg whitespace-nowrap min-w-[200px] sm:min-w-[250px] lg:min-w-[300px] xl:min-w-[350px]"
               onClick={(e) => {
                 e.preventDefault();
-                window.location.href = "https://cheekoai.myshopify.com/products/cheeko-ai-toy";
+                window.location.href =
+                  "https://cheekoai.myshopify.com/products/cheeko-ai-toy";
               }}
             >
               Buy Now
               {!loading && price > 0 && (
                 <>
-                  {" "}At
+                  {" "}
+                  At
                   <span className="line-through text-white font-semibold text-base sm:text-lg mx-0">
-                  {currencySymbol}7999
+                    {currencySymbol}7999
                   </span>
-                  <span className="font-bold text-base sm:text-lg">{currencySymbol}{price.toFixed(0)}</span>
+                  <span className="font-bold text-base sm:text-lg">
+                    {currencySymbol}
+                    {price.toFixed(0)}
+                  </span>
                 </>
               )}
             </Button>

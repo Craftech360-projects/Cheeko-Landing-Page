@@ -69,7 +69,7 @@ export function Safety() {
     <section
       id="safety"
       ref={sectionRef}
-      className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden opacity-0"
+      className="relative section-padding overflow-hidden opacity-0"
     >
       <Container>
         {/* Header */}
@@ -108,7 +108,7 @@ export function Safety() {
             alt=""
             width={96}
             height={94}
-            className="absolute -right-4 sm:-right-6 md:-right-8 -top-8 sm:-top-10 md:-top-12 lg:-top-14 z-0 decorative-topright w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20"
+            className="absolute -right-6 sm:-right-8 md:-right-10 lg:-right-12 -top-6 sm:-top-8 md:-top-10 lg:-top-12 z-0 decorative-topright w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
           />
 
           {/* White Container with Three Sections */}
@@ -172,7 +172,7 @@ export function Safety() {
             alt=""
             width={122}
             height={123}
-            className="absolute -left-4 sm:-left-6 md:-left-8 lg:-left-10 -bottom-4 sm:-bottom-6 md:-bottom-8 lg:-bottom-10 z-0 decorative-bottomleft w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20"
+            className="absolute -left-6 sm:-left-8 md:-left-10 lg:-left-12 -bottom-6 sm:-bottom-8 md:-bottom-10 lg:-bottom-12 z-0 decorative-bottomleft w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
           />
         </div>
       </Container>

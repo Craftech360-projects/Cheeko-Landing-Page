@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui";
+import { trackEvent } from "@/components/GoogleAnalytics";
 
 export function Newsletter() {
   const [email, setEmail] = useState("");
@@ -69,9 +70,11 @@ export function Newsletter() {
       const data = await response.json();
 
       if (response.ok) {
+        trackEvent('form_submit', 'newsletter', 'newsletter_subscription_success');
         setMessage({ type: 'success', text: data.message });
         setEmail(''); // Clear the email input
       } else {
+        trackEvent('form_submit', 'newsletter', 'newsletter_subscription_error');
         setMessage({ type: 'error', text: data.error || 'Subscription failed. Please try again.' });
       }
     } catch {
@@ -85,121 +88,57 @@ export function Newsletter() {
     <section
       id="newsletter"
       ref={sectionRef}
-      className="relative py-12 sm:py-16 md:py-20 lg:py-24 opacity-0 transition-opacity duration-700"
+      className="relative section-padding opacity-0 transition-opacity duration-700"
     >
       <Container>
         <div className="relative bg-gradient-to-r from-orange-500 to-orange-500 rounded-3xl overflow-hidden">
-          {/* Rhombus Pattern */}
+          {/* Simplified Pattern */}
           <div className="absolute inset-0">
             <svg width="100%" height="100%" className="absolute inset-0">
               <defs>
-                {/* Rhombus pattern */}
+                {/* Simple dot pattern */}
                 <pattern
-                  id="rhombusPattern"
-                  patternUnits="userSpaceOnUse"
-                  width="60"
-                  height="60"
-                >
-                  {/* Small rhombus only */}
-                  <path
-                    d="M30,20 L40,30 L30,40 L20,30 Z"
-                    fill="white"
-                    opacity="0.1"
-                  />
-
-                  {/* Corner dots */}
-                  <circle cx="10" cy="10" r="1" fill="white" opacity="0.15" />
-                  <circle cx="50" cy="10" r="1" fill="white" opacity="0.15" />
-                  <circle cx="10" cy="50" r="1" fill="white" opacity="0.15" />
-                  <circle cx="50" cy="50" r="1" fill="white" opacity="0.15" />
-                </pattern>
-
-                {/* Smaller rhombus pattern */}
-                <pattern
-                  id="smallRhombusPattern"
+                  id="dotPattern"
                   patternUnits="userSpaceOnUse"
                   width="40"
                   height="40"
                 >
-                  {/* Small rhombus */}
-                  <path
-                    d="M20,5 L35,20 L20,35 L5,20 Z"
-                    fill="none"
-                    stroke="white"
-                    strokeWidth="0.5"
-                    opacity="0.15"
-                  />
-
-                  {/* Center dot */}
-                  <circle cx="20" cy="20" r="1.5" fill="white" opacity="0.15" />
+                  <circle cx="20" cy="20" r="1.5" fill="white" opacity="0.1" />
                 </pattern>
 
-                {/* Diamond grid pattern */}
+                {/* Small rhombus pattern */}
                 <pattern
-                  id="diamondPattern"
+                  id="smallRhombusPattern"
                   patternUnits="userSpaceOnUse"
-                  width="80"
-                  height="80"
+                  width="60"
+                  height="60"
                 >
-                  {/* Inner diamond only (removed large outline) */}
                   <path
-                    d="M40,20 L60,40 L40,60 L20,40 Z"
+                    d="M30,25 L35,30 L30,35 L25,30 Z"
                     fill="white"
                     opacity="0.08"
-                  />
-
-                  {/* Cross lines */}
-                  <line
-                    x1="40"
-                    y1="10"
-                    x2="40"
-                    y2="70"
-                    stroke="white"
-                    strokeWidth="0.3"
-                    opacity="0.12"
-                  />
-                  <line
-                    x1="10"
-                    y1="40"
-                    x2="70"
-                    y2="40"
-                    stroke="white"
-                    strokeWidth="0.3"
-                    opacity="0.12"
                   />
                 </pattern>
               </defs>
 
-              {/* Apply rhombus patterns */}
+              {/* Apply patterns */}
               <rect
                 width="100%"
                 height="100%"
-                fill="url(#rhombusPattern)"
-                opacity="1"
+                fill="url(#dotPattern)"
               />
               <rect
                 width="100%"
                 height="100%"
                 fill="url(#smallRhombusPattern)"
-                opacity="0.8"
-                transform="translate(30, 30)"
-              />
-              <rect
-                width="100%"
-                height="100%"
-                fill="url(#diamondPattern)"
-                opacity="0.6"
-                transform="translate(-20, 10)"
+                transform="translate(20, 20)"
               />
             </svg>
 
-            {/* Additional standalone rhombus shapes */}
-            <div className="absolute top-12 left-20 w-8 h-8 bg-white/15 transform rotate-45"></div>
-            <div className="absolute top-24 right-32 w-6 h-6 bg-white/18 transform rotate-45"></div>
-            <div className="absolute bottom-16 left-40 w-10 h-10 bg-white/12 transform rotate-45"></div>
-            <div className="absolute bottom-28 right-24 w-7 h-7 bg-white/15 transform rotate-45"></div>
-            <div className="absolute top-1/2 left-1/4 w-5 h-5 bg-white/18 transform rotate-45"></div>
-            <div className="absolute top-2/3 right-1/3 w-4 h-4 bg-white/20 transform rotate-45"></div>
+            {/* Few subtle standalone shapes */}
+            <div className="absolute top-20 right-1/4 w-3 h-3 bg-white/10 transform rotate-45"></div>
+            <div className="absolute bottom-1/3 left-1/3 w-4 h-4 bg-white/8 transform rotate-45"></div>
+            <div className="absolute top-1/2 right-1/2 w-3 h-3 bg-white/10 transform rotate-45"></div>
           </div>
 
           <div className="relative z-10 py-6 sm:py-8 lg:py-12">
