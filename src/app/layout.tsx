@@ -3,7 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
+import GoogleTagManager, { GoogleTagManagerNoscript } from "@/components/GoogleTagManager";
+import { GATestButton } from "@/components/GATestButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -118,12 +119,16 @@ export default function RootLayout({
         className={`${switzer.variable} ${sora.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
         style={{ scrollBehavior: 'smooth' }}
       >
-        {process.env['NEXT_PUBLIC_GA_MEASUREMENT_ID'] && (
-          <GoogleAnalytics GA_MEASUREMENT_ID={process.env['NEXT_PUBLIC_GA_MEASUREMENT_ID']} />
+        {process.env['NEXT_PUBLIC_GTM_ID'] && (
+          <>
+            <GoogleTagManager GTM_ID={process.env['NEXT_PUBLIC_GTM_ID']} />
+            <GoogleTagManagerNoscript GTM_ID={process.env['NEXT_PUBLIC_GTM_ID']} />
+          </>
         )}
         <ErrorBoundary>
           {children}
         </ErrorBoundary>
+        <GATestButton />
       </body>
     </html>
   );

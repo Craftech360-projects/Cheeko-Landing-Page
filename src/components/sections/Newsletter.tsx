@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui";
 import { Snackbar } from "@/components/ui/Snackbar";
-import { trackEvent } from "@/components/GoogleAnalytics";
+import { trackEvent } from "@/components/GoogleTagManager";
 
 export function Newsletter() {
   const [email, setEmail] = useState("");
@@ -60,11 +60,18 @@ export function Newsletter() {
       const data = await response.json();
 
       if (response.ok) {
-        trackEvent('form_submit', 'newsletter', 'newsletter_subscription_success');
+        trackEvent('newsletter_subscribe', {
+          method: 'email',
+          success: true
+        });
         setMessage({ type: 'success', text: data.message });
         setEmail(''); // Clear the email input
       } else {
-        trackEvent('form_submit', 'newsletter', 'newsletter_subscription_error');
+        trackEvent('newsletter_subscribe', {
+          method: 'email',
+          success: false,
+          error_type: data.error || 'unknown'
+        });
         setMessage({ type: 'error', text: data.error || 'Subscription failed. Please try again.' });
       }
     } catch {

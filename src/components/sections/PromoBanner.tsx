@@ -79,7 +79,7 @@ const PromoBanner: React.FC = () => {
               <div className="flex items-center space-x-2">
                 {/* <span className="text-lg sm:text-xl">🎉</span> */}
                 <span className="font-semibold text-base sm:text-2xl">
-                  Super Sale Ends In:
+                  Early Bird Offer Ends In:
                 </span>
                 <div className="font-mono font-semibold text-base sm:text-2xl">
                   {formatTime(timeLeft.days)}:{formatTime(timeLeft.hours)}:
@@ -99,10 +99,15 @@ const PromoBanner: React.FC = () => {
                       <span className="line-through text-white font-normal text-base sm:text-xl mr-2">
                         {currencySymbol}7999
                       </span>
-                      <span className="text-base sm:text-2xl font-semibold">{currencySymbol}{price.toFixed(0)}</span>
+                      <span className="text-base sm:text-2xl font-semibold">
+                        {currencySymbol}
+                        {price.toFixed(0)}
+                      </span>
                     </>
                   ) : (
-                    <span className="text-base sm:text-xl font-semibold">Great Price!</span>
+                    <span className="text-base sm:text-xl font-semibold">
+                      Great Price!
+                    </span>
                   )}
                 </div>
                 {/* <div className="hidden xl:block text-white">|</div>

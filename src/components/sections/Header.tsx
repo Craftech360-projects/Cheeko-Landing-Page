@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button, Container } from "@/components/ui";
 import { cn } from "@/utils/cn";
 import { useShopify } from "@/hooks/useShopify";
-import { trackEvent } from "@/components/GoogleAnalytics";
+import { trackEvent } from "@/components/GoogleTagManager";
 
 interface NavigationItem {
   label: string;
@@ -153,7 +153,9 @@ const Header: React.FC<HeaderProps> = ({ isVisible = true }) => {
                     size="sm"
                     onClick={(e) => {
                       e.preventDefault();
-                      trackEvent('click', 'navigation', 'sign_in_header');
+                      trackEvent('sign_in_click', {
+                        location: 'header'
+                      });
                       window.open("https://tools.cheekoai.in/", "_blank");
                     }}
                   >
@@ -178,7 +180,12 @@ const Header: React.FC<HeaderProps> = ({ isVisible = true }) => {
                     size="sm"
                     onClick={(e) => {
                       e.preventDefault();
-                      trackEvent('click', 'conversion', 'buy_now_header', price);
+                      trackEvent('purchase_intent', {
+                        location: 'header',
+                        value: price,
+                        currency: currencySymbol || 'USD',
+                        item_name: 'Cheeko AI Toy'
+                      });
                       window.location.href = "https://cheekoai.myshopify.com/products/cheeko-ai-toy";
                     }}
                   >
