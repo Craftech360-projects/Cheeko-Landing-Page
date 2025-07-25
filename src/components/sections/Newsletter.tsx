@@ -59,20 +59,20 @@ export function Newsletter() {
 
       const data = await response.json();
 
-      if (response.ok) {
+      if (response.ok && !data.errors) {
         trackEvent('newsletter_subscribe', {
           method: 'email',
           success: true
         });
-        setMessage({ type: 'success', text: data.message });
-        setEmail(''); // Clear the email input
+        setMessage({ type: 'success', text: "Successfully subscribed to CheekoAI" });
+        setEmail('');
       } else {
         trackEvent('newsletter_subscribe', {
           method: 'email',
           success: false,
-          error_type: data.error || 'unknown'
+          error_type: data.errors ? data.errors[0].message : 'unknown'
         });
-        setMessage({ type: 'error', text: data.error || 'Subscription failed. Please try again.' });
+        setMessage({ type: 'error', text: data.errors ? data.errors[0].message : 'Subscription failed. Please try again.' });
       }
     } catch {
       setMessage({ type: 'error', text: 'Network error. Please check your connection and try again.' });
@@ -86,35 +86,35 @@ export function Newsletter() {
       <section
         id="newsletter"
         ref={sectionRef}
-        className="relative section-padding opacity-0 transition-opacity duration-700"
+        className="relative px-2 sm:px-6 md:px-8 lg:px-8 xl:px-16 py-8 sm:py-12 md:py-16 lg:py-4 xl:py-16 opacity-0 transition-opacity duration-700"
       >
         <Container>
-          <div className="relative bg-gradient-to-r from-orange-500 to-orange-500 rounded-3xl overflow-hidden">
+          <div className="relative bg-gradient-to-r from-orange-500 to-orange-500 rounded-xl overflow-hidden">
             {/* Simplified Pattern */}
-            <div className="absolute inset-0">
+            <div className="absolute inset-0 pointer-events-none">
               <svg width="100%" height="100%" className="absolute inset-0">
                 <defs>
                   {/* Simple dot pattern */}
                   <pattern
                     id="dotPattern"
                     patternUnits="userSpaceOnUse"
-                    width="40"
-                    height="40"
+                    width="20"
+                    height="20"
                   >
-                    <circle cx="20" cy="20" r="1.5" fill="white" opacity="0.1" />
+                    <circle cx="10" cy="10" r="1.5" fill="white" opacity="0.1" />
                   </pattern>
 
                   {/* Small rhombus pattern */}
                   <pattern
                     id="smallRhombusPattern"
                     patternUnits="userSpaceOnUse"
-                    width="60"
-                    height="60"
+                    width="20"
+                    height="20"
                   >
                     <path
                       d="M30,25 L35,30 L30,35 L25,30 Z"
                       fill="white"
-                      opacity="0.08"
+                      opacity="0.05"
                     />
                   </pattern>
                 </defs>
@@ -139,27 +139,27 @@ export function Newsletter() {
               <div className="absolute top-1/2 right-1/2 w-3 h-3 bg-white/10 transform rotate-45"></div>
             </div>
 
-            <div className="relative z-10 py-6 sm:py-8 lg:py-12">
-              <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 w-full px-4 sm:px-6 lg:px-12">
+            <div className="relative z-10 py-6 sm:py-8 md:py-10 lg:py-3 xl:py-10">
+              <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-2 xl:gap-8 w-full px-4 sm:px-6 lg:px-4 xl:px-12 items-center">
                 {/* Left Content */}
-                <div className="flex flex-col justify-center space-y-2 sm:space-y-2">
-                  <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-sora font-bold text-white leading-tight">
+                <div className="flex flex-col justify-center space-y-2 sm:space-y-3 lg:space-y-0.5 xl:space-y-3">
+                  <h2 className="text-lg sm:text-2xl md:text-4xl lg:text-xl xl:text-4xl font-sora font-bold text-white leading-tight">
                     Join the Cheeko Club
                   </h2>
-                  <p className="text-sm sm:text-lg md:text-xl lg:text-xl font-switzer text-white/90 max-w-full lg:max-w-md leading-relaxed">
+                  <p className="text-sm sm:text-lg md:text-xl lg:text-sm xl:text-xl font-switzer text-white/90 max-w-full lg:max-w-md leading-snug lg:leading-tight xl:leading-relaxed">
                     Get exclusive updates, early access to new features, and
                     special offers delivered straight to your inbox.
                   </p>
 
                   {/* Email Subscription Form */}
-                  <form onSubmit={handleSubmit} className="mt-6">
+                  <form onSubmit={handleSubmit} className="mt-4 lg:mt-1.5 xl:mt-4">
                     <div className="flex flex-col sm:flex-row bg-white font-medium rounded-md p-2 shadow-lg w-full max-w-md">
                       <input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter Email Address"
-                        className="flex-1 px-3 py-2 sm:px-4 sm:py-3 bg-transparent text-black placeholder-black focus:outline-none focus:ring-0 focus:border-none border-none font-switzer text-sm sm:text-base"
+                        className="flex-1 px-0 py-2 sm:px-4 sm:py-3 bg-transparent text-black placeholder-black focus:outline-none focus:ring-0 focus:border-none border-none font-switzer text-sm sm:text-base"
                         style={{
                           border: "none",
                           outline: "none",
@@ -185,7 +185,7 @@ export function Newsletter() {
                     alt="Join Cheeko Club"
                     width={541}
                     height={458}
-                    className="max-w-full h-auto"
+                    className="max-w-full h-auto lg:max-w-[280px] lg:max-h-[200px] xl:max-w-full xl:max-h-none object-contain"
                     onError={(e) => {
                       e.currentTarget.src = "/images/default-newsletter.jpg";
                     }}

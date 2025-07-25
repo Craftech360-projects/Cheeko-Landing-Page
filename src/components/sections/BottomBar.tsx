@@ -57,9 +57,9 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
                         <img
                           src="/icons/discount-icon.svg"
                           alt="Discount"
-                          className="w-8 h-8 sm:w-7 sm:h-7"
+                          className="w-4 h-4 sm:w-8 sm:h-8"
                         />
-                        <span className="text-[#4CAF50] text-[10px] sm:text-lg font-semibold mr-1">
+                        <span className="text-[#4CAF50] text-[12px] sm:text-lg font-semibold mr-1">
                           {discountPercentage}%
                         </span>
                       </div>
@@ -79,9 +79,9 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
 
               {/* Mobile: Text + Cart Button */}
               <div className="flex sm:hidden items-center gap-2 flex-1">
-                <p className="text-xs font-semibold text-gray-900 leading-tight flex-1">
+                <p className="text-sm font-semibold text-gray-900 leading-tight flex-1">
                   {!loading && price > 0
-                    ? `Save ${discountPercentage}% Now!`
+                    ? `Grab Now!`
                     : "Early Bird Offer!"}
                 </p>
                 <button

@@ -18,11 +18,49 @@ export const usePngSequence = ({
   autoPlay = true
 }: UsePngSequenceProps) => {
   const [currentFrame, setCurrentFrame] = useState(startFrame);
-  const [isPlaying, setIsPlaying] = useState(autoPlay);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const imageCache = useRef<Map<number, HTMLImageElement>>(new Map());
+
+  // Preload all images
+  useEffect(() => {
+    const preloadImages = async () => {
+      const loadPromises: Promise<void>[] = [];
+      
+      for (let i = startFrame; i <= endFrame; i++) {
+        const promise = new Promise<void>((resolve, reject) => {
+          const img = new Image();
+          img.onload = () => {
+            imageCache.current.set(i, img);
+            resolve();
+          };
+          img.onerror = () => {
+            console.error(`Failed to load image: ${basePath}/${i}.png`);
+            reject();
+          };
+          img.src = `${basePath}/${i}.png`;
+        });
+        loadPromises.push(promise);
+      }
+      
+      try {
+        await Promise.all(loadPromises);
+        setImagesLoaded(true);
+        if (autoPlay) {
+          setIsPlaying(true);
+        }
+      } catch (error) {
+        console.error('Failed to preload all images:', error);
+        setImagesLoaded(true); // Still allow playing with loaded images
+      }
+    };
+    
+    preloadImages();
+  }, [basePath, startFrame, endFrame, autoPlay]);
 
   useEffect(() => {
-    if (isPlaying) {
+    if (isPlaying && imagesLoaded) {
       const frameDuration = 1000 / fps;
       
       intervalRef.current = setInterval(() => {
@@ -50,9 +88,11 @@ export const usePngSequence = ({
         clearInterval(intervalRef.current);
       }
     };
-  }, [isPlaying, fps, startFrame, endFrame, loop]);
+  }, [isPlaying, imagesLoaded, fps, startFrame, endFrame, loop]);
 
-  const play = () => setIsPlaying(true);
+  const play = () => {
+    if (imagesLoaded) setIsPlaying(true);
+  };
   const pause = () => setIsPlaying(false);
   const reset = () => {
     setCurrentFrame(startFrame);
@@ -65,6 +105,7 @@ export const usePngSequence = ({
     currentFrame,
     imageSrc,
     isPlaying,
+    isLoading: !imagesLoaded,
     play,
     pause,
     reset

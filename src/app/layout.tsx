@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import GoogleTagManager, { GoogleTagManagerNoscript } from "@/components/GoogleTagManager";
-import { GATestButton } from "@/components/GATestButton";
+// import { GATestButton } from "@/components/GATestButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -128,7 +128,7 @@ export default function RootLayout({
         <ErrorBoundary>
           {children}
         </ErrorBoundary>
-        <GATestButton />
+        {/* <GATestButton /> */}
       </body>
     </html>
   );

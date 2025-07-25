@@ -4,20 +4,11 @@ import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { useShopify } from "@/hooks/useShopify";
-import { usePngSequence } from "@/hooks/usePngSequence";
 
 const Popup: React.FC = () => {
   const [isVisible, setIsVisible] = React.useState(false);
   const [hasTriggered, setHasTriggered] = React.useState(false);
   const { price, currencySymbol, loading } = useShopify();
-  const { imageSrc } = usePngSequence({
-    basePath: "/popup-animation-png-sequence",
-    startFrame: 1000,
-    endFrame: 1200,
-    fps: 60,
-    loop: true,
-    autoPlay: true
-  });
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -71,7 +62,7 @@ const Popup: React.FC = () => {
             <div className="flex flex-col md:flex-row h-full">
               <div className="hidden md:block md:h-full md:w-1/2 bg-orange-500 relative overflow-hidden">
                 <img
-                  src={imageSrc}
+                  src="/videos/popup_video.gif"
                   alt="Cheeko animation"
                   className="w-full h-full object-cover"
                 />

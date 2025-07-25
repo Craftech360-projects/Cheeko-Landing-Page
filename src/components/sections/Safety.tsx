@@ -114,7 +114,7 @@ export function Safety() {
           {/* White Container with Three Sections */}
           <div
             ref={containerRef}
-            className="bg-white rounded-3xl shadow-lg p-8 lg:p-12 relative z-10 opacity-0 container-animate"
+            className="bg-white rounded-3xl shadow-lg p-0 lg:p-12 relative z-10 opacity-0 container-animate"
           >
             <div className="grid grid-cols-1 lg:grid-cols-3 relative">
               {safetyFeatures.map((feature, index) => (

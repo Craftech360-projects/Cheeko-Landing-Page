@@ -14,7 +14,7 @@ interface TimeLeft {
 const PromoBanner: React.FC = () => {
   const { price, currencySymbol, loading } = useShopify();
   const [timeLeft, setTimeLeft] = React.useState<TimeLeft>({
-    days: 5,
+    days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0,
@@ -23,14 +23,9 @@ const PromoBanner: React.FC = () => {
   const [isExpired, setIsExpired] = React.useState(false);
 
   React.useEffect(() => {
-    const savedEndTime = localStorage.getItem("promo-end-time");
-    const endTime = savedEndTime
-      ? parseInt(savedEndTime)
-      : Date.now() + 5 * 24 * 60 * 60 * 1000;
-
-    if (!savedEndTime) {
-      localStorage.setItem("promo-end-time", endTime.toString());
-    }
+    // Set a fixed end date - adjust this date as needed
+    // Example: February 1, 2025 at 23:59:59 UTC
+    const endTime = new Date('2025-07-31T23:59:59Z').getTime();
 
     const timer = setInterval(() => {
       const now = Date.now();
