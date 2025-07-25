@@ -96,10 +96,10 @@ const PromoBanner: React.FC = () => {
                 <div className="inline-block">
                   {!loading && price > 0 ? (
                     <>
-                      <span className="line-through text-white font-normal text-base sm:text-lg mr-2">
+                      <span className="line-through text-white font-normal text-base sm:text-xl mr-2">
                         {currencySymbol}7999
                       </span>
-                      <span className="text-base sm:text-2xl font-bold">{currencySymbol}{price.toFixed(0)}</span>
+                      <span className="text-base sm:text-2xl font-semibold">{currencySymbol}{price.toFixed(0)}</span>
                     </>
                   ) : (
                     <span className="text-base sm:text-xl font-semibold">Great Price!</span>

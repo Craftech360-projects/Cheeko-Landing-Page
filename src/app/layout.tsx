@@ -93,7 +93,7 @@ export const metadata: Metadata = {
   verification: {
     google: "your-google-verification-code",
     other: {
-      me: ["mailto:contact@cheekoai.in"],
+      me: ["mailto:hr@altio.me"],
     },
   },
   category: "education",
@@ -118,8 +118,8 @@ export default function RootLayout({
         className={`${switzer.variable} ${sora.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
         style={{ scrollBehavior: 'smooth' }}
       >
-        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        {process.env['NEXT_PUBLIC_GA_MEASUREMENT_ID'] && (
+          <GoogleAnalytics GA_MEASUREMENT_ID={process.env['NEXT_PUBLIC_GA_MEASUREMENT_ID']} />
         )}
         <ErrorBoundary>
           {children}

@@ -13,7 +13,10 @@ interface BottomBarProps {
 const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
   const { price, currencySymbol, loading } = useShopify();
   const originalPrice = 7999;
-  const discountPercentage = price > 0 ? Math.round(((originalPrice - price) / originalPrice) * 100) : 50;
+  const discountPercentage =
+    price > 0
+      ? Math.round(((originalPrice - price) / originalPrice) * 100)
+      : 50;
   return (
     <AnimatePresence>
       {isVisible && (
@@ -39,27 +42,28 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
                     className="w-full h-full object-contain"
                   />
                 </div>
-                <div className="flex flex-col">
+                <div className="flex items-center gap-2">
                   {!loading && price > 0 && (
-                    <div className="text-lg sm:text-[28px] font-bold text-orange-500 leading-tight">
-                      {currencySymbol}{price.toFixed(0).toLocaleString()}
-                    </div>
-                  )}
-                  {!loading && price > 0 && (
-                    <div className="flex items-center gap-1 text-xs sm:text-base text-gray-700">
-                      <img
-                        src="/icons/discount-icon.svg"
-                        alt="Discount"
-                        className="w-4 h-4 sm:w-5 sm:h-5"
-                      />
-                      <span className="text-[#4CAF50] text-[10px] sm:text-sm font-semibold mr-1">
-                        {discountPercentage}% 
-                      </span>
-                      <span className="line-through font-medium text-xs sm:text-base">
-                        {currencySymbol}{originalPrice.toLocaleString()}
-                      </span>
-                      
-                    </div>
+                    <>
+                      <div className="text-lg sm:text-[32px] font-bold text-orange-500 leading-tight">
+                        {currencySymbol}
+                        {price.toFixed(0).toLocaleString()}
+                      </div>
+                      <div className="flex items-center gap-1 text-xs sm:text-base text-gray-700">
+                        <span className="line-through font-medium text-xs sm:text-lg">
+                          {currencySymbol}
+                          {originalPrice.toLocaleString()}
+                        </span>
+                        <img
+                          src="/icons/discount-icon.svg"
+                          alt="Discount"
+                          className="w-8 h-8 sm:w-7 sm:h-7"
+                        />
+                        <span className="text-[#4CAF50] text-[10px] sm:text-lg font-semibold mr-1">
+                          {discountPercentage}%
+                        </span>
+                      </div>
+                    </>
                   )}
                 </div>
               </div>
@@ -67,7 +71,7 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
               {/* Center - Text */}
               <div className="hidden sm:flex flex-1 items-center text-center px-2 sm:px-4">
                 <p className="text-sm sm:text-lg font-semibold text-gray-900 leading-tight">
-                  {!loading && price > 0 
+                  {!loading && price > 0
                     ? `Early Bird Offer! Save ${discountPercentage}% on Cheeko – Sale Ends Soon!`
                     : "Early Bird Offer! Get Cheeko Now – Sale Ends Soon!"}
                 </p>
@@ -76,13 +80,14 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
               {/* Mobile: Text + Cart Button */}
               <div className="flex sm:hidden items-center gap-2 flex-1">
                 <p className="text-xs font-semibold text-gray-900 leading-tight flex-1">
-                  {!loading && price > 0 
+                  {!loading && price > 0
                     ? `Save ${discountPercentage}% Now!`
                     : "Early Bird Offer!"}
                 </p>
                 <button
                   onClick={() => {
-                    window.location.href = "https://cheekoai.myshopify.com/products/cheeko-ai-toy";
+                    window.location.href =
+                      "https://cheekoai.myshopify.com/products/cheeko-ai-toy";
                   }}
                   className="bg-orange-500 hover:bg-orange-600 text-white p-2 rounded-full transition-colors duration-200 shadow-lg flex-shrink-0"
                 >
@@ -94,7 +99,8 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
               <div className="hidden sm:flex items-center flex-shrink-0">
                 <button
                   onClick={() => {
-                    window.location.href = "https://cheekoai.myshopify.com/products/cheeko-ai-toy";
+                    window.location.href =
+                      "https://cheekoai.myshopify.com/products/cheeko-ai-toy";
                   }}
                   className="bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-full transition-colors duration-200 shadow-lg"
                 >

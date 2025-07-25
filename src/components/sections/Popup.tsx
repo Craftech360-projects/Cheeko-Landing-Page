@@ -4,11 +4,20 @@ import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { useShopify } from "@/hooks/useShopify";
+import { usePngSequence } from "@/hooks/usePngSequence";
 
 const Popup: React.FC = () => {
   const [isVisible, setIsVisible] = React.useState(false);
   const [hasTriggered, setHasTriggered] = React.useState(false);
   const { price, currencySymbol, loading } = useShopify();
+  const { imageSrc } = usePngSequence({
+    basePath: "/popup-animation-png-sequence",
+    startFrame: 1000,
+    endFrame: 1200,
+    fps: 60,
+    loop: true,
+    autoPlay: true
+  });
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -62,7 +71,7 @@ const Popup: React.FC = () => {
             <div className="flex flex-col md:flex-row h-full">
               <div className="hidden md:block md:h-full md:w-1/2 bg-orange-500 relative overflow-hidden">
                 <img
-                  src="/videos/popup_video.gif"
+                  src={imageSrc}
                   alt="Cheeko animation"
                   className="w-full h-full object-cover"
                 />
@@ -73,16 +82,16 @@ const Popup: React.FC = () => {
                   <h2 className="text-3xl md:text-[38px] font-semibold text-orange-500 leading-tight">
                     MEET CHEEKO
                   </h2>
-                  <p className="text-md md:text-[18px] text-black mb-3 -mt-1">
+                  <p className="text-md md:text-[18px] text-black mb-4 -mt-1">
                     Your Child's AI Learning Buddy
                   </p>
                   
                   <button
-                    className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 md:px-6 py-2 md:py-3 rounded-md transition-colors duration-200"
+                    className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 md:px-6 py-2 md:py-1 rounded-md transition-colors duration-200"
                     onClick={() => window.open("https://cheekoai.myshopify.com/products/cheeko-ai-toy", "_blank")}
                   >
                     {!loading && price > 0 
-                      ? <span className="text-[18px]">Buy Now At <span className="text-[24px]">{currencySymbol}{price.toFixed(0)}</span></span>
+                      ? <span className="text-xl">Buy Now At <span className="text-2xl">{currencySymbol}{price.toFixed(0)}</span></span>
                       : "Buy Now"
                     }
                   </button>

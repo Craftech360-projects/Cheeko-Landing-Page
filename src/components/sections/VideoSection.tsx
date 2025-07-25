@@ -68,7 +68,7 @@ export function VideoSection() {
             <Button
               variant="primary"
               size="lg"
-              className="bg-orange-500 hover:bg-orange-600 text-white font-bold shadow-xl transform transition-all duration-300 hover:scale-105 px-10 sm:px-12 lg:px-20 xl:px-24 py-4 text-base sm:text-lg whitespace-nowrap min-w-[200px] sm:min-w-[250px] lg:min-w-[300px] xl:min-w-[350px]"
+              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold shadow-xl transform transition-all duration-300 hover:scale-105 px-6 sm:px-8 sm:py-4 lg:px-16 xl:px-20 -py-4 sm:text-2xl whitespace-nowrap min-w-[200px] sm:min-w-[250px] lg:min-w-[300px] xl:min-w-[350px]"
               onClick={(e) => {
                 e.preventDefault();
                 window.location.href =
@@ -80,10 +80,10 @@ export function VideoSection() {
                 <>
                   {" "}
                   At
-                  <span className="line-through text-white font-semibold text-base sm:text-lg mx-0">
+                  <span className="line-through text-white font-medium text-base sm:text-xl mx-0">
                     {currencySymbol}7999
                   </span>
-                  <span className="font-bold text-base sm:text-lg">
+                  <span className="font-semibold text-base sm:text-2xl">
                     {currencySymbol}
                     {price.toFixed(0)}
                   </span>

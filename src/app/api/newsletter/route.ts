@@ -1,95 +1,68 @@
-import { NextResponse } from 'next/server'
-import { supabase } from '@/lib/supabase'
+import { NextResponse } from 'next/server';
+
+const SHOPIFY_DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_DOMAIN;
+const SHOPIFY_ADMIN_ACCESS_TOKEN = process.env.NEXT_PUBLIC_SHOPIFY_ADMIN_ACCESS_TOKEN;
 
 export async function POST(request: Request) {
   try {
-    const { email } = await request.json()
-    
+    const { email } = await request.json();
+
     // Validate email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email || !emailRegex.test(email)) {
       return NextResponse.json(
         { error: 'Please enter a valid email address' },
         { status: 400 }
-      )
+      );
     }
 
-    // Get IP address and user agent from request
-    const ip_address = request.headers.get('x-forwarded-for') || 
-                      request.headers.get('x-real-ip') || 
-                      'unknown'
-    const user_agent = request.headers.get('user-agent') || 'unknown'
+    console.log('Attempting to subscribe email to Shopify:', email);
 
-    console.log('Attempting to subscribe email:', email)
+    const response = await fetch(`https://${SHOPIFY_DOMAIN}/admin/api/2023-10/customers.json`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Shopify-Access-Token': SHOPIFY_ADMIN_ACCESS_TOKEN!,
+      },
+      body: JSON.stringify({
+        customer: {
+          email: email,
+          email_marketing_consent: {
+            state: "subscribed",
+            opt_in_level: "single_opt_in",
+            consent_updated_at: new Date().toISOString(),
+          },
+          tags: "newsletter, cheeko-landing-page"
+        },
+      }),
+    });
 
-    // Check if email already exists
-    const { data: existingSubscriber, error: searchError } = await supabase
-      .from('newsletter_subscriptions')
-      .select('email, subscribed_at')
-      .eq('email', email)
-      .single()
+    const data = await response.json();
 
-    if (searchError && searchError.code !== 'PGRST116') {
-      // PGRST116 means no rows found, which is expected for new subscribers
-      console.error('Error checking existing subscriber:', searchError)
-      return NextResponse.json(
-        { error: 'Failed to process subscription. Please try again.' },
-        { status: 500 }
-      )
-    }
-
-    if (existingSubscriber) {
-      console.log('Email already subscribed:', email)
-      return NextResponse.json({ 
-        success: true,
-        message: 'Thank you for subscribing to Cheeko AI! You will receive exclusive updates, early access to new features, and special offers delivered straight to your inbox.'
-      })
-    }
-
-    // Insert new subscriber
-    const { data, error: insertError } = await supabase
-      .from('newsletter_subscriptions')
-      .insert([
-        {
-          email,
-          source: 'cheeko-landing-page',
-          tags: ['newsletter'],
-          ip_address,
-          user_agent
-        }
-      ])
-      .select()
-      .single()
-
-    if (insertError) {
-      console.error('Error inserting subscriber:', insertError)
-      
-      // Check if it's a unique constraint error (email already exists)
-      if (insertError.code === '23505') {
-        return NextResponse.json({ 
-          success: true,
-          message: 'Thank you for subscribing to Cheeko AI! You will receive exclusive updates, early access to new features, and special offers delivered straight to your inbox.'
-        })
+    if (response.ok) {
+      console.log('Successfully subscribed to Shopify:', data);
+      return NextResponse.json({
+        message: 'Thank you for subscribing to Cheeko AI! You will receive exclusive updates, early access to new features, and special offers delivered straight to your inbox.',
+      });
+    } else {
+      // Check if the error is because the customer already exists
+      if (data.errors && data.errors.email && data.errors.email[0] === 'has already been taken') {
+        console.log('Email already subscribed to Shopify:', email);
+        return NextResponse.json({
+          message: 'Thank you for subscribing to Cheeko AI! You are already on our list.',
+        });
       }
-      
+      console.error('Shopify API Error:', data);
       return NextResponse.json(
-        { error: 'Failed to save subscription. Please try again.' },
-        { status: 500 }
-      )
+        { error: 'Subscription failed. Please try again.' },
+        { status: response.status }
+      );
     }
-
-    console.log('Successfully subscribed:', data)
-
-    return NextResponse.json({ 
-      success: true,
-      message: 'Thank you for subscribing to Cheeko AI! You will receive exclusive updates, early access to new features, and special offers delivered straight to your inbox.'
-    })
-
   } catch (error) {
-    console.error('Newsletter subscription error:', error)
+    console.error('Newsletter subscription error:', error);
     return NextResponse.json(
       { error: 'An unexpected error occurred. Please try again.' },
       { status: 500 }
-    )
+    );
   }
 }
