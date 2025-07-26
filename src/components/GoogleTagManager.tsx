@@ -22,8 +22,8 @@ export default function GoogleTagManager({ GTM_ID }: GoogleTagManagerProps) {
     // Verify GTM is loaded after a delay
     const verifyGTM = setTimeout(() => {
       if (typeof window !== 'undefined' && window.dataLayer) {
-        console.log('[GTM] Successfully initialized with ID:', GTM_ID);
-        console.log('[GTM] DataLayer:', window.dataLayer);
+        // console.log('[GTM] Successfully initialized with ID:', GTM_ID);
+        // console.log('[GTM] DataLayer:', window.dataLayer);
         
         // Push a test event in development
         if (process.env.NODE_ENV === 'development') {
@@ -79,7 +79,7 @@ export const pushToDataLayer = (data: Record<string, any>) => {
   if (typeof window !== 'undefined' && window.dataLayer) {
     // Debug mode - log events to console
     if (process.env.NODE_ENV === 'development') {
-      console.log('[GTM DataLayer Push]', data);
+      // console.log('[GTM DataLayer Push]', data);
     }
     
     window.dataLayer.push(data);

@@ -43,8 +43,8 @@ export default function GoogleAnalytics({ GA_MEASUREMENT_ID }: GoogleAnalyticsPr
     // Verify GA is loaded after a delay
     const verifyGA = setTimeout(() => {
       if (typeof window !== 'undefined') {
-        if (window.gtag) {
-          console.log('[GA4] Successfully initialized with ID:', GA_MEASUREMENT_ID);
+        if (typeof window.gtag === 'function') {
+          // console.log('[GA4] Successfully initialized with ID:', GA_MEASUREMENT_ID);
           // Send a test event in development
           if (process.env.NODE_ENV === 'development') {
             trackEvent('ga_initialized', {
@@ -66,7 +66,7 @@ export default function GoogleAnalytics({ GA_MEASUREMENT_ID }: GoogleAnalyticsPr
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
         onLoad={() => {
-          console.log('[GA4] Script loaded successfully');
+          // console.log('[GA4] Script loaded successfully');
         }}
         onError={() => {
           console.error('[GA4] Failed to load Google Analytics script');
@@ -103,7 +103,7 @@ export const trackEvent = (
   if (typeof window !== 'undefined' && window.gtag) {
     // Debug mode - log events to console
     if (process.env.NODE_ENV === 'development') {
-      console.log('[GA4 Event]', eventName, parameters);
+      // console.log('[GA4 Event]', eventName, parameters);
     }
     
     window.gtag('event', eventName, parameters);

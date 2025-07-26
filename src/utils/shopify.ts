@@ -42,7 +42,7 @@ export const fetchProductData = async (): Promise<ShopifyProductData | null> => 
     }
 
     const data = await response.json()
-    console.log('Product data from API:', data)
+    // console.log('Product data from API:', data)
     
     return data
   } catch (error) {

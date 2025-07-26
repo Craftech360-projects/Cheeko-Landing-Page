@@ -44,25 +44,25 @@ const CUSTOMER_CREATE_MUTATION = `
   }
 `;
 
-const CUSTOMER_UPDATE_CONSENT_MUTATION = `
-  mutation customerEmailMarketingConsentUpdate($input: CustomerEmailMarketingConsentUpdateInput!) {
-    customerEmailMarketingConsentUpdate(input: $input) {
-      userErrors {
-        field
-        message
-      }
-      customer {
-        id
-        email
-        emailMarketingConsent {
-          marketingState
-          marketingOptInLevel
-          consentUpdatedAt
-        }
-      }
-    }
-  }
-`;
+// const CUSTOMER_UPDATE_CONSENT_MUTATION = `
+//   mutation customerEmailMarketingConsentUpdate($input: CustomerEmailMarketingConsentUpdateInput!) {
+//     customerEmailMarketingConsentUpdate(input: $input) {
+//       userErrors {
+//         field
+//         message
+//       }
+//       customer {
+//         id
+//         email
+//         emailMarketingConsent {
+//           marketingState
+//           marketingOptInLevel
+//           consentUpdatedAt
+//         }
+//       }
+//     }
+//   }
+// `;
 
 // Cache location ID to avoid repeated queries
 let cachedLocationId: string | null = null;
@@ -134,7 +134,7 @@ export async function POST(request: Request) {
       );
     }
 
-    console.log("Attempting to subscribe email to Shopify:", email);
+    // console.log("Attempting to subscribe email to Shopify:", email);
 
     // Ensure we're using the correct domain format
     const shopifyDomain = SHOPIFY_DOMAIN?.includes(".myshopify.com")
@@ -142,16 +142,16 @@ export async function POST(request: Request) {
       : `${SHOPIFY_DOMAIN}.myshopify.com`;
 
     const graphqlEndpoint = `https://${shopifyDomain}/admin/api/${SHOPIFY_API_VERSION}/graphql.json`;
-    console.log("GraphQL Endpoint:", graphqlEndpoint);
-    console.log("Access Token present:", !!SHOPIFY_ADMIN_ACCESS_TOKEN);
-    console.log(
-      "Access Token first 10 chars:",
-      SHOPIFY_ADMIN_ACCESS_TOKEN?.substring(0, 10)
-    );
+    // console.log("GraphQL Endpoint:", graphqlEndpoint);
+    // console.log("Access Token present:", !!SHOPIFY_ADMIN_ACCESS_TOKEN);
+    // console.log(
+    //   "Access Token first 10 chars:",
+    //   SHOPIFY_ADMIN_ACCESS_TOKEN?.substring(0, 10)
+    // );
     
     // Fetch store location ID
     const locationId = await getStoreLocationId(graphqlEndpoint, SHOPIFY_ADMIN_ACCESS_TOKEN!);
-    console.log("Using location ID:", locationId);
+    // console.log("Using location ID:", locationId);
 
     // Create customer with email marketing consent
     const response = await fetch(graphqlEndpoint, {
@@ -179,11 +179,11 @@ export async function POST(request: Request) {
     });
 
     const responseText = await response.text();
-    console.log("Response status:", response.status);
-    console.log(
-      "Response headers:",
-      Object.fromEntries(response.headers.entries())
-    );
+    // console.log("Response status:", response.status);
+    // console.log(
+    //   "Response headers:",
+    //   Object.fromEntries(response.headers.entries())
+    // );
 
     let data;
     try {
@@ -230,7 +230,7 @@ export async function POST(request: Request) {
       
       if (isPIIError && data.data?.customerCreate?.customer?.id) {
         // Customer was created successfully, just can't read back the email
-        console.log("Customer created successfully despite PII access restriction");
+        // console.log("Customer created successfully despite PII access restriction");
         return NextResponse.json({
           message:
             "Thank you for subscribing to Cheeko AI! You will receive exclusive updates, early access to new features, and special offers delivered straight to your inbox.",
@@ -258,7 +258,7 @@ export async function POST(request: Request) {
       );
 
       if (emailTakenError) {
-        console.log("Email already subscribed, returning success");
+        // console.log("Email already subscribed, returning success");
         return NextResponse.json({
           message:
             "Thank you for subscribing to Cheeko AI! You are already on our list.",
@@ -274,10 +274,10 @@ export async function POST(request: Request) {
 
     // Success - customer created
     if (data.data?.customerCreate?.customer) {
-      console.log(
-        "Successfully subscribed to Shopify:",
-        data.data.customerCreate.customer
-      );
+      // console.log(
+      //   "Successfully subscribed to Shopify:",
+      //   data.data.customerCreate.customer
+      // );
       return NextResponse.json({
         message:
           "Thank you for subscribing to Cheeko AI! You will receive exclusive updates, early access to new features, and special offers delivered straight to your inbox.",

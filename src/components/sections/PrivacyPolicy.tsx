@@ -288,7 +288,7 @@ export function PrivacyPolicy() {
               <strong>Email:</strong> hr@altio.me
             </li>
             <li>
-              <strong>Phone:</strong> +91 8310896240
+              <strong>Phone:</strong> +91 8050680440
             </li>
             <li>
               <strong>Address:</strong> Altio AI Pvt. Ltd., Survey No. 7/2, 1st

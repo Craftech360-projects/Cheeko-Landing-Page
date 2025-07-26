@@ -14,15 +14,14 @@ export interface ShopifyProduct {
 }
 
 export const useShopify = (useAdminApi = false) => { // Admin API parameter kept for future use
-  const fallbackPrice = process.env.NEXT_PUBLIC_PRODUCT_PRICE ? parseFloat(process.env.NEXT_PUBLIC_PRODUCT_PRICE) : 499
+  const fallbackPrice = process.env['NEXT_PUBLIC_PRODUCT_PRICE'] ? parseFloat(process.env['NEXT_PUBLIC_PRODUCT_PRICE']) : 499
   
   const [product, setProduct] = useState<ShopifyProduct>({
     price: 0, // Don't show fallback price initially
     currencySymbol: '$',
     currencyCode: 'USD',
     checkoutUrl: '',
-    loading: true, // Start with loading state
-    source: undefined
+    loading: true // Start with loading state
   })
 
   useEffect(() => {
@@ -74,14 +73,14 @@ export const useShopify = (useAdminApi = false) => { // Admin API parameter kept
         productData = await fetchProductData()
         if (productData) {
           source = 'storefront'
-          console.log('Using Storefront API data:', productData)
+          // console.log('Using Storefront API data:', productData)
         }
       }
       
       if (productData) {
         // Parse the price string to a number
         const priceValue = parseFloat(productData.price)
-        console.log('Parsed price:', priceValue, 'from', source)
+        // console.log('Parsed price:', priceValue, 'from', source)
         
         const productState = {
           price: priceValue,

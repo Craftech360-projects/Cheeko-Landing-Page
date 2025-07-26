@@ -113,7 +113,7 @@ const Header: React.FC<HeaderProps> = ({ isVisible = true }) => {
                       href={item.href}
                       onClick={(e) => handleNavClick(e, item.href)}
                       className={cn(
-                        "text-foreground hover:text-primary-600 transition-colors duration-200 font-medium",
+                        "text-foreground hover:text-orange-500 transition-colors duration-200 font-medium",
                         "relative py-2 px-1"
                       )}
                       whileHover={{ scale: 1.05 }}
