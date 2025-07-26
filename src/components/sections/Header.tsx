@@ -90,7 +90,7 @@ const Header: React.FC<HeaderProps> = ({ isVisible = true }) => {
                 }}
               >
                 <img
-                  src="/icons/logo.svg"
+                  src="/images/logo.svg"
                   alt="CheekoAI"
                   className="h-8 w-auto sm:h-9 md:h-10 lg:h-12"
                 />

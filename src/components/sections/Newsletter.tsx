@@ -86,7 +86,7 @@ export function Newsletter() {
       <section
         id="newsletter"
         ref={sectionRef}
-        className="relative px-2 sm:px-6 md:px-8 lg:px-8 xl:px-16 py-8 sm:py-12 md:py-16 lg:py-4 xl:py-16 opacity-0 transition-opacity duration-700"
+        className="relative px-2 sm:px-4 md:px-6 lg:px-6 xl:px-12 py-6 sm:py-8 md:py-10 lg:py-6 xl:py-12 opacity-0 transition-opacity duration-700"
       >
         <Container>
           <div className="relative bg-gradient-to-r from-orange-500 to-orange-500 rounded-xl overflow-hidden">
@@ -139,27 +139,27 @@ export function Newsletter() {
               <div className="absolute top-1/2 right-1/2 w-3 h-3 bg-white/10 transform rotate-45"></div>
             </div>
 
-            <div className="relative z-10 py-6 sm:py-8 md:py-10 lg:py-3 xl:py-10">
-              <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-2 xl:gap-8 w-full px-4 sm:px-6 lg:px-4 xl:px-12 items-center">
+            <div className="relative z-10 py-4 sm:py-6 md:py-8 lg:py-4 xl:py-8">
+              <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-2 xl:gap-6 w-full px-3 sm:px-4 lg:px-3 xl:px-8 items-center">
                 {/* Left Content */}
-                <div className="flex flex-col justify-center space-y-2 sm:space-y-3 lg:space-y-0.5 xl:space-y-3">
-                  <h2 className="text-lg sm:text-2xl md:text-4xl lg:text-xl xl:text-4xl font-sora font-bold text-white leading-tight">
+                <div className="flex flex-col justify-center space-y-2 sm:space-y-3 lg:space-y-1.5 xl:space-y-3">
+                  <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-xl xl:text-3xl font-sora font-bold text-white leading-tight">
                     Join the Cheeko Club
                   </h2>
-                  <p className="text-sm sm:text-lg md:text-xl lg:text-sm xl:text-xl font-switzer text-white/90 max-w-full lg:max-w-md leading-snug lg:leading-tight xl:leading-relaxed">
+                  <p className="text-sm sm:text-base md:text-lg lg:text-sm xl:text-lg font-switzer text-white/90 max-w-full lg:max-w-md leading-snug lg:leading-tight xl:leading-relaxed">
                     Get exclusive updates, early access to new features, and
                     special offers delivered straight to your inbox.
                   </p>
 
                   {/* Email Subscription Form */}
-                  <form onSubmit={handleSubmit} className="mt-4 lg:mt-1.5 xl:mt-4">
-                    <div className="flex flex-col sm:flex-row bg-white font-medium rounded-md p-2 shadow-lg w-full max-w-md">
+                  <form onSubmit={handleSubmit} className="mt-3 lg:mt-2 xl:mt-4">
+                    <div className="flex flex-col sm:flex-row bg-white font-medium rounded-md p-1.5 shadow-lg w-full max-w-md">
                       <input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter Email Address"
-                        className="flex-1 px-0 py-2 sm:px-4 sm:py-3 bg-transparent text-black placeholder-black focus:outline-none focus:ring-0 focus:border-none border-none font-switzer text-sm sm:text-base"
+                        className="flex-1 px-0 py-1.5 sm:px-3 sm:py-2 bg-transparent text-black placeholder-black focus:outline-none focus:ring-0 focus:border-none border-none font-switzer text-sm sm:text-base"
                         style={{
                           border: "none",
                           outline: "none",
@@ -169,7 +169,7 @@ export function Newsletter() {
                       />
                       <button
                         type="submit"
-                        className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 sm:px-6 sm:py-3 rounded-md transition-colors duration-200 whitespace-nowrap text-sm sm:text-base mt-2 sm:mt-0 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-1.5 sm:px-5 sm:py-2 rounded-md transition-colors duration-200 whitespace-nowrap text-sm sm:text-base mt-1.5 sm:mt-0 disabled:opacity-50 disabled:cursor-not-allowed"
                         disabled={isLoading}
                       >
                         {isLoading ? "Subscribing..." : "Subscribe"}
@@ -183,9 +183,12 @@ export function Newsletter() {
                   <Image
                     src="/images/newsletter-image.png"
                     alt="Join Cheeko Club"
-                    width={541}
-                    height={458}
-                    className="max-w-full h-auto lg:max-w-[280px] lg:max-h-[200px] xl:max-w-full xl:max-h-none object-contain"
+                    width={700}
+                    height={406}
+                    className="w-full h-auto lg:max-w-[450px] xl:max-w-[700px] object-contain"
+                    quality={100}
+                    priority
+                    unoptimized
                     onError={(e) => {
                       e.currentTarget.src = "/images/default-newsletter.jpg";
                     }}

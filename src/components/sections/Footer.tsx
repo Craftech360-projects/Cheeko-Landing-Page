@@ -39,7 +39,11 @@ const socialLinks = [
   },
 ];
 
-export function Footer() {
+interface FooterProps {
+  isBottomBarVisible?: boolean;
+}
+
+export function Footer({ isBottomBarVisible = false }: FooterProps) {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -59,14 +63,14 @@ export function Footer() {
 
   return (
     <>
-      <footer className="bg-white relative py-16 px-2 sm:px-6 md:px-[2px] lg:px-[80px] xl:px-[60px] 2xl:px-[160px]">
+      <footer className={`bg-white relative py-6 px-2 sm:px-6 md:px-[2px] lg:px-[80px] xl:px-[60px] 2xl:px-[160px] ${isBottomBarVisible ? 'pb-[102px] sm:pb-6' : ''}`}>
         <div className="max-w-full-2xl mx-auto">
           {/* First Section */}
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8 mb-12">
             {/* Logo */}
             <div className="flex items-center">
               <Image
-                src="/icons/logo.svg"
+                src="/images/logo.svg"
                 alt="CheekoAI Logo"
                 width={120}
                 height={40}
@@ -87,7 +91,7 @@ export function Footer() {
               ))}
             </div>
 
-            {/* Social Links */}
+            {/* Social Links and Back to Top for Desktop */}
             <div className="flex items-center gap-6">
               {socialLinks.map((social) => (
                 <a
@@ -107,6 +111,14 @@ export function Footer() {
                   />
                 </a>
               ))}
+              {/* Back to top button for desktop */}
+              <button
+                onClick={scrollToTop}
+                className="hidden lg:block ml-2 p-2 bg-orange-500 hover:bg-orange-600 text-white rounded-full transition-all duration-200 hover:scale-110"
+                aria-label="Back to top"
+              >
+                <ChevronUp className="w-5 h-5" />
+              </button>
             </div>
           </div>
 
@@ -114,11 +126,11 @@ export function Footer() {
           <div className="border-t border-gray-200 mb-8"></div>
 
           {/* Second Section */}
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+          <div className="flex items-center justify-between">
             {/* Left side - Copyright and legal links */}
-            <div className="flex flex-col sm:flex-row items-center gap-4 text-sm text-gray-600">
+            <div className="flex items-center text-sm text-gray-600">
               <span>© {currentYear} CheekoAI. All rights reserved.</span>
-              <div className="flex items-center gap-4">
+              <div className="hidden sm:flex items-center gap-4 ml-4">
                 {/* <a
                   href="#privacy-policy"
                   className="hover:text-orange-500 transition-colors"
@@ -140,13 +152,13 @@ export function Footer() {
               </div>
             </div>
 
-            {/* Right side - Back to top button */}
+            {/* Back to top button for mobile/tablet - centered on mobile */}
             <button
               onClick={scrollToTop}
-              className="flex items-center gap-2 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors duration-200 font-medium"
+              className="lg:hidden p-2 bg-orange-500 hover:bg-orange-600 text-white rounded-full transition-all duration-200 hover:scale-110"
+              aria-label="Back to top"
             >
-              <ChevronUp className="w-4 h-4" />
-              Back to Top
+              <ChevronUp className="w-5 h-5" />
             </button>
           </div>
         </div>

@@ -9,6 +9,21 @@ const SHOPIFY_API_SECRET =
   process.env["NEXT_PUBLIC_SHOPIFY_NEWSLETTER_APP_API_SECRET_KEY"];
 const SHOPIFY_API_VERSION = "2025-07";
 
+// Query to fetch store locations
+const LOCATIONS_QUERY = `
+  query getLocations {
+    locations(first: 1) {
+      edges {
+        node {
+          id
+          name
+          isActive
+        }
+      }
+    }
+  }
+`;
+
 const CUSTOMER_CREATE_MUTATION = `
   mutation customerCreate($input: CustomerInput!) {
     customerCreate(input: $input) {
@@ -48,6 +63,49 @@ const CUSTOMER_UPDATE_CONSENT_MUTATION = `
     }
   }
 `;
+
+// Cache location ID to avoid repeated queries
+let cachedLocationId: string | null = null;
+
+async function getStoreLocationId(
+  graphqlEndpoint: string,
+  accessToken: string
+): Promise<string | null> {
+  if (cachedLocationId) {
+    return cachedLocationId;
+  }
+
+  try {
+    const response = await fetch(graphqlEndpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Shopify-Access-Token": accessToken,
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        query: LOCATIONS_QUERY,
+      }),
+    });
+
+    const data = await response.json();
+    
+    if (data.data?.locations?.edges?.[0]?.node?.id) {
+      cachedLocationId = data.data.locations.edges[0].node.id;
+      console.log("Fetched store location:", {
+        id: cachedLocationId,
+        name: data.data.locations.edges[0].node.name,
+      });
+      return cachedLocationId;
+    }
+    
+    console.warn("No active locations found in store");
+    return null;
+  } catch (error) {
+    console.error("Error fetching store location:", error);
+    return null;
+  }
+}
 
 export async function POST(request: Request) {
   try {
@@ -90,6 +148,10 @@ export async function POST(request: Request) {
       "Access Token first 10 chars:",
       SHOPIFY_ADMIN_ACCESS_TOKEN?.substring(0, 10)
     );
+    
+    // Fetch store location ID
+    const locationId = await getStoreLocationId(graphqlEndpoint, SHOPIFY_ADMIN_ACCESS_TOKEN!);
+    console.log("Using location ID:", locationId);
 
     // Create customer with email marketing consent
     const response = await fetch(graphqlEndpoint, {
@@ -107,6 +169,8 @@ export async function POST(request: Request) {
             emailMarketingConsent: {
               marketingOptInLevel: "SINGLE_OPT_IN",
               marketingState: "SUBSCRIBED",
+              consentUpdatedAt: new Date().toISOString(),
+              ...(locationId && { sourceLocationId: locationId }),
             },
             tags: ["newsletter", "cheeko-landing-page"],
           },

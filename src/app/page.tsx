@@ -38,7 +38,7 @@ export default function Home() {
     <>
       <SplashScreen isVisible={showSplash} />
       <HashRouter>
-        <div className={`max-w-full mx-auto ${isBottomBarVisible ? 'pb-[100px]' : ''}`}>
+        <div className={`max-w-full mx-auto ${isBottomBarVisible ? 'pb-[0px]' : ''}`}>
           <StructuredData />
           {!showSplash && <PromoBanner />}
           <Header isVisible={isHeaderVisible} />
@@ -82,7 +82,7 @@ export default function Home() {
         </main>
 
         {/* Footer */}
-        <Footer />
+        <Footer isBottomBarVisible={isBottomBarVisible} />
         
         {/* Bottom Bar */}
         <BottomBar isVisible={isBottomBarVisible} />
