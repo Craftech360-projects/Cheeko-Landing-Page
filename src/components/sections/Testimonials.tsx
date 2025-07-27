@@ -16,7 +16,7 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Ananya Mehra",
+    name: "Ashwathy Mehra",
     role: "Mother of Ananya, 7",
     avatar: "/images/user1.png",
     rating: 5,
