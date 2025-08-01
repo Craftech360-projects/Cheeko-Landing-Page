@@ -26,7 +26,7 @@ const navigationItems: NavigationItem[] = [
 
 const Header: React.FC<HeaderProps> = ({ isVisible = true }) => {
   const [isScrolled, setIsScrolled] = React.useState(false);
-  const { price, currencySymbol, loading } = useShopify();
+  // const { price, currencySymbol, loading } = useShopify();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -159,7 +159,7 @@ const Header: React.FC<HeaderProps> = ({ isVisible = true }) => {
                       window.open("https://tools.cheekoai.in/", "_blank");
                     }}
                   >
-                    Sign In
+                    Get Started
                   </Button>
                 </motion.div>
 
@@ -174,7 +174,7 @@ const Header: React.FC<HeaderProps> = ({ isVisible = true }) => {
                     ease: [0.25, 0.46, 0.45, 0.94] as const,
                   }}
                 >
-                  <Button
+                  {/* <Button
                     variant="primary"
                     className="text-neutral-00 bg-orange-500 rounded-md font-semibold text-sm lg:text-base px-6 lg:px-8 min-w-[120px] lg:min-w-[140px] h-8 lg:h-11"
                     size="sm"
@@ -188,12 +188,12 @@ const Header: React.FC<HeaderProps> = ({ isVisible = true }) => {
                       });
                       window.location.href = "https://cheekoai.myshopify.com/products/cheeko-ai-toy";
                     }}
-                  >
-                    Buy Now
+                  > */}
+                    {/* Buy Now
                     {!loading && price > 0
                       ? ` At ${currencySymbol}${price.toFixed(0)}`
                       : ""}
-                  </Button>
+                  </Button> */}
                 </motion.div>
               </div>
             </nav>

@@ -9,7 +9,10 @@ import { trackEvent } from "@/components/GoogleTagManager";
 export function Newsletter() {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const [message, setMessage] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -37,11 +40,11 @@ export function Newsletter() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Client-side email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email || !emailRegex.test(email)) {
-      setMessage({ type: 'error', text: 'Please enter a valid email address' });
+      setMessage({ type: "error", text: "Please enter a valid email address" });
       return;
     }
 
@@ -49,10 +52,10 @@ export function Newsletter() {
     setMessage(null);
 
     try {
-      const response = await fetch('/api/newsletter', {
-        method: 'POST',
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ email }),
       });
@@ -60,22 +63,33 @@ export function Newsletter() {
       const data = await response.json();
 
       if (response.ok && !data.errors) {
-        trackEvent('newsletter_subscribe', {
-          method: 'email',
-          success: true
+        trackEvent("newsletter_subscribe", {
+          method: "email",
+          success: true,
         });
-        setMessage({ type: 'success', text: "Successfully subscribed to CheekoAI" });
-        setEmail('');
+        setMessage({
+          type: "success",
+          text: "Successfully subscribed to CheekoAI",
+        });
+        setEmail("");
       } else {
-        trackEvent('newsletter_subscribe', {
-          method: 'email',
+        trackEvent("newsletter_subscribe", {
+          method: "email",
           success: false,
-          error_type: data.errors ? data.errors[0].message : 'unknown'
+          error_type: data.errors ? data.errors[0].message : "unknown",
         });
-        setMessage({ type: 'error', text: data.errors ? data.errors[0].message : 'Subscription failed. Please try again.' });
+        setMessage({
+          type: "error",
+          text: data.errors
+            ? data.errors[0].message
+            : "Subscription failed. Please try again.",
+        });
       }
     } catch {
-      setMessage({ type: 'error', text: 'Network error. Please check your connection and try again.' });
+      setMessage({
+        type: "error",
+        text: "Network error. Please check your connection and try again.",
+      });
     } finally {
       setIsLoading(false);
     }
@@ -101,7 +115,13 @@ export function Newsletter() {
                     width="20"
                     height="20"
                   >
-                    <circle cx="10" cy="10" r="1.5" fill="white" opacity="0.1" />
+                    <circle
+                      cx="10"
+                      cy="10"
+                      r="1.5"
+                      fill="white"
+                      opacity="0.1"
+                    />
                   </pattern>
 
                   {/* Small rhombus pattern */}
@@ -120,11 +140,7 @@ export function Newsletter() {
                 </defs>
 
                 {/* Apply patterns */}
-                <rect
-                  width="100%"
-                  height="100%"
-                  fill="url(#dotPattern)"
-                />
+                <rect width="100%" height="100%" fill="url(#dotPattern)" />
                 <rect
                   width="100%"
                   height="100%"
@@ -152,24 +168,23 @@ export function Newsletter() {
                   </p>
 
                   {/* Email Subscription Form */}
-                  <form onSubmit={handleSubmit} className="mt-3 lg:mt-2 xl:mt-4">
-                    <div className="flex flex-col sm:flex-row bg-white font-medium rounded-md p-1.5 shadow-lg w-full max-w-md">
+                  <form
+                    onSubmit={handleSubmit}
+                    className="mt-3 lg:mt-2 xl:mt-4"
+                  >
+                    <div className="flex flex-col bg-white font-medium rounded-md p-1.5 shadow-lg w-full max-w-md space-y-2">
                       <input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter Email Address"
-                        className="flex-1 px-0 py-1.5 sm:px-3 sm:py-2 bg-transparent text-black placeholder-black focus:outline-none focus:ring-0 focus:border-none border-none font-switzer text-sm sm:text-base"
-                        style={{
-                          border: "none",
-                          outline: "none",
-                          boxShadow: "none",
-                        }}
+                        className="w-full px-3 py-2 sm:px-4 sm:py-2.5 bg-transparent text-gray-800 placeholder-gray-500 focus:outline-none focus:border-orange-500 border border-gray-400 rounded-md font-switzer text-sm sm:text-base transition-colors duration-200"
+                        style={{ outline: 'none', boxShadow: 'none' }}
                         required
                       />
                       <button
                         type="submit"
-                        className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-1.5 sm:px-5 sm:py-2 rounded-md transition-colors duration-200 whitespace-nowrap text-sm sm:text-base mt-1.5 sm:mt-0 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 sm:px-5 sm:py-2.5 rounded-md transition-colors duration-200 whitespace-nowrap text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed"
                         disabled={isLoading}
                       >
                         {isLoading ? "Subscribing..." : "Subscribe"}

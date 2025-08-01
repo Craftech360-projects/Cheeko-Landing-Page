@@ -88,10 +88,10 @@ export function FAQ() {
       className="relative section-padding opacity-0 transition-opacity duration-700"
     >
       <Container>
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid lg:grid-cols-2 gap-4 lg:gap-12">
           {/* Left Column - Title and Image */}
           <div className="flex flex-col justify-center">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sora mb-8">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sora sm:mb-8">
               <span className="text-black">Frequently Asked</span>{" "}
               <span className="text-orange-500">Questions</span>
             </h2>
@@ -121,7 +121,7 @@ export function FAQ() {
                     className="w-full p-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
                     onClick={() => toggleItem(item.id)}
                   >
-                    <h4 className="font-sora font-semibold text-gray-900 pr-4">
+                    <h4 className="font-sora text-sm font-semibold text-gray-900 pr-4">
                       {item.question}
                     </h4>
                     <div className="w-8 h-8 rounded-full border-2 border-orange-500 flex items-center justify-center flex-shrink-0">
@@ -134,7 +134,7 @@ export function FAQ() {
                   </button>
                   {activeItem === item.id && (
                     <div className="px-4 pb-4">
-                      <p className="font-switzer text-gray-700 leading-relaxed pt-3">
+                      <p className="font-switzer text-sm ext-gray-700 leading-relaxed pt-3">
                         {item.answer}
                       </p>
                     </div>

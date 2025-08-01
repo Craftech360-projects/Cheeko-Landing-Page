@@ -94,7 +94,7 @@ export const metadata: Metadata = {
   verification: {
     google: "your-google-verification-code",
     other: {
-      me: ["mailto:hr@altio.me"],
+      me: ["mailto:info@altio.me"],
     },
   },
   category: "education",

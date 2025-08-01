@@ -285,7 +285,7 @@ export function PrivacyPolicy() {
           </p>
           <ul className="list-disc pl-6 mb-6 text-[#1e1e1eb2]">
             <li>
-              <strong>Email:</strong> hr@altio.me
+              <strong>Email:</strong> info@altio.me
             </li>
             <li>
               <strong>Phone:</strong> +91 8050680440

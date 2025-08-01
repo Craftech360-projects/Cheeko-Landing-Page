@@ -63,10 +63,10 @@ export function Footer({ isBottomBarVisible = false }: FooterProps) {
 
   return (
     <>
-      <footer className={`bg-white relative py-6 px-2 sm:px-6 md:px-[2px] lg:px-[80px] xl:px-[60px] 2xl:px-[160px] ${isBottomBarVisible ? 'pb-[102px] sm:pb-6' : ''}`}>
+      <footer className={`bg-white relative py-6 px-2 sm:px-6 md:px-[2px] lg:px-[80px] xl:px-[60px] 2xl:px-[160px] ${isBottomBarVisible ? 'pb-[90px] sm:pb-[130px]' : ''}`}>
         <div className="max-w-full-2xl mx-auto">
           {/* First Section */}
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 mb-12">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 mb-8 sm:mb-12">
             {/* Logo */}
             <div className="flex items-center">
               <Image
@@ -79,12 +79,12 @@ export function Footer({ isBottomBarVisible = false }: FooterProps) {
             </div>
 
             {/* Navigation Links */}
-            <div className="flex flex-wrap items-center gap-8 justify-center">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-4 lg:gap-8 justify-center leading-none">
               {navigationLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-gray-600 hover:text-orange-500 transition-colors font-medium font-switzer"
+                  className="text-gray-600 hover:text-orange-500 transition-colors font-medium font-switzer text-sm sm:text-sm lg:text-base whitespace-nowrap"
                 >
                   {link.label}
                 </a>
@@ -123,13 +123,13 @@ export function Footer({ isBottomBarVisible = false }: FooterProps) {
           </div>
 
           {/* Divider */}
-          <div className="border-t border-gray-200 mb-8"></div>
+          <div className="border-t border-gray-200 mb-3 sm:mb-8"></div>
 
           {/* Second Section */}
           <div className="flex items-center justify-between">
             {/* Left side - Copyright and legal links */}
-            <div className="flex items-center text-sm text-gray-600">
-              <span>© {currentYear} CheekoAI. All rights reserved.</span>
+            <div className="flex items-center text-xs lg:text-sm text-gray-600">
+              <span>© {currentYear} Altio AI Pvt Ltd. All rights reserved.</span>
               <div className="hidden sm:flex items-center gap-4 ml-4">
                 {/* <a
                   href="#privacy-policy"

@@ -76,8 +76,8 @@ export function Testimonials() {
     >
       <Container>
         {/* Header Section */}
-        <div className="text-center mb-16 px-4">
-          <div className="relative inline-block mb-4">
+        <div className="text-center mb-6 px-4">
+          <div className="relative inline-block mb-2">
             <Image
               src="/icons/Header-Icon-Left.svg"
               alt=""
@@ -85,7 +85,7 @@ export function Testimonials() {
               height={42}
               className="absolute -left-8 sm:-left-14 md:-left-16 lg:-left-20 -top-6 sm:-top-10 md:-top-11 lg:-top-12 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
             />
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sora px-4 sm:px-0">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sora sm:px-0">
               <span className="text-black">What parents are</span>{" "}
               <span className="text-orange-500">saying</span>
             </h2>
