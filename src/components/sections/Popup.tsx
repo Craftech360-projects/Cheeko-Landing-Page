@@ -61,11 +61,16 @@ const Popup: React.FC = () => {
 
             <div className="flex flex-col md:flex-row h-full">
               <div className="hidden md:block md:h-full md:w-1/2 bg-orange-500 relative overflow-hidden">
-                <img
-                  src="/videos/popup_video.gif"
-                  alt="Cheeko animation"
+                <video
+                  src="/videos/popup_video.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="w-full h-full object-cover"
-                />
+                >
+                  Your browser does not support the video tag.
+                </video>
               </div>
 
               <div className="h-full w-full md:w-1/2 bg-white relative">
@@ -78,11 +83,11 @@ const Popup: React.FC = () => {
                   </p>
                   
                   <button
-                    className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 md:px-6 py-2 md:py-1 rounded-md transition-colors duration-200"
+                    className="bg-orange-500 hover:bg-orange-600 text-white font-semibold w-[180px] md:w-[240px] h-[46px] md:h-[56px] rounded-md transition-colors duration-200 text-[16px] md:text-[20px]"
                     onClick={() => window.open("https://cheekoai.myshopify.com/products/cheeko-ai-toy", "_blank")}
                   >
                     {!loading && price > 0 
-                      ? <span className="text-xl">Buy Now At <span className="text-2xl">{currencySymbol}{price.toFixed(0)}</span></span>
+                      ? <span>Grab Now At {currencySymbol}{price.toFixed(0)}</span>
                       : "Buy Now"
                     }
                   </button>

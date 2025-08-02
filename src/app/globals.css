@@ -197,6 +197,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   /* Prevent horizontal scroll on mobile */
   overflow-x: hidden;
+  /* Hide scrollbar for all browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
   /* Optimize for mobile touch */
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
@@ -224,22 +227,14 @@ body {
   outline-offset: 2px;
 }
 
-/* Custom scrollbar for webkit browsers */
+/* Hide scrollbar for webkit browsers */
 ::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--muted);
+  width: 0px;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--neutral-400);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--neutral-500);
+  background: transparent;
 }
 
 /* Mobile-first responsive utilities */
@@ -265,18 +260,18 @@ body {
   }
 }
 
-/* Consistent section padding */
+/* Consistent section padding - reduced padding for decorative elements */
 .section-padding {
-  padding-top: 3rem; /* 48px */
-  padding-bottom: 3rem; /* 48px */
+  padding-top: 2rem; /* 32px - minimal space for decorative elements */
+  padding-bottom: 2rem; /* 32px */
   padding-left: 1rem; /* 16px */
   padding-right: 1rem; /* 16px */
 }
 
 @media (min-width: 640px) {
   .section-padding {
-    padding-top: 4rem; /* 64px */
-    padding-bottom: 4rem; /* 64px */
+    padding-top: 2.5rem; /* 40px */
+    padding-bottom: 2.5rem; /* 40px */
     padding-left: 1.5rem; /* 24px */
     padding-right: 1.5rem; /* 24px */
   }
@@ -284,8 +279,8 @@ body {
 
 @media (min-width: 768px) {
   .section-padding {
-    padding-top: 5rem; /* 80px */
-    padding-bottom: 5rem; /* 80px */
+    padding-top: 3rem; /* 48px */
+    padding-bottom: 3rem; /* 48px */
     padding-left: 2rem; /* 32px */
     padding-right: 2rem; /* 32px */
   }
@@ -293,17 +288,17 @@ body {
 
 @media (min-width: 1024px) {
   .section-padding {
-    padding-top: 7rem; /* 112px - increased from 96px */
-    padding-bottom: 7rem; /* 112px - increased from 96px */
-    padding-left: 3rem; /* 48px - increased from 32px */
-    padding-right: 3rem; /* 48px - increased from 32px */
+    padding-top: 4rem; /* 64px */
+    padding-bottom: 4rem; /* 64px */
+    padding-left: 3rem; /* 48px */
+    padding-right: 3rem; /* 48px */
   }
 }
 
 @media (min-width: 1280px) {
   .section-padding {
-    padding-top: 2rem; /* 128px */
-    padding-bottom: 8rem; /* 128px */
+    padding-top: 4rem; /* 64px */
+    padding-bottom: 4rem; /* 64px */
     padding-left: 4rem; /* 64px */
     padding-right: 4rem; /* 64px */
   }

@@ -213,7 +213,7 @@ export function ParentalDashboard() {
                 alt="Parent using dashboard"
                 width={392}
                 height={410}
-                className="w-full h-auto max-w-[392px]"
+                className="w-full h-auto max-w-[392px] rounded-2xl"
               />
             </div>
           </div>

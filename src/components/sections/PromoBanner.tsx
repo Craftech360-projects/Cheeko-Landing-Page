@@ -25,7 +25,7 @@ const PromoBanner: React.FC = () => {
   React.useEffect(() => {
     // Set a fixed end date - adjust this date as needed
     // Example: February 1, 2025 at 23:59:59 UTC
-    const endTime = new Date('2025-08-04T23:59:59Z').getTime();
+    const endTime = new Date("2025-08-04T23:59:59Z").getTime();
 
     const timer = setInterval(() => {
       const now = Date.now();
@@ -61,46 +61,46 @@ const PromoBanner: React.FC = () => {
     <AnimatePresence>
       <motion.div
         initial={{ height: 0, opacity: 0 }}
-        animate={{ height: "80px", opacity: 1 }}
+        animate={{ height: "40px", opacity: 1 }}
         exit={{ height: 0, opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="bg-orange-600 text-white relative overflow-hidden fixed top-0 left-0 right-0 z-50 h-auto min-h-[70px] py-2 md:py-0 md:h-[80px]"
+        className="bg-[#FCBC17] text-black relative overflow-hidden fixed top-0 left-0 right-0 z-50 h-auto min-h-[35px] py-1 md:py-0 md:h-[40px] pt-2 md:pt-0"
       >
-        <div className="absolute inset-0 bg-orange-600" />
+        <div className="absolute inset-0 bg-[#FCBC17]" />
 
         <div className="relative z-10 h-full flex flex-col items-center justify-center px-4">
           <div className="text-center">
             <div className="flex flex-col lg:flex-row items-center justify-center space-y-0 lg:space-y-0 lg:space-x-4">
               <div className="flex items-center space-x-2">
                 {/* <span className="text-lg sm:text-xl">🎉</span> */}
-                <span className="font-semibold text-base sm:text-2xl">
+                <span className="font-medium text-xs sm:text-sm">
                   Early Bird Offer Ends In:
                 </span>
-                <div className="font-mono font-semibold text-base sm:text-2xl">
+                <div className="font-mono font-medium text-xs sm:text-sm">
                   {formatTime(timeLeft.days)}:{formatTime(timeLeft.hours)}:
                   {formatTime(timeLeft.minutes)}:{formatTime(timeLeft.seconds)}
                 </div>
               </div>
 
-              <div className="hidden lg:block text-white text-xl">|</div>
+              <div className="hidden lg:block text-black text-sm">|</div>
 
               <div className="flex items-center space-x-2">
-                <span className="font-semibold text-base sm:text-2xl">
+                <span className="font-medium text-xs sm:text-sm">
                   Get Cheeko For
                 </span>
                 <div className="inline-block">
                   {!loading && price > 0 ? (
                     <>
-                      <span className="line-through text-white font-normal text-base sm:text-xl mr-2">
+                      <span className="line-through text-gray text-xs sm:text-sm mr-2">
                         {currencySymbol}7999
                       </span>
-                      <span className="text-base sm:text-2xl font-semibold">
+                      <span className="text-xs sm:text-sm font-medium">
                         {currencySymbol}
                         {price.toFixed(0)}
                       </span>
                     </>
                   ) : (
-                    <span className="text-base sm:text-xl font-semibold">
+                    <span className="text-xs sm:text-sm font-medium">
                       Great Price!
                     </span>
                   )}
@@ -110,7 +110,7 @@ const PromoBanner: React.FC = () => {
                   href="https://cheekoai.myshopify.com/products/cheeko-ai-toy"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white underline hover:text-yellow-300 transition-colors duration-200 text-lg sm:text-xl font-semibold"
+                  className="text-white underline hover:text-yellow-300 transition-colors duration-200 text-lg sm:text-xl font-medium"
                 >
                   Shop Now
                 </a> */}

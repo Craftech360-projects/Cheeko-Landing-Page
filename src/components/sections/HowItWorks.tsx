@@ -171,7 +171,7 @@ export function HowItWorks() {
             >
               <Button
                 variant="primary"
-                className="w-[172px] h-12 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg"
+                className="w-full lg:w-[172px] h-12 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-md"
                 onClick={(e) => {
                   e.preventDefault();
                   window.location.href = "https://tools.cheekoai.in/";

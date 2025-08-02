@@ -43,7 +43,7 @@ export default function Home() {
           {!showSplash && <PromoBanner />}
           <Header isVisible={isHeaderVisible} />
 
-        <main>
+        <main className="space-y-12 md:space-y-16 lg:space-y-20">
           {/* Video Section */}
           <VideoSection />
 

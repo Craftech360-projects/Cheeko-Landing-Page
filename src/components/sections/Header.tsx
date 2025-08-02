@@ -66,8 +66,8 @@ const Header: React.FC<HeaderProps> = ({ isVisible = true }) => {
           className={cn(
             "sticky top-0 z-40 transition-all duration-300",
             isScrolled
-              ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-border"
-              : "bg-white"
+              ? "bg-[#1B1B1B]/95 backdrop-blur-md shadow-lg border-b border-border"
+              : "bg-[#1B1B1B]"
           )}
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -113,7 +113,7 @@ const Header: React.FC<HeaderProps> = ({ isVisible = true }) => {
                       href={item.href}
                       onClick={(e) => handleNavClick(e, item.href)}
                       className={cn(
-                        "text-foreground hover:text-orange-500 transition-colors duration-200 font-medium",
+                        "text-white hover:text-orange-500 transition-colors duration-200 font-medium",
                         "relative py-2 px-1"
                       )}
                       whileHover={{ scale: 1.05 }}
@@ -149,7 +149,7 @@ const Header: React.FC<HeaderProps> = ({ isVisible = true }) => {
                 >
                   <Button
                     variant="outline"
-                    className="border-orange-500 text-orange-500 bg-transparent hover:bg-orange-50 rounded-md font-semibold text-sm lg:text-base px-6 lg:px-8 min-w-[120px] lg:min-w-[140px] h-8 lg:h-11"
+                    className="bg-[#D52328] text-white border-none hover:bg-[#B91C21] rounded-md font-semibold text-sm lg:text-base px-6 lg:px-8 min-w-[120px] lg:min-w-[140px] h-8 lg:h-11"
                     size="sm"
                     onClick={(e) => {
                       e.preventDefault();

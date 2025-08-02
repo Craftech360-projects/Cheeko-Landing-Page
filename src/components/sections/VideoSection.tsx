@@ -1,13 +1,25 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { Button, Container } from "@/components/ui";
-import { useShopify } from "@/hooks/useShopify";
+import { useEffect, useRef, useState } from "react";
+// import { Button, Container } from "@/components/ui";
+// import { useShopify } from "@/hooks/useShopify";
 
 export function VideoSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const { price, currencySymbol, loading } = useShopify();
+  // const { price, currencySymbol, loading } = useShopify();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -17,6 +29,7 @@ export function VideoSection() {
             entry.target.classList.add("animate-fade-in");
             // Start playing video when in view
             if (videoRef.current) {
+              videoRef.current.load(); // Reload video source when mobile state changes
               videoRef.current.play().catch(() => {
                 // Handle autoplay restrictions
               });
@@ -36,63 +49,79 @@ export function VideoSection() {
         observer.unobserve(sectionRef.current);
       }
     };
-  }, []);
+  }, [isMobile]); // Add isMobile as dependency
 
   return (
     <section
       ref={sectionRef}
-      className="relative section-padding overflow-visible opacity-0"
+      className="relative w-full h-screen overflow-hidden opacity-0"
     >
-      <Container>
-        <div className="relative">
-          {/* Video Container */}
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-            <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px]">
-              <video
-                ref={videoRef}
-                className="absolute inset-0 w-full h-full object-cover"
-                autoPlay
-                loop
-                muted
-                playsInline
-                controls={false}
-              >
-                <source src="/videos/whatsapp-video.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </div>
+      {/* Fullscreen Video Container */}
+      <div className="absolute inset-0 w-full h-full">
+        <video
+          ref={videoRef}
+          className="w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+          controls={false}
+        >
+          <source
+            src={
+              isMobile
+                ? "/videos/mobile_video.mp4"
+                : "/videos/desktop_video.mp4"
+            }
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
-          {/* Pre Order Button - Positioned to overlap */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-6">
-            <Button
-              variant="primary"
-              size="lg"
-              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold shadow-xl transform transition-all duration-300 hover:scale-105 px-6 sm:px-8 sm:py-4 lg:px-16 xl:px-20 -py-4 sm:text-2xl whitespace-nowrap min-w-[200px] sm:min-w-[250px] lg:min-w-[300px] xl:min-w-[350px]"
-              onClick={(e) => {
-                e.preventDefault();
-                window.location.href =
-                  "https://cheekoai.myshopify.com/products/cheeko-ai-toy";
-              }}
-            >
-              Buy Now
-              {!loading && price > 0 && (
-                <>
-                  {" "}
-                  At
-                  <span className="line-through text-white font-medium text-base sm:text-xl mx-0">
-                    {currencySymbol}7999
-                  </span>
-                  <span className="font-semibold text-base sm:text-2xl">
-                    {currencySymbol}
-                    {price.toFixed(0)}
-                  </span>
-                </>
-              )}
-            </Button>
-          </div>
-        </div>
-      </Container>
+      {/* Curved Black Gradient Overlay */}
+      <div className="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-black/80 via-black/40 to-transparent curved-overlay"></div>
+
+      {/* Text and CTA Overlay */}
+      <div className="absolute bottom-12 md:bottom-16 left-8 md:left-16 lg:left-24 xl:left-32 z-20 max-w-sm md:max-w-lg lg:max-w-xl">
+        {/* Text */}
+        <h1
+          className="text-white font-sora font-semibold mb-4 md:mb-6 leading-tight text-2xl md:text-[52px]"
+          style={{ letterSpacing: "0.5%" }}
+        >
+          Smart AI Companion
+          <br />
+          Made For Kids
+          <br />
+          Meet Cheeko!
+        </h1>
+
+        {/* CTA Button */}
+        <button
+          className="flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 bg-[#D52328] text-white font-medium rounded-md hover:bg-[#B91C21] transition-colors duration-200 text-sm md:text-base"
+          onClick={() => {
+            if (videoRef.current) {
+              if (videoRef.current.paused) {
+                videoRef.current.play();
+              } else {
+                videoRef.current.pause();
+              }
+            }
+          }}
+        >
+          {/* Play Icon */}
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="md:w-6 md:h-6"
+          >
+            <path d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18c.62-.39.62-1.29 0-1.68L9.54 5.98C8.87 5.55 8 6.03 8 6.82z" />
+          </svg>
+          <span className="font-switzer">Watch Cheeko in Action</span>
+        </button>
+      </div>
 
       <style jsx>{`
         :global(.animate-fade-in) {
@@ -103,6 +132,16 @@ export function VideoSection() {
         :global(.opacity-0) {
           opacity: 0;
           transition: opacity 1.5s ease-out;
+        }
+
+        .curved-overlay {
+          clip-path: ellipse(200% 120% at 50% 100%);
+        }
+
+        @media (max-width: 768px) {
+          .curved-overlay {
+            clip-path: ellipse(180% 110% at 50% 100%);
+          }
         }
 
         @media (prefers-reduced-motion: reduce) {
