@@ -83,31 +83,26 @@ export function VideoSection() {
       <div className="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-black/80 via-black/40 to-transparent curved-overlay"></div>
 
       {/* Text and CTA Overlay */}
-      <div className="absolute bottom-12 md:bottom-16 left-8 md:left-16 lg:left-24 xl:left-32 z-20 max-w-sm md:max-w-lg lg:max-w-xl">
+      <div className="absolute bottom-12 md:bottom-16 left-8 md:left-16 lg:left-24 xl:left-32 z-20 max-w-sm md:max-w-2xl lg:max-w-3xl">
         {/* Text */}
         <h1
-          className="text-white font-sora font-semibold mb-4 md:mb-6 leading-tight text-2xl md:text-[52px]"
+          className="text-white font-sora font-semibold mb-4 md:mb-6 leading-tight text-[22px] md:text-[52px] md:whitespace-nowrap"
           style={{ letterSpacing: "0.5%" }}
         >
           Smart AI Companion
           <br />
-          Made For Kids
-          <br />
-          Meet Cheeko!
+          Made for Kids - <br className="md:hidden" />Meet Cheeko!
         </h1>
 
         {/* CTA Button */}
         <button
           className="flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 bg-[#D52328] text-white font-medium rounded-md hover:bg-[#B91C21] transition-colors duration-200 text-sm md:text-base"
-          onClick={() => {
-            if (videoRef.current) {
-              if (videoRef.current.paused) {
-                videoRef.current.play();
-              } else {
-                videoRef.current.pause();
-              }
-            }
-          }}
+          onClick={() =>
+            window.open(
+              "https://youtube.com/shorts/LCsVR-GrSsk?si=6xTTCRtTPD8p7bNJ",
+              "_blank"
+            )
+          }
         >
           {/* Play Icon */}
           <svg
@@ -115,6 +110,7 @@ export function VideoSection() {
             height="20"
             viewBox="0 0 24 24"
             fill="currentColor"
+            
             className="md:w-6 md:h-6"
           >
             <path d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18c.62-.39.62-1.29 0-1.68L9.54 5.98C8.87 5.55 8 6.03 8 6.82z" />
