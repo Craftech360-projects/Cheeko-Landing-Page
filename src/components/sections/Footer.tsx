@@ -129,7 +129,7 @@ export function Footer({ isBottomBarVisible = false }: FooterProps) {
           <div className="flex items-center justify-between">
             {/* Left side - Copyright and legal links */}
             <div className="flex items-center text-xs lg:text-sm text-gray-600">
-              <span>© {currentYear} Altio AI Pvt Ltd. All rights reserved.</span>
+              <span>© {currentYear} Altio AI Pvt. Ltd. All rights reserved.</span>
               <div className="hidden sm:flex items-center gap-4 ml-4">
                 {/* <a
                   href="#privacy-policy"

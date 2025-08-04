@@ -12,7 +12,7 @@ import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Safety } from "@/components/sections/Safety";
 import { VideoSection } from "@/components/sections/VideoSection";
 // import { PreOrderBanner } from "@/components/sections/PreOrderBanner";
-import { Testimonials } from "@/components/sections/Testimonials";
+// import { Testimonials } from "@/components/sections/Testimonials";
 import { FAQ } from "@/components/sections/FAQ";
 import { Newsletter } from "@/components/sections/Newsletter";
 import { Footer } from "@/components/sections/Footer";
@@ -43,7 +43,7 @@ export default function Home() {
           {!showSplash && <PromoBanner />}
           <Header isVisible={isHeaderVisible} />
 
-        <main className="space-y-12 md:space-y-16 lg:space-y-20">
+        <main className="space-y-12 sm:space-y-12 md:space-y-12 lg:space-y-16">
           {/* Video Section */}
           <VideoSection />
 
@@ -59,11 +59,11 @@ export default function Home() {
           {/* Key Features Section */}
           <Features />
 
+          {/* Testimonials Section */}
+          {/* <Testimonials /> */}
+
           {/* Access Options */}
           {/* <AccessOptions /> */}
-
-          {/* How It Works Section */}
-          <HowItWorks />
 
           {/* Safety & Privacy Section */}
           <Safety />
@@ -71,8 +71,8 @@ export default function Home() {
           {/* Parental Dashboard */}
           <ParentalDashboard />
 
-          {/* Testimonials Section */}
-          <Testimonials />
+          {/* How It Works Section */}
+          <HowItWorks />
 
           {/* FAQ Section */}
           <FAQ />

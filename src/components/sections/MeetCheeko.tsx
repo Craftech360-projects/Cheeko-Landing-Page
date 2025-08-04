@@ -285,7 +285,7 @@ export default function MeetCheeko() {
         </div>
 
         {/* Subheading */}
-        <p className="text-center text-sm sm:text-lg md:text-xl lg:text-xl text-gray-600 mb-12 max-w-3xl mx-auto font-switzer leading-tight sm:leading-relaxed">
+        <p className="text-center text-sm sm:text-lg md:text-xl lg:text-xl text-gray-600 mb-6 sm:mb-8 md:mb-12 max-w-3xl mx-auto font-switzer leading-tight sm:leading-relaxed">
           Cheeko adapts to your child's pace, interests, and learning style. It listens, responds, and evolves, turning everyday moments into hands-on learning.
         </p>
 

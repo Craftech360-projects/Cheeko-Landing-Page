@@ -87,7 +87,7 @@ export function Features() {
     >
       <Container>
         {/* Header */}
-        <div className="text-center mb-12 relative">
+        <div className="text-center mb-6 sm:mb-8 md:mb-12 relative">
           <div className="relative inline-block">
             <Image
               src="/icons/Header-Icon-Left.svg"

@@ -2,7 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { Container, Button } from "@/components/ui";
+import { Container } from "@/components/ui";
+import { trackEvent } from "@/components/GoogleTagManager";
 
 interface Step {
   stepNumber: string;
@@ -13,20 +14,19 @@ interface Step {
 const steps: Step[] = [
   {
     stepNumber: "1",
-    title: "Sign In",
-    description:
-      "Click on “Sign in with Google” to sign-in to your account.",
+    title: "Download Parent App",
+    description: "Download the App and Sign In to your account",
   },
   {
     stepNumber: "2",
     title: "Add Toy",
-    description: "Click on “Add Toy” and follow the instructions to get a voice code.",
+    description:
+      "Click on “Add Toy” and follow the instructions to get a voice code from Cheeko",
   },
   {
     stepNumber: "3",
     title: "Verify Code",
-    description:
-      "Cheeko will say a code. Enter it to complete the setup.",
+    description: "Cheeko will say a code. Enter it to complete the setup.",
   },
 ];
 
@@ -72,7 +72,7 @@ export function HowItWorks() {
     >
       <Container>
         {/* Header */}
-        <div className="text-center mb-12 relative">
+        <div className="text-center mb-6 sm:mb-8 md:mb-12 relative">
           <div className="relative inline-block">
             <Image
               src="/icons/Header-Icon-Left.svg"
@@ -95,14 +95,15 @@ export function HowItWorks() {
           </div>
 
           <p className="text-center text-sm sm:text-lg md:text-xl lg:text-xl text-gray-600 max-w-4xl mx-auto font-switzer leading-tight sm:leading-relaxed mt-4">
-            Setting up Cheeko is as easy as 1-2-3!
+            Setting up Cheeko is as easy as 1-2-3! Download our parent app to
+            get started.
           </p>
         </div>
 
         {/* Two Column Layout */}
-        <div className="flex flex-col lg:flex-row gap-6 items-center justify-center max-w-7xl mx-auto">
+        <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 items-start justify-center max-w-7xl mx-auto">
           {/* Left Column - Image */}
-          <div 
+          <div
             ref={(el) => {
               cardsRef.current[0] = el;
             }}
@@ -148,7 +149,7 @@ export function HowItWorks() {
 
                   {/* Text Content */}
                   <div className="flex-1">
-                    <h3 className="text-md sm:text-xl font-bold font-sora text-gray-900 mb-1">
+                    <h3 className="text-md sm:text-xl font-bold font-sora text-gray-900">
                       {step.title}
                     </h3>
                     <p className="text-gray-600 font-switzer font-medium text-sm sm:text-base leading-tight">
@@ -159,26 +160,67 @@ export function HowItWorks() {
               </div>
             ))}
 
-            {/* Button */}
-            <div 
+            {/* App Store Badges */}
+            <div
               ref={(el) => {
                 cardsRef.current[4] = el;
               }}
-              className="card-animate-initial pt-0"
+              className="card-animate-initial"
               style={{
                 transitionDelay: `800ms`,
               }}
             >
-              <Button
-                variant="primary"
-                className="w-full lg:w-[172px] h-12 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-md"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.location.href = "https://tools.cheekoai.in/";
-                }}
-              >
-                Open in Browser
-              </Button>
+              <div className="flex flex-row gap-2 sm:gap-4 items-center justify-center lg:justify-start w-full">
+                {/* Google Play Store */}
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    trackEvent("app_store_click", {
+                      location: "how_it_works",
+                      store: "google_play",
+                    });
+                    window.open(
+                      "https://play.google.com/store/apps/details?id=com.cheekoai.in",
+                      "_blank"
+                    );
+                  }}
+                  className="flex-1 sm:flex-initial transform hover:scale-105 transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 rounded-lg"
+                  aria-label="Download on Google Play Store"
+                >
+                  <Image
+                    src="/icons/playstore_logo.png"
+                    alt="Get it on Google Play"
+                    width={150}
+                    height={45}
+                    className="w-full max-w-[140px] sm:w-[150px] h-auto mx-auto"
+                  />
+                </button>
+
+                {/* Apple App Store */}
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    trackEvent("app_store_click", {
+                      location: "how_it_works",
+                      store: "app_store",
+                    });
+                    window.open(
+                      "https://apps.apple.com/us/app/cheekoai/id6748904798",
+                      "_blank"
+                    );
+                  }}
+                  className="flex-1 sm:flex-initial transform hover:scale-105 transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 rounded-lg"
+                  aria-label="Download on App Store"
+                >
+                  <Image
+                    src="/icons/appstore_logo.png"
+                    alt="Download on the App Store"
+                    width={150}
+                    height={45}
+                    className="w-full max-w-[140px] sm:w-[150px] h-auto mx-auto"
+                  />
+                </button>
+              </div>
             </div>
           </div>
         </div>

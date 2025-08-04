@@ -42,7 +42,7 @@ const sora = localFont({
 
 export const metadata: Metadata = {
   title: "CheekoAI - AI Learning Companion for Children",
-  description: "Empower your child's learning journey with CheekoAI's intelligent, safe, and engaging educational AI companion. Adaptive learning for ages 3-12 with COPPA compliance and parental controls.",
+  description: "Empower your child's learning journey with CheekoAI's intelligent, safe, and engaging educational AI companion. Adaptive learning for ages 5-12 with COPPA compliance and parental controls.",
   keywords: [
     "AI learning",
     "children education",
@@ -53,9 +53,9 @@ export const metadata: Metadata = {
     "learning companion",
     "child development"
   ],
-  authors: [{ name: "CheekoAI Team" }],
-  creator: "CheekoAI Inc.",
-  publisher: "CheekoAI Inc.",
+  authors: [{ name: "Altio AI" }],
+  creator: "Altio AI Private Limited",
+  publisher: "Altio AI Private Limited",
   robots: {
     index: true,
     follow: true,
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     url: "https://cheekoai.in",
     siteName: "CheekoAI",
     title: "CheekoAI - AI Learning Companion for Children",
-    description: "Empower your child's learning journey with CheekoAI's intelligent, safe, and engaging educational AI companion. Adaptive learning for ages 3-12.",
+    description: "Empower your child's learning journey with CheekoAI's intelligent, safe, and engaging educational AI companion. Adaptive learning for ages 5-12.",
     images: [
       {
         url: "https://cheekoai.in/og-image.jpg",

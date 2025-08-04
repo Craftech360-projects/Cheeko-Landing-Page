@@ -85,15 +85,15 @@ export function FAQ() {
     <section
       id="faq"
       ref={sectionRef}
-      className="relative section-padding pt-4 sm:pt-6 md:pt-8 opacity-0 transition-opacity duration-700"
+      className="relative -mt-8 -mb-3 section-padding opacity-0 transition-opacity duration-700"
     >
       <Container>
-        <div className="grid lg:grid-cols-2 gap-4 lg:gap-12">
+        <div className="grid lg:grid-cols-2 gap-0 lg:gap-12">
           {/* Left Column - Title and Image */}
           <div className="flex flex-col justify-center">
-            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sora sm:mb-8">
-              <span className="text-black">Frequently Asked</span>{" "}
-              <span className="text-orange-500">Questions</span>
+            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sora mb-4 sm:mb-16">
+              <span className="text-black">FAQ and</span>{" "}
+              <span className="text-orange-500">Help</span>
             </h2>
             <div className="hidden sm:flex justify-center lg:justify-start">
               <Image

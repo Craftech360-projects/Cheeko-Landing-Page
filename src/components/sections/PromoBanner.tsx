@@ -25,7 +25,7 @@ const PromoBanner: React.FC = () => {
   React.useEffect(() => {
     // Set a fixed end date - adjust this date as needed
     // Example: February 1, 2025 at 23:59:59 UTC
-    const endTime = new Date("2025-08-04T23:59:59Z").getTime();
+    const endTime = new Date("2025-08-06T23:59:59Z").getTime();
 
     const timer = setInterval(() => {
       const now = Date.now();
@@ -73,34 +73,34 @@ const PromoBanner: React.FC = () => {
             <div className="flex flex-col lg:flex-row items-center justify-center space-y-0 lg:space-y-0 lg:space-x-4">
               <div className="flex items-center space-x-2">
                 {/* <span className="text-lg sm:text-xl">🎉</span> */}
-                <span className="font-medium text-sm">
+                <span className="font-medium text-sm lg:text-base">
                   Early Bird Offer Ends In:
                 </span>
-                <div className="font-mono font-medium text-xs">
+                <div className="font-mono font-medium text-xs lg:text-sm">
                   {formatTime(timeLeft.days)}:{formatTime(timeLeft.hours)}:
                   {formatTime(timeLeft.minutes)}:{formatTime(timeLeft.seconds)}
                 </div>
               </div>
 
-              <div className="hidden lg:block text-black text-sm">|</div>
+              <div className="hidden lg:block text-black text-sm lg:text-base">|</div>
 
               <div className="flex items-center space-x-2">
-                <span className="font-medium text-sm">
+                <span className="font-medium text-sm lg:text-base">
                   Get Cheeko For
                 </span>
                 <div className="inline-block">
                   {!loading && price > 0 ? (
                     <>
-                      <span className="line-through text-gray text-sm mr-1">
+                      <span className="line-through text-gray text-sm lg:text-base mr-1">
                         {currencySymbol}7999
                       </span>
-                      <span className="text-sm font-medium">
+                      <span className="text-sm lg:text-base font-medium">
                         {currencySymbol}
                         {price.toFixed(0)}
                       </span>
                     </>
                   ) : (
-                    <span className="text-xs font-medium">
+                    <span className="text-xs lg:text-sm font-medium">
                       Great Price!
                     </span>
                   )}

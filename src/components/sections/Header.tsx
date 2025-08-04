@@ -4,7 +4,6 @@ import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button, Container } from "@/components/ui";
 import { cn } from "@/utils/cn";
-import { useShopify } from "@/hooks/useShopify";
 import { trackEvent } from "@/components/GoogleTagManager";
 
 interface NavigationItem {
@@ -148,18 +147,18 @@ const Header: React.FC<HeaderProps> = ({ isVisible = true }) => {
                   }}
                 >
                   <Button
-                    variant="outline"
-                    className="bg-[#D52328] text-white border-none hover:bg-[#B91C21] rounded-md font-semibold text-sm lg:text-base px-6 lg:px-8 min-w-[120px] lg:min-w-[140px] h-8 lg:h-11"
+                    className="bg-orange-500 text-white border-none hover:bg-[#B91C21] rounded-md font-semibold text-sm lg:text-base px-4 sm:px-6 lg:px-8 min-w-[100px] sm:min-w-[120px] lg:min-w-[140px] h-8 lg:h-11"
                     size="sm"
                     onClick={(e) => {
                       e.preventDefault();
-                      trackEvent('sign_in_click', {
+                      trackEvent('download_app_click', {
                         location: 'header'
                       });
-                      window.open("https://tools.cheekoai.in/", "_blank");
+                      scrollToSection('#how-it-works');
                     }}
                   >
-                    Get Started
+                    <span className="sm:hidden">Download App</span>
+                    <span className="hidden sm:inline">Download Parent App</span>
                   </Button>
                 </motion.div>
 
