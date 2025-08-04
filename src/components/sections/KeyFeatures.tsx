@@ -96,7 +96,7 @@ export function Features() {
               height={42}
               className="absolute -left-10 sm:-left-12 md:-left-14 lg:-left-15 -top-8 sm:-top-10 md:-top-11 lg:-top-12 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
             />
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sora">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sora">
               <span className="text-black">Key</span>{" "}
               <span className="text-orange-500">Features</span>
             </h2>
@@ -109,7 +109,7 @@ export function Features() {
             />
           </div>
 
-          <p className="text-center text-base sm:text-lg md:text-xl lg:text-xl text-gray-600 max-w-4xl mx-auto font-switzer leading-relaxed mt-4">
+          <p className="text-center text-sm sm:text-lg md:text-xl lg:text-xl text-gray-600 max-w-4xl mx-auto font-switzer leading-tight sm:leading-relaxed mt-4">
             An emotionally intelligent AI companion that learns with your child,
             fostering creativity, curiosity, and confidence through natural
             conversation.
@@ -144,7 +144,7 @@ export function Features() {
             </div>
 
             {/* Second column - First 2 features */}
-            <div className="grid grid-rows-2 gap-6 lg:h-[410px]">
+            <div className="grid grid-rows-2 gap-4 sm:gap-6 lg:h-[410px]">
               {features.slice(0, 2).map((feature, index) => (
                 <div
                   key={index}
@@ -156,7 +156,7 @@ export function Features() {
                     transitionDelay: `${index * 350}ms`,
                   }}
                 >
-                  <div className="bg-white rounded-2xl shadow-lg p-6 h-full flex flex-col justify-center hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out group">
+                  <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 h-full flex flex-col justify-start hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out group">
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0">
                         <Image
@@ -182,7 +182,7 @@ export function Features() {
             </div>
 
             {/* Third column - Last 2 features */}
-            <div className="grid grid-rows-2 gap-6 lg:h-[410px]">
+            <div className="grid grid-rows-2 gap-4 sm:gap-6 lg:h-[410px]">
               {features.slice(2).map((feature, index) => (
                 <div
                   key={index + 2}
@@ -194,7 +194,7 @@ export function Features() {
                     transitionDelay: `${(index + 2) * 350}ms`,
                   }}
                 >
-                  <div className="bg-white rounded-2xl shadow-lg p-6 h-full flex flex-col justify-center hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out group">
+                  <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 h-full flex flex-col justify-start hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out group">
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0">
                         <Image

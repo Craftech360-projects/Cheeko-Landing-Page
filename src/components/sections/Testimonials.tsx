@@ -72,7 +72,7 @@ export function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative section-padding overflow-hidden"
+      className="relative section-padding pb-4 sm:pb-6 md:pb-8 overflow-hidden"
     >
       <Container>
         {/* Header Section */}
@@ -97,7 +97,7 @@ export function Testimonials() {
               className="absolute -right-8 sm:-right-14 md:-right-16 lg:-right-20 -top-6 sm:-top-10 md:-top-11 lg:-top-12 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
             />
           </div>
-          <p className="text-base sm:text-lg md:text-xl lg:text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-sm sm:text-lg md:text-xl lg:text-xl text-gray-600 max-w-3xl mx-auto leading-tight sm:leading-relaxed">
             Hear from families who have welcomed Cheeko into their homes.
           </p>
         </div>

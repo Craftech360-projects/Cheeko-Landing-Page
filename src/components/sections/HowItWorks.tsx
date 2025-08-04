@@ -81,7 +81,7 @@ export function HowItWorks() {
               height={42}
               className="absolute -left-10 sm:-left-12 md:-left-14 lg:-left-15 -top-8 sm:-top-10 md:-top-11 lg:-top-12 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
             />
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sora">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sora">
               <span className="text-black">How It</span>{" "}
               <span className="text-orange-500">Works</span>
             </h2>
@@ -94,7 +94,7 @@ export function HowItWorks() {
             />
           </div>
 
-          <p className="text-center text-base sm:text-lg md:text-xl lg:text-xl text-gray-600 max-w-4xl mx-auto font-switzer leading-relaxed mt-4">
+          <p className="text-center text-sm sm:text-lg md:text-xl lg:text-xl text-gray-600 max-w-4xl mx-auto font-switzer leading-tight sm:leading-relaxed mt-4">
             Setting up Cheeko is as easy as 1-2-3!
           </p>
         </div>

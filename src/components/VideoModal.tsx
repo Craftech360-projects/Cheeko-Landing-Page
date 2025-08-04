@@ -12,7 +12,7 @@ export function VideoModal({ isOpen, onClose, isMobile }: VideoModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  const videoId = "LCsVR-GrSsk";
+  const videoId = "Q5gfuEwSQMQ";
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -96,6 +96,7 @@ export function VideoModal({ isOpen, onClose, isMobile }: VideoModalProps) {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
+          
         </div>
       </div>
     </div>

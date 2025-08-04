@@ -64,19 +64,19 @@ const PromoBanner: React.FC = () => {
         animate={{ height: "40px", opacity: 1 }}
         exit={{ height: 0, opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="bg-[#FCBC17] text-black relative overflow-hidden fixed top-0 left-0 right-0 z-50 h-auto min-h-[35px] py-1 md:py-0 md:h-[40px] pt-2 md:pt-0"
+        className="bg-[#FCBC17] text-black relative overflow-hidden fixed top-0 left-0 right-0 z-50 h-auto min-h-[48px] py-0 md:py-0 md:h-[40px] pt-1 md:pt-0"
       >
         <div className="absolute inset-0 bg-[#FCBC17]" />
 
-        <div className="relative z-10 h-full flex flex-col items-center justify-center px-4">
-          <div className="text-center">
+        <div className="relative z-10 h-full flex flex-col items-center justify-center">
+          <div className="text-center pt-2 pb-2">
             <div className="flex flex-col lg:flex-row items-center justify-center space-y-0 lg:space-y-0 lg:space-x-4">
               <div className="flex items-center space-x-2">
                 {/* <span className="text-lg sm:text-xl">🎉</span> */}
-                <span className="font-medium text-xs sm:text-sm">
+                <span className="font-medium text-sm">
                   Early Bird Offer Ends In:
                 </span>
-                <div className="font-mono font-medium text-xs sm:text-sm">
+                <div className="font-mono font-medium text-xs">
                   {formatTime(timeLeft.days)}:{formatTime(timeLeft.hours)}:
                   {formatTime(timeLeft.minutes)}:{formatTime(timeLeft.seconds)}
                 </div>
@@ -85,22 +85,22 @@ const PromoBanner: React.FC = () => {
               <div className="hidden lg:block text-black text-sm">|</div>
 
               <div className="flex items-center space-x-2">
-                <span className="font-medium text-xs sm:text-sm">
+                <span className="font-medium text-sm">
                   Get Cheeko For
                 </span>
                 <div className="inline-block">
                   {!loading && price > 0 ? (
                     <>
-                      <span className="line-through text-gray text-xs sm:text-sm mr-2">
+                      <span className="line-through text-gray text-sm mr-1">
                         {currencySymbol}7999
                       </span>
-                      <span className="text-xs sm:text-sm font-medium">
+                      <span className="text-sm font-medium">
                         {currencySymbol}
                         {price.toFixed(0)}
                       </span>
                     </>
                   ) : (
-                    <span className="text-xs sm:text-sm font-medium">
+                    <span className="text-xs font-medium">
                       Great Price!
                     </span>
                   )}

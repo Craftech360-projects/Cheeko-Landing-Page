@@ -85,7 +85,7 @@ export function FAQ() {
     <section
       id="faq"
       ref={sectionRef}
-      className="relative section-padding opacity-0 transition-opacity duration-700"
+      className="relative section-padding pt-4 sm:pt-6 md:pt-8 opacity-0 transition-opacity duration-700"
     >
       <Container>
         <div className="grid lg:grid-cols-2 gap-4 lg:gap-12">

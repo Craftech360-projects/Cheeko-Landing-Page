@@ -75,10 +75,10 @@ const Popup: React.FC = () => {
 
               <div className="h-full w-full md:w-1/2 bg-white relative">
                 <div className="text-center pt-8 md:pt-[46px] px-4">
-                  <h2 className="text-3xl md:text-[38px] font-semibold text-orange-500 leading-tight">
+                  <h2 className="text-3xl md:text-[38px] font-bold text-orange-500 leading-tight">
                     MEET CHEEKO
                   </h2>
-                  <p className="text-md md:text-[18px] text-black mb-4 -mt-1">
+                  <p className="text-md md:text-[18px] text-black mb-3 -mt-1">
                     Your Child's AI Learning Buddy
                   </p>
                   

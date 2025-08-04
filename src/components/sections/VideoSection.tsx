@@ -82,37 +82,42 @@ export function VideoSection() {
       </div>
 
       {/* Curved Black Gradient Overlay */}
-      <div className="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-black/80 via-black/40 to-transparent curved-overlay"></div>
+      <div className="absolute inset-x-0 bottom-0 h-180 bg-gradient-to-t from-black/100 via-black/40 to-transparent curved-overlay"></div>
 
       {/* Text and CTA Overlay */}
-      <div className="absolute bottom-12 md:bottom-16 left-8 md:left-16 lg:left-24 xl:left-32 z-20 max-w-sm md:max-w-2xl lg:max-w-3xl">
+      <div className="absolute bottom-12 md:bottom-16 left-4 sm:left-6 md:left-8 lg:left-16 xl:left-20 2xl:left-32 z-20 max-w-sm md:max-w-2xl lg:max-w-3xl">
         {/* Text */}
-        <h1
-          className="text-white font-sora font-semibold mb-4 md:mb-6 leading-tight text-[22px] md:text-[52px] md:whitespace-nowrap"
-          style={{ letterSpacing: "0.5%" }}
-        >
-          Smart AI Companion
-          <br />
-          Made for Kids - <br className="md:hidden" />Meet Cheeko!
-        </h1>
+        <div className="mb-4 md:mb-6">
+          <h1
+            className="text-white font-sora font-bold mb-2 leading-tight text-[28px] md:text-[52px]"
+            style={{ letterSpacing: "0.5%" }}
+          >
+            Meet Cheeko!
+          </h1>
+          <h3
+            className="text-white font-sora font-semibold leading-tight text-[20px] md:text-[32px]"
+            style={{ letterSpacing: "0.5%" }}
+          >
+            Smart AI Companion for Kids
+          </h3>
+        </div>
 
         {/* CTA Button */}
         <button
-          className="flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 bg-[#D52328] text-white font-medium rounded-md hover:bg-[#B91C21] transition-colors duration-200 text-sm md:text-base"
+          className="flex items-center gap-2 md:gap-3 px-4 md:px-6 py-3 min-h-[48px] bg-[#D52328] text-white font-semibold rounded-md hover:bg-[#B91C21] transition-colors duration-200 text-base"
           onClick={() => setIsModalOpen(true)}
         >
           {/* Play Icon */}
           <svg
-            width="20"
-            height="20"
+            width="24"
+            height="24"
             viewBox="0 0 24 24"
             fill="currentColor"
-            
-            className="md:w-6 md:h-6"
+            className="w-6 h-6"
           >
             <path d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18c.62-.39.62-1.29 0-1.68L9.54 5.98C8.87 5.55 8 6.03 8 6.82z" />
           </svg>
-          <span className="font-switzer">Watch Cheeko in Action</span>
+          <span className="font-switzer">Watch More</span>
         </button>
       </div>
 

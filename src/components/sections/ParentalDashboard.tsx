@@ -96,7 +96,7 @@ export function ParentalDashboard() {
               height={42}
               className="absolute -left-10 sm:-left-12 md:-left-14 lg:-left-15 -top-8 sm:-top-10 md:-top-11 lg:-top-12 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
             />
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sora">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sora">
               <span className="text-black">Parental</span>{" "}
               <span className="text-orange-500">Dashboard</span>
             </h2>
@@ -109,7 +109,7 @@ export function ParentalDashboard() {
             />
           </div>
 
-          <p className="text-center text-base sm:text-lg md:text-xl lg:text-xl text-gray-600 max-w-4xl mx-auto font-switzer leading-relaxed mt-4">
+          <p className="text-center text-sm sm:text-lg md:text-xl lg:text-xl text-gray-600 max-w-4xl mx-auto font-switzer leading-tight sm:leading-relaxed mt-4">
             Real-time insights. Meaningful milestones. All in one place.
           </p>
         </div>
@@ -128,7 +128,7 @@ export function ParentalDashboard() {
           {/* Features Grid with Image - 3 columns layout (reversed) */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center relative z-10">
             {/* First column - First 2 features */}
-            <div className="grid grid-rows-2 gap-6 lg:h-[410px] order-2 lg:order-1">
+            <div className="grid grid-rows-2 gap-4 sm:gap-6 lg:h-[410px] order-2 lg:order-1">
               {dashboardFeatures.slice(0, 2).map((feature, index) => (
                 <div
                   key={index}
@@ -140,7 +140,7 @@ export function ParentalDashboard() {
                     transitionDelay: `${index * 350}ms`,
                   }}
                 >
-                  <div className="bg-white rounded-2xl shadow-lg p-6 h-full flex flex-col justify-center hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out group">
+                  <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 h-full flex flex-col justify-start hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out group">
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0">
                         <Image
@@ -166,7 +166,7 @@ export function ParentalDashboard() {
             </div>
 
             {/* Second column - Last 2 features */}
-            <div className="grid grid-rows-2 gap-6 lg:h-[410px] order-3 lg:order-2">
+            <div className="grid grid-rows-2 gap-4 sm:gap-6 lg:h-[410px] order-3 lg:order-2">
               {dashboardFeatures.slice(2).map((feature, index) => (
                 <div
                   key={index + 2}
@@ -178,7 +178,7 @@ export function ParentalDashboard() {
                     transitionDelay: `${(index + 2) * 350}ms`,
                   }}
                 >
-                  <div className="bg-white rounded-2xl shadow-lg p-6 h-full flex flex-col justify-center hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out group">
+                  <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 h-full flex flex-col justify-start hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out group">
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0">
                         <Image
