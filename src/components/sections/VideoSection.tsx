@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { VideoModal } from "@/components/VideoModal";
 // import { Button, Container } from "@/components/ui";
 // import { useShopify } from "@/hooks/useShopify";
 
@@ -9,6 +10,7 @@ export function VideoSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   // const { price, currencySymbol, loading } = useShopify();
   const [isMobile, setIsMobile] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -97,12 +99,7 @@ export function VideoSection() {
         {/* CTA Button */}
         <button
           className="flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 bg-[#D52328] text-white font-medium rounded-md hover:bg-[#B91C21] transition-colors duration-200 text-sm md:text-base"
-          onClick={() =>
-            window.open(
-              "https://youtube.com/shorts/LCsVR-GrSsk?si=6xTTCRtTPD8p7bNJ",
-              "_blank"
-            )
-          }
+          onClick={() => setIsModalOpen(true)}
         >
           {/* Play Icon */}
           <svg
@@ -118,6 +115,13 @@ export function VideoSection() {
           <span className="font-switzer">Watch Cheeko in Action</span>
         </button>
       </div>
+
+      {/* Video Modal */}
+      <VideoModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        isMobile={isMobile}
+      />
 
       <style jsx>{`
         :global(.animate-fade-in) {
