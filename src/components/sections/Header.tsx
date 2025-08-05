@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button, Container } from "@/components/ui";
 import { cn } from "@/utils/cn";
 import { trackEvent } from "@/components/GoogleTagManager";
+import { OptimizedImage as Image } from "@/components/OptimizedImage";
 
 interface NavigationItem {
   label: string;
@@ -88,9 +89,11 @@ const Header: React.FC<HeaderProps> = ({ isVisible = true }) => {
                   damping: 17,
                 }}
               >
-                <img
+                <Image
                   src="/images/logo.svg"
                   alt="CheekoAI"
+                  width={120}
+                  height={48}
                   className="h-8 w-auto sm:h-9 md:h-10 lg:h-12"
                 />
               </motion.div>

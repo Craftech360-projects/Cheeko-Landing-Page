@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { OptimizedImage as Image } from "@/components/OptimizedImage";
 
 interface SplashScreenProps {
   isVisible: boolean;
@@ -25,9 +26,11 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ isVisible }) => {
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
           >
-            <img
+            <Image
               src="/videos/animated_logo.gif"
               alt="CheekoAI Loading"
+              width={384}
+              height={384}
               className="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96"
             />
           </motion.div>

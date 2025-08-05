@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
+import { OptimizedImage as Image } from "@/components/OptimizedImage";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Container } from "@/components/ui";
 

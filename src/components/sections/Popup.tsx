@@ -4,6 +4,7 @@ import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { useShopify } from "@/hooks/useShopify";
+import { OptimizedImage as Image } from "@/components/OptimizedImage";
 
 const Popup: React.FC = () => {
   const [isVisible, setIsVisible] = React.useState(false);
@@ -93,21 +94,27 @@ const Popup: React.FC = () => {
                   </button>
                 </div>
 
-                <img
+                <Image
                   src="/icons/popup-left-bottom-img.png"
                   alt="Decorative icon"
+                  width={64}
+                  height={64}
                   className="absolute bottom-0 left-0 w-12 h-12 md:w-16 md:h-16"
                 />
                 
-                <img
+                <Image
                   src="/images/popup-right-img.png"
                   alt="Child with Cheeko"
+                  width={300}
+                  height={288}
                   className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-72 md:h-72 w-auto"
                 />
                 
-                <img
+                <Image
                   src="/icons/popup-right-bottom-img.png"
                   alt="Decorative icon"
+                  width={64}
+                  height={64}
                   className="absolute bottom-0 right-0 w-12 h-12 md:w-16 md:h-16"
                 />
               </div>

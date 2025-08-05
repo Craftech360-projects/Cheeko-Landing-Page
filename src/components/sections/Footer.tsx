@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
+import { OptimizedImage as Image } from "@/components/OptimizedImage";
 import { ChevronUp } from "lucide-react";
 
 const navigationLinks = [
