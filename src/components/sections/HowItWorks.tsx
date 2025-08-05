@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
 import { Container } from "@/components/ui";
+import { OptimizedImage as Image } from "@/components/OptimizedImage";
 import { trackEvent } from "@/components/GoogleTagManager";
 
 interface Step {

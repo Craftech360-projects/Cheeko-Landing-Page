@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingCart } from "lucide-react";
 import { Container } from "@/components/ui";
 import { useShopify } from "@/hooks/useShopify";
+import { OptimizedImage as Image } from "@/components/OptimizedImage";
 
 interface BottomBarProps {
   isVisible: boolean;
@@ -36,9 +37,11 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
               {/* Left side - Image and Price */}
               <div className="flex items-center space-x-2 sm:space-x-4">
                 <div className="relative w-8 h-8 sm:w-12 sm:h-12 md:w-18 md:h-18 flex-shrink-0">
-                  <img
+                  <Image
                     src="/images/bottom-bar-left.png"
                     alt="Cheeko AI Toy"
+                    width={150}
+                    height={150}
                     className="w-full h-full object-contain"
                   />
                 </div>
@@ -54,9 +57,11 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
                           {currencySymbol}
                           {originalPrice.toLocaleString()}
                         </span>
-                        <img
+                        <Image
                           src="/icons/discount-icon.svg"
                           alt="Discount"
+                          width={32}
+                          height={32}
                           className="w-4 h-4 sm:w-8 sm:h-8"
                         />
                         <span className="text-[#4CAF50] text-[12px] sm:text-lg font-semibold mr-1">

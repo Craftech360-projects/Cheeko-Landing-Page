@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
+import { OptimizedImage as Image } from "@/components/OptimizedImage";
 import { Container } from "@/components/ui";
 
 export function AccessOptions() {

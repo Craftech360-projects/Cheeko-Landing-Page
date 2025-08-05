@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import Image from "next/image";
+import { OptimizedImage as Image } from "@/components/OptimizedImage";
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import { Button, Container, Typography } from "@/components/ui";
