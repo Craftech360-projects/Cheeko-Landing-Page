@@ -43,7 +43,7 @@ export function PreOrderBanner() {
                 <div key={index} className="relative flex-shrink-0" style={{ width: '718px', height: '118px', marginRight: '-1px' }}>
                   <Image
                     src="/images/banner-shape.svg"
-                    alt=""
+                    alt="Pre-order banner background pattern"
                     width={718}
                     height={118}
                     className="w-full h-full"

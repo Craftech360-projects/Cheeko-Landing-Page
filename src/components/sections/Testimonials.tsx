@@ -46,6 +46,39 @@ const testimonials: Testimonial[] = [
 export function Testimonials() {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
+  const reviewStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "CheekoAI",
+    "description": "AI Learning Companion for Children",
+    "brand": {
+      "@type": "Brand",
+      "name": "CheekoAI"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.7",
+      "reviewCount": testimonials.length.toString(),
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": testimonials.map(testimonial => ({
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": testimonial.rating.toString(),
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "author": {
+        "@type": "Person",
+        "name": testimonial.name
+      },
+      "reviewBody": testimonial.review,
+      "datePublished": new Date().toISOString().split('T')[0]
+    }))
+  };
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -74,13 +107,17 @@ export function Testimonials() {
       id="testimonials"
       className="relative section-padding pb-4 sm:pb-6 md:pb-8 overflow-hidden"
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewStructuredData) }}
+      />
       <Container>
         {/* Header Section */}
         <div className="text-center mb-6 px-4">
           <div className="relative inline-block mb-2">
             <Image
               src="/icons/Header-Icon-Left.svg"
-              alt=""
+              alt="Decorative icon - Left header decoration"
               width={40}
               height={42}
               className="absolute -left-8 sm:-left-14 md:-left-16 lg:-left-20 -top-6 sm:-top-10 md:-top-11 lg:-top-12 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
@@ -91,7 +128,7 @@ export function Testimonials() {
             </h2>
             <Image
               src="/icons/Header-Icon-Right.svg"
-              alt=""
+              alt="Decorative icon - Right header decoration"
               width={40}
               height={42}
               className="absolute -right-8 sm:-right-14 md:-right-16 lg:-right-20 -top-6 sm:-top-10 md:-top-11 lg:-top-12 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"

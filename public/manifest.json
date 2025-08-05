@@ -1,0 +1,32 @@
+{
+  "name": "CheekoAI - AI Learning Companion for Children",
+  "short_name": "CheekoAI",
+  "description": "Empower your child's learning journey with CheekoAI's intelligent, safe, and engaging educational AI companion.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#f36e24",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "kids", "games"],
+  "lang": "en-US",
+  "dir": "ltr"
+}

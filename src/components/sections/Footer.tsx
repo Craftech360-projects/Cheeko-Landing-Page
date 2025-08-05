@@ -99,6 +99,7 @@ export function Footer({ isBottomBarVisible = false }: FooterProps) {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  rel="noopener noreferrer"
                   className="transition-all duration-200 hover:opacity-60"
                   aria-label={social.label}
                 >

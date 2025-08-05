@@ -74,14 +74,7 @@ export const metadata: Metadata = {
     siteName: "CheekoAI",
     title: "CheekoAI - AI Learning Companion for Children",
     description: "Empower your child's learning journey with CheekoAI's intelligent, safe, and engaging educational AI companion. Adaptive learning for ages 5-12.",
-    images: [
-      {
-        url: "https://cheekoai.in/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "CheekoAI - AI Learning Companion for Children",
-      },
-    ],
+    // Images will be automatically handled by Next.js when you add opengraph-image.png to app directory
   },
   twitter: {
     card: "summary_large_image",
@@ -89,15 +82,19 @@ export const metadata: Metadata = {
     creator: "@cheekoai",
     title: "CheekoAI - AI Learning Companion for Children",
     description: "Empower your child's learning journey with CheekoAI's intelligent, safe, and engaging educational AI companion.",
-    images: ["https://cheekoai.in/twitter-image.jpg"],
+    // Images will be automatically handled by Next.js when you add twitter-image.png to app directory
   },
   verification: {
-    google: "your-google-verification-code",
+    // Verified via DNS TXT record in Hostinger
     other: {
       me: ["mailto:info@altio.me"],
     },
   },
   category: "education",
+  alternates: {
+    canonical: "https://cheekoai.in",
+  },
+  metadataBase: new URL("https://cheekoai.in"),
 };
 
 export default function RootLayout({
@@ -114,6 +111,13 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="theme-color" content="#f36e24" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
       </head>
       <body
         className={`${switzer.variable} ${sora.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}

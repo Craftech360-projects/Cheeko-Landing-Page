@@ -63,10 +63,10 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
                 <p>If this problem persists, please contact our support team:</p>
                 <div className="flex items-center justify-center gap-4 text-xs">
                   <a 
-                    href="mailto:help@cheekoai.com" 
+                    href="mailto:help@cheekoai.in" 
                     className="hover:text-blue-600 transition-colors"
                   >
-                    help@cheekoai.com
+                    help@cheekoai.in
                   </a>
                   <span>•</span>
                   <a 

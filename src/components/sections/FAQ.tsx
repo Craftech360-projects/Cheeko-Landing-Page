@@ -81,12 +81,29 @@ export function FAQ() {
     setActiveItem((prev) => (prev === id ? null : id));
   };
 
+  const faqStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
+
   return (
     <section
       id="faq"
       ref={sectionRef}
       className="relative -mt-8 -mb-3 section-padding opacity-0 transition-opacity duration-700"
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+      />
       <Container>
         <div className="grid lg:grid-cols-2 gap-0 lg:gap-12">
           {/* Left Column - Title and Image */}
@@ -102,6 +119,7 @@ export function FAQ() {
                 width={402}
                 height={375}
                 className="max-w-full h-auto"
+                loading="lazy"
                 onError={(e) => {
                   e.currentTarget.src = "/images/default-faq.jpg";
                 }}

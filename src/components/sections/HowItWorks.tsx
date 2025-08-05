@@ -76,7 +76,7 @@ export function HowItWorks() {
           <div className="relative inline-block">
             <Image
               src="/icons/Header-Icon-Left.svg"
-              alt=""
+              alt="Decorative icon - Left header decoration"
               width={40}
               height={42}
               className="absolute -left-10 sm:-left-12 md:-left-14 lg:-left-15 -top-8 sm:-top-10 md:-top-11 lg:-top-12 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
@@ -87,7 +87,7 @@ export function HowItWorks() {
             </h2>
             <Image
               src="/icons/Header-Icon-Right.svg"
-              alt=""
+              alt="Decorative icon - Right header decoration"
               width={40}
               height={42}
               className="absolute -right-10 sm:-right-12 md:-right-14 lg:-right-15 -top-8 sm:-top-10 md:-top-11 lg:-top-12 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
@@ -115,7 +115,7 @@ export function HowItWorks() {
             <div className="relative w-full lg:w-[600px] rounded-xl overflow-hidden">
               <Image
                 src="/images/how-it-works-image.png"
-                alt="How It Works"
+                alt="Cheeko device setup instructions - Step by step guide"
                 width={600}
                 height={416}
                 className="w-full h-auto object-cover"

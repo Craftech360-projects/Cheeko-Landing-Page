@@ -8,7 +8,7 @@ const StructuredData: React.FC = () => {
     "@type": "SoftwareApplication",
     "name": "CheekoAI",
     "description": "AI-powered learning companion for children ages 3-12. Safe, adaptive, and engaging educational technology with COPPA compliance.",
-    "url": "https://cheekoai.com",
+    "url": "https://cheekoai.in",
     "applicationCategory": "EducationalApplication",
     "operatingSystem": "iOS, Android, Web",
     "offers": {
@@ -28,16 +28,16 @@ const StructuredData: React.FC = () => {
     "publisher": {
       "@type": "Organization",
       "name": "CheekoAI Inc.",
-      "url": "https://cheekoai.com",
+      "url": "https://cheekoai.in",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://cheekoai.com/logo.png"
+        "url": "https://cheekoai.in/logo.png"
       },
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "1-800-CHEEKO",
         "contactType": "customer service",
-        "email": "help@cheekoai.com"
+        "email": "help@cheekoai.in"
       },
       "sameAs": [
         "https://twitter.com/cheekoai",
@@ -76,6 +76,19 @@ const StructuredData: React.FC = () => {
     "accessibilitySummary": "Fully accessible learning platform with keyboard navigation, screen reader support, and reduced motion options."
   }
 
+  const breadcrumbStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://cheekoai.in"
+      }
+    ]
+  }
+
   const faqStructuredData = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -112,6 +125,10 @@ const StructuredData: React.FC = () => {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
       />
       <script
         type="application/ld+json"
