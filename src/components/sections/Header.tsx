@@ -88,13 +88,15 @@ const Header: React.FC<HeaderProps> = ({ isVisible = true }) => {
                   stiffness: 400,
                   damping: 17,
                 }}
+                className="flex-shrink-0"
               >
                 <Image
                   src="/images/logo.svg"
                   alt="CheekoAI"
-                  width={120}
-                  height={48}
-                  className="h-8 w-auto sm:h-9 md:h-10 lg:h-12"
+                  width={150}
+                  height={58}
+                  className="h-10 w-auto sm:h-11 md:h-12 lg:h-14 max-w-[120px] sm:max-w-[140px] md:max-w-[150px] lg:max-w-none"
+                  priority
                 />
               </motion.div>
 
@@ -150,7 +152,7 @@ const Header: React.FC<HeaderProps> = ({ isVisible = true }) => {
                   }}
                 >
                   <Button
-                    className="bg-orange-500 text-white border-none hover:bg-[#B91C21] rounded-md font-semibold text-sm lg:text-base px-4 sm:px-6 lg:px-8 min-w-[100px] sm:min-w-[120px] lg:min-w-[140px] h-8 lg:h-11"
+                    className="bg-orange-500 text-white border-none hover:bg-orange-600 rounded-md font-semibold text-sm lg:text-base px-4 sm:px-6 lg:px-8 min-w-[100px] sm:min-w-[120px] lg:min-w-[140px] h-8 lg:h-11"
                     size="sm"
                     onClick={(e) => {
                       e.preventDefault();

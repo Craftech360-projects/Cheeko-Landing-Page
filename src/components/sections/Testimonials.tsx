@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/ui";
 import { OptimizedImage as Image } from "@/components/OptimizedImage";
 
@@ -45,6 +45,12 @@ const testimonials: Testimonial[] = [
 
 export function Testimonials() {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const [failedAvatars, setFailedAvatars] = useState<Set<number>>(new Set());
+
+  const handleAvatarError = (testimonialId: number, name: string) => {
+    // console.log(`[Testimonials] Avatar failed to load for ${name}, using initials fallback`);
+    setFailedAvatars(prev => new Set(prev).add(testimonialId));
+  };
 
   const reviewStructuredData = {
     "@context": "https://schema.org",
@@ -178,17 +184,23 @@ export function Testimonials() {
 
                 {/* User Info */}
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gray-200 overflow-hidden flex-shrink-0">
-                    <Image
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                      width={40}
-                      height={40}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        e.currentTarget.src = "/images/default-avatar.jpg";
-                      }}
-                    />
+                  <div className="w-10 h-10 rounded-full bg-gray-200 overflow-hidden flex-shrink-0 relative">
+                    {failedAvatars.has(testimonial.id) ? (
+                      // Show initials fallback
+                      <div className="w-full h-full flex items-center justify-center bg-orange-500 text-white text-sm font-bold">
+                        {testimonial.name.split(' ').map(n => n[0]).join('').toUpperCase()}
+                      </div>
+                    ) : (
+                      // Show avatar image
+                      <Image
+                        src={testimonial.avatar}
+                        alt={testimonial.name}
+                        width={40}
+                        height={40}
+                        className="w-full h-full object-cover"
+                        onError={() => handleAvatarError(testimonial.id, testimonial.name)}
+                      />
+                    )}
                   </div>
                   <div>
                     <h4 className="font-semibold text-sm text-gray-900">

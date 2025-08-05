@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { VideoModal } from "@/components/VideoModal";
+import { OptimizedVideo } from "@/components/OptimizedVideo";
 // import { Button, Container } from "@/components/ui";
 // import { useShopify } from "@/hooks/useShopify";
 
@@ -11,16 +12,35 @@ export function VideoSection() {
   // const { price, currencySymbol, loading } = useShopify();
   const [isMobile, setIsMobile] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      const newIsMobile = window.innerWidth < 768;
+      if (newIsMobile !== isMobile) {
+        setIsMobile(newIsMobile);
+        setIsVideoLoaded(false); // Reset loading state when switching videos
+      }
     };
 
     checkMobile();
     window.addEventListener("resize", checkMobile);
 
     return () => window.removeEventListener("resize", checkMobile);
+  }, [isMobile]);
+
+  // Preload videos when component mounts
+  useEffect(() => {
+    const preloadVideo = (src: string) => {
+      const link = document.createElement("link");
+      link.rel = "preload";
+      link.href = src;
+      document.head.appendChild(link);
+    };
+
+    // Preload both video versions
+    preloadVideo("/videos/mobile_video.mp4");
+    preloadVideo("/videos/desktop_video.mp4");
   }, []);
 
   useEffect(() => {
@@ -60,25 +80,31 @@ export function VideoSection() {
     >
       {/* Fullscreen Video Container */}
       <div className="absolute inset-0 w-full h-full">
-        <video
-          ref={videoRef}
-          className="w-full h-full object-cover"
+        {/* Loading Placeholder */}
+        {!isVideoLoaded && (
+          <div className="absolute inset-0 bg-black flex items-center justify-center">
+            <div className="animate-pulse">
+              <div className="w-16 h-16 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+          </div>
+        )}
+
+        <OptimizedVideo
+          videoRef={videoRef}
+          src={
+            isMobile ? "/videos/mobile_video.mp4" : "/videos/desktop_video.mp4"
+          }
+          width={1920}
+          height={1080}
+          className={`w-full h-full object-cover ${
+            isVideoLoaded ? "opacity-100" : "opacity-0"
+          } transition-opacity duration-500`}
           autoPlay
           loop
           muted
-          playsInline
           controls={false}
-        >
-          <source
-            src={
-              isMobile
-                ? "/videos/mobile_video.mp4"
-                : "/videos/desktop_video.mp4"
-            }
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
+          onLoadedData={() => setIsVideoLoaded(true)}
+        />
       </div>
 
       {/* Curved Black Gradient Overlay */}
@@ -104,7 +130,7 @@ export function VideoSection() {
 
         {/* CTA Button */}
         <button
-          className="flex items-center gap-2 md:gap-3 px-4 md:px-6 py-3 min-h-[48px] bg-orange-500 text-white font-semibold rounded-md hover:bg-[#B91C21] transition-colors duration-200 text-base"
+          className="flex items-center gap-2 md:gap-3 px-4 md:px-6 py-3 min-h-[48px] bg-orange-500 text-white font-semibold rounded-md hover:bg-orange-600 transition-colors duration-200 text-base"
           onClick={() => setIsModalOpen(true)}
         >
           {/* Play Icon */}

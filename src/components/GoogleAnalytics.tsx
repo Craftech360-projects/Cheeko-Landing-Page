@@ -4,17 +4,7 @@ import Script from 'next/script';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, Suspense } from 'react';
 
-// Declare gtag function
-declare global {
-  interface Window {
-    gtag: (
-      command: 'config' | 'event' | 'set',
-      targetId: string,
-      config?: Record<string, any>
-    ) => void;
-    dataLayer: any[];
-  }
-}
+// Type declarations are now in src/types/global.d.ts
 
 // Page view tracking component
 function PageViewTracking({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_ID: string }) {
@@ -22,12 +12,16 @@ function PageViewTracking({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_ID: string }) 
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (pathname && window.gtag) {
-      const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '');
-      
-      window.gtag('config', GA_MEASUREMENT_ID, {
-        page_path: url,
-      });
+    if (pathname && typeof window !== 'undefined' && window.gtag) {
+      try {
+        const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '');
+        
+        window.gtag('config', GA_MEASUREMENT_ID, {
+          page_path: url,
+        });
+      } catch (error) {
+        console.error('[GA4] Error tracking page view:', error);
+      }
     }
   }, [pathname, searchParams, GA_MEASUREMENT_ID]);
 
@@ -100,15 +94,19 @@ export const trackEvent = (
   eventName: string,
   parameters?: Record<string, any>
 ) => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    // Debug mode - log events to console
-    if (process.env.NODE_ENV === 'development') {
-      // console.log('[GA4 Event]', eventName, parameters);
+  try {
+    if (typeof window !== 'undefined' && window.gtag) {
+      // Debug mode - log events to console
+      if (process.env.NODE_ENV === 'development') {
+        // console.log('[GA4 Event]', eventName, parameters);
+      }
+      
+      window.gtag('event', eventName, parameters);
+    } else if (process.env.NODE_ENV === 'development') {
+      console.warn('[GA4] gtag not loaded yet. Event not tracked:', eventName);
     }
-    
-    window.gtag('event', eventName, parameters);
-  } else if (process.env.NODE_ENV === 'development') {
-    console.warn('[GA4] gtag not loaded yet. Event not tracked:', eventName);
+  } catch (error) {
+    console.error('[GA4] Error tracking event:', error);
   }
 };
 

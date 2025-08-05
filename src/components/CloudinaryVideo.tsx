@@ -13,7 +13,9 @@ interface CloudinaryVideoProps extends Omit<CldVideoPlayerProps, 'src'> {
   autoPlay?: boolean;
   loop?: boolean;
   className?: string;
+  quality?: "auto" | "best" | "good" | "eco" | "low" | number;
   onError?: () => void;
+  onLoadedData?: () => void;
 }
 
 export function CloudinaryVideo({
@@ -27,10 +29,13 @@ export function CloudinaryVideo({
   autoPlay = false,
   loop = false,
   className,
+  quality = "auto",
   onError,
+  onLoadedData,
   ...props
 }: CloudinaryVideoProps) {
   const [error, setError] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   // Convert local path to Cloudinary public ID
@@ -42,17 +47,21 @@ export function CloudinaryVideo({
   };
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
     if (error && onError) {
       onError();
     }
   }, [error, onError]);
 
   // If error occurred and fallback exists, use standard video element
-  if (error && fallbackSrc) {
+  if (error || !mounted) {
     return (
       <video
         ref={videoRef}
-        src={fallbackSrc}
+        src={fallbackSrc || src}
         width={width}
         height={height}
         controls={controls}
@@ -62,30 +71,41 @@ export function CloudinaryVideo({
         poster={poster}
         className={className}
         playsInline
+        onLoadedData={onLoadedData}
       >
         Your browser does not support the video tag.
       </video>
     );
   }
 
+  // Use simple video element with direct Cloudinary URL
+  const qualityParam = typeof quality === 'number' ? `q_${quality}` : `q_${quality}`;
+  const cloudinaryUrl = `https://res.cloudinary.com/dqtrjeegb/video/upload/f_auto,${qualityParam}/${getPublicId(src)}.mp4`;
+
   return (
-    <CldVideoPlayer
-      src={getPublicId(src)}
+    <video
+      ref={videoRef}
+      src={cloudinaryUrl}
       width={width}
       height={height}
       controls={controls}
       muted={muted}
       autoPlay={autoPlay}
       loop={loop}
-      poster={poster ? getPublicId(poster) : undefined}
+      poster={poster}
       className={className}
-      onError={() => setError(true)}
-      transformation={{
-        quality: 'auto',
-        fetchFormat: 'auto',
+      playsInline
+      onLoadedData={() => {
+        // console.log(`[CloudinaryVideo] Successfully loaded video from Cloudinary: ${src}`);
+        if (onLoadedData) onLoadedData();
       }}
-      sourceTypes={['hls', 'dash', 'mp4']}
-      {...props}
-    />
+      onError={() => {
+        // console.error(`[CloudinaryVideo] Failed to load from Cloudinary: ${cloudinaryUrl}`);
+        // console.log(`[CloudinaryVideo] Falling back to local asset: ${fallbackSrc || src}`);
+        setError(true);
+      }}
+    >
+      Your browser does not support the video tag.
+    </video>
   );
 }

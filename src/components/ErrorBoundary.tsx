@@ -40,7 +40,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
     // Log error to monitoring service in production
     if (process.env.NODE_ENV === 'production') {
       // Send to error tracking service like Sentry
-      console.log('Logging error to monitoring service:', { error, errorInfo })
+      // console.log('Logging error to monitoring service:', { error, errorInfo })
     }
     
     this.setState({

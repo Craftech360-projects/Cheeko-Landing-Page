@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { useShopify } from "@/hooks/useShopify";
 import { OptimizedImage as Image } from "@/components/OptimizedImage";
+import { OptimizedVideo } from "@/components/OptimizedVideo";
 
 const Popup: React.FC = () => {
   const [isVisible, setIsVisible] = React.useState(false);
@@ -62,16 +63,17 @@ const Popup: React.FC = () => {
 
             <div className="flex flex-col md:flex-row h-full">
               <div className="hidden md:block md:h-full md:w-1/2 bg-orange-500 relative overflow-hidden">
-                <video
+                <OptimizedVideo
                   src="/videos/popup_video.mp4"
+                  width={600}
+                  height={800}
                   autoPlay
                   loop
                   muted
-                  playsInline
+                  controls={false}
+                  quality="good"
                   className="w-full h-full object-cover"
-                >
-                  Your browser does not support the video tag.
-                </video>
+                />
               </div>
 
               <div className="h-full w-full md:w-1/2 bg-white relative">

@@ -63,19 +63,22 @@ export function Footer({ isBottomBarVisible = false }: FooterProps) {
 
   return (
     <>
-      <footer className={`bg-white relative py-6 px-2 sm:px-6 md:px-[2px] lg:px-[80px] xl:px-[60px] 2xl:px-[160px] ${isBottomBarVisible ? 'pb-[90px] sm:pb-[130px]' : ''}`}>
+      <footer className={`bg-white relative py-8 px-2 sm:px-6 md:px-[2px] lg:px-[80px] xl:px-[60px] 2xl:px-[160px] ${isBottomBarVisible ? 'pb-[90px] sm:pb-[130px]' : ''}`}>
         <div className="max-w-full-2xl mx-auto">
           {/* First Section */}
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 mb-8 sm:mb-12">
             {/* Logo */}
-            <div className="flex items-center">
-              <Image
-                src="/images/logo.svg"
-                alt="CheekoAI Logo"
-                width={120}
-                height={40}
-                className="h-12 w-auto"
-              />
+            <div className="flex items-center py-2">
+              <div className="h-12 sm:h-14 w-32 sm:w-36 flex items-center justify-start">
+                <Image
+                  src="/images/logo.svg"
+                  alt="CheekoAI Logo"
+                  width={120}
+                  height={40}
+                  className="max-w-full max-h-full object-contain"
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
             </div>
 
             {/* Navigation Links */}
@@ -92,24 +95,26 @@ export function Footer({ isBottomBarVisible = false }: FooterProps) {
             </div>
 
             {/* Social Links and Back to Top for Desktop */}
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4 sm:gap-6">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  rel="noopener noreferrer"
-                  className="transition-all duration-200 hover:opacity-60"
+                  className="transition-all duration-200 hover:opacity-60 p-1"
                   aria-label={social.label}
                 >
-                  <Image
-                    src={social.icon}
-                    alt={social.label}
-                    width={24}
-                    height={24}
-                    className="w-6 h-6"
-                  />
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center">
+                    <Image
+                      src={social.icon}
+                      alt={social.label}
+                      width={24}
+                      height={24}
+                      className="max-w-full max-h-full object-contain"
+                      style={{ objectFit: 'contain' }}
+                    />
+                  </div>
                 </a>
               ))}
               {/* Back to top button for desktop */}

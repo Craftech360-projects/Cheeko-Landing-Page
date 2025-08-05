@@ -3,12 +3,7 @@
 import Script from 'next/script';
 import { useEffect } from 'react';
 
-// Declare dataLayer
-declare global {
-  interface Window {
-    dataLayer: any[];
-  }
-}
+// Type declarations are now in src/types/global.d.ts
 
 interface GoogleTagManagerProps {
   GTM_ID: string;
@@ -16,8 +11,10 @@ interface GoogleTagManagerProps {
 
 export default function GoogleTagManager({ GTM_ID }: GoogleTagManagerProps) {
   useEffect(() => {
-    // Initialize dataLayer
-    window.dataLayer = window.dataLayer || [];
+    // Initialize dataLayer with safety check
+    if (typeof window !== 'undefined') {
+      window.dataLayer = window.dataLayer || [];
+    }
     
     // Verify GTM is loaded after a delay
     const verifyGTM = setTimeout(() => {
@@ -76,15 +73,19 @@ export function GoogleTagManagerNoscript({ GTM_ID }: GoogleTagManagerProps) {
 
 // Helper function to push events to dataLayer
 export const pushToDataLayer = (data: Record<string, any>) => {
-  if (typeof window !== 'undefined' && window.dataLayer) {
-    // Debug mode - log events to console
-    if (process.env.NODE_ENV === 'development') {
-      // console.log('[GTM DataLayer Push]', data);
+  try {
+    if (typeof window !== 'undefined' && window.dataLayer) {
+      // Debug mode - log events to console
+      if (process.env.NODE_ENV === 'development') {
+        // console.log('[GTM DataLayer Push]', data);
+      }
+      
+      window.dataLayer.push(data);
+    } else if (process.env.NODE_ENV === 'development') {
+      console.warn('[GTM] dataLayer not available. Event not pushed:', data);
     }
-    
-    window.dataLayer.push(data);
-  } else if (process.env.NODE_ENV === 'development') {
-    console.warn('[GTM] dataLayer not available. Event not pushed:', data);
+  } catch (error) {
+    console.error('[GTM] Error pushing to dataLayer:', error);
   }
 };
 
