@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cloudinary:delete": "node scripts/delete-cloudinary-assets.js",
+    "cloudinary:upload": "node scripts/upload-to-cloudinary.js",
+    "cloudinary:verify": "node scripts/verify-cloudinary-assets.js",
+    "cloudinary:refresh": "npm run cloudinary:delete && npm run cloudinary:upload"
   },
   "dependencies": {
     "cloudinary": "^2.7.0",

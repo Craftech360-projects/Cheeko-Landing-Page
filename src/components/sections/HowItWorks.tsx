@@ -114,7 +114,7 @@ export function HowItWorks() {
           >
             <div className="relative w-full lg:w-[600px] rounded-xl overflow-hidden">
               <Image
-                src="/images/how-it-works-image.png"
+                src="/images/how-it-works-image.jpg"
                 alt="Cheeko device setup instructions - Step by step guide"
                 width={600}
                 height={416}

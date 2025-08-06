@@ -102,7 +102,7 @@ export const useShopify = (useAdminApi = false) => { // Admin API parameter kept
         }
       } else {
         // No fallback price - just show "Pre Order Now" without price
-        console.log('Shopify API failed - not showing price')
+        // console.log('Shopify API failed - not showing price')
         setProduct({
           price: 0, // No price shown when API fails
           currencySymbol: currency.symbol,

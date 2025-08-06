@@ -107,8 +107,8 @@ export function Footer({ isBottomBarVisible = false }: FooterProps) {
                     src={social.icon}
                     alt={social.label}
                     width={24}
-                    height={24}
-                    className="w-6 h-6"
+                    height={social.label === "YouTube" ? 17 : 24}
+                    className={social.label === "YouTube" ? "w-6 h-auto" : "w-6 h-6"}
                   />
                 </a>
               ))}

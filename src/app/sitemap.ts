@@ -3,51 +3,31 @@ import { MetadataRoute } from 'next'
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://cheekoai.in'
   
-  // Define all your pages with their priorities and change frequencies
-  const pages = [
+  return [
     {
       url: baseUrl,
       lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
+      changeFrequency: 'daily' as const,
       priority: 1,
-    },
-    {
-      url: `${baseUrl}/#features`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#how-it-works`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#safety`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/#parental-dashboard`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#faq`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/#newsletter`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly' as const,
-      priority: 0.5,
+      images: [
+        {
+          url: `${baseUrl}/images/meet-cheeko-img1.png`,
+          title: 'CheekoAI - AI Toy for Kids',
+          caption: 'CheekoAI smart learning companion toy for children'
+        },
+        {
+          url: `${baseUrl}/images/key-features-child.png`,
+          title: 'Child playing with CheekoAI toy',
+          caption: 'Interactive AI toy engaging with children'
+        },
+        {
+          url: `${baseUrl}/images/parental-dashboard-parent.jpg`,
+          title: 'CheekoAI Parental Dashboard',
+          caption: 'Parents monitoring child learning progress'
+        }
+      ],
+      // Note: Videos are referenced but Next.js sitemap doesn't support video directly
+      // Consider implementing a separate video sitemap if needed
     },
   ]
-
-  return pages
 }

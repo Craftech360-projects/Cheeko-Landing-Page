@@ -92,10 +92,10 @@ async function getStoreLocationId(
     
     if (data.data?.locations?.edges?.[0]?.node?.id) {
       cachedLocationId = data.data.locations.edges[0].node.id;
-      console.log("Fetched store location:", {
-        id: cachedLocationId,
-        name: data.data.locations.edges[0].node.name,
-      });
+      // console.log("Fetched store location:", {
+      //   id: cachedLocationId,
+      //   name: data.data.locations.edges[0].node.name,
+      // });
       return cachedLocationId;
     }
     
@@ -247,7 +247,7 @@ export async function POST(request: Request) {
     // Check for user errors (including duplicate email)
     if (data.data?.customerCreate?.userErrors?.length > 0) {
       const errors = data.data.customerCreate.userErrors;
-      console.log("Customer creation user errors:", errors);
+      // console.log("Customer creation user errors:", errors);
 
       // Check if email already exists
       const emailTakenError = errors.find(

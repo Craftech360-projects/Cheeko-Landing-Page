@@ -2,12 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import { VideoModal } from "@/components/VideoModal";
+import { OptimizedVideo } from "@/components/OptimizedVideo";
 // import { Button, Container } from "@/components/ui";
 // import { useShopify } from "@/hooks/useShopify";
 
 export function VideoSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   // const { price, currencySymbol, loading } = useShopify();
   const [isMobile, setIsMobile] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,13 +29,6 @@ export function VideoSection() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("animate-fade-in");
-            // Start playing video when in view
-            if (videoRef.current) {
-              videoRef.current.load(); // Reload video source when mobile state changes
-              videoRef.current.play().catch(() => {
-                // Handle autoplay restrictions
-              });
-            }
           }
         });
       },
@@ -51,7 +44,7 @@ export function VideoSection() {
         observer.unobserve(sectionRef.current);
       }
     };
-  }, [isMobile]); // Add isMobile as dependency
+  }, []);
 
   return (
     <section
@@ -60,25 +53,19 @@ export function VideoSection() {
     >
       {/* Fullscreen Video Container */}
       <div className="absolute inset-0 w-full h-full">
-        <video
-          ref={videoRef}
+        <OptimizedVideo
+          src={
+            isMobile
+              ? "/videos/mobile_video.mp4"
+              : "/videos/desktop_video.mp4"
+          }
           className="w-full h-full object-cover"
           autoPlay
           loop
           muted
           playsInline
           controls={false}
-        >
-          <source
-            src={
-              isMobile
-                ? "/videos/mobile_video.mp4"
-                : "/videos/desktop_video.mp4"
-            }
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
+        />
       </div>
 
       {/* Curved Black Gradient Overlay */}

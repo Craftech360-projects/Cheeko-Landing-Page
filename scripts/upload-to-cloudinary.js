@@ -15,6 +15,13 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+// Verify configuration
+if (!process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
+  console.error('❌ Missing Cloudinary API credentials in .env.local');
+  console.error('Please ensure CLOUDINARY_API_KEY and CLOUDINARY_API_SECRET are set');
+  process.exit(1);
+}
+
 // Base directory for public assets
 const publicDir = path.join(__dirname, '..', 'public');
 
@@ -23,7 +30,7 @@ const assetMappings = {
   images: [
     'bottom-bar-left.png',
     'faq-image.png',
-    'how-it-works-image.png',
+    'how-it-works-image.jpg',
     'key-features-child.png',
     'logo.svg',
     'meet-cheeko-img1.png',
@@ -31,7 +38,7 @@ const assetMappings = {
     'meet-cheeko-img3.png',
     'meet-cheeko-img4.png',
     'newsletter-image.png',
-    'parental-dashboard-parent.png',
+    'parental-dashboard-parent.jpg',
     'popup-right-img.png',
     'user1.png',
     'user2.png',
@@ -82,38 +89,63 @@ const assetMappings = {
   ],
 };
 
-// Upload function
-async function uploadAsset(filePath, folder, publicId) {
-  try {
-    const result = await cloudinary.uploader.upload(filePath, {
-      folder: `cheekoai/${folder}`,
-      public_id: publicId,
-      resource_type: 'auto',
-      overwrite: true,
-      invalidate: true,
-      use_filename: true,
-      unique_filename: false,
-    });
-    
-    console.log(`✅ Uploaded: ${folder}/${publicId}`);
-    return result;
-  } catch (error) {
-    console.error(`❌ Failed to upload ${filePath}:`, error.message);
-    return null;
+// Get file size in human readable format
+function getFileSize(filePath) {
+  const stats = fs.statSync(filePath);
+  const bytes = stats.size;
+  const sizes = ['B', 'KB', 'MB', 'GB'];
+  if (bytes === 0) return '0 B';
+  const i = Math.floor(Math.log(bytes) / Math.log(1024));
+  return Math.round(bytes / Math.pow(1024, i) * 100) / 100 + ' ' + sizes[i];
+}
+
+// Upload function with retry logic
+async function uploadAsset(filePath, folder, publicId, retries = 3) {
+  const fileSize = getFileSize(filePath);
+  console.log(`📤 Uploading: ${folder}/${publicId} (${fileSize})`);
+  
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      const result = await cloudinary.uploader.upload(filePath, {
+        folder: `cheekoai/${folder}`,
+        public_id: publicId,
+        resource_type: 'auto',
+        overwrite: true,
+        invalidate: true,
+        use_filename: true,
+        unique_filename: false,
+        timeout: 600000, // 10 minutes timeout for large files
+      });
+      
+      console.log(`✅ Success: ${folder}/${publicId} - ${result.secure_url}`);
+      return result;
+    } catch (error) {
+      if (attempt < retries) {
+        console.log(`⚠️  Attempt ${attempt}/${retries} failed. Retrying...`);
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds before retry
+      } else {
+        console.error(`❌ Failed after ${retries} attempts: ${filePath}`);
+        console.error(`   Error: ${error.message}`);
+        return null;
+      }
+    }
   }
 }
 
 // Main upload function
 async function uploadAllAssets() {
-  console.log('🚀 Starting Cloudinary asset upload...\n');
+  console.log('🚀 Starting Cloudinary asset upload...');
+  console.log(`📍 Cloud Name: ${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}`);
+  console.log(`📁 Target Folder: cheekoai/\n`);
   
+  const startTime = Date.now();
   const results = {
     success: [],
     failed: [],
   };
   
   // Upload images
-  console.log('📸 Uploading images...');
+  console.log('📸 === UPLOADING IMAGES ===\n');
   for (const image of assetMappings.images) {
     const filePath = path.join(publicDir, 'images', image);
     const publicId = path.parse(image).name;
@@ -121,7 +153,7 @@ async function uploadAllAssets() {
     if (fs.existsSync(filePath)) {
       const result = await uploadAsset(filePath, 'images', publicId);
       if (result) {
-        results.success.push({ type: 'image', file: image, url: result.secure_url });
+        results.success.push({ type: 'image', file: image, url: result.secure_url, size: getFileSize(filePath) });
       } else {
         results.failed.push({ type: 'image', file: image });
       }
@@ -132,7 +164,7 @@ async function uploadAllAssets() {
   }
   
   // Upload icons
-  console.log('\n🎨 Uploading icons...');
+  console.log('\n🎨 === UPLOADING ICONS ===\n');
   for (const icon of assetMappings.icons) {
     const filePath = path.join(publicDir, 'icons', icon);
     const publicId = path.parse(icon).name;
@@ -140,7 +172,7 @@ async function uploadAllAssets() {
     if (fs.existsSync(filePath)) {
       const result = await uploadAsset(filePath, 'icons', publicId);
       if (result) {
-        results.success.push({ type: 'icon', file: icon, url: result.secure_url });
+        results.success.push({ type: 'icon', file: icon, url: result.secure_url, size: getFileSize(filePath) });
       } else {
         results.failed.push({ type: 'icon', file: icon });
       }
@@ -151,16 +183,15 @@ async function uploadAllAssets() {
   }
   
   // Upload videos
-  console.log('\n🎬 Uploading videos...');
+  console.log('\n🎬 === UPLOADING VIDEOS ===\n');
   for (const video of assetMappings.videos) {
     const filePath = path.join(publicDir, 'videos', video);
     const publicId = path.parse(video).name;
     
     if (fs.existsSync(filePath)) {
-      console.log(`📤 Uploading video: ${video} (this may take a while...)`);
       const result = await uploadAsset(filePath, 'videos', publicId);
       if (result) {
-        results.success.push({ type: 'video', file: video, url: result.secure_url });
+        results.success.push({ type: 'video', file: video, url: result.secure_url, size: getFileSize(filePath) });
       } else {
         results.failed.push({ type: 'video', file: video });
       }
@@ -170,10 +201,42 @@ async function uploadAllAssets() {
     }
   }
   
+  // Calculate upload time
+  const uploadTime = ((Date.now() - startTime) / 1000).toFixed(2);
+  
   // Summary
-  console.log('\n📊 Upload Summary:');
+  console.log('\n📊 === UPLOAD SUMMARY ===\n');
+  console.log(`⏱️  Total upload time: ${uploadTime} seconds`);
   console.log(`✅ Successfully uploaded: ${results.success.length} assets`);
   console.log(`❌ Failed uploads: ${results.failed.length} assets`);
+  
+  // Show failed assets details
+  if (results.failed.length > 0) {
+    console.log('\n❌ Failed Assets:');
+    results.failed.forEach(item => {
+      console.log(`   - ${item.type}s/${item.file} ${item.reason ? `(${item.reason})` : ''}`);
+    });
+  }
+  
+  // Calculate total size uploaded
+  const totalSize = results.success.reduce((acc, item) => {
+    const sizeMatch = item.size.match(/(\d+\.?\d*)\s*(\w+)/);
+    if (sizeMatch) {
+      const [, size, unit] = sizeMatch;
+      const multipliers = { B: 1, KB: 1024, MB: 1024 * 1024, GB: 1024 * 1024 * 1024 };
+      return acc + (parseFloat(size) * (multipliers[unit] || 1));
+    }
+    return acc;
+  }, 0);
+  
+  const formatBytes = (bytes) => {
+    const sizes = ['B', 'KB', 'MB', 'GB'];
+    if (bytes === 0) return '0 B';
+    const i = Math.floor(Math.log(bytes) / Math.log(1024));
+    return Math.round(bytes / Math.pow(1024, i) * 100) / 100 + ' ' + sizes[i];
+  };
+  
+  console.log(`📦 Total data uploaded: ${formatBytes(totalSize)}`);
   
   // Save results to file
   const resultsPath = path.join(__dirname, '..', 'cloudinary-upload-results.json');
@@ -200,6 +263,9 @@ async function uploadAllAssets() {
   
   fs.writeFileSync(mappingPath, JSON.stringify(mappings, null, 2));
   console.log(`📄 Mappings saved to: ${mappingPath}`);
+  
+  console.log('\n✨ Upload complete! Your assets are now available on Cloudinary.');
+  console.log('Run "npm run cloudinary:verify" to verify all assets are accessible.');
 }
 
 // Run the upload

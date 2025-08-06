@@ -12,8 +12,8 @@ import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Safety } from "@/components/sections/Safety";
 import { VideoSection } from "@/components/sections/VideoSection";
 // import { PreOrderBanner } from "@/components/sections/PreOrderBanner";
-// import { Testimonials } from "@/components/sections/Testimonials";
-import { FAQ } from "@/components/sections/FAQ";
+import { Testimonials } from "@/components/sections/Testimonials";
+// import { FAQ } from "@/components/sections/FAQ";
 import { Newsletter } from "@/components/sections/Newsletter";
 import { Footer } from "@/components/sections/Footer";
 import { StructuredData } from "@/components/StructuredData";
@@ -21,6 +21,8 @@ import { ParentalDashboard } from "@/components/sections/ParentalDashboard";
 import { HashRouter } from "@/components/HashRouter";
 import { SplashScreen } from "@/components/SplashScreen";
 import { Popup } from "@/components/sections/Popup";
+import { AssetTracker } from "@/components/AssetTracker";
+import { VideoTest } from "@/components/VideoTest";
 
 export default function Home() {
   const { isHeaderVisible, isBottomBarVisible } = useScrollBehavior();
@@ -36,61 +38,67 @@ export default function Home() {
 
   return (
     <>
+      <AssetTracker />
+      {/* <VideoTest /> */}
       <SplashScreen isVisible={showSplash} />
       <HashRouter>
-        <div className={`max-w-full mx-auto ${isBottomBarVisible ? 'pb-[0px]' : ''}`}>
+        <div
+          className={`max-w-full mx-auto ${
+            isBottomBarVisible ? "pb-[0px]" : ""
+          }`}
+        >
           <StructuredData />
           {!showSplash && <PromoBanner />}
           <Header isVisible={isHeaderVisible} />
 
-        <main className="space-y-12 sm:space-y-12 md:space-y-12 lg:space-y-16">
-          {/* Video Section */}
-          <VideoSection />
+          <main className="space-y-12 sm:space-y-12 md:space-y-12 lg:space-y-16">
+            {/* Video Section */}
+            <VideoSection />
 
-          {/* Pre Order Banner */}
-          {/* <PreOrderBanner /> */}
+            {/* Pre Order Banner */}
+            {/* <PreOrderBanner /> */}
 
-          {/* Hero Section */}
-          {/* <Hero /> */}
+            {/* Hero Section */}
+            {/* <Hero /> */}
 
-          {/* Meet Cheeko Section */}
-          <MeetCheeko />
+            {/* Meet Cheeko Section */}
+            <MeetCheeko />
 
-          {/* Key Features Section */}
-          <Features />
+            {/* Key Features Section */}
+            <Features />
 
-          {/* Testimonials Section */}
-          {/* <Testimonials /> */}
+            {/* Access Options */}
+            {/* <AccessOptions /> */}
 
-          {/* Access Options */}
-          {/* <AccessOptions /> */}
+            {/* Safety & Privacy Section */}
+            <Safety />
 
-          {/* Safety & Privacy Section */}
-          <Safety />
+            {/* Parental Dashboard */}
+            <ParentalDashboard />
 
-          {/* Parental Dashboard */}
-          <ParentalDashboard />
+            {/* How It Works Section */}
+            <HowItWorks />
 
-          {/* How It Works Section */}
-          <HowItWorks />
+            {/* Testimonials Section */}
+            <Testimonials />
 
-          {/* FAQ Section */}
-          <FAQ />
+            {/* FAQ Section */}
+            {/* <FAQ /> */}
 
-          {/* Newsletter Section */}
-          <Newsletter />
-        </main>
+            {/* Newsletter Section */}
+            <Newsletter />
+          </main>
 
-        {/* Footer */}
-        <Footer isBottomBarVisible={isBottomBarVisible} />
-        
-        {/* Bottom Bar */}
-        <BottomBar isVisible={isBottomBarVisible} />
-        
-        {/* Popup */}
-        <Popup />
-      </div>
-    </HashRouter>
+          {/* Footer */}
+          <Footer isBottomBarVisible={isBottomBarVisible} />
+
+          {/* Bottom Bar */}
+          <BottomBar isVisible={isBottomBarVisible} />
+
+          {/* Popup */}
+          <Popup />
+        </div>
+      </HashRouter>
     </>
   );
 }

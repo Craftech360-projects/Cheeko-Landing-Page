@@ -93,26 +93,20 @@ const Hero: React.FC = () => {
               <div className="space-y-2 sm:space-y-4 lg:space-y-6">
                 {/* MEET CHEEKO with reduced line height */}
                 <div>
-                  <Typography
-                    variant="h1"
-                    className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold bg-clip-text text-neutral-00 leading-none tracking-wide"
-                  >
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold bg-clip-text text-neutral-00 leading-none tracking-wide">
                     MEET
                     <br />
                     CHEEKO
-                  </Typography>
+                  </h1>
                 </div>
 
                 {/* Your Child's AI Learning Buddy - split into two lines */}
                 <div>
-                  <Typography
-                    variant="h1"
-                    className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-neutral-00 leading-none tracking-normal"
-                  >
-                    Your Child's AI
+                  <h2 className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-neutral-00 leading-none tracking-normal">
+                    AI Toy for Kids
                     <br />
-                    Learning Buddy
-                  </Typography>
+                    Your Child's Learning Buddy
+                  </h2>
                 </div>
 
                 {/* Description text */}

@@ -41,17 +41,21 @@ const sora = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "CheekoAI - AI Learning Companion for Children",
-  description: "Empower your child's learning journey with CheekoAI's intelligent, safe, and engaging educational AI companion. Adaptive learning for ages 5-12 with COPPA compliance and parental controls.",
+  title: "CheekoAI - AI Toy for Kids | Smart Learning Companion for Children",
+  description: "CheekoAI is the best AI toy for kids in India. Safe, educational AI-powered toy that helps children learn through play. Perfect for ages 3-12 with parental controls and adaptive learning.",
   keywords: [
-    "AI learning",
-    "children education",
-    "adaptive learning",
-    "educational technology",
-    "COPPA compliant",
-    "safe AI for kids",
-    "learning companion",
-    "child development"
+    "AI toy for kids",
+    "AI toy",
+    "smart toy for children",
+    "educational AI toy India",
+    "AI learning toy",
+    "interactive AI toy",
+    "CheekoAI toy",
+    "best AI toy for kids",
+    "AI companion for children",
+    "smart learning toy",
+    "COPPA compliant toy",
+    "safe AI toy for kids"
   ],
   authors: [{ name: "Altio AI" }],
   creator: "Altio AI Private Limited",
@@ -69,19 +73,19 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "en_IN",
     url: "https://cheekoai.in",
     siteName: "CheekoAI",
-    title: "CheekoAI - AI Learning Companion for Children",
-    description: "Empower your child's learning journey with CheekoAI's intelligent, safe, and engaging educational AI companion. Adaptive learning for ages 5-12.",
+    title: "CheekoAI - AI Toy for Kids | Smart Learning Companion",
+    description: "CheekoAI is the best AI toy for kids in India. Safe, educational AI-powered toy that helps children learn through play. Perfect for ages 3-12.",
     // Images will be automatically handled by Next.js when you add opengraph-image.png to app directory
   },
   twitter: {
     card: "summary_large_image",
     site: "@cheekoai",
     creator: "@cheekoai",
-    title: "CheekoAI - AI Learning Companion for Children",
-    description: "Empower your child's learning journey with CheekoAI's intelligent, safe, and engaging educational AI companion.",
+    title: "CheekoAI - AI Toy for Kids | Smart Learning Companion",
+    description: "CheekoAI is the best AI toy for kids in India. Safe, educational AI-powered toy for children ages 3-12.",
     // Images will be automatically handled by Next.js when you add twitter-image.png to app directory
   },
   verification: {
@@ -111,13 +115,18 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="theme-color" content="#f36e24" />
+        <meta name="google-site-verification" content="n8iGB7YqnZeFBCF3jSa-eka3wM4abjBm8Y9WBDNkkyI" />
+        <link rel="alternate" hrefLang="en-IN" href="https://cheekoai.in" />
+        <link rel="alternate" hrefLang="x-default" href="https://cheekoai.in" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="manifest" href="/manifest.json" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://res.cloudinary.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
       </head>
       <body
         className={`${switzer.variable} ${sora.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}

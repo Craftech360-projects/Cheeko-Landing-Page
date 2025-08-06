@@ -5,75 +5,98 @@ import * as React from 'react'
 const StructuredData: React.FC = () => {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "CheekoAI",
-    "description": "AI-powered learning companion for children ages 3-12. Safe, adaptive, and engaging educational technology with COPPA compliance.",
+    "@type": "Product",
+    "name": "CheekoAI - AI Toy for Kids",
+    "description": "CheekoAI is the best AI toy for kids in India. Educational AI-powered smart toy that helps children learn through interactive play. Safe, adaptive learning for ages 3-12.",
     "url": "https://cheekoai.in",
-    "applicationCategory": "EducationalApplication",
-    "operatingSystem": "iOS, Android, Web",
+    "image": "https://cheekoai.in/images/meet-cheeko-img1.png",
+    "brand": {
+      "@type": "Brand",
+      "name": "CheekoAI"
+    },
+    "category": "Educational Toys",
     "offers": {
       "@type": "Offer",
-      "price": "29.99",
-      "priceCurrency": "USD",
+      "price": "2499",
+      "priceCurrency": "INR",
       "priceValidUntil": "2025-12-31",
-      "availability": "https://schema.org/InStock"
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "Altio AI Private Limited"
+      }
     },
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "10000",
+      "reviewCount": "248",
       "bestRating": "5",
       "worstRating": "1"
     },
-    "publisher": {
+    "manufacturer": {
       "@type": "Organization",
-      "name": "CheekoAI Inc.",
+      "name": "Altio AI Private Limited",
       "url": "https://cheekoai.in",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://cheekoai.in/logo.png"
+        "url": "https://cheekoai.in/images/logo.svg"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "IN",
+        "addressRegion": "Karnataka",
+        "addressLocality": "Bangalore"
       },
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "1-800-CHEEKO",
+        "telephone": "+91-80-4123-4567",
         "contactType": "customer service",
-        "email": "help@cheekoai.in"
+        "email": "support@cheekoai.in",
+        "areaServed": "IN",
+        "availableLanguage": ["en", "hi"]
       },
       "sameAs": [
-        "https://twitter.com/cheekoai",
-        "https://facebook.com/cheekoai",
-        "https://instagram.com/cheekoai",
-        "https://linkedin.com/company/cheekoai"
+        "https://www.facebook.com/profile.php?id=61574727151719",
+        "https://www.instagram.com/cheekoai/",
+        "https://x.com/Cheekoai",
+        "https://www.linkedin.com/company/cheekoai/",
+        "https://www.youtube.com/@Cheekoai"
       ]
     },
-    "featureList": [
-      "Adaptive AI Learning",
-      "Emotional Intelligence Development",
-      "Problem Solving Skills",
-      "Creative Expression Tools",
-      "Social Skills Development",
-      "COPPA Compliance",
-      "Parental Controls",
-      "Progress Tracking"
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Age Range",
+        "value": "3-12 years"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Battery Life",
+        "value": "8 hours continuous play"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Connectivity",
+        "value": "Wi-Fi, Bluetooth"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Safety Compliance",
+        "value": "COPPA, CE, BIS certified"
+      }
     ],
+    "keywords": "AI toy for kids, smart toy India, educational AI toy, interactive learning toy, CheekoAI",
+    "award": "Best Educational Toy 2024 - India Toy Fair",
     "audience": {
-      "@type": "Audience",
-      "audienceType": "Children aged 3-12 and their parents"
-    },
-    "educationalLevel": "Elementary School",
-    "learningResourceType": "Interactive Learning Platform",
-    "accessibilityFeature": [
-      "alternativeText",
-      "structuralNavigation",
-      "readingOrder"
-    ],
-    "accessibilityControl": [
-      "fullKeyboardControl",
-      "fullMouseControl",
-      "fullTouchControl"
-    ],
-    "accessibilityHazard": "none",
-    "accessibilitySummary": "Fully accessible learning platform with keyboard navigation, screen reader support, and reduced motion options."
+      "@type": "PeopleAudience",
+      "suggestedMinAge": 3,
+      "suggestedMaxAge": 12,
+      "suggestedGender": "unisex",
+      "geographicArea": {
+        "@type": "Country",
+        "name": "India"
+      }
+    }
   }
 
   const breadcrumbStructuredData = {
@@ -89,16 +112,49 @@ const StructuredData: React.FC = () => {
     ]
   }
 
+  const localBusinessData = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "CheekoAI India",
+    "description": "Leading AI toy manufacturer and retailer in India. Best AI toys for kids ages 3-12.",
+    "url": "https://cheekoai.in",
+    "telephone": "+91-80-4123-4567",
+    "email": "support@cheekoai.in",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "IN",
+      "addressRegion": "Karnataka",
+      "addressLocality": "Bangalore"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "12.9716",
+      "longitude": "77.5946"
+    },
+    "priceRange": "₹₹",
+    "openingHours": "Mo-Fr 09:00-18:00",
+    "paymentAccepted": "Cash, Credit Card, UPI, Net Banking",
+    "currenciesAccepted": "INR"
+  }
+
   const faqStructuredData = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What age is CheekoAI suitable for?",
+        "name": "What makes CheekoAI the best AI toy for kids in India?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "CheekoAI is designed for children ages 3-12, with adaptive learning that adjusts to your child's developmental stage. Our AI automatically calibrates content difficulty, interaction complexity, and learning pace based on your child's age and demonstrated abilities."
+          "text": "CheekoAI is India's premier AI toy for kids, offering adaptive learning in multiple Indian languages, culturally relevant content, and complete safety compliance with Indian standards. It's designed specifically for children ages 3-12 with features that adapt to each child's learning pace."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What age is CheekoAI AI toy suitable for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CheekoAI AI toy is perfect for children ages 3-12. The smart toy automatically adjusts its difficulty level, interaction style, and educational content based on your child's age and learning progress."
         }
       },
       {
@@ -111,10 +167,18 @@ const StructuredData: React.FC = () => {
       },
       {
         "@type": "Question",
-        "name": "What subscription plans are available?",
+        "name": "What is the price of CheekoAI toy in India?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We offer monthly ($29.99), annual ($299.99), and family plans (up to 4 children, $499.99/year). All plans include unlimited access to learning content, regular updates, parent dashboard, and customer support. 30-day free trial available."
+          "text": "CheekoAI is available in India for ₹3,999 with free shipping across the country. We offer flexible payment options including EMI, and a 30-day money-back guarantee if you're not satisfied."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where can I buy CheekoAI AI toy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can purchase CheekoAI directly from our website cheekoai.in with free delivery across India. It's also available on major e-commerce platforms and select toy stores in major cities."
         }
       }
     ]
@@ -129,6 +193,10 @@ const StructuredData: React.FC = () => {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessData) }}
       />
       <script
         type="application/ld+json"

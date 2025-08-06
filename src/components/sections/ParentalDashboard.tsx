@@ -209,7 +209,7 @@ export function ParentalDashboard() {
               className="opacity-0 lg:h-[410px] flex items-center justify-center order-1 lg:order-3"
             >
               <Image
-                src="/images/parental-dashboard-parent.png"
+                src="/images/parental-dashboard-parent.jpg"
                 alt="Parent using dashboard"
                 width={392}
                 height={410}

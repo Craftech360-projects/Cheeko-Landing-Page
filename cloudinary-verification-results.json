@@ -1,0 +1,278 @@
+{
+  "verified": [
+    {
+      "type": "image",
+      "file": "bottom-bar-left.png",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/images/bottom-bar-left.png"
+    },
+    {
+      "type": "image",
+      "file": "faq-image.png",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/images/faq-image.png"
+    },
+    {
+      "type": "image",
+      "file": "how-it-works-image.jpg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/images/how-it-works-image.jpg"
+    },
+    {
+      "type": "image",
+      "file": "key-features-child.png",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/images/key-features-child.png"
+    },
+    {
+      "type": "image",
+      "file": "logo.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/images/logo.svg"
+    },
+    {
+      "type": "image",
+      "file": "meet-cheeko-img1.png",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/images/meet-cheeko-img1.png"
+    },
+    {
+      "type": "image",
+      "file": "meet-cheeko-img2.png",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/images/meet-cheeko-img2.png"
+    },
+    {
+      "type": "image",
+      "file": "meet-cheeko-img3.png",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/images/meet-cheeko-img3.png"
+    },
+    {
+      "type": "image",
+      "file": "meet-cheeko-img4.png",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/images/meet-cheeko-img4.png"
+    },
+    {
+      "type": "image",
+      "file": "newsletter-image.png",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/images/newsletter-image.png"
+    },
+    {
+      "type": "image",
+      "file": "parental-dashboard-parent.jpg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/images/parental-dashboard-parent.jpg"
+    },
+    {
+      "type": "image",
+      "file": "popup-right-img.png",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/images/popup-right-img.png"
+    },
+    {
+      "type": "image",
+      "file": "user1.png",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/images/user1.png"
+    },
+    {
+      "type": "image",
+      "file": "user2.png",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/images/user2.png"
+    },
+    {
+      "type": "image",
+      "file": "user3.png",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/images/user3.png"
+    },
+    {
+      "type": "icon",
+      "file": "Ball.png",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/Ball.png"
+    },
+    {
+      "type": "icon",
+      "file": "Ellipse.png",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/Ellipse.png"
+    },
+    {
+      "type": "icon",
+      "file": "Header-Icon-Left.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/Header-Icon-Left.svg"
+    },
+    {
+      "type": "icon",
+      "file": "Header-Icon-Right.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/Header-Icon-Right.svg"
+    },
+    {
+      "type": "icon",
+      "file": "Rounded.png",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/Rounded.png"
+    },
+    {
+      "type": "icon",
+      "file": "Triangle.png",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/Triangle.png"
+    },
+    {
+      "type": "icon",
+      "file": "appstore_logo.png",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/appstore_logo.png"
+    },
+    {
+      "type": "icon",
+      "file": "creative-content.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/creative-content.svg"
+    },
+    {
+      "type": "icon",
+      "file": "discount-icon.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/discount-icon.svg"
+    },
+    {
+      "type": "icon",
+      "file": "facebook.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/facebook.svg"
+    },
+    {
+      "type": "icon",
+      "file": "features-star-red.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/features-star-red.svg"
+    },
+    {
+      "type": "icon",
+      "file": "features-star-teal.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/features-star-teal.svg"
+    },
+    {
+      "type": "icon",
+      "file": "google-play.png",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/google-play.png"
+    },
+    {
+      "type": "icon",
+      "file": "how-it-works-bottomright.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/how-it-works-bottomright.svg"
+    },
+    {
+      "type": "icon",
+      "file": "how-it-works-topleft.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/how-it-works-topleft.svg"
+    },
+    {
+      "type": "icon",
+      "file": "instagram.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/instagram.svg"
+    },
+    {
+      "type": "icon",
+      "file": "linkedin.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/linkedin.svg"
+    },
+    {
+      "type": "icon",
+      "file": "meet-cheeko-bottomright.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/meet-cheeko-bottomright.svg"
+    },
+    {
+      "type": "icon",
+      "file": "meet-cheeko-topleft.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/meet-cheeko-topleft.svg"
+    },
+    {
+      "type": "icon",
+      "file": "multilingual-support.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/multilingual-support.svg"
+    },
+    {
+      "type": "icon",
+      "file": "parental-dashboard1.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/parental-dashboard1.svg"
+    },
+    {
+      "type": "icon",
+      "file": "parental-dashboard2.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/parental-dashboard2.svg"
+    },
+    {
+      "type": "icon",
+      "file": "parental-dashboard3.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/parental-dashboard3.svg"
+    },
+    {
+      "type": "icon",
+      "file": "parental-dashboard4.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/parental-dashboard4.svg"
+    },
+    {
+      "type": "icon",
+      "file": "parental-setup.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/parental-setup.svg"
+    },
+    {
+      "type": "icon",
+      "file": "playstore_logo.png",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/playstore_logo.png"
+    },
+    {
+      "type": "icon",
+      "file": "popup-left-bottom-img.png",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/popup-left-bottom-img.png"
+    },
+    {
+      "type": "icon",
+      "file": "popup-right-bottom-img.png",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/popup-right-bottom-img.png"
+    },
+    {
+      "type": "icon",
+      "file": "safety-bottomleft.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/safety-bottomleft.svg"
+    },
+    {
+      "type": "icon",
+      "file": "safety-privacy-1.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/safety-privacy-1.svg"
+    },
+    {
+      "type": "icon",
+      "file": "safety-privacy-2.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/safety-privacy-2.svg"
+    },
+    {
+      "type": "icon",
+      "file": "safety-privacy-3.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/safety-privacy-3.svg"
+    },
+    {
+      "type": "icon",
+      "file": "smart-learning.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/smart-learning.svg"
+    },
+    {
+      "type": "icon",
+      "file": "x.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/x.svg"
+    },
+    {
+      "type": "icon",
+      "file": "youtube.svg",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/youtube.svg"
+    },
+    {
+      "type": "video",
+      "file": "animated_logo.gif",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/videos/animated_logo.gif"
+    },
+    {
+      "type": "video",
+      "file": "desktop_video.mp4",
+      "url": "https://res.cloudinary.com/dqtrjeegb/video/upload/cheekoai/videos/desktop_video.mp4"
+    },
+    {
+      "type": "video",
+      "file": "mobile_video.mp4",
+      "url": "https://res.cloudinary.com/dqtrjeegb/video/upload/cheekoai/videos/mobile_video.mp4"
+    },
+    {
+      "type": "video",
+      "file": "popup_video.mp4",
+      "url": "https://res.cloudinary.com/dqtrjeegb/video/upload/cheekoai/videos/popup_video.mp4"
+    }
+  ],
+  "missing": [],
+  "failed": [],
+  "localOnly": [],
+  "cloudinaryOnly": []
+}

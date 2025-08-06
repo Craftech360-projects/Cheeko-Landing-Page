@@ -21,8 +21,9 @@ export function CloudinaryImage({
   loading = 'lazy',
   className,
   sizes,
+  priority,
   ...props
-}: CloudinaryImageProps) {
+}: CloudinaryImageProps & { priority?: boolean }) {
   const [error, setError] = useState(false);
 
   // Convert local path to Cloudinary public ID
@@ -31,11 +32,17 @@ export function CloudinaryImage({
     // Remove leading slash and file extension
     const cleanPath = path.startsWith('/') ? path.slice(1) : path;
     const pathWithoutExt = cleanPath.replace(/\.[^/.]+$/, '');
-    return `cheekoai/${pathWithoutExt}`;
+    const publicId = `cheekoai/${pathWithoutExt}`;
+    
+    // Log Cloudinary image loading
+    // console.log(`🌩️ Cloudinary Image: Loading "${src}" as "${publicId}"`);
+    
+    return publicId;
   };
 
   // If error occurred and fallback exists, use Next/Image with local asset
   if (error && fallbackSrc) {
+    // console.log(`⚠️ Cloudinary Image: Failed to load "${src}", using fallback "${fallbackSrc}"`);
     // eslint-disable-next-line @next/next/no-img-element
     return (
       <img
@@ -43,7 +50,7 @@ export function CloudinaryImage({
         alt={alt}
         width={width}
         height={height}
-        loading={loading}
+        loading={priority ? undefined : loading}
         className={className}
       />
     );
@@ -52,21 +59,32 @@ export function CloudinaryImage({
   // Calculate sizes if not provided
   const defaultSizes = sizes || `(max-width: 768px) 100vw, (max-width: 1200px) 50vw, ${width}px`;
 
+  // Don't pass loading prop if priority is true
+  const imageProps = {
+    src: getPublicId(src),
+    alt,
+    width,
+    height,
+    quality,
+    format: "auto",
+    sizes: defaultSizes,
+    className,
+    onError: () => {
+      // console.error(`❌ Cloudinary Image: Failed to load "${src}"`);
+      setError(true);
+    },
+    onLoad: () => {
+      // console.log(`✅ Cloudinary Image: Successfully loaded "${src}"`);
+    },
+    crop: "fit",
+    gravity: "center",
+    ...props,
+    ...(priority ? { priority } : { loading }),
+  };
+
   return (
     <CldImage
-      src={getPublicId(src)}
-      alt={alt}
-      width={width}
-      height={height}
-      loading={loading}
-      quality={quality}
-      format="auto"
-      sizes={defaultSizes}
-      className={className}
-      onError={() => setError(true)}
-      crop="fill"
-      gravity="auto"
-      {...props}
+      {...imageProps}
     />
   );
 }

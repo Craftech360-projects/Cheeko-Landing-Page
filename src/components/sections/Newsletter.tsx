@@ -205,7 +205,7 @@ export function Newsletter() {
                     priority
                     unoptimized
                     onError={(e) => {
-                      e.currentTarget.src = "/images/default-newsletter.jpg";
+                      e.currentTarget.src = "/images/newsletter-image.png";
                     }}
                   />
                 </div>
