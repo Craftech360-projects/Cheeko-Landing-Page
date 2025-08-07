@@ -167,7 +167,7 @@ export async function POST(request: Request) {
           input: {
             email: email,
             emailMarketingConsent: {
-              marketingOptInLevel: "SINGLE_OPT_IN",
+              marketingOptInLevel: "CONFIRMED_OPT_IN",
               marketingState: "SUBSCRIBED",
               consentUpdatedAt: new Date().toISOString(),
               ...(locationId && { sourceLocationId: locationId }),

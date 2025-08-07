@@ -22,7 +22,7 @@ import { HashRouter } from "@/components/HashRouter";
 import { SplashScreen } from "@/components/SplashScreen";
 import { Popup } from "@/components/sections/Popup";
 import { AssetTracker } from "@/components/AssetTracker";
-import { VideoTest } from "@/components/VideoTest";
+// import { VideoTest } from "@/components/VideoTest";
 
 export default function Home() {
   const { isHeaderVisible, isBottomBarVisible } = useScrollBehavior();

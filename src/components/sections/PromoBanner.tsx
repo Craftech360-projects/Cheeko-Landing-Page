@@ -25,7 +25,7 @@ const PromoBanner: React.FC = () => {
   React.useEffect(() => {
     // Set a fixed end date - adjust this date as needed
     // Example: February 1, 2025 at 23:59:59 UTC
-    const endTime = new Date("2025-08-06T23:59:59Z").getTime();
+    const endTime = new Date("2025-08-09T23:59:59Z").getTime();
 
     const timer = setInterval(() => {
       const now = Date.now();
@@ -82,7 +82,9 @@ const PromoBanner: React.FC = () => {
                 </div>
               </div>
 
-              <div className="hidden lg:block text-black text-sm lg:text-base">|</div>
+              <div className="hidden lg:block text-black text-sm lg:text-base">
+                |
+              </div>
 
               <div className="flex items-center space-x-2">
                 <span className="font-medium text-sm lg:text-base">

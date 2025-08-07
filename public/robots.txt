@@ -8,6 +8,14 @@ Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
 Disallow: /private/
+# Block Shopify-style URLs that don't exist
+Disallow: /collections/
+Disallow: /products/
+Disallow: /pages/
+Disallow: /blogs/
+Disallow: /cart/
+Disallow: /cdn
+Disallow: /settings.cheekoai.in/
 
 # Allow search engines to access CSS and JS files
 Allow: /_next/static/
