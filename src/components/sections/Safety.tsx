@@ -157,7 +157,7 @@ export function Safety() {
                     </h3>
 
                     {/* Description */}
-                    <p className="text-gray-600 font-switzer text-base leading-relaxed">
+                    <p className="text-gray-600 font-switzer text-sm md:text-base leading-relaxed">
                       {feature.description}
                     </p>
                   </div>

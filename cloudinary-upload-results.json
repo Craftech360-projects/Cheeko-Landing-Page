@@ -2,6 +2,12 @@
   "success": [
     {
       "type": "image",
+      "file": "animated_logo.gif",
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/v1754652416/cheekoai/images/animated_logo.gif",
+      "size": "549.27 KB"
+    },
+    {
+      "type": "image",
       "file": "bottom-bar-left.png",
       "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/v1754466780/cheekoai/images/bottom-bar-left.png",
       "size": "123.16 KB"
@@ -302,9 +308,9 @@
     },
     {
       "type": "video",
-      "file": "animated_logo.gif",
-      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/v1754466874/cheekoai/videos/animated_logo.gif",
-      "size": "549.27 KB"
+      "file": "download_animation.webm",
+      "url": "https://res.cloudinary.com/dqtrjeegb/video/upload/v1754652680/cheekoai/videos/download_animation.webm",
+      "size": "2.63 KB"
     },
     {
       "type": "video",
@@ -325,5 +331,11 @@
       "size": "4.07 MB"
     }
   ],
-  "failed": []
+  "failed": [
+    {
+      "type": "video",
+      "file": "download_animation.mov",
+      "reason": "File not found"
+    }
+  ]
 }

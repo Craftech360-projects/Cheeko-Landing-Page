@@ -11,7 +11,11 @@ interface TimeLeft {
   seconds: number;
 }
 
-const PromoBanner: React.FC = () => {
+interface PromoBannerProps {
+  isVisible?: boolean;
+}
+
+const PromoBanner: React.FC<PromoBannerProps> = ({ isVisible = true }) => {
   const { price, currencySymbol, loading } = useShopify();
   const [timeLeft, setTimeLeft] = React.useState<TimeLeft>({
     days: 0,
@@ -19,7 +23,6 @@ const PromoBanner: React.FC = () => {
     minutes: 0,
     seconds: 0,
   });
-  const [isVisible, setIsVisible] = React.useState(true);
   const [isExpired, setIsExpired] = React.useState(false);
 
   React.useEffect(() => {
@@ -44,7 +47,6 @@ const PromoBanner: React.FC = () => {
         setTimeLeft({ days, hours, minutes, seconds });
       } else {
         setIsExpired(true);
-        setIsVisible(false);
       }
     }, 1000);
 
@@ -53,13 +55,14 @@ const PromoBanner: React.FC = () => {
 
   const formatTime = (value: number) => value.toString().padStart(2, "0");
 
-  if (!isVisible || isExpired) {
+  if (isExpired) {
     return null;
   }
 
   return (
     <AnimatePresence>
-      <motion.div
+      {isVisible && (
+        <motion.div
         initial={{ height: 0, opacity: 0 }}
         animate={{ height: "40px", opacity: 1 }}
         exit={{ height: 0, opacity: 0 }}
@@ -120,7 +123,8 @@ const PromoBanner: React.FC = () => {
             </div>
           </div>
         </div>
-      </motion.div>
+        </motion.div>
+      )}
     </AnimatePresence>
   );
 };

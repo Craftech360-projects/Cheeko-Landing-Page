@@ -28,6 +28,7 @@ const publicDir = path.join(__dirname, '..', 'public');
 // Asset mappings
 const assetMappings = {
   images: [
+    'animated_logo.gif',
     'bottom-bar-left.png',
     'faq-image.png',
     'how-it-works-image.jpg',
@@ -43,6 +44,9 @@ const assetMappings = {
     'user1.png',
     'user2.png',
     'user3.png',
+    'user4.png',
+    'user5.png',
+    'user6.png',
   ],
   icons: [
     'Ball.png',
@@ -82,7 +86,7 @@ const assetMappings = {
     'youtube.svg',
   ],
   videos: [
-    'animated_logo.gif',
+    'download_animation.webm',
     'desktop_video.mp4',
     'mobile_video.mp4',
     'popup_video.mp4',

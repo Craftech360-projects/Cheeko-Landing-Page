@@ -13,27 +13,27 @@ interface Feature {
 const features: Feature[] = [
   {
     icon: "/icons/smart-learning.svg",
-    title: "Smart Learning",
+    title: "Smart AI Learning",
     description:
-      "Cheeko adapts to your child's age, voice, behavior, and personal learning style daily.",
+      "Cheeko adapts to your child's age, voice, behavior, and personal learning style daily, making it the best educational AI toy for your kid.",
   },
   {
     icon: "/icons/parental-setup.svg",
-    title: "Parental Setup",
+    title: "Parental Control",
     description:
-      "Easily manage Cheeko's role, sensitive topics, and daily style of interaction.",
+      "Easily manage toy's role, sensitive topics, and daily interaction style. Ensures your child's safety with this AI companion.",
   },
   {
     icon: "/icons/creative-content.svg",
     title: "Creative Content",
     description:
-      "Filled with poems, stories, and facts that make learning feel playful and natural.",
+      "This AI toy for children is filled with poems, stories, and educational facts that make learning feel playful and natural for kids.",
   },
   {
     icon: "/icons/multilingual-support.svg",
-    title: "Multilingual Support",
+    title: "Language Support",
     description:
-      "Cheeko understands multiple languages and responds in English to support diverse learners.",
+      "CheekoAI understands Hindi, Tamil, Telugu, and 7 other Indian languages, making it the perfect smart toy for diverse Indian families.",
   },
 ];
 
@@ -110,9 +110,9 @@ export function Features() {
           </div>
 
           <p className="text-center text-sm sm:text-lg md:text-xl lg:text-xl text-gray-600 max-w-4xl mx-auto font-switzer leading-tight sm:leading-relaxed mt-4">
-            An emotionally intelligent AI companion that learns with your child,
-            fostering creativity, curiosity, and confidence through natural
-            conversation.
+            Cheeko is an emotionally intelligent AI toy for kids that learns
+            with your child, fostering creativity, curiosity, and confidence
+            through natural conversation.
           </p>
         </div>
 
@@ -171,7 +171,7 @@ export function Features() {
                         <h3 className="text-xl font-bold font-sora text-gray-900 mb-2 group-hover:text-white transition-colors duration-500">
                           {feature.title}
                         </h3>
-                        <p className="text-gray-600 font-switzer text-sm leading-relaxed group-hover:text-white/90 transition-colors duration-500">
+                        <p className="text-gray-600 font-switzer text-sm md:text-base leading-relaxed group-hover:text-white/90 transition-colors duration-500">
                           {feature.description}
                         </p>
                       </div>
@@ -209,7 +209,7 @@ export function Features() {
                         <h3 className="text-xl font-bold font-sora text-gray-900 mb-2 group-hover:text-white transition-colors duration-500">
                           {feature.title}
                         </h3>
-                        <p className="text-gray-600 font-switzer text-sm leading-relaxed group-hover:text-white/90 transition-colors duration-500">
+                        <p className="text-gray-600 font-switzer text-sm md:text-base leading-relaxed group-hover:text-white/90 transition-colors duration-500">
                           {feature.description}
                         </p>
                       </div>

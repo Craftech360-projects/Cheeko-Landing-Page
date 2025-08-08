@@ -47,7 +47,7 @@ export default function MeetCheeko() {
   const [isVisible, setIsVisible] = useState(false);
   const [isResetting, setIsResetting] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  
+
   // Touch/drag state
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -102,7 +102,7 @@ export default function MeetCheeko() {
     };
   }, [isMobile, isAutoPlaying]);
 
-  // Section visibility observer for initial animations  
+  // Section visibility observer for initial animations
   useEffect(() => {
     const sectionObserver = new IntersectionObserver(
       (entries) => {
@@ -152,7 +152,7 @@ export default function MeetCheeko() {
         });
       };
     }
-    
+
     return () => {
       // Empty cleanup for when condition is not met
     };
@@ -176,10 +176,10 @@ export default function MeetCheeko() {
   const handleEnd = () => {
     if (!isDragging) return;
     setIsDragging(false);
-    
+
     const diff = currentX - startX;
     const threshold = 100; // Minimum swipe distance
-    
+
     if (Math.abs(diff) > threshold) {
       if (diff > 0) {
         // Swiped right - go to previous slide
@@ -195,7 +195,7 @@ export default function MeetCheeko() {
           return newSlide;
         });
       } else {
-        // Swiped left - go to next slide  
+        // Swiped left - go to next slide
         setCurrentSlide((prev) => {
           const nextSlide = prev + 1;
           if (nextSlide === cards.length) {
@@ -216,7 +216,7 @@ export default function MeetCheeko() {
         });
       }
     }
-    
+
     setDragOffset(0);
     // Resume auto-play after 3 seconds
     setTimeout(() => setIsAutoPlaying(true), 3000);
@@ -259,7 +259,11 @@ export default function MeetCheeko() {
   };
 
   return (
-    <section ref={sectionRef} id="meet-cheeko" className="relative section-padding overflow-hidden">
+    <section
+      ref={sectionRef}
+      id="meet-cheeko"
+      className="relative section-padding overflow-hidden"
+    >
       <Container>
         <div className="text-center mb-4 relative">
           <div className="relative inline-block">
@@ -286,7 +290,10 @@ export default function MeetCheeko() {
 
         {/* Subheading */}
         <p className="text-center text-sm sm:text-lg md:text-xl lg:text-xl text-gray-600 mb-6 sm:mb-8 md:mb-12 max-w-3xl mx-auto font-switzer leading-tight sm:leading-relaxed">
-          Cheeko adapts to your child's pace, interests, and learning style. It listens, responds, and evolves, turning everyday moments into hands-on learning.
+          Cheeko is the most advanced AI toy for kids in India. This smart
+          educational toy adapts to your child&apos;s pace, interests, and
+          learning style. It listens, responds, and evolves, turning everyday
+          moments into hands-on learning experiences.
         </p>
 
         {/* Cards container with decorative elements */}
@@ -302,9 +309,13 @@ export default function MeetCheeko() {
 
           {/* Mobile Slider */}
           {isMobile ? (
-            <div className={`relative z-10 ${isVisible ? 'mobile-slider-visible' : 'mobile-slider-hidden'}`}>
+            <div
+              className={`relative z-10 ${
+                isVisible ? "mobile-slider-visible" : "mobile-slider-hidden"
+              }`}
+            >
               {/* Slider container */}
-              <div 
+              <div
                 ref={sliderRef}
                 className="overflow-hidden rounded-2xl relative cursor-grab active:cursor-grabbing select-none"
                 onTouchStart={handleTouchStart}
@@ -315,49 +326,60 @@ export default function MeetCheeko() {
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseLeave}
               >
-                <div 
-                  className={`flex ${isDragging || isResetting ? 'transition-none' : 'transition-transform duration-700 ease-out'}`}
-                  style={{ 
-                    transform: `translateX(${-currentSlide * 100 + (dragOffset / (sliderRef.current?.offsetWidth || 1)) * 100}%)`,
+                <div
+                  className={`flex ${
+                    isDragging || isResetting
+                      ? "transition-none"
+                      : "transition-transform duration-700 ease-out"
+                  }`}
+                  style={{
+                    transform: `translateX(${
+                      -currentSlide * 100 +
+                      (dragOffset / (sliderRef.current?.offsetWidth || 1)) * 100
+                    }%)`,
                   }}
                 >
                   {/* Render cards with clones for infinite effect */}
                   {[...cards, cards[0]].map((card, index) => {
                     // For the cloned slide (last index), treat it as slide 0 for animation purposes
                     const isClonedSlide = index === cards.length;
-                    const effectiveIndex = isClonedSlide ? 0 : index;
-                    const effectiveCurrentSlide = currentSlide === cards.length ? 0 : currentSlide;
-                    
+
                     return (
-                    <div 
-                      key={`${index}-${isClonedSlide ? 'clone' : 'original'}`} 
-                      className={`w-full flex-shrink-0 ${isResetting ? 'transition-none' : 'transition-all duration-700'} ${
-                        index === currentSlide 
-                          ? 'scale-100 opacity-100' 
-                          : Math.abs(index - currentSlide) === 1 || 
-                            (currentSlide === 0 && index === cards.length) ||
-                            (currentSlide === cards.length && index === 0)
-                          ? 'scale-95 opacity-80'
-                          : 'scale-90 opacity-60'
-                      }`}
-                    >
-                      <div className="bg-white rounded-2xl shadow-lg h-[496px] w-full max-w-[328px] mx-auto flex flex-col overflow-hidden relative transform transition-all duration-700 hover:shadow-2xl">
-                        <h3 className="text-xl font-bold font-sora text-gray-900 mb-1 px-6 pt-6">
-                          {card.title}
-                        </h3>
-                        <p className="text-gray-600 text-sm mb-4 font-switzer px-6 tracking-wide">
-                          {card.subtitle}
-                        </p>
-                        <div className="flex-1 relative mt-auto -mx-6 -mb-6">
-                          <Image
-                            src={card.image}
-                            alt={card.title}
-                            fill
-                            className="object-contain object-bottom transition-transform duration-500 pointer-events-none"
-                          />
+                      <div
+                        key={`${index}-${isClonedSlide ? "clone" : "original"}`}
+                        className={`w-full flex-shrink-0 ${
+                          isResetting
+                            ? "transition-none"
+                            : "transition-all duration-700"
+                        } ${
+                          index === currentSlide
+                            ? "scale-100 opacity-100"
+                            : Math.abs(index - currentSlide) === 1 ||
+                              (currentSlide === 0 && index === cards.length) ||
+                              (currentSlide === cards.length && index === 0)
+                            ? "scale-95 opacity-80"
+                            : "scale-90 opacity-60"
+                        }`}
+                      >
+                        <div className="bg-white rounded-2xl shadow-lg h-[496px] w-full max-w-[328px] mx-auto flex flex-col overflow-hidden relative transform transition-all duration-700 hover:shadow-2xl">
+                          <h3 className="text-xl font-bold font-sora text-gray-900 mb-1 px-6 pt-6">
+                            {card.title}
+                          </h3>
+                          <p className="text-gray-600 text-sm md:text-base mb-4 font-switzer px-6 leading-relaxed">
+                            {card.subtitle}
+                          </p>
+                          <div className="flex-1 relative mt-auto -mx-6 -mb-6">
+                            <Image
+                              src={card.image}
+                              alt={`CheekoAI ${
+                                card.title
+                              } - AI toy feature showing how kids can ${card.title.toLowerCase()} with this smart educational toy`}
+                              fill
+                              className="object-contain object-bottom transition-transform duration-500 pointer-events-none"
+                            />
+                          </div>
                         </div>
                       </div>
-                    </div>
                     );
                   })}
                 </div>
@@ -381,13 +403,15 @@ export default function MeetCheeko() {
                     <h3 className="text-xl font-bold font-sora text-gray-900 group-hover:text-white transition-colors duration-500 mb-1 px-6 pt-6">
                       {card.title}
                     </h3>
-                    <p className="text-gray-600 text-sm mb-4 font-switzer px-6 tracking-wide group-hover:text-white/90 transition-colors duration-500">
+                    <p className="text-gray-600 text-sm md:text-base mb-4 font-switzer px-6 leading-relaxed group-hover:text-white/90 transition-colors duration-500">
                       {card.subtitle}
                     </p>
                     <div className="flex-1 relative mt-auto -mx-6 -mb-6">
                       <Image
                         src={card.image}
-                        alt={card.title}
+                        alt={`CheekoAI ${
+                          card.title
+                        } - AI toy feature showing how kids can ${card.title.toLowerCase()} with this smart educational toy`}
                         fill
                         className="object-contain object-bottom transition-transform duration-700 group-hover:scale-110 group-hover:translate-y-[-10px]"
                       />

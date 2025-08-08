@@ -29,6 +29,7 @@ const publicDir = path.join(__dirname, '..', 'public');
 // Expected assets
 const expectedAssets = {
   images: [
+    'animated_logo.gif',
     'bottom-bar-left.png',
     'faq-image.png',
     'how-it-works-image.jpg',
@@ -83,7 +84,7 @@ const expectedAssets = {
     'youtube.svg',
   ],
   videos: [
-    'animated_logo.gif',
+    'downloading_animation.webm',
     'desktop_video.mp4',
     'mobile_video.mp4',
     'popup_video.mp4',

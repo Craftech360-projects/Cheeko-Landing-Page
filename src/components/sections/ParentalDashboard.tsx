@@ -13,7 +13,7 @@ interface DashboardFeature {
 const dashboardFeatures: DashboardFeature[] = [
   {
     icon: "/icons/parental-dashboard1.svg",
-    title: "Progress Tracking System",
+    title: "Progress Tracking",
     description:
       "Track your child’s learning progress with daily, weekly, and monthly insights across subjects and skills.",
   },
@@ -155,7 +155,7 @@ export function ParentalDashboard() {
                         <h3 className="text-xl font-bold font-sora text-gray-900 mb-2 group-hover:text-white transition-colors duration-500">
                           {feature.title}
                         </h3>
-                        <p className="text-gray-600 font-switzer text-sm leading-relaxed group-hover:text-white/90 transition-colors duration-500">
+                        <p className="text-gray-600 font-switzer text-sm md:text-base leading-relaxed group-hover:text-white/90 transition-colors duration-500">
                           {feature.description}
                         </p>
                       </div>
@@ -193,7 +193,7 @@ export function ParentalDashboard() {
                         <h3 className="text-xl font-bold font-sora text-gray-900 mb-2 group-hover:text-white transition-colors duration-500">
                           {feature.title}
                         </h3>
-                        <p className="text-gray-600 font-switzer text-sm leading-relaxed group-hover:text-white/90 transition-colors duration-500">
+                        <p className="text-gray-600 font-switzer text-sm md:text-base leading-relaxed group-hover:text-white/90 transition-colors duration-500">
                           {feature.description}
                         </p>
                       </div>

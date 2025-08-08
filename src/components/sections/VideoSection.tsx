@@ -55,9 +55,7 @@ export function VideoSection() {
       <div className="absolute inset-0 w-full h-full">
         <OptimizedVideo
           src={
-            isMobile
-              ? "/videos/mobile_video.mp4"
-              : "/videos/desktop_video.mp4"
+            isMobile ? "/videos/mobile_video.mp4" : "/videos/desktop_video.mp4"
           }
           className="w-full h-full object-cover"
           autoPlay
@@ -79,14 +77,14 @@ export function VideoSection() {
             className="text-white font-sora font-bold mb-2 leading-tight text-[28px] md:text-[52px]"
             style={{ letterSpacing: "0.5%" }}
           >
-            Meet Cheeko!
+            Meet Cheeko
           </h1>
-          <h3
+          <h2
             className="text-white font-sora font-semibold leading-tight text-[20px] md:text-[32px]"
             style={{ letterSpacing: "0.5%" }}
           >
             Smart AI Companion for Kids
-          </h3>
+          </h2>
         </div>
 
         {/* CTA Button */}

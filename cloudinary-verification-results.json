@@ -251,9 +251,9 @@
       "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/icons/youtube.svg"
     },
     {
-      "type": "video",
+      "type": "image",
       "file": "animated_logo.gif",
-      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/videos/animated_logo.gif"
+      "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/cheekoai/images/animated_logo.gif"
     },
     {
       "type": "video",

@@ -1,4 +1,8 @@
 {
+  "images/animated_logo.gif": {
+    "publicId": "cheekoai/images/animated_logo",
+    "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/v1754652416/cheekoai/images/animated_logo.gif"
+  },
   "images/bottom-bar-left.png": {
     "publicId": "cheekoai/images/bottom-bar-left",
     "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/v1754466780/cheekoai/images/bottom-bar-left.png"
@@ -199,9 +203,9 @@
     "publicId": "cheekoai/icons/youtube",
     "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/v1754466872/cheekoai/icons/youtube.svg"
   },
-  "videos/animated_logo.gif": {
-    "publicId": "cheekoai/videos/animated_logo",
-    "url": "https://res.cloudinary.com/dqtrjeegb/image/upload/v1754466874/cheekoai/videos/animated_logo.gif"
+  "videos/download_animation.webm": {
+    "publicId": "cheekoai/videos/download_animation",
+    "url": "https://res.cloudinary.com/dqtrjeegb/video/upload/v1754652680/cheekoai/videos/download_animation.webm"
   },
   "videos/desktop_video.mp4": {
     "publicId": "cheekoai/videos/desktop_video",

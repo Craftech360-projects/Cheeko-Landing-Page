@@ -41,21 +41,23 @@ const sora = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "CheekoAI - AI Toy for Kids | Smart Learning Companion for Children",
-  description: "CheekoAI is the best AI toy for kids in India. Safe, educational AI-powered toy that helps children learn through play. Perfect for ages 3-12 with parental controls and adaptive learning.",
+  title: "CheekoAI - Best AI Toy for Kids in India | Smart Educational Toy",
+  description: "CheekoAI is the #1 AI toy for kids in India. Safe, COPPA-compliant educational AI-powered toy for children aged 3-12. Free shipping across Mumbai, Delhi, Bangalore & all Indian cities. ₹3,999 only.",
   keywords: [
     "AI toy for kids",
-    "AI toy",
-    "smart toy for children",
+    "AI toy for kids India",
+    "best AI toy for children",
+    "smart toy for kids 3-12 years",
     "educational AI toy India",
-    "AI learning toy",
-    "interactive AI toy",
-    "CheekoAI toy",
-    "best AI toy for kids",
-    "AI companion for children",
-    "smart learning toy",
-    "COPPA compliant toy",
-    "safe AI toy for kids"
+    "CheekoAI toy price",
+    "AI learning toy for toddlers",
+    "interactive AI toy Mumbai",
+    "CheekoAI toy Delhi",
+    "smart learning toy Bangalore",
+    "COPPA compliant AI toy",
+    "safe AI toy for 3 year old",
+    "AI toy Hindi Tamil Telugu",
+    "buy AI toy online India"
   ],
   authors: [{ name: "Altio AI" }],
   creator: "Altio AI Private Limited",

@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { Header } from "@/components/sections/Header";
-import { PromoBanner } from "@/components/sections/PromoBanner";
 import { BottomBar } from "@/components/sections/BottomBar";
 import { useScrollBehavior } from "@/hooks/useScrollBehavior";
 // import { Hero } from "@/components/sections/Hero";
@@ -48,8 +47,7 @@ export default function Home() {
           }`}
         >
           <StructuredData />
-          {!showSplash && <PromoBanner />}
-          <Header isVisible={isHeaderVisible} />
+          <Header isVisible={isHeaderVisible} showSplash={showSplash} />
 
           <main className="space-y-12 sm:space-y-12 md:space-y-12 lg:space-y-16">
             {/* Video Section */}
