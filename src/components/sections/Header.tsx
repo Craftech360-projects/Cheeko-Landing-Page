@@ -59,7 +59,7 @@ const Header: React.FC<HeaderProps> = ({
 
   React.useEffect(() => {
     // Set a fixed end date - adjust this date as needed
-    const endTime = new Date("2025-08-09T23:59:59Z").getTime();
+    const endTime = new Date("2025-08-11T23:59:59Z").getTime();
 
     const timer = setInterval(() => {
       const now = Date.now();
@@ -200,7 +200,7 @@ const Header: React.FC<HeaderProps> = ({
                     }}
                   >
                     <Button
-                      className="bg-orange-500 text-white border-none hover:bg-[#B91C21] rounded-md font-semibold text-sm lg:text-base px-4 sm:px-6 lg:px-8 min-w-[100px] sm:min-w-[120px] lg:min-w-[140px] h-8 lg:h-11 flex items-center justify-center gap-2"
+                      className="bg-orange-500 text-white border-none hover:bg-[#B91C21] rounded-md font-semibold text-sm lg:text-base px-4 sm:px-6 lg:px-8 min-w-[100px] sm:min-w-[120px] lg:min-w-[140px] h-8 lg:h-11 flex items-center justify-center"
                       size="sm"
                       onClick={(e) => {
                         e.preventDefault();
@@ -214,12 +214,6 @@ const Header: React.FC<HeaderProps> = ({
                       <span className="hidden sm:inline">
                         Download Parent App
                       </span>
-                      <DelayedLoopVideo
-                        src="https://res.cloudinary.com/dqtrjeegb/video/upload/v1754655394/cheekoai/videos/download_animation.webm"
-                        fallbackSrc="/videos/download_animation.mov"
-                        className="w-6 h-6 sm:w-7 sm:h-7 lg:w-9 lg:h-9 inline-block object-contain flex-shrink-0"
-                        delay={3000}
-                      />
                     </Button>
                   </motion.div>
 
@@ -407,7 +401,7 @@ const Header: React.FC<HeaderProps> = ({
                     }}
                   >
                     <Button
-                      className="bg-orange-500 text-white border-none hover:bg-[#B91C21] rounded-md font-semibold text-sm lg:text-base px-2 sm:px-4 lg:px-8 min-w-[100px] sm:min-w-[120px] lg:min-w-[140px] h-8 lg:h-11 flex items-center justify-center gap-1"
+                      className="bg-orange-500 text-white border-none hover:bg-[#B91C21] rounded-md font-semibold text-sm lg:text-base px-2 sm:px-4 lg:px-8 min-w-[100px] sm:min-w-[120px] lg:min-w-[140px] h-8 lg:h-11 flex items-center justify-center"
                       size="sm"
                       onClick={(e) => {
                         e.preventDefault();
@@ -421,12 +415,6 @@ const Header: React.FC<HeaderProps> = ({
                       <span className="hidden sm:inline">
                         Download Parent App
                       </span>
-                      <DelayedLoopVideo
-                        src="https://res.cloudinary.com/dqtrjeegb/video/upload/v1754655394/cheekoai/videos/download_animation.webm"
-                        fallbackSrc="/videos/download_animation.mov"
-                        className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 inline-block object-contain flex-shrink-0"
-                        delay={3000}
-                      />
                     </Button>
                   </motion.div>
                 </div>

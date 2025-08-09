@@ -265,7 +265,7 @@ export default function MeetCheeko() {
       className="relative section-padding overflow-hidden"
     >
       <Container>
-        <div className="text-center mb-4 relative">
+        <div className="text-center relative">
           <div className="relative inline-block">
             <Image
               src="/icons/Header-Icon-Left.svg"
@@ -289,11 +289,10 @@ export default function MeetCheeko() {
         </div>
 
         {/* Subheading */}
-        <p className="text-center text-sm sm:text-lg md:text-xl lg:text-xl text-gray-600 mb-6 sm:mb-8 md:mb-12 max-w-3xl mx-auto font-switzer leading-tight sm:leading-relaxed">
-          Cheeko is the most advanced AI toy for kids in India. This smart
-          educational toy adapts to your child&apos;s pace, interests, and
-          learning style. It listens, responds, and evolves, turning everyday
-          moments into hands-on learning experiences.
+        <p className="text-center text-sm sm:text-lg md:text-xl lg:text-xl text-gray-600 mb-6 sm:mb-8 md:mb-12 max-w-3xl mx-auto font-switzer leading-5 sm:leading-7 mt-2">
+          The most advanced AI toy for kids — adapting to your
+          child’s pace, interests, and learning style. It listens, responds, and
+          evolves, turning everyday moments into powerful learning experiences.
         </p>
 
         {/* Cards container with decorative elements */}
@@ -362,10 +361,10 @@ export default function MeetCheeko() {
                         }`}
                       >
                         <div className="bg-white rounded-2xl shadow-lg h-[496px] w-full max-w-[328px] mx-auto flex flex-col overflow-hidden relative transform transition-all duration-700 hover:shadow-2xl">
-                          <h3 className="text-xl font-bold font-sora text-gray-900 mb-1 px-6 pt-6">
+                          <h3 className="text-xl font-bold font-sora text-gray-900 mb-1 sm:mb-2 px-6 pt-6">
                             {card.title}
                           </h3>
-                          <p className="text-gray-600 text-sm md:text-base mb-4 font-switzer px-6 leading-relaxed">
+                          <p className="text-gray-600 text-sm md:text-base mb-4 font-switzer px-6 leading-5 sm:leading-relaxed">
                             {card.subtitle}
                           </p>
                           <div className="flex-1 relative mt-auto -mx-6 -mb-6">
@@ -400,10 +399,10 @@ export default function MeetCheeko() {
                   }}
                 >
                   <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out h-[496px] w-full max-w-[328px] mx-auto flex flex-col card-inner group overflow-hidden relative">
-                    <h3 className="text-xl font-bold font-sora text-gray-900 group-hover:text-white transition-colors duration-500 mb-1 px-6 pt-6">
+                    <h3 className="text-xl font-bold font-sora text-gray-900 group-hover:text-white transition-colors duration-500 mb-1 sm:mb-2 px-6 pt-6">
                       {card.title}
                     </h3>
-                    <p className="text-gray-600 text-sm md:text-base mb-4 font-switzer px-6 leading-relaxed group-hover:text-white/90 transition-colors duration-500">
+                    <p className="text-gray-600 text-sm md:text-base mb-4 font-switzer px-6 leading-5 sm:leading-relaxed group-hover:text-white/90 transition-colors duration-500">
                       {card.subtitle}
                     </p>
                     <div className="flex-1 relative mt-auto -mx-6 -mb-6">

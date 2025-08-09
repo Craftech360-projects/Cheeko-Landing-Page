@@ -94,7 +94,7 @@ export function HowItWorks() {
             />
           </div>
 
-          <p className="text-center text-sm sm:text-lg md:text-xl lg:text-xl text-gray-600 max-w-4xl mx-auto font-switzer leading-tight sm:leading-relaxed mt-4">
+          <p className="text-center text-sm sm:text-lg md:text-xl lg:text-xl text-gray-600 max-w-4xl mx-auto font-switzer leading-5 sm:leading-7 mt-2">
             Setting up Cheeko is as easy as 1-2-3! Download our parent app to
             get started.
           </p>

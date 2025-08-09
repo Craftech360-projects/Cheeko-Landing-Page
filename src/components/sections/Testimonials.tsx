@@ -186,7 +186,7 @@ export function Testimonials() {
       <Container>
         {/* Header Section */}
         <div className="text-center mb-6 px-4">
-          <div className="relative inline-block mb-2">
+          <div className="relative inline-block">
             <Image
               src="/icons/Header-Icon-Left.svg"
               alt="Decorative icon - Left header decoration"
@@ -195,8 +195,8 @@ export function Testimonials() {
               className="absolute -left-8 sm:-left-14 md:-left-16 lg:-left-20 -top-6 sm:-top-10 md:-top-11 lg:-top-12 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
             />
             <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sora sm:px-0">
-              <span className="text-black">What parents are</span>{" "}
-              <span className="text-orange-500">saying</span>
+              <span className="text-black">Hear from</span>{" "}
+              <span className="text-orange-500">Parents</span>
             </h2>
             <Image
               src="/icons/Header-Icon-Right.svg"
@@ -206,8 +206,8 @@ export function Testimonials() {
               className="absolute -right-8 sm:-right-14 md:-right-16 lg:-right-20 -top-6 sm:-top-10 md:-top-11 lg:-top-12 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
             />
           </div>
-          <p className="text-sm sm:text-lg md:text-xl lg:text-xl text-gray-600 max-w-3xl mx-auto leading-tight sm:leading-relaxed">
-            Hear from families who have welcomed Cheeko into their homes.
+          <p className="text-sm sm:text-lg md:text-xl lg:text-xl text-gray-600 max-w-3xl mx-auto leading-5 sm:leading-7 mt-2">
+            Stories from families who’ve made Cheeko one of their own.
           </p>
         </div>
 

@@ -49,9 +49,12 @@ export const DelayedLoopVideo: React.FC<DelayedLoopVideoProps> = ({
       style={{
         display: 'inline-block',
         backgroundColor: 'transparent',
+        background: 'transparent',
         mixBlendMode: 'screen',
-        filter: 'contrast(1.5) brightness(1.2) saturate(1.3)', // Much bolder appearance
+        filter: 'contrast(2) brightness(1.5) saturate(1.5)', // Much bolder appearance for better visibility
         transform: 'scale(1.1)', // Slightly larger for more prominence
+        minWidth: '20px',
+        minHeight: '20px',
       }}
     >
       <source src={src} type="video/webm" />

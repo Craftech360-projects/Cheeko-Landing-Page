@@ -109,8 +109,8 @@ export function ParentalDashboard() {
             />
           </div>
 
-          <p className="text-center text-sm sm:text-lg md:text-xl lg:text-xl text-gray-600 max-w-4xl mx-auto font-switzer leading-tight sm:leading-relaxed mt-4">
-            Real-time insights. Meaningful milestones. All in one place.
+          <p className="text-center text-sm sm:text-lg md:text-xl lg:text-xl text-gray-600 max-w-4xl mx-auto font-switzer leading-5 sm:leading-7 mt-2">
+            From playtime to progress, see it all unfold. Your child’s growth, made visible.
           </p>
         </div>
 
@@ -126,9 +126,9 @@ export function ParentalDashboard() {
           />
 
           {/* Features Grid with Image - 3 columns layout (reversed) */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center justify-between relative z-10 lg:h-[450px]">
             {/* First column - First 2 features */}
-            <div className="grid grid-rows-2 gap-4 sm:gap-6 lg:h-[410px] order-2 lg:order-1">
+            <div className="grid grid-rows-2 gap-4 sm:gap-6 h-full order-2 lg:order-1">
               {dashboardFeatures.slice(0, 2).map((feature, index) => (
                 <div
                   key={index}
@@ -152,10 +152,10 @@ export function ParentalDashboard() {
                         />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold font-sora text-gray-900 mb-2 group-hover:text-white transition-colors duration-500">
+                        <h3 className="text-xl font-bold font-sora text-gray-900 mb-1 sm:mb-2 group-hover:text-white transition-colors duration-500">
                           {feature.title}
                         </h3>
-                        <p className="text-gray-600 font-switzer text-sm md:text-base leading-relaxed group-hover:text-white/90 transition-colors duration-500">
+                        <p className="text-gray-600 font-switzer text-sm md:text-base leading-5 sm:leading-relaxed group-hover:text-white/90 transition-colors duration-500">
                           {feature.description}
                         </p>
                       </div>
@@ -166,7 +166,7 @@ export function ParentalDashboard() {
             </div>
 
             {/* Second column - Last 2 features */}
-            <div className="grid grid-rows-2 gap-4 sm:gap-6 lg:h-[410px] order-3 lg:order-2">
+            <div className="grid grid-rows-2 gap-4 sm:gap-6 h-full order-3 lg:order-2">
               {dashboardFeatures.slice(2).map((feature, index) => (
                 <div
                   key={index + 2}
@@ -190,10 +190,10 @@ export function ParentalDashboard() {
                         />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold font-sora text-gray-900 mb-2 group-hover:text-white transition-colors duration-500">
+                        <h3 className="text-xl font-bold font-sora text-gray-900 mb-1 sm:mb-2 group-hover:text-white transition-colors duration-500">
                           {feature.title}
                         </h3>
-                        <p className="text-gray-600 font-switzer text-sm md:text-base leading-relaxed group-hover:text-white/90 transition-colors duration-500">
+                        <p className="text-gray-600 font-switzer text-sm md:text-base leading-5 sm:leading-relaxed group-hover:text-white/90 transition-colors duration-500">
                           {feature.description}
                         </p>
                       </div>
@@ -206,14 +206,14 @@ export function ParentalDashboard() {
             {/* Third column - Dashboard image */}
             <div
               ref={imageRef}
-              className="opacity-0 lg:h-[410px] flex items-center justify-center order-1 lg:order-3"
+              className="opacity-0 h-full flex items-center justify-center order-1 lg:order-3"
             >
               <Image
                 src="/images/parental-dashboard-parent.jpg"
                 alt="Parent using dashboard"
                 width={392}
                 height={410}
-                className="w-full h-auto max-w-[392px] rounded-2xl"
+                className="w-full h-full max-w-[392px] rounded-2xl object-cover"
               />
             </div>
           </div>

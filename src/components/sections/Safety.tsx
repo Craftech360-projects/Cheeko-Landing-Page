@@ -25,7 +25,7 @@ const safetyFeatures: SafetyFeature[] = [
   },
   {
     icon: "/icons/safety-privacy-3.svg",
-    title: "Data Stores In Cloud",
+    title: "Cloud Storage",
     description:
       "Built from the ground up with privacy as the core principle. We never sell data and only collect what's necessary for learning.",
   },
@@ -95,8 +95,9 @@ export function Safety() {
             />
           </div>
 
-          <p className="text-center text-sm sm:text-lg md:text-xl lg:text-xl text-gray-600 max-w-4xl mx-auto font-switzer leading-tight sm:leading-relaxed mt-4">
-            Every interaction is private. Every moment is secure. Privacy is always on.
+          <p className="text-center text-sm sm:text-lg md:text-xl lg:text-xl text-gray-600 max-w-4xl mx-auto font-switzer leading-5 sm:leading-7 mt-2">
+            Every interaction is private. Every moment is secure. Privacy is
+            always on.
           </p>
         </div>
 
@@ -141,25 +142,24 @@ export function Safety() {
                   )}
 
                   {/* Feature Content */}
-                  <div className="flex flex-col items-start space-y-4">
-                    {/* Icon */}
-                    <Image
-                      src={feature.icon}
-                      alt={feature.title}
-                      width={48}
-                      height={48}
-                      className="w-12 h-12 lg:w-12 lg:h-12 feature-icon"
-                    />
-
-                    {/* Title */}
-                    <h3 className="text-2xl font-bold font-sora text-gray-900">
-                      {feature.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-gray-600 font-switzer text-sm md:text-base leading-relaxed">
-                      {feature.description}
-                    </p>
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0">
+                      <Image
+                        src={feature.icon}
+                        alt={feature.title}
+                        width={48}
+                        height={48}
+                        className="w-12 h-12 lg:w-12 lg:h-12 feature-icon"
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold font-sora text-gray-900 mb-1 sm:mb-2">
+                        {feature.title}
+                      </h3>
+                      <p className="text-gray-600 font-switzer text-sm md:text-base leading-5 sm:leading-relaxed">
+                        {feature.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -170,9 +170,9 @@ export function Safety() {
           <Image
             src="/icons/safety-bottomleft.svg"
             alt="Decorative element - Bottom left corner"
-            width={122}
-            height={123}
-            className="absolute -left-6 sm:-left-8 md:-left-10 lg:-left-12 -bottom-6 sm:-bottom-8 md:-bottom-10 lg:-bottom-12 z-0 decorative-bottomleft w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
+            width={96}
+            height={96}
+            className="absolute -left-6 sm:-left-8 md:-left-10 lg:-left-12 -bottom-6 sm:-bottom-8 md:-bottom-10 lg:-bottom-12 z-0 decorative-bottomleft w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain"
           />
         </div>
       </Container>

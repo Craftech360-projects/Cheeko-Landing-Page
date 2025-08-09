@@ -16,8 +16,8 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Allow cross-origin requests during development
-  allowedDevOrigins: ['http://192.168.1.237:3000', 'http://localhost:3000'],
+  // Allow cross-origin requests for development (enables HMR on mobile)
+  allowedDevOrigins: ['192.168.1.237'],
   
   // Redirects to handle www/non-www and http/https
   async redirects() {
