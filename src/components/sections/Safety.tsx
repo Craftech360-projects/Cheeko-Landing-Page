@@ -69,7 +69,7 @@ export function Safety() {
     <section
       id="safety"
       ref={sectionRef}
-      className="relative section-padding overflow-hidden opacity-0"
+      className="relative py-8 sm:py-10 md:py-12 lg:py-16 overflow-hidden opacity-0"
     >
       <Container>
         {/* Header */}
@@ -115,13 +115,13 @@ export function Safety() {
           {/* White Container with Three Sections */}
           <div
             ref={containerRef}
-            className="bg-white rounded-3xl shadow-lg p-0 lg:p-12 relative z-10 opacity-0 container-animate"
+            className="bg-white rounded-3xl shadow-lg p-8 lg:p-10 xl:p-14 relative z-10 opacity-0 container-animate"
           >
             <div className="grid grid-cols-1 lg:grid-cols-3 relative">
               {safetyFeatures.map((feature, index) => (
                 <div
                   key={index}
-                  className="relative px-8 lg:px-12 py-8 lg:py-0"
+                  className="relative px-4 py-6 lg:px-4 lg:py-6 xl:px-6 xl:py-8 first:pt-6 last:pb-6 lg:first:pt-6 lg:last:pb-6 xl:first:pt-8 xl:last:pb-8"
                 >
                   {/* Vertical Divider Line */}
                   {index < safetyFeatures.length - 1 && (
@@ -134,7 +134,7 @@ export function Safety() {
 
                   {/* Horizontal Divider for Mobile */}
                   {index < safetyFeatures.length - 1 && (
-                    <div className="lg:hidden absolute left-8 right-8 bottom-0 h-px">
+                    <div className="lg:hidden absolute left-0 right-0 bottom-0 h-px">
                       <div className="w-full h-full relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-orange-400 to-transparent"></div>
                       </div>

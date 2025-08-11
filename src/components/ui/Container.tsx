@@ -10,8 +10,9 @@ interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
   ({ className, size = 'full', children, ...props }, ref) => {
-    // Mobile-first responsive padding - consistent across all sections
-    const baseStyles = 'mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20 2xl:px-32'
+    // Mobile-first responsive padding - optimized for better desktop spacing
+    // Mobile: 16px, Small: 24px, Tablet: 32px, Laptop: 80px, Desktop: 128px, Large Desktop: 200px
+    const baseStyles = 'mx-auto px-8 sm:px-6 md:px-8 lg:px-20 xl:px-28 2xl:px-[240px]'
     
     const sizes = {
       sm: 'max-w-2xl',

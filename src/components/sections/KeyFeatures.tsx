@@ -83,7 +83,7 @@ export function Features() {
     <section
       id="key-features"
       ref={sectionRef}
-      className="relative section-padding overflow-hidden opacity-0"
+      className="relative py-8 sm:py-10 md:py-12 lg:py-16 overflow-hidden opacity-0"
     >
       <Container>
         {/* Header */}
@@ -127,96 +127,96 @@ export function Features() {
             className="absolute -left-6 sm:-left-8 md:-left-10 lg:-left-12 -top-6 sm:-top-8 md:-top-10 lg:-top-12 z-0 decorative-topleft w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
           />
 
-          {/* Features Grid with Image - 3 columns layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center justify-center relative z-10">
+          {/* Features Grid with Image - 2 columns layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 2xl:gap-[64px] items-stretch relative z-10">
             {/* First column - Child image */}
-            <div
-              ref={imageRef}
-              className="opacity-0 lg:h-[410px] flex items-center justify-center"
-            >
+            <div ref={imageRef} className="opacity-0 relative w-full max-w-[400px] h-[400px] lg:h-full mx-auto lg:mx-0">
               <Image
                 src="/images/key-features-child.png"
                 alt="Child playing with Cheeko"
-                width={392}
-                height={410}
-                className="w-full h-auto max-w-[392px]"
+                fill
+                className="rounded-2xl object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
               />
             </div>
 
-            {/* Second column - First 2 features */}
-            <div className="grid grid-rows-2 gap-4 sm:gap-6 lg:h-[410px]">
-              {features.slice(0, 2).map((feature, index) => (
-                <div
-                  key={index}
-                  ref={(el) => {
-                    featuresRef.current[index] = el;
-                  }}
-                  className="card-animate-initial"
-                  style={{
-                    transitionDelay: `${index * 350}ms`,
-                  }}
-                >
-                  <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 h-full flex flex-col justify-start hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out group">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0">
-                        <Image
-                          src={feature.icon}
-                          alt={feature.title}
-                          width={48}
-                          height={48}
-                          className="w-12 h-12 lg:w-12 lg:h-12 group-hover:brightness-0 group-hover:invert transition-all duration-300"
-                        />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-xl font-bold font-sora text-gray-900 mb-1 sm:mb-2 group-hover:text-white transition-colors duration-500">
-                          {feature.title}
-                        </h3>
-                        <p className="text-gray-600 font-switzer text-sm md:text-base leading-5 sm:leading-relaxed group-hover:text-white/90 transition-colors duration-500">
-                          {feature.description}
-                        </p>
+            {/* Second section - Contains both card columns with reduced gap */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+              {/* First column - First 2 features */}
+              <div className="grid grid-rows-2 gap-4 sm:gap-6 auto-rows-fr">
+                {features.slice(0, 2).map((feature, index) => (
+                  <div
+                    key={index}
+                    ref={(el) => {
+                      featuresRef.current[index] = el;
+                    }}
+                    className="card-animate-initial"
+                    style={{
+                      transitionDelay: `${index * 350}ms`,
+                    }}
+                  >
+                    <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 min-h-[200px] flex flex-col justify-start hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out group">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0">
+                          <Image
+                            src={feature.icon}
+                            alt={feature.title}
+                            width={48}
+                            height={48}
+                            className="w-12 h-12 lg:w-12 lg:h-12 group-hover:brightness-0 group-hover:invert transition-all duration-300"
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-xl font-bold font-sora text-gray-900 mb-1 sm:mb-2 group-hover:text-white transition-colors duration-500">
+                            {feature.title}
+                          </h3>
+                          <p className="text-gray-600 font-switzer text-sm md:text-base leading-5 sm:leading-relaxed group-hover:text-white/90 transition-colors duration-500">
+                            {feature.description}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
 
-            {/* Third column - Last 2 features */}
-            <div className="grid grid-rows-2 gap-4 sm:gap-6 lg:h-[410px]">
-              {features.slice(2).map((feature, index) => (
-                <div
-                  key={index + 2}
-                  ref={(el) => {
-                    featuresRef.current[index + 2] = el;
-                  }}
-                  className="card-animate-initial"
-                  style={{
-                    transitionDelay: `${(index + 2) * 350}ms`,
-                  }}
-                >
-                  <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 h-full flex flex-col justify-start hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out group">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0">
-                        <Image
-                          src={feature.icon}
-                          alt={feature.title}
-                          width={48}
-                          height={48}
-                          className="w-12 h-12 lg:w-12 lg:h-12 group-hover:brightness-0 group-hover:invert transition-all duration-300"
-                        />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-xl font-bold font-sora text-gray-900 mb-1 sm:mb-2 group-hover:text-white transition-colors duration-500">
-                          {feature.title}
-                        </h3>
-                        <p className="text-gray-600 font-switzer text-sm md:text-base leading-5 sm:leading-relaxed group-hover:text-white/90 transition-colors duration-500">
-                          {feature.description}
-                        </p>
+              {/* Second column - Last 2 features */}
+              <div className="grid grid-rows-2 gap-4 sm:gap-6 auto-rows-fr">
+                {features.slice(2).map((feature, index) => (
+                  <div
+                    key={index + 2}
+                    ref={(el) => {
+                      featuresRef.current[index + 2] = el;
+                    }}
+                    className="card-animate-initial"
+                    style={{
+                      transitionDelay: `${(index + 2) * 350}ms`,
+                    }}
+                  >
+                    <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 min-h-[200px] flex flex-col justify-start hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out group">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0">
+                          <Image
+                            src={feature.icon}
+                            alt={feature.title}
+                            width={48}
+                            height={48}
+                            className="w-12 h-12 lg:w-12 lg:h-12 group-hover:brightness-0 group-hover:invert transition-all duration-300"
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-xl font-bold font-sora text-gray-900 mb-1 sm:mb-2 group-hover:text-white transition-colors duration-500">
+                            {feature.title}
+                          </h3>
+                          <p className="text-gray-600 font-switzer text-sm md:text-base leading-5 sm:leading-relaxed group-hover:text-white/90 transition-colors duration-500">
+                            {feature.description}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 

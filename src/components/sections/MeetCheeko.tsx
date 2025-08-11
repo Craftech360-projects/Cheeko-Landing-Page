@@ -219,7 +219,7 @@ export default function MeetCheeko() {
 
     setDragOffset(0);
     // Resume auto-play after 3 seconds
-    setTimeout(() => setIsAutoPlaying(true), 3000);
+    setTimeout(() => setIsAutoPlaying(true), 100);
   };
 
   // Touch events
@@ -262,7 +262,7 @@ export default function MeetCheeko() {
     <section
       ref={sectionRef}
       id="meet-cheeko"
-      className="relative section-padding overflow-hidden"
+      className="relative py-8 sm:py-10 md:py-12 lg:py-16 overflow-hidden"
     >
       <Container>
         <div className="text-center relative">
@@ -290,9 +290,9 @@ export default function MeetCheeko() {
 
         {/* Subheading */}
         <p className="text-center text-sm sm:text-lg md:text-xl lg:text-xl text-gray-600 mb-6 sm:mb-8 md:mb-12 max-w-3xl mx-auto font-switzer leading-5 sm:leading-7 mt-2">
-          The most advanced AI toy for kids — adapting to your
-          child’s pace, interests, and learning style. It listens, responds, and
-          evolves, turning everyday moments into powerful learning experiences.
+          The most advanced AI toy for kids — adapting to your child’s pace,
+          interests, and learning style. It listens, responds, and evolves,
+          turning everyday moments into powerful learning experiences.
         </p>
 
         {/* Cards container with decorative elements */}
@@ -386,7 +386,7 @@ export default function MeetCheeko() {
             </div>
           ) : (
             /* Desktop Cards grid */
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8 2xl:gap-16 relative z-10 w-full">
               {cards.map((card, index) => (
                 <div
                   key={index}
@@ -398,7 +398,7 @@ export default function MeetCheeko() {
                     transitionDelay: `${index * 350}ms`,
                   }}
                 >
-                  <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out h-[496px] w-full max-w-[328px] mx-auto flex flex-col card-inner group overflow-hidden relative">
+                  <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out h-[496px] w-full flex flex-col card-inner group overflow-hidden relative">
                     <h3 className="text-xl font-bold font-sora text-gray-900 group-hover:text-white transition-colors duration-500 mb-1 sm:mb-2 px-6 pt-6">
                       {card.title}
                     </h3>

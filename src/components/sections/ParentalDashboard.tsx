@@ -83,7 +83,7 @@ export function ParentalDashboard() {
     <section
       id="parental-dashboard"
       ref={sectionRef}
-      className="relative section-padding overflow-hidden opacity-0"
+      className="relative py-8 sm:py-10 md:py-12 lg:py-16 overflow-hidden opacity-0"
     >
       <Container>
         {/* Header */}
@@ -125,95 +125,95 @@ export function ParentalDashboard() {
             className="absolute -right-6 sm:-right-8 md:-right-10 lg:-right-12 -top-6 sm:-top-8 md:-top-10 lg:-top-12 z-0 decorative-topright w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
           />
 
-          {/* Features Grid with Image - 3 columns layout (reversed) */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center justify-between relative z-10 lg:h-[450px]">
-            {/* First column - First 2 features */}
-            <div className="grid grid-rows-2 gap-4 sm:gap-6 h-full order-2 lg:order-1">
-              {dashboardFeatures.slice(0, 2).map((feature, index) => (
-                <div
-                  key={index}
-                  ref={(el) => {
-                    featuresRef.current[index] = el;
-                  }}
-                  className="card-animate-initial"
-                  style={{
-                    transitionDelay: `${index * 350}ms`,
-                  }}
-                >
-                  <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 h-full flex flex-col justify-start hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out group">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0">
-                        <Image
-                          src={feature.icon}
-                          alt={feature.title}
-                          width={48}
-                          height={48}
-                          className="w-12 h-12 lg:w-12 lg:h-12 group-hover:brightness-0 group-hover:invert transition-all duration-300"
-                        />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-xl font-bold font-sora text-gray-900 mb-1 sm:mb-2 group-hover:text-white transition-colors duration-500">
-                          {feature.title}
-                        </h3>
-                        <p className="text-gray-600 font-switzer text-sm md:text-base leading-5 sm:leading-relaxed group-hover:text-white/90 transition-colors duration-500">
-                          {feature.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Second column - Last 2 features */}
-            <div className="grid grid-rows-2 gap-4 sm:gap-6 h-full order-3 lg:order-2">
-              {dashboardFeatures.slice(2).map((feature, index) => (
-                <div
-                  key={index + 2}
-                  ref={(el) => {
-                    featuresRef.current[index + 2] = el;
-                  }}
-                  className="card-animate-initial"
-                  style={{
-                    transitionDelay: `${(index + 2) * 350}ms`,
-                  }}
-                >
-                  <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 h-full flex flex-col justify-start hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out group">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0">
-                        <Image
-                          src={feature.icon}
-                          alt={feature.title}
-                          width={48}
-                          height={48}
-                          className="w-12 h-12 lg:w-12 lg:h-12 group-hover:brightness-0 group-hover:invert transition-all duration-300"
-                        />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-xl font-bold font-sora text-gray-900 mb-1 sm:mb-2 group-hover:text-white transition-colors duration-500">
-                          {feature.title}
-                        </h3>
-                        <p className="text-gray-600 font-switzer text-sm md:text-base leading-5 sm:leading-relaxed group-hover:text-white/90 transition-colors duration-500">
-                          {feature.description}
-                        </p>
+          {/* Features Grid with Image - 2 columns layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 2xl:gap-[64px] items-stretch relative z-10">
+            {/* First section - Contains both card columns with reduced gap */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 order-2 lg:order-1">
+              {/* First column - First 2 features */}
+              <div className="grid grid-rows-2 gap-4 sm:gap-6 auto-rows-fr">
+                {dashboardFeatures.slice(0, 2).map((feature, index) => (
+                  <div
+                    key={index}
+                    ref={(el) => {
+                      featuresRef.current[index] = el;
+                    }}
+                    className="card-animate-initial"
+                    style={{
+                      transitionDelay: `${index * 350}ms`,
+                    }}
+                  >
+                    <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 min-h-[200px] flex flex-col justify-start hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out group">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0">
+                          <Image
+                            src={feature.icon}
+                            alt={feature.title}
+                            width={48}
+                            height={48}
+                            className="w-12 h-12 lg:w-12 lg:h-12 group-hover:brightness-0 group-hover:invert transition-all duration-300"
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-xl font-bold font-sora text-gray-900 mb-1 sm:mb-2 group-hover:text-white transition-colors duration-500">
+                            {feature.title}
+                          </h3>
+                          <p className="text-gray-600 font-switzer text-sm md:text-base leading-5 sm:leading-relaxed group-hover:text-white/90 transition-colors duration-500">
+                            {feature.description}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+
+              {/* Second column - Last 2 features */}
+              <div className="grid grid-rows-2 gap-4 sm:gap-6 auto-rows-fr">
+                {dashboardFeatures.slice(2).map((feature, index) => (
+                  <div
+                    key={index + 2}
+                    ref={(el) => {
+                      featuresRef.current[index + 2] = el;
+                    }}
+                    className="card-animate-initial"
+                    style={{
+                      transitionDelay: `${(index + 2) * 350}ms`,
+                    }}
+                  >
+                    <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 min-h-[200px] flex flex-col justify-start hover:shadow-2xl hover:bg-orange-500 transition-all duration-1000 ease-out group">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0">
+                          <Image
+                            src={feature.icon}
+                            alt={feature.title}
+                            width={48}
+                            height={48}
+                            className="w-12 h-12 lg:w-12 lg:h-12 group-hover:brightness-0 group-hover:invert transition-all duration-300"
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-xl font-bold font-sora text-gray-900 mb-1 sm:mb-2 group-hover:text-white transition-colors duration-500">
+                            {feature.title}
+                          </h3>
+                          <p className="text-gray-600 font-switzer text-sm md:text-base leading-5 sm:leading-relaxed group-hover:text-white/90 transition-colors duration-500">
+                            {feature.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* Third column - Dashboard image */}
-            <div
-              ref={imageRef}
-              className="opacity-0 h-full flex items-center justify-center order-1 lg:order-3"
-            >
+            {/* Second column - Dashboard image */}
+            <div ref={imageRef} className="opacity-0 order-1 lg:order-2 relative w-full max-w-[400px] h-[400px] lg:h-full mx-auto lg:mx-0 lg:ml-auto">
               <Image
                 src="/images/parental-dashboard-parent.jpg"
                 alt="Parent using dashboard"
-                width={392}
-                height={410}
-                className="w-full h-full max-w-[392px] rounded-2xl object-cover"
+                fill
+                className="rounded-2xl object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
               />
             </div>
           </div>

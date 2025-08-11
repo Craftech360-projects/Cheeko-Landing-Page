@@ -68,7 +68,7 @@ export function HowItWorks() {
     <section
       id="how-it-works"
       ref={sectionRef}
-      className="relative section-padding overflow-hidden opacity-0"
+      className="relative py-8 sm:py-10 md:py-12 lg:py-16 overflow-hidden opacity-0"
     >
       <Container>
         {/* Header */}

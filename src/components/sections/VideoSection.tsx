@@ -89,7 +89,7 @@ export function VideoSection() {
 
         {/* CTA Button */}
         <button
-          className="flex items-center gap-2 md:gap-3 px-4 md:px-6 py-3 min-h-[48px] bg-orange-500 text-white font-semibold rounded-md hover:bg-[#B91C21] transition-colors duration-200 text-base"
+          className="flex items-center gap-2 md:gap-3 px-4 md:px-6 py-3 min-h-[48px] bg-orange-500 text-white font-semibold rounded-md hover:bg-orange-600 transition-colors duration-200 text-base"
           onClick={() => setIsModalOpen(true)}
         >
           {/* Play Icon */}

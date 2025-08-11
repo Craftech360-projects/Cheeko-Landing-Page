@@ -10,19 +10,42 @@ type ImageProps = ComponentProps<typeof Image>;
 interface OptimizedImageProps extends Omit<ImageProps, 'src'> {
   src: string;
   alt: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
+  fill?: boolean;
 }
 
-export function OptimizedImage({ src, alt, width, height, ...props }: OptimizedImageProps) {
+export function OptimizedImage({ src, alt, width, height, fill, ...props }: OptimizedImageProps) {
   if (USE_CLOUDINARY) {
+    if (fill) {
+      return (
+        <CloudinaryImage
+          src={src}
+          alt={alt}
+          fill
+          fallbackSrc={src}
+          {...props}
+        />
+      );
+    }
     return (
       <CloudinaryImage
         src={src}
         alt={alt}
-        width={width}
-        height={height}
+        width={width!}
+        height={height!}
         fallbackSrc={src}
+        {...props}
+      />
+    );
+  }
+
+  if (fill) {
+    return (
+      <Image
+        src={src}
+        alt={alt}
+        fill
         {...props}
       />
     );
@@ -32,8 +55,8 @@ export function OptimizedImage({ src, alt, width, height, ...props }: OptimizedI
     <Image
       src={src}
       alt={alt}
-      width={width}
-      height={height}
+      width={width!}
+      height={height!}
       {...props}
     />
   );

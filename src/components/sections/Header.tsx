@@ -59,7 +59,7 @@ const Header: React.FC<HeaderProps> = ({
 
   React.useEffect(() => {
     // Set a fixed end date - adjust this date as needed
-    const endTime = new Date("2025-08-11T23:59:59Z").getTime();
+    const endTime = new Date("2025-08-13T23:59:59Z").getTime();
 
     const timer = setInterval(() => {
       const now = Date.now();
@@ -200,7 +200,7 @@ const Header: React.FC<HeaderProps> = ({
                     }}
                   >
                     <Button
-                      className="bg-orange-500 text-white border-none hover:bg-[#B91C21] rounded-md font-semibold text-sm lg:text-base px-4 sm:px-6 lg:px-8 min-w-[100px] sm:min-w-[120px] lg:min-w-[140px] h-8 lg:h-11 flex items-center justify-center"
+                      className="bg-orange-500 text-white border-none hover:bg-orange-600 rounded-md font-semibold text-sm lg:text-base px-4 sm:px-6 lg:px-8 min-w-[100px] sm:min-w-[120px] lg:min-w-[140px] h-8 lg:h-11 flex items-center justify-center"
                       size="sm"
                       onClick={(e) => {
                         e.preventDefault();
@@ -401,7 +401,7 @@ const Header: React.FC<HeaderProps> = ({
                     }}
                   >
                     <Button
-                      className="bg-orange-500 text-white border-none hover:bg-[#B91C21] rounded-md font-semibold text-sm lg:text-base px-2 sm:px-4 lg:px-8 min-w-[100px] sm:min-w-[120px] lg:min-w-[140px] h-8 lg:h-11 flex items-center justify-center"
+                      className="bg-orange-500 text-white border-none hover:bg-orange-600 rounded-md font-semibold text-sm lg:text-base px-2 sm:px-4 lg:px-8 min-w-[100px] sm:min-w-[120px] lg:min-w-[140px] h-8 lg:h-11 flex items-center justify-center"
                       size="sm"
                       onClick={(e) => {
                         e.preventDefault();

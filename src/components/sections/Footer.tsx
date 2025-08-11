@@ -63,7 +63,7 @@ export function Footer({ isBottomBarVisible = false }: FooterProps) {
 
   return (
     <>
-      <footer className={`bg-white relative py-6 px-2 sm:px-6 md:px-[2px] lg:px-[80px] xl:px-[60px] 2xl:px-[160px] ${isBottomBarVisible ? 'pb-[90px] sm:pb-[130px]' : ''}`}>
+      <footer className={`bg-white relative py-6 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24 2xl:px-40 ${isBottomBarVisible ? 'pb-[90px] sm:pb-[130px]' : ''}`}>
         <div className="max-w-full-2xl mx-auto">
           {/* First Section */}
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 mb-8 sm:mb-12">

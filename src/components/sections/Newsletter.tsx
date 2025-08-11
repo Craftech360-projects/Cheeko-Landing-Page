@@ -100,7 +100,7 @@ export function Newsletter() {
       <section
         id="newsletter"
         ref={sectionRef}
-        className="relative section-padding opacity-0 transition-opacity duration-700"
+        className="relative py-8 sm:py-10 md:py-12 lg:py-16 opacity-0 transition-opacity duration-700"
       >
         <Container>
           <div className="relative bg-gradient-to-r from-orange-500 to-orange-500 rounded-xl overflow-hidden">

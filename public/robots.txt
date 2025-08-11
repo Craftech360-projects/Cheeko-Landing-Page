@@ -15,7 +15,6 @@ Disallow: /pages/
 Disallow: /blogs/
 Disallow: /cart/
 Disallow: /cdn
-Disallow: /settings.cheekoai.in/
 
 # Allow search engines to access CSS and JS files
 Allow: /_next/static/

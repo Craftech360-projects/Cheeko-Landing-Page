@@ -16,12 +16,12 @@ export const getShopifyCheckoutUrl = (variantId: string, quantity: number = 1): 
   // Check if we have a valid variant ID
   if (!variantId || variantId === 'your-variant-id') {
     console.error('Invalid variant ID. Please update your .env.local file with the correct variant ID.')
-    // You can either return a products page or handle this error differently
-    return `https://${shopifyConfig.domain}/products/cheeko-ai-toy`
+    // Return empty string to prevent invalid checkout URLs
+    return ''
   }
   
-  // Use the direct cart add URL format
-  return `https://${shopifyConfig.domain}/cart/add?id=${variantId}&quantity=${quantity}`
+  // Use Shopify's standard checkout URL format with line items
+  return `https://${shopifyConfig.domain}/cart/${variantId}:${quantity}`
 }
 
 export interface ShopifyProductData {

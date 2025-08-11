@@ -175,7 +175,7 @@ export function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative section-padding pb-4 sm:pb-6 md:pb-8 overflow-hidden"
+      className="relative py-8 sm:py-10 md:py-12 lg:py-16 pb-4 sm:pb-6 md:pb-8 overflow-hidden"
     >
       <script
         type="application/ld+json"
