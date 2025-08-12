@@ -3,13 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/ui";
 import { OptimizedImage as Image } from "@/components/OptimizedImage";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import type { Swiper as SwiperType } from "swiper";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/autoplay";
 
 interface Card {
   title: string;
@@ -21,7 +14,7 @@ const cards: Card[] = [
   {
     title: "Talk",
     subtitle:
-      "Natural conversations tailored to your child's questions, moods, and daily curiosity.",
+      "Natural conversations tailored to your child’s questions, moods, and daily curiosity.",
     image: "/images/meet-cheeko-img1.png",
   },
   {
@@ -33,7 +26,7 @@ const cards: Card[] = [
   {
     title: "Grow",
     subtitle:
-      "Cheeko listens, remembers, and grows with your child's learning every day.",
+      "Cheeko listens, remembers, and grows with your child’s learning every day.",
     image: "/images/meet-cheeko-img3.png",
   },
   {
@@ -47,9 +40,19 @@ const cards: Card[] = [
 export default function MeetCheeko() {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const sectionRef = useRef<HTMLElement>(null);
-  const swiperRef = useRef<SwiperType | null>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
+  const [isResetting, setIsResetting] = useState(false);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Touch/drag state
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [currentX, setCurrentX] = useState(0);
+  const [dragOffset, setDragOffset] = useState(0);
 
   // Mobile detection
   useEffect(() => {
@@ -62,6 +65,41 @@ export default function MeetCheeko() {
 
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  // Auto-advance slider
+  useEffect(() => {
+    if (isMobile && isAutoPlaying) {
+      intervalRef.current = setInterval(() => {
+        setCurrentSlide((prev) => {
+          const nextSlide = prev + 1;
+          if (nextSlide >= cards.length) {
+            // When reaching the end, reset to slide 0
+            setTimeout(() => {
+              setIsResetting(true);
+              setCurrentSlide(0);
+              requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                  setIsResetting(false);
+                });
+              });
+            }, 700);
+            return nextSlide;
+          }
+          return nextSlide;
+        });
+      }, 2000);
+    } else {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [isMobile, isAutoPlaying]);
 
   // Section visibility observer for initial animations
   useEffect(() => {
@@ -119,6 +157,106 @@ export default function MeetCheeko() {
     };
   }, [isMobile, isVisible]);
 
+  // Swipe/drag handlers
+  const handleStart = (clientX: number) => {
+    setIsDragging(true);
+    setStartX(clientX);
+    setCurrentX(clientX);
+    setIsAutoPlaying(false);
+  };
+
+  const handleMove = (clientX: number) => {
+    if (!isDragging) return;
+    setCurrentX(clientX);
+    const diff = clientX - startX;
+    setDragOffset(diff);
+  };
+
+  const handleEnd = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+
+    const diff = currentX - startX;
+    const threshold = 100; // Minimum swipe distance
+
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) {
+        // Swiped right - go to previous slide
+        setCurrentSlide((prev) => {
+          const newSlide = prev - 1;
+          if (newSlide < 0) {
+            // Jump to the last real slide (cards.length - 1) without showing clone
+            setTimeout(() => {
+              setCurrentSlide(cards.length - 1);
+            }, 700);
+            return cards.length; // Show clone briefly during transition
+          }
+          return newSlide;
+        });
+      } else {
+        // Swiped left - go to next slide
+        setCurrentSlide((prev) => {
+          const nextSlide = prev + 1;
+          if (nextSlide === cards.length) {
+            // When reaching the cloned slide, reset to slide 0 after transition
+            setTimeout(() => {
+              setIsResetting(true);
+              setCurrentSlide(0);
+              // Use requestAnimationFrame to ensure smooth transition
+              requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                  setIsResetting(false);
+                });
+              });
+            }, 700);
+            return nextSlide;
+          }
+          return nextSlide;
+        });
+      }
+    }
+
+    setDragOffset(0);
+    // Resume auto-play after 3 seconds
+    setTimeout(() => setIsAutoPlaying(true), 100);
+  };
+
+  // Touch events
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length > 0) {
+      handleStart(e.touches[0].clientX);
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (e.touches.length > 0) {
+      handleMove(e.touches[0].clientX);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    handleEnd();
+  };
+
+  // Mouse events
+  const handleMouseDown = (e: React.MouseEvent) => {
+    handleStart(e.clientX);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    handleMove(e.clientX);
+  };
+
+  const handleMouseUp = () => {
+    handleEnd();
+  };
+
+  const handleMouseLeave = () => {
+    if (isDragging) {
+      handleEnd();
+    }
+  };
+
   return (
     <section
       ref={sectionRef}
@@ -151,7 +289,7 @@ export default function MeetCheeko() {
 
         {/* Subheading */}
         <p className="text-center text-sm sm:text-lg md:text-xl lg:text-xl text-gray-600 mb-6 sm:mb-8 md:mb-12 max-w-3xl mx-auto font-switzer leading-5 sm:leading-7 mt-2">
-          The most advanced AI toy for kids — adapting to your child's pace,
+          The most advanced AI toy for kids — adapting to your child’s pace,
           interests, and learning style. It listens, responds, and evolves,
           turning everyday moments into powerful learning experiences.
         </p>
@@ -164,7 +302,7 @@ export default function MeetCheeko() {
             alt="Decorative element - Top left corner"
             width={96}
             height={94}
-            className="absolute -left-6 sm:-left-8 md:-left-10 lg:-left-12 top-2 sm:-top-8 md:-top-10 lg:-top-12 z-0 decorative-topleft w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
+            className="absolute -left-6 sm:-left-8 md:-left-10 lg:-left-12 -top-6 sm:-top-8 md:-top-10 lg:-top-12 z-0 decorative-topleft w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
           />
 
           {/* Mobile Slider */}
@@ -174,48 +312,80 @@ export default function MeetCheeko() {
                 isVisible ? "mobile-slider-visible" : "mobile-slider-hidden"
               }`}
             >
-              <Swiper
-                modules={[Autoplay]}
-                spaceBetween={16}
-                slidesPerView={1.2}
-                centeredSlides={true}
-                loop={true}
-                loopFillGroupWithBlank={true}
-                loopedSlides={cards.length}
-                loopPreventsSlide={false}
-                autoplay={{
-                  delay: 2000,
-                  disableOnInteraction: false,
-                  pauseOnMouseEnter: true,
-                }}
-                onSwiper={(swiper) => {
-                  swiperRef.current = swiper;
-                }}
-                className="meet-cheeko-swiper !py-4 !pb-12"
+              {/* Slider container */}
+              <div
+                ref={sliderRef}
+                className="overflow-hidden relative cursor-grab active:cursor-grabbing select-none"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+                onMouseDown={handleMouseDown}
+                onMouseMove={isDragging ? handleMouseMove : undefined}
+                onMouseUp={handleMouseUp}
+                onMouseLeave={handleMouseLeave}
               >
-                {[...cards, ...cards].map((card, index) => (
-                  <SwiperSlide key={index}>
-                    <div className="bg-white rounded-2xl shadow-lg h-[420px] flex flex-col overflow-hidden relative transform transition-all duration-300 hover:shadow-2xl">
-                      <h3 className="text-xl font-bold font-sora text-gray-900 mb-1 sm:mb-2 px-6 pt-6">
-                        {card.title}
-                      </h3>
-                      <p className="text-gray-600 text-sm md:text-base mb-4 font-switzer px-6 leading-5 sm:leading-relaxed">
-                        {card.subtitle}
-                      </p>
-                      <div className="flex-1 relative mt-auto -mx-6 -mb-6">
-                        <Image
-                          src={card.image}
-                          alt={`CheekoAI ${
-                            card.title
-                          } - AI toy feature showing how kids can ${card.title.toLowerCase()} with this smart educational toy`}
-                          fill
-                          className="object-contain object-bottom transition-transform duration-500 pointer-events-none"
-                        />
+                <div
+                  className={`flex ${
+                    isDragging || isResetting
+                      ? "transition-none"
+                      : "transition-transform duration-700 ease-out"
+                  }`}
+                  style={{
+                    transform: `translateX(calc(${
+                      -(currentSlide + 1) * 75 + 12.5
+                    }% + ${
+                      (dragOffset / (sliderRef.current?.offsetWidth || 1)) * 75
+                    }%))`,
+                  }}
+                >
+                  {/* Render cards with clones for infinite effect */}
+                  {[cards[cards.length - 1], ...cards, cards[0]].map((card, index) => {
+                    // Adjust index for the prepended clone
+                    const adjustedIndex = index - 1;
+                    const isClonedSlide = index === 0 || index === cards.length + 1;
+
+                    return (
+                      <div
+                        key={`${index}-${isClonedSlide ? "clone" : "original"}`}
+                        className={`w-[75%] flex-shrink-0 ${
+                          isResetting
+                            ? "transition-none"
+                            : "transition-all duration-700"
+                        } ${
+                          adjustedIndex === currentSlide ||
+                          (currentSlide === 0 && index === 0) ||
+                          (currentSlide === cards.length - 1 && index === cards.length + 1)
+                            ? "scale-100 opacity-100"
+                            : Math.abs(adjustedIndex - currentSlide) === 1 ||
+                              (currentSlide === 0 && index === cards.length) ||
+                              (currentSlide === cards.length - 1 && index === 1)
+                            ? "scale-95 opacity-90"
+                            : "scale-90 opacity-60"
+                        }`}
+                      >
+                        <div className="bg-white rounded-2xl shadow-lg h-[450px] w-[90%] mx-auto flex flex-col overflow-hidden relative transform transition-all duration-700 hover:shadow-2xl">
+                          <h3 className="text-xl font-bold font-sora text-gray-900 mb-1 sm:mb-2 px-6 pt-6">
+                            {card.title}
+                          </h3>
+                          <p className="text-gray-600 text-sm md:text-base mb-4 font-switzer px-6 leading-5 sm:leading-relaxed">
+                            {card.subtitle}
+                          </p>
+                          <div className="flex-1 relative mt-auto -mx-6 -mb-6">
+                            <Image
+                              src={card.image}
+                              alt={`CheekoAI ${
+                                card.title
+                              } - AI toy feature showing how kids can ${card.title.toLowerCase()} with this smart educational toy`}
+                              fill
+                              className="object-contain object-bottom transition-transform duration-500 pointer-events-none"
+                            />
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           ) : (
             /* Desktop Cards grid */
@@ -260,7 +430,7 @@ export default function MeetCheeko() {
             alt="Decorative element - Bottom right corner"
             width={122}
             height={123}
-            className="absolute -right-6 sm:-right-8 md:-right-10 lg:-right-12 bottom-8 sm:-bottom-8 md:-bottom-10 lg:-bottom-12 z-0 decorative-bottomright w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
+            className="absolute -right-6 sm:-right-8 md:-right-10 lg:-right-12 -bottom-6 sm:-bottom-8 md:-bottom-10 lg:-bottom-12 z-0 decorative-bottomright w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
           />
         </div>
       </Container>
@@ -350,34 +520,6 @@ export default function MeetCheeko() {
             transform: scale(1.15);
             opacity: 1;
           }
-        }
-
-        /* Swiper custom styles - scoped to meet-cheeko-swiper only */
-        :global(.meet-cheeko-swiper .swiper-slide) {
-          height: 420px !important;
-        }
-
-        :global(.meet-cheeko-swiper .swiper-slide > div) {
-          height: 100% !important;
-        }
-
-        :global(.meet-cheeko-swiper .swiper-slide-active) {
-          z-index: 10;
-        }
-
-        :global(.meet-cheeko-swiper .swiper-slide:not(.swiper-slide-active)) {
-          transform: scale(0.95);
-          opacity: 0.9;
-        }
-
-        :global(.meet-cheeko-swiper) {
-          padding: 0 16px;
-          height: auto !important;
-        }
-
-        :global(.meet-cheeko-swiper .swiper-wrapper) {
-          align-items: center;
-          padding: 4px 0;
         }
 
         @media (prefers-reduced-motion: reduce) {

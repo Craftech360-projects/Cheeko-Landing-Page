@@ -7,7 +7,6 @@ import { cn } from "@/utils/cn";
 import { trackEvent } from "@/components/GoogleTagManager";
 import { OptimizedImage as Image } from "@/components/OptimizedImage";
 import { useShopify } from "@/hooks/useShopify";
-import { DelayedLoopVideo } from "@/components/DelayedLoopVideo";
 
 interface NavigationItem {
   label: string;
@@ -59,7 +58,7 @@ const Header: React.FC<HeaderProps> = ({
 
   React.useEffect(() => {
     // Set a fixed end date - adjust this date as needed
-    const endTime = new Date("2025-08-13T23:59:59Z").getTime();
+    const endTime = new Date("2025-08-15T23:59:59Z").getTime();
 
     const timer = setInterval(() => {
       const now = Date.now();
@@ -274,48 +273,61 @@ const Header: React.FC<HeaderProps> = ({
         >
           {/* Promo Banner */}
           {!showSplash && !isExpired && (
-            <div className="bg-[#FCBC17] text-black relative overflow-hidden h-auto min-h-[48px] py-0 md:py-0 md:h-[40px] pt-1 md:pt-0">
+            <div className="bg-[#FCBC17] text-black relative overflow-hidden h-[40px]">
               <div className="absolute inset-0 bg-[#FCBC17]" />
-              <div className="relative z-10 h-full flex flex-col items-center justify-center">
-                <div className="text-center pt-2 pb-2">
-                  <div className="flex flex-col lg:flex-row items-center justify-center space-y-0 lg:space-y-0 lg:space-x-4">
-                    <div className="flex items-center space-x-2">
-                      <span className="font-medium text-sm lg:text-base">
+              <div className="relative z-10 h-full flex items-center">
+                <motion.div
+                  className="flex whitespace-nowrap"
+                  animate={{
+                    x: ["0%", "-25%"],
+                  }}
+                  transition={{
+                    x: {
+                      repeat: Infinity,
+                      repeatType: "loop",
+                      duration: 35,
+                      ease: "linear",
+                    },
+                  }}
+                >
+                  {/* Create many copies for seamless scrolling on ultra-wide screens */}
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((index) => (
+                    <div
+                      key={index}
+                      className="flex items-center pr-12 md:pr-16 lg:pr-20"
+                    >
+                      <span className="font-medium text-sm md:text-base">
                         Early Bird Offer Ends In:
                       </span>
-                      <div className="font-mono font-medium text-xs lg:text-sm">
+                      <span className="font-mono font-medium text-sm md:text-base mx-1">
                         {formatTime(timeLeft.days)}:{formatTime(timeLeft.hours)}
                         :{formatTime(timeLeft.minutes)}:
-                        {formatTime(timeLeft.seconds)}
-                      </div>
-                    </div>
-                    <div className="hidden lg:block text-black text-sm lg:text-base">
-                      |
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <span className="font-medium text-sm lg:text-base">
+                        {formatTime(timeLeft.seconds)},
+                      </span>
+                      {/* <span className="mx-2 text-black">|</span> */}
+                      <span className="font-medium text-sm md:text-base">
                         Get Cheeko For
                       </span>
-                      <div className="inline-block">
+                      <span className="ml-1">
                         {!loading && price > 0 ? (
                           <>
-                            <span className="line-through text-gray text-sm lg:text-base mr-1">
+                            <span className="line-through text-gray-800 text-sm md:text-base mr-1">
                               {currencySymbol}7999
                             </span>
-                            <span className="text-sm lg:text-base font-medium">
+                            <span className="text-sm md:text-base font-medium">
                               {currencySymbol}
                               {price.toFixed(0)}
                             </span>
                           </>
                         ) : (
-                          <span className="text-xs lg:text-sm font-medium">
+                          <span className="text-sm md:text-base font-medium">
                             Great Price!
                           </span>
                         )}
-                      </div>
+                      </span>
                     </div>
-                  </div>
-                </div>
+                  ))}
+                </motion.div>
               </div>
             </div>
           )}

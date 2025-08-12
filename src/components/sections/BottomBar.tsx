@@ -30,19 +30,19 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
             ease: [0.25, 0.46, 0.45, 0.94],
             opacity: { duration: 0.4 },
           }}
-          className="fixed bottom-0 left-0 right-0 z-40 bg-white shadow-lg border-t border-gray-200 h-[80px] sm:h-[100px]"
+          className="fixed bottom-0 left-0 right-0 z-40 bg-white shadow-lg border-t border-gray-200 h-[80px] sm:h-[100px] overflow-visible"
         >
           <Container className="h-full flex items-center">
             <div className="w-full flex items-center justify-between gap-2 sm:gap-4">
               {/* Left side - Image and Price */}
               <div className="flex items-center space-x-2 sm:space-x-4">
-                <div className="relative w-8 h-8 sm:w-12 sm:h-12 md:w-18 md:h-18 flex-shrink-0">
+                <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex-shrink-0">
                   <Image
                     src="/images/bottom-bar-left.png"
                     alt="Cheeko AI Toy"
                     width={150}
                     height={150}
-                    className="w-full h-full object-contain"
+                    className="absolute -top-[80%] sm:-top-[50%] left-0 w-full h-[180%] sm:h-[150%] object-contain"
                   />
                 </div>
                 <div className="flex items-center gap-2">
@@ -89,28 +89,48 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
                     ? `Grab Now!`
                     : "Early Bird Offer!"}
                 </p>
-                <button
+                <motion.button
                   onClick={() => {
                     window.location.href =
                       "https://cheekoai.myshopify.com/products/cheeko-ai-toy";
                   }}
                   className="bg-orange-500 hover:bg-orange-600 text-white p-2 rounded-full transition-colors duration-200 shadow-lg flex-shrink-0"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    rotate: [0, -10, 10, -10, 0],
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    repeat: Infinity,
+                    repeatDelay: 3,
+                    ease: "easeInOut",
+                  }}
                 >
                   <ShoppingCart size={20} />
-                </button>
+                </motion.button>
               </div>
 
               {/* Desktop: Cart Button */}
               <div className="hidden sm:flex items-center flex-shrink-0">
-                <button
+                <motion.button
                   onClick={() => {
                     window.location.href =
                       "https://cheekoai.myshopify.com/products/cheeko-ai-toy";
                   }}
                   className="bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-full transition-colors duration-200 shadow-lg"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    rotate: [0, -10, 10, -10, 0],
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    repeat: Infinity,
+                    repeatDelay: 3,
+                    ease: "easeInOut",
+                  }}
                 >
                   <ShoppingCart size={24} />
-                </button>
+                </motion.button>
               </div>
             </div>
           </Container>

@@ -68,7 +68,7 @@ export function HowItWorks() {
     <section
       id="how-it-works"
       ref={sectionRef}
-      className="relative py-8 sm:py-10 md:py-12 lg:py-16 overflow-hidden opacity-0"
+      className="relative py-8 sm:py-10 md:py-12 lg:py-16 overflow-hidden opacity-0 bg-white"
     >
       <Container>
         {/* Header */}
@@ -101,24 +101,24 @@ export function HowItWorks() {
         </div>
 
         {/* Two Column Layout */}
-        <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 items-start justify-center max-w-7xl mx-auto">
+        <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 items-stretch justify-center max-w-7xl mx-auto">
           {/* Left Column - Image */}
           <div
             ref={(el) => {
               cardsRef.current[0] = el;
             }}
-            className="card-animate-initial flex-shrink-0"
+            className="card-animate-initial flex-shrink-0 lg:flex lg:items-stretch"
             style={{
               transitionDelay: `0ms`,
             }}
           >
-            <div className="relative w-full lg:w-[600px] rounded-xl overflow-hidden">
+            <div className="relative w-full lg:w-[600px] rounded-xl overflow-hidden lg:h-full">
               <Image
                 src="/images/how-it-works-image.jpg"
                 alt="Cheeko device setup instructions - Step by step guide"
                 width={600}
                 height={416}
-                className="w-full h-auto object-cover"
+                className="w-full h-full object-cover"
                 quality={100}
                 priority
               />
@@ -126,9 +126,10 @@ export function HowItWorks() {
           </div>
 
           {/* Right Column - Cards and Button */}
-          <div className="space-y-4 w-full flex-1">
-            {/* Cards */}
-            {steps.map((step, index) => (
+          <div className="flex flex-col w-full flex-1">
+            <div className="space-y-4 flex-1">
+              {/* Cards */}
+              {steps.map((step, index) => (
               <div
                 key={index}
                 ref={(el) => {
@@ -139,7 +140,7 @@ export function HowItWorks() {
                   transitionDelay: `${(index + 1) * 200}ms`,
                 }}
               >
-                <div className="flex items-center gap-4 min-h-[104px] w-full bg-white rounded-lg p-3">
+                <div className="flex items-start gap-4 min-h-[104px] w-full bg-white rounded-lg p-4 shadow-[0_-2px_10px_rgba(0,0,0,0.08),0_4px_6px_rgba(0,0,0,0.1)] hover:shadow-[0_-2px_15px_rgba(0,0,0,0.1),0_8px_15px_rgba(0,0,0,0.15)] transition-shadow duration-200">
                   {/* Number Square */}
                   <div className="flex-shrink-0 w-16 h-16 bg-orange-500/5 rounded-lg flex items-center justify-center">
                     <span className="text-2xl font-bold text-orange-500">
@@ -159,6 +160,7 @@ export function HowItWorks() {
                 </div>
               </div>
             ))}
+            </div>
 
             {/* App Store Badges */}
             <div
@@ -170,7 +172,7 @@ export function HowItWorks() {
                 transitionDelay: `800ms`,
               }}
             >
-              <div className="flex flex-row gap-2 sm:gap-4 items-center justify-center lg:justify-start w-full">
+              <div className="flex flex-row gap-2 items-stretch justify-start w-full h-[80px] mt-4">
                 {/* Google Play Store */}
                 <button
                   onClick={(e) => {
@@ -184,15 +186,15 @@ export function HowItWorks() {
                       "_blank"
                     );
                   }}
-                  className="flex-1 sm:flex-initial transform hover:scale-105 transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 rounded-lg"
+                  className="flex-initial transform hover:scale-105 transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 rounded-lg flex items-center justify-center"
                   aria-label="Download on Google Play Store"
                 >
                   <Image
                     src="/icons/playstore_logo.png"
                     alt="Get it on Google Play"
-                    width={150}
-                    height={45}
-                    className="w-full max-w-[140px] sm:w-[150px] h-auto mx-auto"
+                    width={180}
+                    height={54}
+                    className="w-full max-w-[160px] sm:w-[180px] h-auto"
                   />
                 </button>
 
@@ -209,15 +211,15 @@ export function HowItWorks() {
                       "_blank"
                     );
                   }}
-                  className="flex-1 sm:flex-initial transform hover:scale-105 transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 rounded-lg"
+                  className="flex-initial transform hover:scale-105 transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 rounded-lg flex items-center justify-center"
                   aria-label="Download on App Store"
                 >
                   <Image
                     src="/icons/appstore_logo.png"
                     alt="Download on the App Store"
-                    width={150}
-                    height={45}
-                    className="w-full max-w-[140px] sm:w-[150px] h-auto mx-auto"
+                    width={180}
+                    height={54}
+                    className="w-full max-w-[160px] sm:w-[180px] h-auto"
                   />
                 </button>
               </div>

@@ -142,18 +142,18 @@ export function Safety() {
                   )}
 
                   {/* Feature Content */}
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0">
+                  <div className="flex flex-col items-start sm:flex-row sm:items-start sm:gap-4">
+                    <div className="flex flex-col items-start sm:flex-shrink-0">
                       <Image
                         src={feature.icon}
                         alt={feature.title}
                         width={48}
                         height={48}
-                        className="w-12 h-12 lg:w-12 lg:h-12 feature-icon"
+                        className="w-10 h-10 sm:w-12 sm:h-12 lg:w-12 lg:h-12 feature-icon mb-4 sm:mb-0"
                       />
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold font-sora text-gray-900 mb-1 sm:mb-2">
+                    <div className="flex-1 flex flex-col items-start">
+                      <h3 className="text-lg sm:text-xl font-bold font-sora text-gray-900 mb-2 sm:mb-1">
                         {feature.title}
                       </h3>
                       <p className="text-gray-600 font-switzer text-sm md:text-base leading-5 sm:leading-relaxed">

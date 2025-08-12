@@ -172,22 +172,22 @@ export function Newsletter() {
                     onSubmit={handleSubmit}
                     className="mt-3 lg:mt-2 xl:mt-4"
                   >
-                    <div className="flex flex-col bg-white font-medium rounded-md p-1.5 shadow-lg w-full max-w-md space-y-2">
+                    <div className="flex flex-row bg-white font-medium rounded-md p-1 sm:p-1.5 shadow-lg w-full max-w-full sm:max-w-md gap-1 sm:gap-2">
                       <input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Enter Email Address"
-                        className="w-full px-3 py-2 sm:px-4 sm:py-2.5 bg-transparent text-gray-800 placeholder-gray-500 focus:outline-none focus:border-orange-500 border border-gray-400 rounded-md font-switzer text-sm sm:text-base transition-colors duration-200"
-                        style={{ outline: 'none', boxShadow: 'none' }}
+                        placeholder="Enter email address"
+                        className="flex-1 min-w-0 px-2 py-2 sm:px-4 sm:py-2.5 bg-transparent text-gray-800 placeholder:text-[#1B1B1B] focus:outline-none rounded-md font-switzer text-sm sm:text-base transition-colors duration-200"
+                        style={{ outline: "none", boxShadow: "none" }}
                         required
                       />
                       <button
                         type="submit"
-                        className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 sm:px-5 sm:py-2.5 rounded-md transition-colors duration-200 whitespace-nowrap text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="bg-orange-500 hover:bg-orange-600 text-white font-medium px-5 py-2 sm:px-5 sm:py-2.5 rounded-md transition-colors duration-200 whitespace-nowrap text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed"
                         disabled={isLoading}
                       >
-                        {isLoading ? "Subscribing..." : "Subscribe"}
+                        {isLoading ? "..." : "Submit"}
                       </button>
                     </div>
                   </form>

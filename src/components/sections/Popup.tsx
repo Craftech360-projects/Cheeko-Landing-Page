@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { useShopify } from "@/hooks/useShopify";
 import { OptimizedImage as Image } from "@/components/OptimizedImage";
-import { CloudinaryVideo } from "@/components/CloudinaryVideo";
 
 const Popup: React.FC = () => {
   const [isVisible, setIsVisible] = React.useState(false);
@@ -63,14 +62,11 @@ const Popup: React.FC = () => {
 
             <div className="flex flex-col md:flex-row h-full">
               <div className="hidden md:block md:h-full md:w-1/2 bg-orange-500 relative overflow-hidden">
-                <CloudinaryVideo
-                  src="/videos/popup_video.mp4"
-                  fallbackSrc="/videos/popup_video.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  controls={false}
-                  quality="auto:best"
+                <Image
+                  src="/images/popup-cheeko-image.png"
+                  alt="Cheeko AI Toy"
+                  width={425}
+                  height={495}
                   className="w-full h-full object-cover"
                 />
               </div>
