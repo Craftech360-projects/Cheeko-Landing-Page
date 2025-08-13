@@ -13,6 +13,7 @@ interface OptimizedVideoProps {
   controls?: boolean;
   width?: number;
   height?: number;
+  quality?: 'auto' | 'best' | 'good' | 'eco' | 'low' | number;
   onLoadedData?: () => void;
 }
 
@@ -26,16 +27,18 @@ export function OptimizedVideo({
   controls = false,
   width,
   height,
+  quality = 75,
   onLoadedData,
   ...props 
 }: OptimizedVideoProps) {
   const [useCloudinary, setUseCloudinary] = useState(USE_CLOUDINARY);
   
-  // Convert local path to Cloudinary URL
+  // Convert local path to Cloudinary URL with quality
   const getCloudinaryUrl = (path: string) => {
     const cleanPath = path.startsWith('/') ? path.slice(1) : path;
     const pathWithoutExt = cleanPath.replace(/\.[^/.]+$/, '');
-    return `https://res.cloudinary.com/dqtrjeegb/video/upload/q_auto,f_auto/cheekoai/${pathWithoutExt}.mp4`;
+    const qualityParam = typeof quality === 'number' ? `q_${quality}` : `q_${quality}`;
+    return `https://res.cloudinary.com/dqtrjeegb/video/upload/${qualityParam},f_auto/cheekoai/${pathWithoutExt}.mp4`;
   };
   
   const videoSrc = useCloudinary ? getCloudinaryUrl(src) : src;

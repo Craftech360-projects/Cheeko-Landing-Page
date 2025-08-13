@@ -63,6 +63,7 @@ export function VideoSection() {
           muted
           playsInline
           controls={false}
+          quality={75}
         />
       </div>
 

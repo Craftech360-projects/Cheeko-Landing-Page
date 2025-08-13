@@ -95,6 +95,7 @@ export function Features() {
               width={40}
               height={42}
               className="absolute -left-10 sm:-left-12 md:-left-14 lg:-left-15 -top-8 sm:-top-10 md:-top-11 lg:-top-12 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
+              quality={75}
             />
             <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sora">
               <span className="text-black">Key</span>{" "}
@@ -106,6 +107,7 @@ export function Features() {
               width={40}
               height={42}
               className="absolute -right-10 sm:-right-12 md:-right-14 lg:-right-15 -top-8 sm:-top-10 md:-top-11 lg:-top-12 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
+              quality={75}
             />
           </div>
 
@@ -125,6 +127,7 @@ export function Features() {
             width={96}
             height={94}
             className="absolute -left-6 sm:-left-8 md:-left-10 lg:-left-12 -top-6 sm:-top-8 md:-top-10 lg:-top-12 z-0 decorative-topleft w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
+            quality={75}
           />
 
           {/* Features Grid with Image - 2 columns layout */}
@@ -137,6 +140,7 @@ export function Features() {
                 fill
                 className="rounded-2xl object-cover"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+                quality={75}
               />
             </div>
 
@@ -164,6 +168,7 @@ export function Features() {
                             width={48}
                             height={48}
                             className="w-10 h-10 sm:w-12 sm:h-12 lg:w-12 lg:h-12 group-hover:brightness-0 group-hover:invert transition-all duration-300 mb-4 sm:mb-0"
+                            quality={75}
                           />
                         </div>
                         <div className="flex-1 flex flex-col items-start">
@@ -202,6 +207,7 @@ export function Features() {
                             width={48}
                             height={48}
                             className="w-10 h-10 sm:w-12 sm:h-12 lg:w-12 lg:h-12 group-hover:brightness-0 group-hover:invert transition-all duration-300 mb-4 sm:mb-0"
+                            quality={75}
                           />
                         </div>
                         <div className="flex-1 flex flex-col items-start">
@@ -227,6 +233,7 @@ export function Features() {
             width={122}
             height={123}
             className="absolute -right-6 sm:-right-8 md:-right-10 lg:-right-12 -bottom-6 sm:-bottom-8 md:-bottom-10 lg:-bottom-12 z-0 decorative-bottomright w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
+            quality={75}
           />
         </div>
       </Container>

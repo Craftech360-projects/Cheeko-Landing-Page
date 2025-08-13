@@ -7,6 +7,7 @@ import { cn } from "@/utils/cn";
 import { trackEvent } from "@/components/GoogleTagManager";
 import { OptimizedImage as Image } from "@/components/OptimizedImage";
 import { useShopify } from "@/hooks/useShopify";
+import { useCountdownTimer } from "@/hooks/useCountdownTimer";
 
 interface NavigationItem {
   label: string;
@@ -19,12 +20,6 @@ interface HeaderProps {
   showSplash?: boolean;
 }
 
-interface TimeLeft {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-}
 
 const navigationItems: NavigationItem[] = [
   { label: "Meet Cheeko", href: "#meet-cheeko" },
@@ -39,13 +34,7 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const { price, currencySymbol, loading } = useShopify();
-  const [timeLeft, setTimeLeft] = React.useState<TimeLeft>({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
-  const [isExpired, setIsExpired] = React.useState(false);
+  const { timeLeft, isExpired, formatTime } = useCountdownTimer();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -55,35 +44,6 @@ const Header: React.FC<HeaderProps> = ({
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  React.useEffect(() => {
-    // Set a fixed end date - adjust this date as needed
-    const endTime = new Date("2025-08-15T23:59:59Z").getTime();
-
-    const timer = setInterval(() => {
-      const now = Date.now();
-      const difference = endTime - now;
-
-      if (difference > 0) {
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const minutes = Math.floor(
-          (difference % (1000 * 60 * 60)) / (1000 * 60)
-        );
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-        setTimeLeft({ days, hours, minutes, seconds });
-      } else {
-        setIsExpired(true);
-      }
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  const formatTime = (value: number) => value.toString().padStart(2, "0");
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -302,16 +262,16 @@ const Header: React.FC<HeaderProps> = ({
                       <span className="font-mono font-medium text-sm md:text-base mx-1">
                         {formatTime(timeLeft.days)}:{formatTime(timeLeft.hours)}
                         :{formatTime(timeLeft.minutes)}:
-                        {formatTime(timeLeft.seconds)},
+                        {formatTime(timeLeft.seconds)}
                       </span>
                       {/* <span className="mx-2 text-black">|</span> */}
                       <span className="font-medium text-sm md:text-base">
-                        Get Cheeko For
+                      - Get Cheeko For
                       </span>
                       <span className="ml-1">
                         {!loading && price > 0 ? (
                           <>
-                            <span className="line-through text-gray-800 text-sm md:text-base mr-1">
+                            <span className="line-through text-foreground text-sm md:text-base mr-1">
                               {currencySymbol}7999
                             </span>
                             <span className="text-sm md:text-base font-medium">

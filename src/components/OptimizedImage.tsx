@@ -13,9 +13,10 @@ interface OptimizedImageProps extends Omit<ImageProps, 'src'> {
   width?: number;
   height?: number;
   fill?: boolean;
+  quality?: 'auto' | 'best' | 'good' | 'eco' | 'low' | number;
 }
 
-export function OptimizedImage({ src, alt, width, height, fill, ...props }: OptimizedImageProps) {
+export function OptimizedImage({ src, alt, width, height, fill, quality, ...props }: OptimizedImageProps) {
   if (USE_CLOUDINARY) {
     if (fill) {
       return (
@@ -24,6 +25,7 @@ export function OptimizedImage({ src, alt, width, height, fill, ...props }: Opti
           alt={alt}
           fill
           fallbackSrc={src}
+          quality={quality}
           {...props}
         />
       );
@@ -35,6 +37,7 @@ export function OptimizedImage({ src, alt, width, height, fill, ...props }: Opti
         width={width!}
         height={height!}
         fallbackSrc={src}
+        quality={quality}
         {...props}
       />
     );

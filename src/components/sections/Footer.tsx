@@ -79,7 +79,7 @@ export function Footer({ isBottomBarVisible = false }: FooterProps) {
             </div>
 
             {/* Navigation Links */}
-            <div className="flex flex-wrap items-center gap-2 sm:gap-4 lg:gap-8 justify-center leading-none">
+            {/* <div className="flex flex-wrap items-center gap-2 sm:gap-4 lg:gap-8 justify-center leading-none">
               {navigationLinks.map((link) => (
                 <a
                   key={link.label}
@@ -89,7 +89,7 @@ export function Footer({ isBottomBarVisible = false }: FooterProps) {
                   {link.label}
                 </a>
               ))}
-            </div>
+            </div> */}
 
             {/* Social Links and Back to Top for Desktop */}
             <div className="flex items-center gap-6">
@@ -98,7 +98,6 @@ export function Footer({ isBottomBarVisible = false }: FooterProps) {
                   key={social.label}
                   href={social.href}
                   target="_blank"
-                  rel="noopener noreferrer"
                   rel="noopener noreferrer"
                   className="transition-all duration-200 hover:opacity-60"
                   aria-label={social.label}

@@ -34,7 +34,7 @@ const testimonials: Testimonial[] = [
   {
     id: 2,
     name: "Rahul Iyer",
-    role: "Father of Aarav, 8",
+    role: "Father of Aarathi, 8",
     avatar: "/images/user2.png",
     rating: 5,
     review:
@@ -56,7 +56,7 @@ const testimonials: Testimonial[] = [
     avatar: "/images/user4.png",
     rating: 5,
     review:
-      "Riya used to be quiet at home — now she's constantly chatting with Cheeko about planets, riddles, and math!",
+      "Riya used to be quiet at home — now she's constantly chatting with Cheeko about planets, riddles, and math.",
   },
   {
     id: 5,
@@ -165,6 +165,7 @@ export function Testimonials() {
               width={40}
               height={42}
               className="absolute -left-10 sm:-left-12 md:-left-14 lg:-left-15 -top-8 sm:-top-10 md:-top-11 lg:-top-12 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
+              quality={75}
             />
             <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-sora">
               <span className="text-black">Hear from</span>{" "}
@@ -176,6 +177,7 @@ export function Testimonials() {
               width={40}
               height={42}
               className="absolute -right-10 sm:-right-12 md:-right-14 lg:-right-15 -top-8 sm:-top-10 md:-top-11 lg:-top-12 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
+              quality={75}
             />
           </div>
           <p className="text-sm sm:text-lg md:text-xl lg:text-xl text-gray-600 max-w-3xl mx-auto leading-5 sm:leading-7 mt-2">
@@ -248,6 +250,7 @@ export function Testimonials() {
                         width={40}
                         height={40}
                         className="w-full h-full object-cover"
+                        quality={75}
                         onError={(e) => {
                           e.currentTarget.src = "/images/default-avatar.jpg";
                         }}

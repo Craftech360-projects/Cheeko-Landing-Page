@@ -30,71 +30,59 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
             ease: [0.25, 0.46, 0.45, 0.94],
             opacity: { duration: 0.4 },
           }}
-          className="fixed bottom-0 left-0 right-0 z-40 bg-white shadow-lg border-t border-gray-200 h-[80px] sm:h-[100px] overflow-visible"
+          className="fixed bottom-0 left-0 right-0 z-40 bg-white shadow-lg border-t border-gray-200 h-[66px] sm:h-[100px] overflow-visible"
         >
-          <Container className="h-full flex items-center">
-            <div className="w-full flex items-center justify-between gap-2 sm:gap-4">
-              {/* Left side - Image and Price */}
-              <div className="flex items-center space-x-2 sm:space-x-4">
-                <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex-shrink-0">
-                  <Image
-                    src="/images/bottom-bar-left.png"
-                    alt="Cheeko AI Toy"
-                    width={150}
-                    height={150}
-                    className="absolute -top-[80%] sm:-top-[50%] left-0 w-full h-[180%] sm:h-[150%] object-contain"
-                  />
-                </div>
+          <div className="h-full flex items-center px-1 sm:px-4 lg:px-8 xl:px-12 2xl:px-16">
+            <div className="w-full flex items-center justify-between gap-2">
+              {/* Mobile Layout */}
+              <div className="sm:hidden flex items-center justify-between w-full px-1">
+                {/* Left side - Image and Price for Mobile */}
                 <div className="flex items-center gap-2">
+                  <div className="relative w-16 h-16 flex-shrink-0">
+                    <Image
+                      src="/images/bottom-bar-left.png"
+                      alt="Cheeko AI Toy"
+                      width={150}
+                      height={150}
+                      className="absolute -top-[75%] -left-1 w-[130%] h-[190%] object-contain"
+                      quality="best"
+                      priority
+                    />
+                  </div>
                   {!loading && price > 0 && (
-                    <>
-                      <div className="text-lg sm:text-[32px] font-bold text-orange-500 leading-tight">
-                        {currencySymbol}
-                        {price.toFixed(0).toLocaleString()}
-                      </div>
-                      <div className="flex items-center gap-1 text-xs sm:text-base text-gray-700">
-                        <span className="line-through font-medium text-xs sm:text-lg">
-                          {currencySymbol}
-                          {originalPrice.toLocaleString()}
-                        </span>
+                    <div className="flex items-center gap-1">
+                      <span className="text-xl font-bold text-orange-500">
+                        {currencySymbol}{price.toFixed(0)}
+                      </span>
+                      <span className="line-through text-gray-500 text-xs">
+                        {currencySymbol}{originalPrice}
+                      </span>
+                      <div className="flex items-center gap-1">
                         <Image
                           src="/icons/discount-icon.svg"
                           alt="Discount"
-                          width={32}
-                          height={32}
-                          className="w-4 h-4 sm:w-8 sm:h-8"
+                          width={20}
+                          height={20}
+                          className="w-4 h-4"
                         />
-                        <span className="text-[#4CAF50] text-[12px] sm:text-lg font-semibold mr-1">
+                        <span className="text-[#4CAF50] text-xs font-semibold">
                           {discountPercentage}%
                         </span>
                       </div>
-                    </>
+                      <span className="text-xs font-semibold text-gray-900">
+                        Grab Now!
+                      </span>
+                    </div>
                   )}
                 </div>
-              </div>
-
-              {/* Center - Text */}
-              <div className="hidden sm:flex flex-1 items-center text-center px-2 sm:px-4">
-                <p className="text-sm sm:text-lg font-semibold text-gray-900 leading-tight">
-                  {!loading && price > 0
-                    ? `Early Bird Offer! Save ${discountPercentage}% on Cheeko – Sale Ends Soon!`
-                    : "Early Bird Offer! Get Cheeko Now – Sale Ends Soon!"}
-                </p>
-              </div>
-
-              {/* Mobile: Text + Cart Button */}
-              <div className="flex sm:hidden items-center gap-2 flex-1">
-                <p className="text-sm font-semibold text-gray-900 leading-tight flex-1">
-                  {!loading && price > 0
-                    ? `Grab Now!`
-                    : "Early Bird Offer!"}
-                </p>
+                
+                {/* Right side - Cart Button for Mobile */}
                 <motion.button
                   onClick={() => {
                     window.location.href =
                       "https://cheekoai.myshopify.com/products/cheeko-ai-toy";
                   }}
-                  className="bg-orange-500 hover:bg-orange-600 text-white p-2 rounded-full transition-colors duration-200 shadow-lg flex-shrink-0"
+                  className="bg-orange-500 hover:bg-orange-600 text-white p-2 rounded-full transition-colors duration-200 shadow-lg flex-shrink-0 mr-1"
                   animate={{
                     scale: [1, 1.2, 1],
                     rotate: [0, -10, 10, -10, 0],
@@ -110,14 +98,64 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
                 </motion.button>
               </div>
 
-              {/* Desktop: Cart Button */}
-              <div className="hidden sm:flex items-center flex-shrink-0">
+              {/* Desktop Layout */}
+              <div className="hidden sm:flex items-center justify-between w-full">
+                {/* Left side - Image, Price and Text for Desktop */}
+                <div className="flex items-center space-x-4 flex-1">
+                  <div className="relative w-20 h-20 md:w-24 md:h-24 flex-shrink-0">
+                    <Image
+                      src="/images/bottom-bar-left.png"
+                      alt="Cheeko AI Toy"
+                      width={150}
+                      height={150}
+                      className="absolute -top-[60%] left-0 w-full h-[150%] object-contain"
+                      quality="best"
+                      priority
+                    />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {!loading && price > 0 && (
+                      <>
+                        <div className="text-[32px] font-bold text-orange-500 leading-tight">
+                          {currencySymbol}
+                          {price.toFixed(0).toLocaleString()}
+                        </div>
+                        <div className="flex items-center gap-1 text-base text-gray-700">
+                          <span className="line-through font-medium text-lg">
+                            {currencySymbol}
+                            {originalPrice.toLocaleString()}
+                          </span>
+                          <Image
+                            src="/icons/discount-icon.svg"
+                            alt="Discount"
+                            width={32}
+                            height={32}
+                            className="w-8 h-8"
+                          />
+                          <span className="text-[#4CAF50] text-lg font-semibold mr-1">
+                            {discountPercentage}%
+                          </span>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                  {/* Text next to pricing */}
+                  <div className="ml-4">
+                    <p className="text-lg font-semibold text-gray-900 leading-tight">
+                      {!loading && price > 0
+                        ? `Early Bird Offer! Save ${discountPercentage}% on Cheeko – Sale Ends Soon!`
+                        : "Early Bird Offer! Get Cheeko Now – Sale Ends Soon!"}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Right side - Cart Button for Desktop */}
                 <motion.button
                   onClick={() => {
                     window.location.href =
                       "https://cheekoai.myshopify.com/products/cheeko-ai-toy";
                   }}
-                  className="bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-full transition-colors duration-200 shadow-lg"
+                  className="bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-full transition-colors duration-200 shadow-lg flex-shrink-0"
                   animate={{
                     scale: [1, 1.2, 1],
                     rotate: [0, -10, 10, -10, 0],
@@ -133,7 +171,7 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
                 </motion.button>
               </div>
             </div>
-          </Container>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

@@ -119,7 +119,7 @@ export function HowItWorks() {
                 width={600}
                 height={416}
                 className="w-full h-full object-cover"
-                quality={100}
+                quality={75}
                 priority
               />
             </div>

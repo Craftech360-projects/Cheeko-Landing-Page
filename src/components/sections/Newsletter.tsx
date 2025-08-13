@@ -203,10 +203,6 @@ export function Newsletter() {
                     className="w-full h-auto lg:max-w-[450px] xl:max-w-[700px] object-contain"
                     quality={100}
                     priority
-                    unoptimized
-                    onError={(e) => {
-                      e.currentTarget.src = "/images/newsletter-image.png";
-                    }}
                   />
                 </div>
               </div>
