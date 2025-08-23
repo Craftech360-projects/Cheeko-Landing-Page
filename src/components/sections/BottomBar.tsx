@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, Plus } from "lucide-react";
 import { Container } from "@/components/ui";
 import { useShopify } from "@/hooks/useShopify";
 import { OptimizedImage as Image } from "@/components/OptimizedImage";
@@ -94,7 +94,12 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
                     ease: "easeInOut",
                   }}
                 >
-                  <ShoppingCart size={20} />
+                  <div className="relative">
+                    <ShoppingCart size={20} />
+                    <div className="absolute -top-0.5 -right-0.5 bg-white rounded-full p-0.5">
+                      <Plus size={8} strokeWidth={3} className="text-orange-500" />
+                    </div>
+                  </div>
                 </motion.button>
               </div>
 
@@ -155,10 +160,9 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
                     window.location.href =
                       "https://cheekoai.myshopify.com/products/cheeko-ai-toy";
                   }}
-                  className="bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-full transition-colors duration-200 shadow-lg flex-shrink-0"
+                  className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-3 rounded-full transition-colors duration-200 shadow-lg flex-shrink-0 flex items-center gap-2"
                   animate={{
-                    scale: [1, 1.2, 1],
-                    rotate: [0, -10, 10, -10, 0],
+                    scale: [1, 1.05, 1],
                   }}
                   transition={{
                     duration: 0.5,
@@ -167,7 +171,13 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
                     ease: "easeInOut",
                   }}
                 >
-                  <ShoppingCart size={24} />
+                  <div className="relative">
+                    <ShoppingCart size={24} />
+                    <div className="absolute -top-0.5 -right-0.5 bg-white rounded-full p-0.5">
+                      <Plus size={10} strokeWidth={3} className="text-orange-500" />
+                    </div>
+                  </div>
+                  <span className="font-semibold text-base">Add to Cart</span>
                 </motion.button>
               </div>
             </div>

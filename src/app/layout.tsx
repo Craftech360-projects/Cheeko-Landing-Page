@@ -41,23 +41,24 @@ const sora = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "CheekoAI - Best AI Toy for Kids in India | Smart Educational Toy",
-  description: "CheekoAI is the #1 AI toy for kids in India. Safe, COPPA-compliant educational AI-powered toy for children aged 3-12. Free shipping across Mumbai, Delhi, Bangalore & all Indian cities. ₹3,999 only.",
+  title: "AI Toy for Kids - CheekoAI | Best Smart Educational Toy India 2025",
+  description: "Looking for the best AI toy for kids? CheekoAI is India's #1 AI-powered educational toy for children 3-12 years. COPPA-compliant, supports 10 Indian languages. ₹3,999 with free shipping. Order now!",
   keywords: [
     "AI toy for kids",
-    "AI toy for kids India",
-    "best AI toy for children",
-    "smart toy for kids 3-12 years",
-    "educational AI toy India",
-    "CheekoAI toy price",
-    "AI learning toy for toddlers",
-    "interactive AI toy Mumbai",
-    "CheekoAI toy Delhi",
-    "smart learning toy Bangalore",
-    "COPPA compliant AI toy",
-    "safe AI toy for 3 year old",
-    "AI toy Hindi Tamil Telugu",
-    "buy AI toy online India"
+    "best AI toy for kids India",
+    "AI toys for children 3-12 years",
+    "smart educational toy India",
+    "CheekoAI",
+    "artificial intelligence toy for kids",
+    "AI learning toy for children",
+    "interactive AI toy India",
+    "AI toy Mumbai Delhi Bangalore",
+    "COPPA compliant kids toy",
+    "safe AI toy for toddlers",
+    "AI toy Hindi English Tamil",
+    "buy AI toy online India 2025",
+    "AI powered educational toy",
+    "smart toy for child development"
   ],
   authors: [{ name: "Altio AI" }],
   creator: "Altio AI Private Limited",
@@ -129,6 +130,34 @@ export default function RootLayout({
         <link rel="preconnect" href="https://res.cloudinary.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+        
+        {/* Meta Pixel Code */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '801366509225933');
+              fbq('track', 'PageView');
+            `,
+          }}
+        />
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=801366509225933&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
+        {/* End Meta Pixel Code */}
       </head>
       <body
         className={`${switzer.variable} ${sora.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
