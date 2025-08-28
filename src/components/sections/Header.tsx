@@ -163,16 +163,13 @@ const Header: React.FC<HeaderProps> = ({
                       size="sm"
                       onClick={(e) => {
                         e.preventDefault();
-                        trackEvent("download_app_click", {
+                        trackEvent("get_cheeko_click", {
                           location: "header",
                         });
-                        scrollToSection("#how-it-works");
+                        window.location.href = "https://cheekoai.myshopify.com/products/cheeko-ai-toy";
                       }}
                     >
-                      <span className="sm:hidden">Download App</span>
-                      <span className="hidden sm:inline">
-                        Download Parent App
-                      </span>
+                      Get Cheeko
                     </Button>
                   </motion.div>
 
@@ -377,16 +374,13 @@ const Header: React.FC<HeaderProps> = ({
                       size="sm"
                       onClick={(e) => {
                         e.preventDefault();
-                        trackEvent("download_app_click", {
+                        trackEvent("get_cheeko_click", {
                           location: "header",
                         });
-                        scrollToSection("#how-it-works");
+                        window.location.href = "https://cheekoai.myshopify.com/products/cheeko-ai-toy";
                       }}
                     >
-                      <span className="sm:hidden">Download App</span>
-                      <span className="hidden sm:inline">
-                        Download Parent App
-                      </span>
+                      Get Cheeko
                     </Button>
                   </motion.div>
                 </div>
