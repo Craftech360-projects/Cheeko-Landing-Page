@@ -14,6 +14,18 @@ export function VideoModal({ isOpen, onClose, isMobile }: VideoModalProps) {
 
   const videoId = "Q5gfuEwSQMQ";
 
+  // Add structured data when modal opens
+  useEffect(() => {
+    if (isOpen) {
+      // Add video page metadata for better SEO
+      document.title = "CheekoAI Demo Video - Smart AI Companion for Kids";
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', 'Watch CheekoAI in action! See how our AI toy helps children learn through interactive play. Perfect for kids aged 3-12 years.');
+      }
+    }
+  }, [isOpen]);
+
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") {

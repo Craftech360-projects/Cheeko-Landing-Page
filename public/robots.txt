@@ -21,6 +21,17 @@ Allow: /_next/static/
 Allow: *.css
 Allow: *.js
 
+# Font files - crawled but not indexed (expected behavior)
+# These are optimized font files that don't need to be indexed
+Disallow: /_next/static/media/*.ttf
+Disallow: /_next/static/media/*.woff
+Disallow: /_next/static/media/*.woff2
+
+# Video files - allow crawling but main video content is on YouTube
+Allow: /videos/
+# Note: Local videos are for background/hero effects only
+# Main video content available at: https://www.youtube.com/watch?v=Q5gfuEwSQMQ
+
 # Sitemap location
 Sitemap: https://cheekoai.in/sitemap.xml
 

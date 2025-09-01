@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { VideoModal } from "@/components/VideoModal";
 import { OptimizedVideo } from "@/components/OptimizedVideo";
+import Head from "next/head";
 // import { Button, Container } from "@/components/ui";
 // import { useShopify } from "@/hooks/useShopify";
 
@@ -47,10 +48,51 @@ export function VideoSection() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative w-full h-screen overflow-hidden opacity-0"
-    >
+    <>
+      {/* Video Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            "name": "CheekoAI Demo - Smart AI Companion for Kids",
+            "description": "Watch CheekoAI in action! See how our AI toy helps children learn through interactive play. Perfect for kids aged 3-12 years.",
+            "thumbnailUrl": "https://cheekoai.in/images/meet-cheeko-img1.png",
+            "uploadDate": "2025-01-01T00:00:00Z",
+            "duration": "PT2M30S",
+            "contentUrl": "https://www.youtube.com/watch?v=Q5gfuEwSQMQ",
+            "embedUrl": "https://www.youtube.com/embed/Q5gfuEwSQMQ",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Altio AI Pvt. Ltd.",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://cheekoai.in/images/logo.svg"
+              }
+            },
+            "potentialAction": {
+              "@type": "WatchAction",
+              "target": "https://cheekoai.in/#video"
+            },
+            "about": {
+              "@type": "Product",
+              "name": "CheekoAI",
+              "description": "AI-powered educational toy for children aged 3-12 years",
+              "brand": {
+                "@type": "Brand",
+                "name": "CheekoAI"
+              }
+            }
+          })
+        }}
+      />
+      
+      <section
+        id="video"
+        ref={sectionRef}
+        className="relative w-full h-screen overflow-hidden opacity-0"
+      >
       {/* Fullscreen Video Container */}
       <div className="absolute inset-0 w-full h-full">
         <OptimizedVideo
@@ -143,6 +185,7 @@ export function VideoSection() {
           }
         }
       `}</style>
-    </section>
+      </section>
+    </>
   );
 }

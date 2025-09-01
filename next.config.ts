@@ -60,6 +60,12 @@ const nextConfig: NextConfig = {
         destination: '/',
         permanent: true,
       },
+      // Add specific cart/add redirect
+      {
+        source: '/cart/add',
+        destination: '/',
+        permanent: true,
+      },
       {
         source: '/cdn',
         destination: '/',

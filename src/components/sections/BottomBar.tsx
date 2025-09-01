@@ -3,7 +3,7 @@
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingCart, Plus } from "lucide-react";
-import { Container } from "@/components/ui";
+
 import { useShopify } from "@/hooks/useShopify";
 import { OptimizedImage as Image } from "@/components/OptimizedImage";
 
@@ -52,10 +52,12 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
                   {!loading && price > 0 && (
                     <div className="flex items-center gap-1">
                       <span className="text-xl font-bold text-orange-500">
-                        {currencySymbol}{price.toFixed(0)}
+                        {currencySymbol}
+                        {price.toFixed(0)}
                       </span>
                       <span className="line-through text-gray-500 text-xs">
-                        {currencySymbol}{originalPrice}
+                        {currencySymbol}
+                        {originalPrice}
                       </span>
                       <div className="flex items-center gap-1">
                         <Image
@@ -75,7 +77,7 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
                     </div>
                   )}
                 </div>
-                
+
                 {/* Right side - Cart Button for Mobile */}
                 <motion.button
                   onClick={() => {
@@ -97,7 +99,11 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
                   <div className="relative">
                     <ShoppingCart size={20} />
                     <div className="absolute -top-0.5 -right-0.5 bg-white rounded-full p-0.5">
-                      <Plus size={8} strokeWidth={3} className="text-orange-500" />
+                      <Plus
+                        size={8}
+                        strokeWidth={3}
+                        className="text-orange-500"
+                      />
                     </div>
                   </div>
                 </motion.button>
@@ -121,25 +127,25 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
                   <div className="flex items-center gap-2">
                     {!loading && price > 0 && (
                       <>
-                        <div className="text-[32px] font-bold text-orange-500 leading-tight">
-                          {currencySymbol}
-                          {price.toFixed(0).toLocaleString()}
-                        </div>
-                        <div className="flex items-center gap-1 text-base text-gray-700">
-                          <span className="line-through font-medium text-lg">
-                            {currencySymbol}
-                            {originalPrice.toLocaleString()}
-                          </span>
+                        <div className="flex items-center gap-1 text-gray-600">
                           <Image
                             src="/icons/discount-icon.svg"
                             alt="Discount"
                             width={32}
                             height={32}
-                            className="w-8 h-8"
+                            className="w-6 h-6"
                           />
-                          <span className="text-[#4CAF50] text-lg font-semibold mr-1">
+                          <span className="text-[#4CAF50] text-base font-semibold mr-1">
                             {discountPercentage}%
                           </span>
+                          <span className="line-through font-medium text-xl">
+                            {currencySymbol}
+                            {originalPrice.toLocaleString()}
+                          </span>
+                          <div className="text-[28px] ml-1 font-bold text-orange-500 tracking-tight">
+                            {currencySymbol}
+                            {price.toFixed(0).toLocaleString()}
+                          </div>
                         </div>
                       </>
                     )}
@@ -174,7 +180,11 @@ const BottomBar: React.FC<BottomBarProps> = ({ isVisible }) => {
                   <div className="relative">
                     <ShoppingCart size={24} />
                     <div className="absolute -top-0.5 -right-0.5 bg-white rounded-full p-0.5">
-                      <Plus size={10} strokeWidth={3} className="text-orange-500" />
+                      <Plus
+                        size={10}
+                        strokeWidth={3}
+                        className="text-orange-500"
+                      />
                     </div>
                   </div>
                   <span className="font-semibold text-base">Add to Cart</span>
