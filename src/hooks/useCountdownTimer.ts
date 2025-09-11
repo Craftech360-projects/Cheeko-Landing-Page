@@ -9,7 +9,7 @@ export interface TimeLeft {
   seconds: number
 }
 
-export const OFFER_END_DATE = "2025-09-03T23:59:59Z"
+export const OFFER_END_DATE = "2025-09-13T23:59:59Z"
 
 export const useCountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
